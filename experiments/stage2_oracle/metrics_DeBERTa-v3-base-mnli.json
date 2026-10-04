@@ -1,0 +1,399 @@
+{
+  "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "timestamp": "2026-10-04T09:28:57",
+  "fever": {
+    "nli_concat/val": {
+      "3way": {
+        "n": 660,
+        "accuracy": 0.9227272727272727,
+        "macro_f1": 0.6294604798441116,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.9713375796178344,
+            "recall": 0.9242424242424242,
+            "f1": 0.9472049689440993,
+            "support": 330
+          },
+          "CONTRADICTED": {
+            "precision": 0.9620253164556962,
+            "recall": 0.9212121212121213,
+            "f1": 0.9411764705882353,
+            "support": 330
+          },
+          "INSUFFICIENT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            305,
+            12,
+            13
+          ],
+          [
+            9,
+            304,
+            17
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "2way": {
+        "n": 660,
+        "accuracy": 0.9545454545454546,
+        "macro_f1": 0.9545437848956803,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.9601226993865031,
+            "recall": 0.9484848484848485,
+            "f1": 0.9542682926829268,
+            "support": 330
+          },
+          "CONTRADICTED": {
+            "precision": 0.9491017964071856,
+            "recall": 0.9606060606060606,
+            "f1": 0.9548192771084337,
+            "support": 330
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED"
+        ],
+        "confusion_matrix": [
+          [
+            313,
+            17
+          ],
+          [
+            13,
+            317
+          ]
+        ]
+      }
+    },
+    "nli_max/val": {
+      "3way": {
+        "n": 660,
+        "accuracy": 0.9106060606060606,
+        "macro_f1": 0.6250309403178514,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.9832775919732442,
+            "recall": 0.8909090909090909,
+            "f1": 0.9348171701112877,
+            "support": 330
+          },
+          "CONTRADICTED": {
+            "precision": 0.9504643962848297,
+            "recall": 0.9303030303030303,
+            "f1": 0.9402756508422665,
+            "support": 330
+          },
+          "INSUFFICIENT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            294,
+            16,
+            20
+          ],
+          [
+            5,
+            307,
+            18
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "2way": {
+        "n": 660,
+        "accuracy": 0.9515151515151515,
+        "macro_f1": 0.9514866404498512,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.9745222929936306,
+            "recall": 0.9272727272727272,
+            "f1": 0.9503105590062112,
+            "support": 330
+          },
+          "CONTRADICTED": {
+            "precision": 0.930635838150289,
+            "recall": 0.9757575757575757,
+            "f1": 0.9526627218934911,
+            "support": 330
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED"
+        ],
+        "confusion_matrix": [
+          [
+            306,
+            24
+          ],
+          [
+            8,
+            322
+          ]
+        ]
+      }
+    },
+    "nli_concat/test": {
+      "3way": {
+        "n": 1324,
+        "accuracy": 0.9055891238670695,
+        "macro_f1": 0.6200714257052286,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.9546165884194053,
+            "recall": 0.9228441754916793,
+            "f1": 0.9384615384615385,
+            "support": 661
+          },
+          "CONTRADICTED": {
+            "precision": 0.9577235772357724,
+            "recall": 0.8883861236802413,
+            "f1": 0.9217527386541471,
+            "support": 663
+          },
+          "INSUFFICIENT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            610,
+            26,
+            25
+          ],
+          [
+            29,
+            589,
+            45
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "2way": {
+        "n": 1324,
+        "accuracy": 0.9433534743202417,
+        "macro_f1": 0.9433531834883373,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.943939393939394,
+            "recall": 0.9425113464447806,
+            "f1": 0.9432248296744891,
+            "support": 661
+          },
+          "CONTRADICTED": {
+            "precision": 0.9427710843373494,
+            "recall": 0.9441930618401206,
+            "f1": 0.9434815373021854,
+            "support": 663
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED"
+        ],
+        "confusion_matrix": [
+          [
+            623,
+            38
+          ],
+          [
+            37,
+            626
+          ]
+        ]
+      }
+    },
+    "nli_max/test": {
+      "3way": {
+        "n": 1324,
+        "accuracy": 0.9070996978851964,
+        "macro_f1": 0.6202082787055255,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.964516129032258,
+            "recall": 0.9046898638426626,
+            "f1": 0.9336455893832943,
+            "support": 661
+          },
+          "CONTRADICTED": {
+            "precision": 0.945141065830721,
+            "recall": 0.9095022624434389,
+            "f1": 0.9269792467332821,
+            "support": 663
+          },
+          "INSUFFICIENT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            598,
+            35,
+            28
+          ],
+          [
+            22,
+            603,
+            38
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "2way": {
+        "n": 1324,
+        "accuracy": 0.9395770392749244,
+        "macro_f1": 0.9395603517733604,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.953198127925117,
+            "recall": 0.924357034795764,
+            "f1": 0.9385560675883257,
+            "support": 661
+          },
+          "CONTRADICTED": {
+            "precision": 0.9267935578330894,
+            "recall": 0.9547511312217195,
+            "f1": 0.9405646359583952,
+            "support": 663
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED"
+        ],
+        "confusion_matrix": [
+          [
+            611,
+            50
+          ],
+          [
+            30,
+            633
+          ]
+        ]
+      }
+    },
+    "similarity/test": {
+      "threshold": 0.8313019871711731,
+      "2way": {
+        "n": 1324,
+        "accuracy": 0.7001510574018127,
+        "macro_f1": 0.6970008952293442,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.75,
+            "recall": 0.5990922844175491,
+            "f1": 0.6661059714045416,
+            "support": 661
+          },
+          "CONTRADICTED": {
+            "precision": 0.6670854271356784,
+            "recall": 0.8009049773755657,
+            "f1": 0.7278958190541467,
+            "support": 663
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED"
+        ],
+        "confusion_matrix": [
+          [
+            396,
+            265
+          ],
+          [
+            132,
+            531
+          ]
+        ]
+      }
+    }
+  },
+  "halueval": {
+    "nli_argmax/test": {
+      "n": 600,
+      "accuracy": 0.5866666666666667,
+      "precision": 0.5718232044198895,
+      "recall": 0.69,
+      "hallucination_detection_rate": 0.69,
+      "f1": 0.6253776435045317
+    },
+    "nli_entail_thresh/test": {
+      "threshold": 0.02890614978969097,
+      "n": 600,
+      "accuracy": 0.7083333333333334,
+      "precision": 0.7906976744186046,
+      "recall": 0.5666666666666667,
+      "hallucination_detection_rate": 0.5666666666666667,
+      "f1": 0.6601941747572816
+    },
+    "similarity/test": {
+      "threshold": 0.9747705459594727,
+      "n": 600,
+      "accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 1.0,
+      "hallucination_detection_rate": 1.0,
+      "f1": 0.6666666666666666
+    }
+  }
+}

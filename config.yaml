@@ -1,0 +1,49 @@
+seed: 42
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  splits: data/splits
+  cache: data/cache
+  experiments: experiments
+
+llm:
+  provider: ollama
+  base_url: http://localhost:11434
+  model: gemma4:31b-cloud      # cloud model routed through local Ollama
+  temperature: 0.0
+  timeout: 180                 # seconds per request
+  max_retries: 4
+  retry_backoff: 2.0           # exponential backoff base (seconds)
+  cache_db: data/cache/llm_cache.sqlite
+
+nli:
+  model: MoritzLaurer/DeBERTa-v3-base-mnli   # MNLI-only -> no FEVER leakage
+  batch_size: 32
+  fp16: true
+  max_length: 512
+
+embeddings:
+  model: BAAI/bge-small-en-v1.5
+  batch_size: 128
+
+retrieval:
+  top_k: 5          # evidence passages passed to verification
+  bm25_k: 50        # candidates from BM25 before fusion
+  dense_k: 50       # candidates from FAISS before fusion
+  rrf_k: 60         # Reciprocal Rank Fusion constant
+
+datasets:
+  fever:
+    base_url: https://fever.ai/download/fever
+    # paper_dev -> train/val, paper_test -> test (both label-balanced, official)
+    max_per_split: {train: 3000, val: 1000, test: 2000}   # label-balanced sampling
+    n_distractor_pages: 50000    # random non-gold Wikipedia pages for retrieval corpus
+    delete_zip_after: false      # wiki-pages.zip is 1.7 GB
+  halueval:
+    url: https://raw.githubusercontent.com/RUCAIBox/HaluEval/main/data/qa_data.json
+    max_groups: 2000             # each group = 1 right + 1 hallucinated answer
+  splits:                        # used for HaluEval (FEVER uses official splits)
+    train: 0.7
+    val: 0.15
+    test: 0.15

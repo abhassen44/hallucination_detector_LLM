@@ -1,0 +1,67 @@
+# ---------------------------------------------------------------- Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------------------------------------------------------------- Notebooks
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------- Data (large / regenerable)
+# Regenerate with: python -m src.datasets.prepare --dataset all
+data/raw/                 # FEVER wiki-pages.zip (1.7 GB), HaluEval json
+data/processed/           # corpus, BM25/FAISS indexes, retrieval cache
+data/cache/               # LLM SQLite cache (may contain many responses)
+# data/splits/ is small (<1 MB) and IS tracked for reproducibility
+
+# Model / index artefacts
+*.faiss
+*.pkl
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.zip
+
+# ---------------------------------------------------------------- Experiments
+mlruns/
+mlartifacts/
+wandb/
+experiments/**/checkpoints/
+experiments/**/*.log
+# experiments/**/metrics_*.json are small and tracked
+
+# ---------------------------------------------------------------- Frontend
+node_modules/
+frontend/**/dist/
+frontend/**/build/
+frontend/**/.vite/
+npm-debug.log*
+yarn-error.log*
+
+# ---------------------------------------------------------------- Secrets / env
+.env
+.env.*
+!.env.example
+*.key
+hf_token*
+
+# ---------------------------------------------------------------- OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.tmp
+~$*
