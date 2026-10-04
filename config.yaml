@@ -27,6 +27,12 @@ embeddings:
   model: BAAI/bge-small-en-v1.5
   batch_size: 128
 
+claims:
+  max_workers: 4                # concurrent LLM requests for extraction
+  short_claim_threshold: 5      # words — flag claims shorter than this
+  long_claim_threshold: 40      # words — flag claims longer than this
+  duplicate_jaccard: 0.85       # token-overlap threshold for near-duplicate detection
+
 retrieval:
   top_k: 5          # evidence passages passed to verification
   bm25_k: 50        # candidates from BM25 before fusion

@@ -50,8 +50,8 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **1. Datasets** | FEVER & HaluEval QA | ✅ Done | 5.9k FEVER claims, 4k HaluEval QA, 248k sentence corpus |
 | **2. Oracle NLI** | Gold-evidence Verification | ✅ Done | FEVER 2-way: **94.3% Acc / 0.943 F1**; HaluEval: 70.8% Acc |
 | **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
-| **4. Claim Extraction**| LLM Claim Extractor | ⏳ In Progress | Prompt engineering + schema validation + HaluEval extraction |
-| **5. Detector** | Hybrid Multi-signal Classifier | ⏳ Planned | Logistic Regression + Ablation + MLflow |
+| **4. Claim Extraction**| LLM Claim Extractor | ✅ Done | LLM-based atomic decomposition + quality validation + fallback |
+| **5. Detector** | Hybrid Multi-signal Classifier | ⏳ Next | Logistic Regression + Ablation + MLflow |
 | **6. Error Analysis** | Taxonomy Analysis | ⏳ Planned | 8 failure categories |
 | **7. Serving & UI** | FastAPI + React Web UI | ⏳ Planned | Interactive demo & inspection UI |
 
