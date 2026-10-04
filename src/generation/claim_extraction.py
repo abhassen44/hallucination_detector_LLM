@@ -1,4 +1,4 @@
-"""Atomic Claim Extraction (Phase 3 of plan.md).
+"""Atomic Claim Extraction (Phase 3 / Stage 4 of plan.md).
 
 Decomposes an answer (or text) into atomic, standalone, verifiable factual claims.
 Each claim:
@@ -7,11 +7,16 @@ Each claim:
   3. Omits conversational fluff ('Sure!', 'In my opinion', 'Based on the context').
   4. Contextualises short entity answers (e.g. Question: 'Who won in 2010?' Answer: 'Spain'
      -> Claim: 'Spain won in 2010.').
+
+Usage:
+    python -m src.generation.claim_extraction --split all
+    python -m src.generation.claim_extraction --split test --limit 50 --inspect 20
 """
 from __future__ import annotations
 
 import argparse
 import json
+import logging
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -21,6 +26,8 @@ from tqdm import tqdm
 from src.datasets.schema import Example, load_examples, write_jsonl
 from src.generation.llm import OllamaLLM
 from src.utils.config import PROJECT_ROOT, load_config, set_seed
+
+logger = logging.getLogger(__name__)
 
 EXTRACTION_SYSTEM_PROMPT = """You are a precise factual claim extraction system.
 Your job is to deconstruct an answer into a list of atomic, self-contained factual claims.
@@ -61,24 +68,37 @@ class ClaimExtractor:
         )
 
     def extract_claims(self, text: str, question: str | None = None, use_cache: bool = True) -> list[str]:
-        """Extract atomic claims for a single text."""
+        """Extract atomic claims for a single text.
+
+        Returns a list of claim strings.  Falls back to sentence-split on
+        LLM failure or empty results.
+        """
         text = text.strip()
         if not text:
             return []
         prompt = self._build_prompt(text, question)
         try:
             res = self.llm.generate_json(prompt, system=EXTRACTION_SYSTEM_PROMPT, use_cache=use_cache)
-            if isinstance(res, list):
-                claims = [str(c).strip() for c in res if str(c).strip()]
-                if claims:
-                    return claims
-            elif isinstance(res, dict) and "claims" in res and isinstance(res["claims"], list):
-                claims = [str(c).strip() for c in res["claims"] if str(c).strip()]
-                if claims:
-                    return claims
-        except Exception:
-            pass
+            claims = self._parse_response(res)
+            if claims:
+                return claims
+        except Exception as e:
+            logger.debug("LLM claim extraction failed: %s", e)
+        logger.debug("Falling back to sentence split for: %s", text[:80])
         return _fallback_split(text)
+
+    @staticmethod
+    def _parse_response(res) -> list[str]:
+        """Extract claim strings from various LLM response formats."""
+        # Direct list: ["claim1", "claim2"]
+        if isinstance(res, list):
+            return [str(c).strip() for c in res if str(c).strip()]
+        # Dict with "claims" key: {"claims": [...]}
+        if isinstance(res, dict):
+            for key in ("claims", "facts", "statements", "propositions"):
+                if key in res and isinstance(res[key], list):
+                    return [str(c).strip() for c in res[key] if str(c).strip()]
+        return []
 
     def extract_batch(
         self,
@@ -108,32 +128,61 @@ class ClaimExtractor:
 def process_dataset(
     split: str,
     extractor: ClaimExtractor,
+    dataset: str = "halueval",
     limit: int | None = None,
     save_in_place: bool = True,
 ) -> list[Example]:
+    """Run claim extraction on a dataset split and optionally save results.
+
+    For FEVER, claims are already single-sentence; this adds them to the
+    claims list if missing.  For HaluEval the LLM decomposes multi-sentence
+    answers into atomic claims.
+    """
     splits_dir = PROJECT_ROOT / "data" / "splits"
-    path = splits_dir / f"halueval_{split}.jsonl"
+    path = splits_dir / f"{dataset}_{split}.jsonl"
+    if not path.exists():
+        print(f"[claim_extraction] Skipping {path} (not found)")
+        return []
+
     exs = load_examples(path)
     if limit:
         exs = exs[:limit]
 
-    items = [(e.answer, e.question) for e in exs]
-    print(f"[claim_extraction] Processing {len(items)} examples from HaluEval {split}...")
-    claims_list = extractor.extract_batch(items, show_progress=True)
-
-    for e, claims in zip(exs, claims_list):
-        e.claims = claims
+    if dataset == "fever":
+        # FEVER examples are single claims already; ensure .claims is populated
+        for e in exs:
+            if not e.claims:
+                e.claims = [e.answer]
+        print(f"[claim_extraction] FEVER {split}: {len(exs)} examples, claims = answer (no decomposition needed)")
+    else:
+        # HaluEval: decompose with LLM
+        items = [(e.answer, e.question) for e in exs]
+        print(f"[claim_extraction] Processing {len(items)} examples from {dataset} {split}...")
+        claims_list = extractor.extract_batch(items, show_progress=True)
+        for e, claims in zip(exs, claims_list):
+            e.claims = claims
 
     if save_in_place:
+        # For HaluEval: update the split file with extracted claims
+        # For FEVER: only update if claims were missing
         write_jsonl(path, exs)
         print(f"[claim_extraction] Updated {path} with extracted claims.")
     return exs
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--split", choices=["train", "val", "test", "all"], default="test")
-    parser.add_argument("--workers", type=int, default=4)
+    parser = argparse.ArgumentParser(
+        description="Stage 4: Extract atomic claims from HaluEval answers using LLM."
+    )
+    parser.add_argument(
+        "--split", choices=["train", "val", "test", "all"], default="test",
+        help="Which split to process (default: test)",
+    )
+    parser.add_argument(
+        "--dataset", choices=["halueval", "fever", "all"], default="halueval",
+        help="Which dataset to process (default: halueval)",
+    )
+    parser.add_argument("--workers", type=int, default=4, help="Concurrent LLM workers")
     parser.add_argument("--limit", type=int, default=None, help="Process first N examples only")
     parser.add_argument("--inspect", type=int, default=10, help="Print first N examples")
     args = parser.parse_args()
@@ -142,20 +191,23 @@ def main() -> None:
     llm = OllamaLLM()
     extractor = ClaimExtractor(llm, max_workers=args.workers)
 
-    splits = ["test", "val"] if args.split == "all" else ([args.split] if args.split != "all" else ["test", "val", "train"])
+    # Fix: --split all now correctly includes all three splits
+    splits = ["train", "val", "test"] if args.split == "all" else [args.split]
+    datasets = ["halueval", "fever"] if args.dataset == "all" else [args.dataset]
 
-    for s in splits:
-        exs = process_dataset(s, extractor, limit=args.limit)
-        if args.inspect > 0:
-            print(f"\n--- Sample Inspections ({s}) ---")
-            for e in exs[: args.inspect]:
-                print(f"ID: {e.id} ({e.binary_label})")
-                print(f"  Q: {e.question}")
-                print(f"  A: {e.answer}")
-                print(f"  Claims ({len(e.claims)}):")
-                for c in e.claims:
-                    print(f"    - {c}")
-                print()
+    for ds in datasets:
+        for s in splits:
+            exs = process_dataset(s, extractor, dataset=ds, limit=args.limit)
+            if args.inspect > 0 and exs:
+                print(f"\n--- Sample Inspections ({ds}/{s}) ---")
+                for e in exs[: args.inspect]:
+                    print(f"ID: {e.id} ({e.binary_label})")
+                    print(f"  Q: {e.question}")
+                    print(f"  A: {e.answer}")
+                    print(f"  Claims ({len(e.claims)}):")
+                    for c in e.claims:
+                        print(f"    - {c}")
+                    print()
 
 
 if __name__ == "__main__":

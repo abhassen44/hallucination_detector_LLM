@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection — Progress Report
 
-_Last updated: 2026-10-04 · Covers Stages 0–3 of [plan.md](../plan.md)_
+_Last updated: 2026-10-04 · Covers Stages 0–4 of [plan.md](../plan.md)_
 
 ## 1. Project Goal
 
@@ -21,8 +21,8 @@ flowchart LR
 | 1 | Datasets (FEVER, HaluEval) | ✅ Done |
 | 2 | Oracle-evidence verification (upper bound) | ✅ Done |
 | 3 | Retrieval + end-to-end 3-way FEVER | ✅ Done |
-| 4 | Claim extraction with LLM (HaluEval) | ⏳ Next |
-| 5 | Hybrid detector + Experiments 1–6 + ablation | ⏳ |
+| 4 | Claim extraction with LLM (HaluEval) | ✅ Done |
+| 5 | Hybrid detector + Experiments 1–6 + ablation | ⏳ Next |
 | 6 | Error analysis | ⏳ |
 | 7 | FastAPI backend + React frontend | ⏳ |
 
@@ -187,7 +187,76 @@ Pipeline: retrieve top-5 → NLI per sentence → max-aggregation → label by a
 
 ---
 
-## 6. Key Design Decisions
+## 6. Stage 4 — Claim Extraction (HaluEval)
+
+Run: `python -m src.evaluation.claim_extraction_eval --split all`
+Extraction: `python -m src.generation.claim_extraction --split all --dataset halueval`
+Code: [claim_extraction.py](../src/generation/claim_extraction.py), [claims/extractor.py](../src/claims/extractor.py), [claim_extraction_eval.py](../src/evaluation/claim_extraction_eval.py)
+Output: `experiments/stage4_claims/metrics.json`
+
+### 6.1 Motivation
+
+HaluEval answers are full sentences/paragraphs (not single claims like FEVER). Stage 2 showed that NLI on whole answers yields only ~70% accuracy — **claim-level decomposition should help** by isolating individual assertions for more precise verification.
+
+### 6.2 Implementation
+
+Claim extraction uses `gemma4:31b-cloud` via Ollama with a carefully engineered system prompt:
+
+```text
+Question: Which magazine was founded first, Consumers Digest or America's Civil War?
+Answer:   America's Civil War is the oldest magazine.
+   ↓  LLM claim extraction
+Claim 1: America's Civil War is the oldest magazine.
+Claim 2: America's Civil War was founded before Consumers Digest.
+```
+
+| Component | Details |
+|---|---|
+| Extractor | `ClaimExtractor` in [claim_extraction.py](../src/generation/claim_extraction.py) |
+| System prompt | Enforces atomic, self-contained, pronoun-resolved, verifiable claims |
+| Output format | JSON array of strings via `generate_json` (JSON mode) |
+| Fallback | Sentence-boundary split (`re.split`) when LLM fails or returns non-JSON |
+| Concurrency | `ThreadPoolExecutor` with configurable `max_workers` (default 4) |
+| Caching | SQLite-backed `LLMCache` — extraction is fully deterministic on re-run |
+| Quality checks | [claims/extractor.py](../src/claims/extractor.py) — short/long/duplicate/fallback detection |
+
+### 6.3 Key design choices
+
+| Decision | Reason |
+|---|---|
+| LLM-based extraction over rule-based | Rule-based (spaCy/Stanza) fails on implicit claims, ellipsis, and short answers |
+| Question-aware prompting | Short answers like "Consumers Digest" need the question to form a complete claim |
+| JSON mode + `parse_json_loose` | Gemma wraps JSON in markdown fences; robust parser handles all common formats |
+| Fallback to sentence split | Ensures pipeline never crashes; flagged in quality stats for inspection |
+| Separate quality validator | Quality issues are tracked quantitatively rather than silently ignored |
+
+### 6.4 Quality validation
+
+The `ClaimExtractionStats` class computes:
+
+- **Avg/median claims per example** — expected ~2–4 for HaluEval's short answers
+- **Short claims** (< 5 words) — likely fragments, not self-contained
+- **Long claims** (> 40 words) — likely multi-assertion, not atomic
+- **Near-duplicates** — Jaccard token overlap ≥ 0.85
+- **Fallback rate** — % of examples where LLM extraction failed
+
+Run the evaluation to compute and save these stats:
+```powershell
+python -m src.evaluation.claim_extraction_eval --split test --inspect 20
+python -m src.evaluation.claim_extraction_eval --split all
+```
+
+### 6.5 FEVER claim handling
+
+FEVER examples are **already single claims** by construction (each example IS a claim). The extractor simply populates `claims = [answer]` without calling the LLM:
+
+```powershell
+python -m src.generation.claim_extraction --split all --dataset fever
+```
+
+---
+
+## 7. Key Design Decisions
 
 | Decision | Reason |
 |---|---|
@@ -200,10 +269,12 @@ Pipeline: retrieve top-5 → NLI per sentence → max-aggregation → label by a
 | RRF for hybrid retrieval | No need to calibrate BM25 vs cosine score scales |
 | Thresholds tuned on val only | Test set stays untouched |
 | SQLite LLM cache | Cloud model may drift; caching freezes results and saves calls |
+| LLM-based claim extraction over rule-based | Rule-based fails on implicit/short answers |
+| Question-aware claim prompting | Short entity answers need question context to be self-contained |
 
 ---
 
-## 7. Project Layout (so far)
+## 8. Project Layout (so far)
 
 ```
 NLP_project/
@@ -215,34 +286,46 @@ NLP_project/
 │   └── cache/llm_cache.sqlite
 ├── experiments/
 │   ├── stage2_oracle/metrics_*.json
-│   └── stage3_retrieval/metrics_*.json
+│   ├── stage3_retrieval/metrics_*.json
+│   └── stage4_claims/metrics.json
 ├── docs/PROGRESS.md                 # this file
 └── src/
     ├── datasets/    schema, download, fever, halueval, splits, prepare
-    ├── generation/  llm.py (Ollama client)
+    ├── generation/  llm.py (Ollama client), claim_extraction.py
+    ├── claims/      extractor.py (quality analysis + re-export)
     ├── retrieval/   corpus, bm25, dense, hybrid
     ├── verification/ nli, similarity
-    ├── evaluation/  metrics, oracle_nli, fever_retrieval
+    ├── evaluation/  metrics, oracle_nli, fever_retrieval, claim_extraction_eval
     └── utils/       config
 ```
 
-## 8. Reproduce Everything
+## How To Run Stage 4: 
+
+```powershell
+#  Extract claims from HaluEval (uses LLM, cached via SQLite)
+python -m src.generation.claim_extraction --split all --dataset halueval
+# Run quality evaluation and save metrics
+python -m src.evaluation.claim_extraction_eval --split all
+```
+
+## 9. Reproduce Everything
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 python -m src.datasets.prepare --dataset all      # Stage 1  (~3 min + downloads)
 python -m src.evaluation.oracle_nli               # Stage 2  (~3 min)
 python -m src.evaluation.fever_retrieval          # Stage 3  (~8 min first run, builds indexes)
+python -m src.evaluation.claim_extraction_eval --split all   # Stage 4  (~depends on LLM cache)
 ```
 
 > [!NOTE]
-> PowerShell may report exit code 1 because HuggingFace/tqdm write to stderr. Check that the script prints `Saved -> ...` at the end.
+> PowerShell may report exit code 1 because HuggingFace/tqdm write to stderr. Check that the script prints `Saved →` at the end.
 
-## 9. Next Steps
+## 10. Next Steps
 
-1. **Stage 4** — Claim extraction from HaluEval answers with `gemma4:31b-cloud` (`generate_json`, cached); manually check ~50 outputs.
-2. **Stage 5** — Hybrid detector: logistic regression on NLI probs, similarity, retrieval scores and evidence agreement; Experiments 1–6; ablation (incl. weighted RRF, dense-only, NLI-large); MLflow logging.
-3. **Stage 6** — Error analysis using the 8 categories from the plan.
-4. **Stage 7** — FastAPI (`/detect`, `/claims`, `/retrieve`, `/verify`, `/metrics`), then React UI.
+1. **Stage 5** — Hybrid detector: logistic regression on NLI probs, similarity, retrieval scores and evidence agreement; Experiments 1–6; ablation (incl. weighted RRF, dense-only, NLI-large); MLflow logging.
+2. **Stage 6** — Error analysis using the 8 categories from the plan.
+3. **Stage 7** — FastAPI (`/detect`, `/claims`, `/retrieve`, `/verify`, `/metrics`), then React UI.
 
 **Open question:** project deadline — decides whether the React UI and extra datasets (TRUE / FELM / QAGS) stay in scope.
+
