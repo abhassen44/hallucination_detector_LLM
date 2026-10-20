@@ -19,9 +19,12 @@ htmlcov/
 
 # ---------------------------------------------------------------- Data (large / regenerable)
 # Regenerate with: python -m src.datasets.prepare --dataset all
-data/raw/                 # FEVER wiki-pages.zip (1.7 GB), HaluEval json
-data/processed/           # corpus, BM25/FAISS indexes, retrieval cache
-data/cache/               # LLM SQLite cache (may contain many responses)
+# FEVER wiki-pages.zip (1.7 GB), HaluEval json
+data/raw/
+# Corpus, BM25/dense indexes, retrieval cache
+data/processed/
+# LLM SQLite cache (may contain many responses)
+data/cache/
 # data/splits/ is small (<1 MB) and IS tracked for reproducibility
 
 # Model / index artefacts

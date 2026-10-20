@@ -66,7 +66,7 @@ class ClaimQualityReport:
 
     @property
     def has_issues(self) -> bool:
-        return bool(self.short_claims or self.long_claims or self.duplicate_pairs or self.is_fallback)
+        return self.num_claims == 0 or bool(self.short_claims or self.long_claims or self.duplicate_pairs or self.is_fallback)
 
 
 def assess_claims(
@@ -77,6 +77,7 @@ def assess_claims(
     short_threshold: int = 5,
     long_threshold: int = 40,
     dup_threshold: float = 0.85,
+    is_fallback: bool = False,
 ) -> ClaimQualityReport:
     """Assess the quality of extracted claims for a single example."""
     wcs = [_word_count(c) for c in claims]
@@ -88,7 +89,7 @@ def assess_claims(
         short_claims=[i for i, w in enumerate(wcs) if w < short_threshold],
         long_claims=[i for i, w in enumerate(wcs) if w > long_threshold],
         duplicate_pairs=_has_near_duplicate(claims, dup_threshold),
-        is_fallback=False,  # caller should set True if extraction fell back
+        is_fallback=is_fallback,
     )
 
 

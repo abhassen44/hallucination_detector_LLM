@@ -53,3 +53,8 @@ datasets:
     train: 0.7
     val: 0.15
     test: 0.15
+
+# Fixed values from the existing Stage 3 validation results. No fitting at startup.
+detector:
+  entail_threshold: 0.7
+  contra_threshold: 0.95

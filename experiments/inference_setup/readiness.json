@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-20T16:31:42.492468+00:00",
+  "corpus_sentences": 247848,
+  "index": "dense.npy",
+  "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "smoke_probabilities": [
+    [
+      0.990264892578125,
+      0.009427232667803764,
+      0.00030785895069129765
+    ]
+  ],
+  "training_performed": false
+}

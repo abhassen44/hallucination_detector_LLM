@@ -1,0 +1,940 @@
+{
+  "splits": {
+    "train": {
+      "split": "train",
+      "n_examples": 2800,
+      "overall": {
+        "total_examples": 2800,
+        "total_claims": 4561,
+        "avg_claims_per_example": 1.6289285714285715,
+        "median_claims_per_example": 1.0,
+        "min_claims": 0,
+        "max_claims": 12,
+        "avg_words_per_claim": 12.134089644205922,
+        "examples_with_issues": 88,
+        "issue_rate": 0.03142857142857143,
+        "fallback_count": 1,
+        "fallback_rate": 0.00035714285714285714,
+        "short_claims": 104,
+        "long_claims": 1,
+        "duplicate_pairs": 24,
+        "claims_distribution": {
+          "1": 1669,
+          "2": 715,
+          "4": 92,
+          "3": 274,
+          "5": 20,
+          "6": 15,
+          "8": 5,
+          "0": 5,
+          "7": 3,
+          "9": 1,
+          "12": 1
+        }
+      },
+      "by_label": {
+        "hallucinated": {
+          "total_examples": 1400,
+          "total_claims": 2458,
+          "avg_claims_per_example": 1.7557142857142858,
+          "median_claims_per_example": 1.0,
+          "min_claims": 0,
+          "max_claims": 9,
+          "avg_words_per_claim": 11.24488902533315,
+          "examples_with_issues": 52,
+          "issue_rate": 0.037142857142857144,
+          "fallback_count": 1,
+          "fallback_rate": 0.0007142857142857143,
+          "short_claims": 62,
+          "long_claims": 1,
+          "duplicate_pairs": 8,
+          "claims_distribution": {
+            "2": 415,
+            "1": 721,
+            "4": 67,
+            "3": 173,
+            "6": 8,
+            "8": 2,
+            "0": 4,
+            "5": 8,
+            "7": 1,
+            "9": 1
+          }
+        },
+        "supported": {
+          "total_examples": 1400,
+          "total_claims": 2103,
+          "avg_claims_per_example": 1.5021428571428572,
+          "median_claims_per_example": 1.0,
+          "min_claims": 0,
+          "max_claims": 12,
+          "avg_words_per_claim": 13.021383471186901,
+          "examples_with_issues": 36,
+          "issue_rate": 0.025714285714285714,
+          "fallback_count": 0,
+          "fallback_rate": 0.0,
+          "short_claims": 42,
+          "long_claims": 0,
+          "duplicate_pairs": 16,
+          "claims_distribution": {
+            "1": 948,
+            "2": 300,
+            "3": 101,
+            "5": 12,
+            "4": 25,
+            "8": 3,
+            "6": 7,
+            "0": 1,
+            "7": 2,
+            "12": 1
+          }
+        }
+      },
+      "n_issues": 88,
+      "sample_issues": [
+        {
+          "id": "halueval-qa-7588-right",
+          "binary_label": "supported",
+          "answer": "rock",
+          "num_claims": 2,
+          "short_claims": [
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5346-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "The superhero with the Fistigons and control over the Leapfrog in the Marvel Comic \"Runaway\" is Talkback.",
+          "num_claims": 3,
+          "short_claims": [
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-1472-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Coca-Cola owns both Mountain Dew and Tropicana.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-8272-right",
+          "binary_label": "supported",
+          "answer": "yes",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-8931-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "ABX Air is owned by Amazon.",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4314-right",
+          "binary_label": "supported",
+          "answer": "American-Armenian",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4314-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Armenian and Turkish.",
+          "num_claims": 4,
+          "short_claims": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9783-right",
+          "binary_label": "supported",
+          "answer": "magazine",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9783-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Spin and The Progressive Populist are both publications.",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9627-right",
+          "binary_label": "supported",
+          "answer": "Park has been nominated for an Academy Award a total of six times, and won four with \"Creature Comforts\"",
+          "num_claims": 3,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5565-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "John Lanchester is British, but Paul Val\u00e9ry is not British.",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5002-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Alisha Daniels is a fictional character from the British sci-fi that aired on E4.",
+          "num_claims": 3,
+          "short_claims": [
+            2
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4238-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "It's hard to tell.",
+          "num_claims": 0,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-6727-right",
+          "binary_label": "supported",
+          "answer": "Baseball",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-6727-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Football and baseball.",
+          "num_claims": 4,
+          "short_claims": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-883-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Cerastium and Pavonia have green vegetation.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-6954-right",
+          "binary_label": "supported",
+          "answer": "plants",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-6954-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Erica and Beschorneria are both genera.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4217-right",
+          "binary_label": "supported",
+          "answer": "rock and blues",
+          "num_claims": 2,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4217-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Essential Montreux is a box-set by a guitar virtuoso known for singing in rock and blues genres.",
+          "num_claims": 4,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              2,
+              3
+            ]
+          ],
+          "is_fallback": false
+        }
+      ]
+    },
+    "val": {
+      "split": "val",
+      "n_examples": 600,
+      "overall": {
+        "total_examples": 600,
+        "total_claims": 947,
+        "avg_claims_per_example": 1.5783333333333334,
+        "median_claims_per_example": 1.0,
+        "min_claims": 0,
+        "max_claims": 6,
+        "avg_words_per_claim": 12.35217391304348,
+        "examples_with_issues": 13,
+        "issue_rate": 0.021666666666666667,
+        "fallback_count": 0,
+        "fallback_rate": 0.0,
+        "short_claims": 7,
+        "long_claims": 1,
+        "duplicate_pairs": 4,
+        "claims_distribution": {
+          "1": 362,
+          "3": 55,
+          "2": 158,
+          "5": 2,
+          "6": 5,
+          "4": 16,
+          "0": 2
+        }
+      },
+      "by_label": {
+        "hallucinated": {
+          "total_examples": 300,
+          "total_claims": 505,
+          "avg_claims_per_example": 1.6833333333333333,
+          "median_claims_per_example": 1.0,
+          "min_claims": 0,
+          "max_claims": 6,
+          "avg_words_per_claim": 11.466332218506132,
+          "examples_with_issues": 6,
+          "issue_rate": 0.02,
+          "fallback_count": 0,
+          "fallback_rate": 0.0,
+          "short_claims": 3,
+          "long_claims": 0,
+          "duplicate_pairs": 2,
+          "claims_distribution": {
+            "1": 160,
+            "3": 34,
+            "2": 92,
+            "6": 3,
+            "4": 9,
+            "5": 1,
+            "0": 1
+          }
+        },
+        "supported": {
+          "total_examples": 300,
+          "total_claims": 442,
+          "avg_claims_per_example": 1.4733333333333334,
+          "median_claims_per_example": 1.0,
+          "min_claims": 0,
+          "max_claims": 6,
+          "avg_words_per_claim": 13.238015607580826,
+          "examples_with_issues": 7,
+          "issue_rate": 0.023333333333333334,
+          "fallback_count": 0,
+          "fallback_rate": 0.0,
+          "short_claims": 4,
+          "long_claims": 1,
+          "duplicate_pairs": 2,
+          "claims_distribution": {
+            "1": 202,
+            "2": 66,
+            "3": 21,
+            "5": 1,
+            "4": 7,
+            "6": 2,
+            "0": 1
+          }
+        }
+      },
+      "n_issues": 13,
+      "sample_issues": [
+        {
+          "id": "halueval-qa-1216-right",
+          "binary_label": "supported",
+          "answer": "Swain and Graham",
+          "num_claims": 2,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4434-right",
+          "binary_label": "supported",
+          "answer": "magazine",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4434-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Ares and Right On! are publications.",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-809-right",
+          "binary_label": "supported",
+          "answer": "American",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5999-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "\"Arrow\" and \"The Flash\".",
+          "num_claims": 2,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-7293-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "The Age of Innocence starred the American actor who was born and raised in New York City.",
+          "num_claims": 3,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              1,
+              2
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-1058-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Whitechapel is a series that depicted a killer who was copying the actions of Ted Bundy.",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-2307-right",
+          "binary_label": "supported",
+          "answer": "Iraq and Afghanistan",
+          "num_claims": 2,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-7142-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Santuario Alta Vista is a specific area located in the Nayarit state of Mexico, one of the 30 states in the country.",
+          "num_claims": 2,
+          "short_claims": [
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-3905-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Sorry, it is not possible to generate a hallucinated answer for the given question using the provided knowledge as there is no information given about the University of Notre Dame in the knowledge.",
+          "num_claims": 0,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5341-right",
+          "binary_label": "supported",
+          "answer": "\"Unknown\"",
+          "num_claims": 0,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-8648-right",
+          "binary_label": "supported",
+          "answer": "\"How I Raised, Folded, Bluffed, Flirted, Cursed, and Won Millions at the World Series of Poker\"",
+          "num_claims": 1,
+          "short_claims": [],
+          "long_claims": [
+            0
+          ],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-3350-right",
+          "binary_label": "supported",
+          "answer": "Kansas",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        }
+      ]
+    },
+    "test": {
+      "split": "test",
+      "n_examples": 600,
+      "overall": {
+        "total_examples": 600,
+        "total_claims": 954,
+        "avg_claims_per_example": 1.59,
+        "median_claims_per_example": 1.0,
+        "min_claims": 0,
+        "max_claims": 7,
+        "avg_words_per_claim": 12.209965758878802,
+        "examples_with_issues": 20,
+        "issue_rate": 0.03333333333333333,
+        "fallback_count": 2,
+        "fallback_rate": 0.0033333333333333335,
+        "short_claims": 26,
+        "long_claims": 0,
+        "duplicate_pairs": 2,
+        "claims_distribution": {
+          "1": 362,
+          "2": 157,
+          "3": 49,
+          "4": 21,
+          "0": 2,
+          "5": 8,
+          "7": 1
+        }
+      },
+      "by_label": {
+        "hallucinated": {
+          "total_examples": 300,
+          "total_claims": 524,
+          "avg_claims_per_example": 1.7466666666666666,
+          "median_claims_per_example": 1.0,
+          "min_claims": 0,
+          "max_claims": 7,
+          "avg_words_per_claim": 11.259651645893257,
+          "examples_with_issues": 10,
+          "issue_rate": 0.03333333333333333,
+          "fallback_count": 0,
+          "fallback_rate": 0.0,
+          "short_claims": 13,
+          "long_claims": 0,
+          "duplicate_pairs": 0,
+          "claims_distribution": {
+            "1": 153,
+            "2": 89,
+            "3": 36,
+            "4": 17,
+            "0": 2,
+            "5": 2,
+            "7": 1
+          }
+        },
+        "supported": {
+          "total_examples": 300,
+          "total_claims": 430,
+          "avg_claims_per_example": 1.4333333333333333,
+          "median_claims_per_example": 1.0,
+          "min_claims": 1,
+          "max_claims": 5,
+          "avg_words_per_claim": 13.153944444444445,
+          "examples_with_issues": 10,
+          "issue_rate": 0.03333333333333333,
+          "fallback_count": 2,
+          "fallback_rate": 0.006666666666666667,
+          "short_claims": 13,
+          "long_claims": 0,
+          "duplicate_pairs": 2,
+          "claims_distribution": {
+            "1": 209,
+            "2": 68,
+            "4": 4,
+            "5": 6,
+            "3": 13
+          }
+        }
+      },
+      "n_issues": 20,
+      "sample_issues": [
+        {
+          "id": "halueval-qa-1201-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Xiaogan and Datong are in Japan.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-388-right",
+          "binary_label": "supported",
+          "answer": "yes",
+          "num_claims": 4,
+          "short_claims": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-388-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Carl Boese directed and produced film, but Franco Zeffirelli only directed.",
+          "num_claims": 4,
+          "short_claims": [
+            0,
+            1,
+            2
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-7982-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Hiroshi Inagaki's work is more iconic.",
+          "num_claims": 0,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9023-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Der Kirschgarten is based on the English translation of the play by the playwright of what nationality?",
+          "num_claims": 0,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-7644-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Rachel Weisz, a renowned British actress.",
+          "num_claims": 3,
+          "short_claims": [
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9257-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Yes, they are both Slovakian.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-8136-right",
+          "binary_label": "supported",
+          "answer": "Kato Khandwala",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": true
+        },
+        {
+          "id": "halueval-qa-2590-right",
+          "binary_label": "supported",
+          "answer": "Thandie Newton",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": true
+        },
+        {
+          "id": "halueval-qa-9775-right",
+          "binary_label": "supported",
+          "answer": "American",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-9775-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Armenian-American and Irish-American.",
+          "num_claims": 2,
+          "short_claims": [
+            0,
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5996-right",
+          "binary_label": "supported",
+          "answer": "yes",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-5996-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Les p\u00eacheurs de perles and Euridice are both operas, but with different musical styles.",
+          "num_claims": 3,
+          "short_claims": [
+            1
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-4084-right",
+          "binary_label": "supported",
+          "answer": "Central Maine and Quebec Railway",
+          "num_claims": 5,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              2,
+              3
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-806-right",
+          "binary_label": "supported",
+          "answer": "Donovan",
+          "num_claims": 5,
+          "short_claims": [
+            1,
+            2
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-760-right",
+          "binary_label": "supported",
+          "answer": "film",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-760-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Reagan and Give Us Our Skeletons were both documentaries.",
+          "num_claims": 2,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-6084-right",
+          "binary_label": "supported",
+          "answer": "2014 and 2015",
+          "num_claims": 2,
+          "short_claims": [],
+          "long_claims": [],
+          "duplicate_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-3211-right",
+          "binary_label": "supported",
+          "answer": "Suede",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        },
+        {
+          "id": "halueval-qa-3211-hallucinated",
+          "binary_label": "hallucinated",
+          "answer": "Hard-Fi formed first before Suede.",
+          "num_claims": 1,
+          "short_claims": [
+            0
+          ],
+          "long_claims": [],
+          "duplicate_pairs": [],
+          "is_fallback": false
+        }
+      ]
+    }
+  },
+  "timestamp": "2026-10-20T23:43:56",
+  "llm_model": "gemma4:31b-cloud"
+}

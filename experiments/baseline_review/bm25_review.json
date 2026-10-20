@@ -1,0 +1,4362 @@
+{
+  "categories": [
+    "retrieval_failure",
+    "claim_extraction_failure",
+    "nli_failure",
+    "ambiguous_evidence",
+    "numerical_reasoning",
+    "temporal_information",
+    "entity_confusion",
+    "multi_hop_reasoning"
+  ],
+  "examples": [
+    {
+      "id": "fever-156816",
+      "claim": "Alvin and the Chipmunks is a film from America.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 867,
+          "page_id": "Alvin_and_the_Chipmunks_-LRB-film-RRB-",
+          "sent_id": 8,
+          "score": 33.468971252441406,
+          "nli": [
+            0.0011286957887932658,
+            0.9984649419784546,
+            0.00040639829239808023
+          ],
+          "text": "Alvin and the Chipmunks (film): The first film in the film series , Alvin and the Chipmunks was followed by three sequels : Alvin and the Chipmunks : The Squeakquel , released on December 23 , 2009 , Alvin and the Chipmunks : Chipwrecked , released on December 16 , 2011 and Alvin and the Chipmunks : The Road Chip , released on December 18 , 2015 ."
+        },
+        {
+          "doc": 863,
+          "page_id": "Alvin_and_the_Chipmunks_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 28.711252212524414,
+          "nli": [
+            0.989963710308075,
+            0.009805291891098022,
+            0.00023093639174476266
+          ],
+          "text": "Alvin and the Chipmunks (film): Alvin and the Chipmunks is a 2007 American live-action/computer animated musical family comedy film directed by Tim Hill ."
+        },
+        {
+          "doc": 242947,
+          "page_id": "Around_the_World_with_The_Chipmunks",
+          "sent_id": 0,
+          "score": 28.34109115600586,
+          "nli": [
+            0.0013284551678225398,
+            0.007139604538679123,
+            0.9915319085121155
+          ],
+          "text": "Around the World with The Chipmunks: Around the World with The Chipmunks is an album by Alvin and the Chipmunks with David Seville ."
+        },
+        {
+          "doc": 866,
+          "page_id": "Alvin_and_the_Chipmunks_-LRB-film-RRB-",
+          "sent_id": 5,
+          "score": 26.76787567138672,
+          "nli": [
+            0.8381913304328918,
+            0.15911468863487244,
+            0.0026939595118165016
+          ],
+          "text": "Alvin and the Chipmunks (film): Alvin and the Chipmunks grossed $ 217 million in North America and $ 361 million at the box office worldwide on a budget of $ 60 million and was the seventh-best-selling DVD of 2008 , earning over $ 101 million ."
+        },
+        {
+          "doc": 242860,
+          "page_id": "Carry_On_-LRB-Fun_song-RRB-",
+          "sent_id": 5,
+          "score": 26.39159393310547,
+          "nli": [
+            0.00977968331426382,
+            0.9868962168693542,
+            0.0033241217024624348
+          ],
+          "text": "Carry On (Fun song): Alvin and the Chipmunks covered the song for the 2015 live stage tour Alvin and the Chipmunks : The Musical ."
+        }
+      ],
+      "gold_context": [
+        "Alvin and the Chipmunks (film): Alvin and the Chipmunks is a 2007 American live-action/computer animated musical family comedy film directed by Tim Hill ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-220234",
+      "claim": "Aristocracy is derived from the Greek word for \"rule of the best\".",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1073,
+          "page_id": "Aristocracy",
+          "sent_id": 1,
+          "score": 31.650592803955078,
+          "nli": [
+            0.9946929812431335,
+            0.004966073669493198,
+            0.0003409288765396923
+          ],
+          "text": "Aristocracy: The term derives from the Greek aristokratia , meaning `` rule of the best '' ."
+        },
+        {
+          "doc": 100028,
+          "page_id": "Nobile_-LRB-aristocracy-RRB-",
+          "sent_id": 5,
+          "score": 25.704822540283203,
+          "nli": [
+            0.00030059879645705223,
+            0.003955747466534376,
+            0.9957436919212341
+          ],
+          "text": "Nobile (aristocracy): The word `` nobile '' is derived from the Latin `` nobilis '' , meaning honourable ."
+        },
+        {
+          "doc": 1074,
+          "page_id": "Aristocracy",
+          "sent_id": 4,
+          "score": 25.573020935058594,
+          "nli": [
+            0.7326101064682007,
+            0.26058322191238403,
+            0.006806668359786272
+          ],
+          "text": "Aristocracy: At the time of the word 's origins in Ancient Greece , the Greeks conceived it as rule by the best qualified citizens -- and often contrasted it favourably with monarchy , rule by an individual ."
+        },
+        {
+          "doc": 185644,
+          "page_id": "Logosphere",
+          "sent_id": 1,
+          "score": 23.80272674560547,
+          "nli": [
+            0.014806893654167652,
+            0.36474350094795227,
+            0.6204496026039124
+          ],
+          "text": "Logosphere: The word is derived from its Greek roots : logos the word and sphere here in the meaning of the universe ."
+        },
+        {
+          "doc": 101303,
+          "page_id": "Synodontis_macrostigma",
+          "sent_id": 2,
+          "score": 19.923738479614258,
+          "nli": [
+            0.01246024388819933,
+            0.2505152225494385,
+            0.7370245456695557
+          ],
+          "text": "Synodontis macrostigma: The species name macrostigma is derived from the Greek word makros , meaning `` large '' , and the Greek word stigma , meaning `` mark '' or `` spot '' and refers to the large spots on the sides of the fish ."
+        }
+      ],
+      "gold_context": [
+        "Aristocracy: The term derives from the Greek aristokratia , meaning `` rule of the best '' ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-68983",
+      "claim": "Granular is granite.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 5745,
+          "page_id": "Granite",
+          "sent_id": 0,
+          "score": 21.9903564453125,
+          "nli": [
+            0.9650048613548279,
+            0.03231090307235718,
+            0.0026841594371944666
+          ],
+          "text": "Granite: Granite ( [ pron\u02c8\u0261r\u00e6n\u1d7bt ] ) is a common type of felsic intrusive igneous rock that is granular and phaneritic in texture ."
+        },
+        {
+          "doc": 53234,
+          "page_id": "Granular_configuration_automation",
+          "sent_id": 1,
+          "score": 14.824329376220703,
+          "nli": [
+            0.0006435876712203026,
+            0.013720257207751274,
+            0.9856362342834473
+          ],
+          "text": "Granular configuration automation: This framework focuses on improving the stability of IT environments by analyzing granular information ."
+        },
+        {
+          "doc": 53233,
+          "page_id": "Granular_configuration_automation",
+          "sent_id": 0,
+          "score": 14.286261558532715,
+          "nli": [
+            0.0007442773203365505,
+            0.016652636229991913,
+            0.9826030731201172
+          ],
+          "text": "Granular configuration automation: Granular configuration automation ( GCA ) is a specialized area in the field of configuration management which focuses on visibility and control of an IT environment 's configuration and bill-of-material at the most granular level ."
+        },
+        {
+          "doc": 110120,
+          "page_id": "Granite_Range_-LRB-Montana-RRB-",
+          "sent_id": 0,
+          "score": 13.7389554977417,
+          "nli": [
+            0.43397167325019836,
+            0.36253049969673157,
+            0.2034977674484253
+          ],
+          "text": "Granite Range (Montana): The Granite Range , el ."
+        },
+        {
+          "doc": 5755,
+          "page_id": "Granite",
+          "sent_id": 12,
+          "score": 13.353422164916992,
+          "nli": [
+            0.024636365473270416,
+            0.019680224359035492,
+            0.9556834697723389
+          ],
+          "text": "Granite: The extrusive igneous rock equivalent of granite is rhyolite ."
+        }
+      ],
+      "gold_context": [
+        "Granite: Granite ( [ pron\u02c8\u0261r\u00e6n\u1d7bt ] ) is a common type of felsic intrusive igneous rock that is granular and phaneritic in texture ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-194241",
+      "claim": "Mike Friedrich was only born on May 27, 1949.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9617,
+          "page_id": "Mike_Friedrich",
+          "sent_id": 0,
+          "score": 25.384796142578125,
+          "nli": [
+            0.0012631972786039114,
+            0.0009685269324108958,
+            0.9977682828903198
+          ],
+          "text": "Mike Friedrich: Mike Friedrich ( born March 27 , 1949 ) is an American comic book writer and publisher best known for his work at Marvel and DC Comics , and for publishing the anthology series Star * Reach , one of the first independent comics ."
+        },
+        {
+          "doc": 9618,
+          "page_id": "Mike_Friedrich",
+          "sent_id": 1,
+          "score": 19.842313766479492,
+          "nli": [
+            0.0003739662060979754,
+            0.9723262786865234,
+            0.027299722656607628
+          ],
+          "text": "Mike Friedrich: He is also an artists representative ."
+        },
+        {
+          "doc": 226724,
+          "page_id": "Serge_Trinchero",
+          "sent_id": 0,
+          "score": 14.073233604431152,
+          "nli": [
+            0.0012785657308995724,
+            0.0064111812971532345,
+            0.9923101663589478
+          ],
+          "text": "Serge Trinchero: Serge Trinchero ( born 27 August 1949 in Biella ) is a retired Swiss/Italian footballer who played as a defender ."
+        },
+        {
+          "doc": 34138,
+          "page_id": "Mike_Robertson",
+          "sent_id": 5,
+          "score": 13.615102767944336,
+          "nli": [
+            0.0006592056597582996,
+            0.0015477401902899146,
+            0.9977930784225464
+          ],
+          "text": "Mike Robertson: Mike Robertson ( snowboarder ) ( born 1985 ) , Canadian snowboarder"
+        },
+        {
+          "doc": 218219,
+          "page_id": "Mike_Leach",
+          "sent_id": 7,
+          "score": 13.615102767944336,
+          "nli": [
+            0.0005037085502408445,
+            0.0012106962967664003,
+            0.9982855916023254
+          ],
+          "text": "Mike Leach: Mike Leach ( tennis ) ( born 1960 ) , tennis player"
+        }
+      ],
+      "gold_context": [
+        "Mike Friedrich: Mike Friedrich ( born March 27 , 1949 ) is an American comic book writer and publisher best known for his work at Marvel and DC Comics , and for publishing the anthology series Star * Reach , one of the first independent comics ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-25722",
+      "claim": "Jed Whedon is a citizen of the United States.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7154,
+          "page_id": "Jed_Whedon",
+          "sent_id": 0,
+          "score": 27.396625518798828,
+          "nli": [
+            0.5244497656822205,
+            0.47472718358039856,
+            0.0008230967214331031
+          ],
+          "text": "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+        },
+        {
+          "doc": 47242,
+          "page_id": "Anne_Samplonius",
+          "sent_id": 1,
+          "score": 16.63876724243164,
+          "nli": [
+            0.0015887720510363579,
+            0.02867506444454193,
+            0.9697360992431641
+          ],
+          "text": "Anne Samplonius: She was born in the United States , has lived most of her life in Canada , and is a citizen of both countries ."
+        },
+        {
+          "doc": 10459,
+          "page_id": "Omar_Khadr",
+          "sent_id": 9,
+          "score": 16.035449981689453,
+          "nli": [
+            0.0018520016456022859,
+            0.03314966335892677,
+            0.9649983644485474
+          ],
+          "text": "Omar Khadr: He was the youngest prisoner and last Western citizen to be held by the United States at Guantanamo Bay ."
+        },
+        {
+          "doc": 66722,
+          "page_id": "George_Richard_Marek",
+          "sent_id": 4,
+          "score": 14.462260246276855,
+          "nli": [
+            0.002806901466101408,
+            0.03050295263528824,
+            0.966690182685852
+          ],
+          "text": "George Richard Marek: From 1918 , Marek studied at the University of Vienna until he emigrated to the United States in 1920 , where he became a citizen in 1925 ."
+        },
+        {
+          "doc": 234748,
+          "page_id": "Ed_McIlvenny",
+          "sent_id": 9,
+          "score": 14.004286766052246,
+          "nli": [
+            0.0024408274330198765,
+            0.49756181240081787,
+            0.49999725818634033
+          ],
+          "text": "Ed McIlvenny: Although he was not a US citizen , he had declared his intention of becoming one and thus was eligible to play , according to the rules of the United States Soccer Football Association at the time ."
+        }
+      ],
+      "gold_context": [
+        "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-8190",
+      "claim": "James, Viscount Severn is the only son of Prince Edward and Sophie, Countess of Wessex.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 6905,
+          "page_id": "James,_Viscount_Severn",
+          "sent_id": 0,
+          "score": 52.31549835205078,
+          "nli": [
+            0.9902912974357605,
+            0.009418969973921776,
+            0.00028975497116334736
+          ],
+          "text": "James, Viscount Severn: James , Viscount Severn ( James Alexander Philip Theo Mountbatten-Windsor ; born 17 December 2007 ) is the younger child and only son of Prince Edward , Earl of Wessex , and Sophie , Countess of Wessex , and the youngest grandchild of Queen Elizabeth II and Prince Philip , Duke of Edinburgh ."
+        },
+        {
+          "doc": 6906,
+          "page_id": "James,_Viscount_Severn",
+          "sent_id": 1,
+          "score": 27.225566864013672,
+          "nli": [
+            0.00016978790517896414,
+            0.004995965864509344,
+            0.9948341846466064
+          ],
+          "text": "James, Viscount Severn: He is tenth in line to succeed his grandmother ."
+        },
+        {
+          "doc": 209608,
+          "page_id": "Dominic_Constantine,_Prince_of_L\u00f6wenstein-Wertheim-Rochefort",
+          "sent_id": 19,
+          "score": 20.432170867919922,
+          "nli": [
+            0.0007641256670467556,
+            0.16941377520561218,
+            0.8298221230506897
+          ],
+          "text": "Dominic Constantine, Prince of L\u00f6wenstein-Wertheim-Rochefort: Charles Thomas , 5th Prince of L\u00f6wenstein-Wertheim-Rosenberg ( 1783 - 1849 ) married in 1799 Countess Sophie of Windisch-Gr\u00e4tz and had issue"
+        },
+        {
+          "doc": 46920,
+          "page_id": "Edward,_the_Black_Prince",
+          "sent_id": 10,
+          "score": 19.542142868041992,
+          "nli": [
+            0.0002179248840548098,
+            0.0014533279463648796,
+            0.9983287453651428
+          ],
+          "text": "Edward, the Black Prince: The throne passed instead to his son Richard II , a minor , upon the death of Edward III ."
+        },
+        {
+          "doc": 229346,
+          "page_id": "Unionvale,_Prince_Edward_Island",
+          "sent_id": 3,
+          "score": 19.09662628173828,
+          "nli": [
+            0.002685603452846408,
+            0.6694523692131042,
+            0.327862024307251
+          ],
+          "text": "Unionvale, Prince Edward Island: Category : Communities in Prince County , Prince Edward Island"
+        }
+      ],
+      "gold_context": [
+        "James, Viscount Severn: James , Viscount Severn ( James Alexander Philip Theo Mountbatten-Windsor ; born 17 December 2007 ) is the younger child and only son of Prince Edward , Earl of Wessex , and Sophie , Countess of Wessex , and the youngest grandchild of Queen Elizabeth II and Prince Philip , Duke of Edinburgh ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-223273",
+      "claim": "The Baja 1000 was covered by Jim McKay in 1968.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 1539,
+          "page_id": "Baja_1000",
+          "sent_id": 0,
+          "score": 23.157852172851562,
+          "nli": [
+            0.0005977129330858588,
+            0.9975249171257019,
+            0.0018773976480588317
+          ],
+          "text": "Baja 1000: The SCORE Baja 1000 is an off-road race that takes place in Mexico 's Baja California Peninsula ."
+        },
+        {
+          "doc": 1557,
+          "page_id": "Baja_1000",
+          "sent_id": 28,
+          "score": 22.788864135742188,
+          "nli": [
+            0.005772688426077366,
+            0.9119981527328491,
+            0.08222916722297668
+          ],
+          "text": "Baja 1000: SCORE hired Sal Fish as president and took control of the Baja 1000 from that year on with the Baja 1000 race resuming under new control in 1975 ."
+        },
+        {
+          "doc": 1552,
+          "page_id": "Baja_1000",
+          "sent_id": 23,
+          "score": 22.24441909790039,
+          "nli": [
+            0.0011466766009107232,
+            0.779265820980072,
+            0.21958747506141663
+          ],
+          "text": "Baja 1000: BSC renamed the event the `` Baja Mil '' ( Baja 1000 ) and scheduled the race to run on the original dates chosen by NORRA ."
+        },
+        {
+          "doc": 1554,
+          "page_id": "Baja_1000",
+          "sent_id": 25,
+          "score": 20.42055892944336,
+          "nli": [
+            0.0034051912371069193,
+            0.23571082949638367,
+            0.7608838677406311
+          ],
+          "text": "Baja 1000: Unaware of the challenges , BSC found promoting Baja races more difficult than anticipated ."
+        },
+        {
+          "doc": 1545,
+          "page_id": "Baja_1000",
+          "sent_id": 10,
+          "score": 20.31755828857422,
+          "nli": [
+            0.00021323894907254726,
+            0.9980764389038086,
+            0.0017103349091485143
+          ],
+          "text": "Baja 1000: The first official race started in Tijuana , Baja California , on October 31 , 1967 , and was named the NORRA Mexican 1000 Rally ."
+        }
+      ],
+      "gold_context": [
+        "Baja 1000: From 1967 to 1972 , the race was organized by the National Off-Road Racing Association ( NORRA ) and grew in popularity with ABC 's `` Wide World of Sports '' sending Jim McKay to cover the 1968 event , and attracting new participants like the late Mickey Thompson , Indy 500 winner Parnelli Jones , movie actor James Garner , and Mary McGee , the first woman to compete in the event ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-227771",
+      "claim": "Lyon had a population of 506,615 in 2014.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8915,
+          "page_id": "Lyon",
+          "sent_id": 4,
+          "score": 42.32417297363281,
+          "nli": [
+            0.9949581027030945,
+            0.004670997150242329,
+            0.000370897090760991
+          ],
+          "text": "Lyon: Lyon had a population of 506,615 in 2014 and is France 's third-largest city after Paris and Marseille ."
+        },
+        {
+          "doc": 8925,
+          "page_id": "Lyon",
+          "sent_id": 20,
+          "score": 18.013965606689453,
+          "nli": [
+            0.00022848894877824932,
+            0.9987905621528625,
+            0.000980947632342577
+          ],
+          "text": "Lyon: Lyon was ranked 19th globally and second in France for innovation in 2014 ."
+        },
+        {
+          "doc": 26423,
+          "page_id": "Golbo",
+          "sent_id": 2,
+          "score": 16.845720291137695,
+          "nli": [
+            0.0014801076613366604,
+            0.006317266263067722,
+            0.9922025203704834
+          ],
+          "text": "Golbo: According to the 2009 Population and Housing Census of Kyrgyzstan , at the time the population of Golbo was 1,506 ."
+        },
+        {
+          "doc": 162888,
+          "page_id": "Zignago",
+          "sent_id": 1,
+          "score": 16.096105575561523,
+          "nli": [
+            0.0015331415925174952,
+            0.002333200303837657,
+            0.9961336851119995
+          ],
+          "text": "Zignago: As of 31 December 2004 , it had a population of 506 and an area of 27.8 km2 ."
+        },
+        {
+          "doc": 234407,
+          "page_id": "Niknam_Deh,_Tehran",
+          "sent_id": 1,
+          "score": 16.096105575561523,
+          "nli": [
+            0.0008082102285698056,
+            0.0026864989195019007,
+            0.9965052604675293
+          ],
+          "text": "Niknam Deh, Tehran: At the 2006 census , its population was 1,739 , in 506 families ."
+        }
+      ],
+      "gold_context": [
+        "Lyon: Lyon had a population of 506,615 in 2014 and is France 's third-largest city after Paris and Marseille ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-91200",
+      "claim": "Volcanic Eruptions formed Java.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7018,
+          "page_id": "Java",
+          "sent_id": 9,
+          "score": 34.89545822143555,
+          "nli": [
+            0.9908921122550964,
+            0.00885799527168274,
+            0.0002499359252396971
+          ],
+          "text": "Java: Formed mostly as the result of volcanic eruptions , Java is the 13th largest island in the world and the fifth largest in Indonesia ."
+        },
+        {
+          "doc": 7019,
+          "page_id": "Java",
+          "sent_id": 10,
+          "score": 18.539854049682617,
+          "nli": [
+            0.9441630244255066,
+            0.054876431822776794,
+            0.0009604761144146323
+          ],
+          "text": "Java: A chain of volcanic mountains forms an east -- west spine along the island ."
+        },
+        {
+          "doc": 193600,
+          "page_id": "Waitakere_Ranges",
+          "sent_id": 7,
+          "score": 17.283214569091797,
+          "nli": [
+            0.003149681258946657,
+            0.12182366847991943,
+            0.8750267028808594
+          ],
+          "text": "Waitakere Ranges: The rugged upstanding topography is formed from erosion-resistant ancient volcanic conglomerate and lava flows laid down in eruptions from the large Waitakere volcano to the west 12 -- 25 million years ago ."
+        },
+        {
+          "doc": 116429,
+          "page_id": "Fuji_Five_Lakes",
+          "sent_id": 3,
+          "score": 16.094135284423828,
+          "nli": [
+            0.0032384006772190332,
+            0.004795402754098177,
+            0.9919661283493042
+          ],
+          "text": "Fuji Five Lakes: The name Fuji Five Lakes comes from the fact that there are five lakes formed by previous eruptions of Mount Fuji ."
+        },
+        {
+          "doc": 10436,
+          "page_id": "New_Zealand",
+          "sent_id": 5,
+          "score": 16.070980072021484,
+          "nli": [
+            0.0016323175514116883,
+            0.9341248869895935,
+            0.06424277275800705
+          ],
+          "text": "New Zealand: The country 's varied topography and its sharp mountain peaks , such as the Southern Alps , owe much to the tectonic uplift of land and volcanic eruptions ."
+        }
+      ],
+      "gold_context": [
+        "Java: Formed mostly as the result of volcanic eruptions , Java is the 13th largest island in the world and the fifth largest in Indonesia ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-23459",
+      "claim": "Sierra Morena is steeped in culture and tradition.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 12829,
+          "page_id": "Sierra_Morena",
+          "sent_id": 8,
+          "score": 35.06120300292969,
+          "nli": [
+            0.8977912664413452,
+            0.10171789675951004,
+            0.0004907692782580853
+          ],
+          "text": "Sierra Morena: The name Sierra Morena has a strong legendary reputation in Spanish culture and tradition , with myths about bandits ( Los bandidos de Sierra Morena ) , a giant snake ( El Saet\u00f3n de Sierra Morena ) and a child brought up by wolves ( Marcos Rodr\u00edguez Pantoja ) , among others ."
+        },
+        {
+          "doc": 12825,
+          "page_id": "Sierra_Morena",
+          "sent_id": 0,
+          "score": 28.258907318115234,
+          "nli": [
+            0.002040167571976781,
+            0.9976621866226196,
+            0.0002976690884679556
+          ],
+          "text": "Sierra Morena: The Sierra Morena is one of the main systems of mountain ranges in Spain ."
+        },
+        {
+          "doc": 31886,
+          "page_id": "Benquerencia_de_la_Serena",
+          "sent_id": 3,
+          "score": 21.079931259155273,
+          "nli": [
+            0.001111228484660387,
+            0.9984933137893677,
+            0.0003954476269427687
+          ],
+          "text": "Benquerencia de la Serena: It is located in La Serena comarca , in the area of the Sierra Morena , the local ranges being Sierra de Benquerencia , Sierra de los Tiros and Sierra de Almorch\u00f3n ."
+        },
+        {
+          "doc": 12827,
+          "page_id": "Sierra_Morena",
+          "sent_id": 4,
+          "score": 20.789785385131836,
+          "nli": [
+            0.001979064429178834,
+            0.9975283741950989,
+            0.0004926281399093568
+          ],
+          "text": "Sierra Morena: Its highest summit is 1,332 m high Ba\u00f1uela ."
+        },
+        {
+          "doc": 17464,
+          "page_id": "Bah\u00eda_culture",
+          "sent_id": 4,
+          "score": 17.215478897094727,
+          "nli": [
+            0.012861018069088459,
+            0.048679377883672714,
+            0.9384596347808838
+          ],
+          "text": "Bah\u00eda culture: Their ceramic tradition is one of the first found north of the Andes ."
+        }
+      ],
+      "gold_context": [
+        "Sierra Morena: The name Sierra Morena has a strong legendary reputation in Spanish culture and tradition , with myths about bandits ( Los bandidos de Sierra Morena ) , a giant snake ( El Saet\u00f3n de Sierra Morena ) and a child brought up by wolves ( Marcos Rodr\u00edguez Pantoja ) , among others ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-19765",
+      "claim": "Pakistan is a federal parliamentary republic.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 10993,
+          "page_id": "Pakistan",
+          "sent_id": 0,
+          "score": 28.391693115234375,
+          "nli": [
+            0.9934984445571899,
+            0.006136891897767782,
+            0.0003646111872512847
+          ],
+          "text": "Pakistan: Pakistan ( [ p\u0251\u02d0k\u1d7b\u02c8st\u0251\u02d0n ] [ ) , officially the Islamic Republic of Pakistan ( [ ) , is a federal parliamentary republic in South Asia on the crossroads of Central and Western Asia ."
+        },
+        {
+          "doc": 11005,
+          "page_id": "Pakistan",
+          "sent_id": 16,
+          "score": 24.035554885864258,
+          "nli": [
+            0.9471445083618164,
+            0.040909480303525925,
+            0.011946099810302258
+          ],
+          "text": "Pakistan: In 1973 Pakistan adopted a new constitution establishing , alongside its pre-existing parliamentary republic status , a federal government based in Islamabad consisting of four provinces and four federal territories ."
+        },
+        {
+          "doc": 11003,
+          "page_id": "Pakistan",
+          "sent_id": 14,
+          "score": 15.837347030639648,
+          "nli": [
+            0.005154627840965986,
+            0.8534355163574219,
+            0.14140987396240234
+          ],
+          "text": "Pakistan: Initially a dominion , Pakistan adopted a constitution in 1956 , becoming an Islamic republic ."
+        },
+        {
+          "doc": 3620,
+          "page_id": "Croatia",
+          "sent_id": 21,
+          "score": 15.499788284301758,
+          "nli": [
+            0.0016559433424845338,
+            0.007158053573220968,
+            0.9911859631538391
+          ],
+          "text": "Croatia: A unitary state , Croatia is a republic governed under a parliamentary system ."
+        },
+        {
+          "doc": 8035,
+          "page_id": "Latvia",
+          "sent_id": 6,
+          "score": 15.499788284301758,
+          "nli": [
+            0.0011748187243938446,
+            0.0032692193053662777,
+            0.9955559372901917
+          ],
+          "text": "Latvia: Latvia is a democratic parliamentary republic established in 1918 ."
+        }
+      ],
+      "gold_context": [
+        "Pakistan: Pakistan ( [ p\u0251\u02d0k\u1d7b\u02c8st\u0251\u02d0n ] [ ) , officially the Islamic Republic of Pakistan ( [ ) , is a federal parliamentary republic in South Asia on the crossroads of Central and Western Asia ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-640",
+      "claim": "Goldie Hawn had a career that lasted more than three decades.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5432,
+          "page_id": "Goldie_Hawn",
+          "sent_id": 0,
+          "score": 25.823143005371094,
+          "nli": [
+            0.0007685407181270421,
+            0.9989054203033447,
+            0.00032605681917630136
+          ],
+          "text": "Goldie Hawn: Goldie Jeanne Hawn ( born November 21 , 1945 ) is an American actress , director , producer , and occasional singer ."
+        },
+        {
+          "doc": 5436,
+          "page_id": "Goldie_Hawn",
+          "sent_id": 6,
+          "score": 25.415512084960938,
+          "nli": [
+            0.004244265146553516,
+            0.9890457987785339,
+            0.0067098503932356834
+          ],
+          "text": "Goldie Hawn: After a fifteen-year hiatus from film acting , Hawn made her comeback in Snatched ( 2017 ) ."
+        },
+        {
+          "doc": 5438,
+          "page_id": "Goldie_Hawn",
+          "sent_id": 8,
+          "score": 25.415512084960938,
+          "nli": [
+            0.0014013381442055106,
+            0.9980335831642151,
+            0.0005650870152749121
+          ],
+          "text": "Goldie Hawn: Additionally , in 2003 , she founded The Hawn Foundation , which helps underprivileged children ."
+        },
+        {
+          "doc": 14524,
+          "page_id": "The_Sugarland_Express",
+          "sent_id": 4,
+          "score": 20.429126739501953,
+          "nli": [
+            0.00034376821713522077,
+            0.9990668892860413,
+            0.0005893558263778687
+          ],
+          "text": "The Sugarland Express: It stars Goldie Hawn , Ben Johnson , William Atherton , and Michael Sacks ."
+        },
+        {
+          "doc": 5437,
+          "page_id": "Goldie_Hawn",
+          "sent_id": 7,
+          "score": 17.8414306640625,
+          "nli": [
+            0.006421980448067188,
+            0.9930114150047302,
+            0.0005666531505994499
+          ],
+          "text": "Goldie Hawn: She is the mother of actors Oliver Hudson , Kate Hudson and Wyatt Russell , and has been in a relationship with actor Kurt Russell since 1983 ."
+        }
+      ],
+      "gold_context": [
+        "Goldie Hawn: Hawn maintained bankable star status for more than three decades thereafter , appearing in numerous films such as There 's a Girl in My Soup ( 1970 ) , Butterflies Are Free ( 1972 ) , The Sugarland Express ( 1974 ) , Shampoo ( 1975 ) , Foul Play ( 1978 ) , Seems Like Old Times ( 1980 ) , and the title role in Private Benjamin ( 1980 ) , for which she was nominated for the Academy Award for Best Actress ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-48148",
+      "claim": "On Monday August 19, 1945, Ian Gillan was born.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 6646,
+          "page_id": "Ian_Gillan",
+          "sent_id": 0,
+          "score": 46.00739669799805,
+          "nli": [
+            0.2281559407711029,
+            0.7710882425308228,
+            0.0007558354991488159
+          ],
+          "text": "Ian Gillan: Ian Gillan ( born 19 August 1945 ) is an English singer and songwriter ."
+        },
+        {
+          "doc": 6651,
+          "page_id": "Ian_Gillan",
+          "sent_id": 9,
+          "score": 22.428359985351562,
+          "nli": [
+            0.001122213783673942,
+            0.12621155381202698,
+            0.8726662993431091
+          ],
+          "text": "Ian Gillan: After a short time away from the music business , he resumed his music career with solo bands the Ian Gillan Band and Gillan , before a year-long stint as the vocalist for Black Sabbath ."
+        },
+        {
+          "doc": 6649,
+          "page_id": "Ian_Gillan",
+          "sent_id": 5,
+          "score": 19.733318328857422,
+          "nli": [
+            0.023134535178542137,
+            0.7827481031417847,
+            0.19411732256412506
+          ],
+          "text": "Ian Gillan: He first found widespread commercial success after joining Deep Purple in 1969 ."
+        },
+        {
+          "doc": 6652,
+          "page_id": "Ian_Gillan",
+          "sent_id": 10,
+          "score": 19.733318328857422,
+          "nli": [
+            0.03017731010913849,
+            0.8140422105789185,
+            0.15578047931194305
+          ],
+          "text": "Ian Gillan: He rejoined a reformed Deep Purple in 1984 , but was fired in 1989 ."
+        },
+        {
+          "doc": 6656,
+          "page_id": "Ian_Gillan",
+          "sent_id": 16,
+          "score": 19.70242691040039,
+          "nli": [
+            0.0037203433457762003,
+            0.15105943381786346,
+            0.845220148563385
+          ],
+          "text": "Ian Gillan: His solo career outside of Deep Purple was given a comprehensive overview with the Gillan 's Inn box set in 2006 ."
+        }
+      ],
+      "gold_context": [
+        "Ian Gillan: Ian Gillan ( born 19 August 1945 ) is an English singer and songwriter ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-192204",
+      "claim": "Sacre-Coeur, Paris is publicly dedicated to the Sacred Heart of Jesus and it is in France.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 29614,
+          "page_id": "Immaculate_Heart_Church,_-LRB-Karnal-RRB-",
+          "sent_id": 3,
+          "score": 21.629697799682617,
+          "nli": [
+            0.0016144872643053532,
+            0.020622460171580315,
+            0.9777631163597107
+          ],
+          "text": "Immaculate Heart Church, (Karnal): The Church of Immaculate Heart of Mary is dedicated to Blessed Virgin Mary , mother of Jesus Christ ."
+        },
+        {
+          "doc": 198197,
+          "page_id": "Lone_Mountain_College",
+          "sent_id": 1,
+          "score": 21.27977752685547,
+          "nli": [
+            0.05244538187980652,
+            0.3246573507785797,
+            0.6228972673416138
+          ],
+          "text": "Lone Mountain College: It was founded by the Religious of the Sacred Heart as Sacred Heart Academy in Menlo Park , California , in 1898 , and became College of the Sacred Heart in 1921 ."
+        },
+        {
+          "doc": 144442,
+          "page_id": "Consolata_Betrone",
+          "sent_id": 7,
+          "score": 19.902206420898438,
+          "nli": [
+            0.11660373210906982,
+            0.8768437504768372,
+            0.006552485283464193
+          ],
+          "text": "Consolata Betrone: , an ejaculate prayer which Betrone says to release a soul from Purgatory and pardons 1000 blasphemies against the Sacred Heart of Jesus ."
+        },
+        {
+          "doc": 245127,
+          "page_id": "Sacred_Heart_School,_Golaghat",
+          "sent_id": 0,
+          "score": 19.081798553466797,
+          "nli": [
+            0.06351254135370255,
+            0.44682416319847107,
+            0.4896632432937622
+          ],
+          "text": "Sacred Heart School, Golaghat: The Sacred Heart School is a catholic primary and secondary school located in Golaghat , Assam , India ."
+        },
+        {
+          "doc": 70222,
+          "page_id": "Academy_of_the_Sacred_Heart_-LRB-Bloomfield_Township,_Michigan-RRB-",
+          "sent_id": 6,
+          "score": 19.01230239868164,
+          "nli": [
+            0.09314372390508652,
+            0.8772740960121155,
+            0.02958214469254017
+          ],
+          "text": "Academy of the Sacred Heart (Bloomfield Township, Michigan): The Academy is a member of the Network of Sacred Heart Schools , which includes 24 schools in the U.S.-Canada and an affiliation with the Society of the Sacred Heart in 41 countries around the world ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-162201",
+      "claim": "Ding Yanyuhang is a professional basketball player.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 3707,
+          "page_id": "Ding_Yanyuhang",
+          "sent_id": 0,
+          "score": 42.29084396362305,
+          "nli": [
+            0.9950992465019226,
+            0.004541212692856789,
+            0.0003595367888920009
+          ],
+          "text": "Ding Yanyuhang: Ding Yanyuhang ( alternate spelling : Yan Yu Hang ) ( , born August 20 , 1993 ) is a Chinese professional basketball player ."
+        },
+        {
+          "doc": 3708,
+          "page_id": "Ding_Yanyuhang",
+          "sent_id": 1,
+          "score": 29.857223510742188,
+          "nli": [
+            0.975520133972168,
+            0.024206487461924553,
+            0.0002734281006269157
+          ],
+          "text": "Ding Yanyuhang: He currently plays for the Shandong Golden Stars of the Chinese Basketball Association ( CBA ) ."
+        },
+        {
+          "doc": 62224,
+          "page_id": "Ding_Wei_-LRB-Go_player-RRB-",
+          "sent_id": 0,
+          "score": 25.513500213623047,
+          "nli": [
+            0.00040814970270730555,
+            0.0026823445223271847,
+            0.9969095587730408
+          ],
+          "text": "Ding Wei (Go player): Ding Wei ( born 16 May 1979 in Nanhua County , Chuxiong , Yunnan ) is a Chinese professional Go player ."
+        },
+        {
+          "doc": 135063,
+          "page_id": "Jim_Tucker",
+          "sent_id": 3,
+          "score": 18.867380142211914,
+          "nli": [
+            0.0015187445096671581,
+            0.003962473478168249,
+            0.9945188164710999
+          ],
+          "text": "Jim Tucker: Jim Tucker ( basketball ) ( born 1932 ) , former professional basketball player"
+        },
+        {
+          "doc": 136876,
+          "page_id": "Greg_Foster",
+          "sent_id": 3,
+          "score": 17.71756362915039,
+          "nli": [
+            0.020978745073080063,
+            0.015438572503626347,
+            0.9635825753211975
+          ],
+          "text": "Greg Foster: Greg Foster ( basketball ) ( born 1968 ) , American retired professional basketball player"
+        }
+      ],
+      "gold_context": [
+        "Ding Yanyuhang: Ding Yanyuhang ( alternate spelling : Yan Yu Hang ) ( , born August 20 , 1993 ) is a Chinese professional basketball player ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-135311",
+      "claim": "Robert Lorenz directed Trouble with the Curve.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 15219,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 0,
+          "score": 35.149169921875,
+          "nli": [
+            0.9949907660484314,
+            0.004358244594186544,
+            0.0006509660743176937
+          ],
+          "text": "Trouble with the Curve: Trouble with the Curve is a 2012 sports-drama film directed by Robert Lorenz , and starring Clint Eastwood , Amy Adams , Justin Timberlake , Matthew Lillard and John Goodman ."
+        },
+        {
+          "doc": 15220,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 1,
+          "score": 18.20101547241211,
+          "nli": [
+            0.0015195767628028989,
+            0.9184879064559937,
+            0.07999249547719955
+          ],
+          "text": "Trouble with the Curve: The film revolves around an aging baseball scout whose daughter joins him on a scouting trip ."
+        },
+        {
+          "doc": 15221,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 2,
+          "score": 18.20101547241211,
+          "nli": [
+            0.0010355859994888306,
+            0.9866766929626465,
+            0.012287718243896961
+          ],
+          "text": "Trouble with the Curve: Filming began in March 2012 , and the film was released on September 21 , 2012 ."
+        },
+        {
+          "doc": 116844,
+          "page_id": "Lorenz_gauge_condition",
+          "sent_id": 9,
+          "score": 17.75111198425293,
+          "nli": [
+            0.0009489392978139222,
+            0.002180645242333412,
+            0.9968704581260681
+          ],
+          "text": "Lorenz gauge condition: The Lorenz condition is named after Ludvig Lorenz ."
+        },
+        {
+          "doc": 9861,
+          "page_id": "Mystic_River_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 15.999637603759766,
+          "nli": [
+            0.0006047080387361348,
+            0.007780947256833315,
+            0.9916143417358398
+          ],
+          "text": "Mystic River (film): The film was produced by Robert Lorenz , Judie G. Hoyt and Eastwood ."
+        }
+      ],
+      "gold_context": [
+        "Trouble with the Curve: Trouble with the Curve is a 2012 sports-drama film directed by Robert Lorenz , and starring Clint Eastwood , Amy Adams , Justin Timberlake , Matthew Lillard and John Goodman ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-46583",
+      "claim": "Caesar is an Orson Welles play.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 2669,
+          "page_id": "Caesar_-LRB-Mercury_Theatre-RRB-",
+          "sent_id": 0,
+          "score": 24.422039031982422,
+          "nli": [
+            0.9926375150680542,
+            0.006810271646827459,
+            0.0005522386054508388
+          ],
+          "text": "Caesar (Mercury Theatre): Caesar is the title of Orson Welles 's innovative 1937 adaptation of William Shakespeare 's Julius Caesar , a modern-dress bare-stage production that evoked comparison to contemporary Fascist Italy and Nazi Germany ."
+        },
+        {
+          "doc": 32755,
+          "page_id": "The_Heroine",
+          "sent_id": 0,
+          "score": 24.37759780883789,
+          "nli": [
+            0.0002731835120357573,
+            0.00196604011580348,
+            0.9977607727050781
+          ],
+          "text": "The Heroine: The Heroine is an uncompleted 1967 film , now lost , that was directed by Orson Welles ."
+        },
+        {
+          "doc": 57624,
+          "page_id": "Les_Bravades",
+          "sent_id": 0,
+          "score": 19.13974380493164,
+          "nli": [
+            0.000234213235671632,
+            0.0035683719906955957,
+            0.9961974620819092
+          ],
+          "text": "Les Bravades: Les Bravades is a 68-page picture book by Orson Welles , written and drawn in 1956 , and published posthumously in 1996 ."
+        },
+        {
+          "doc": 124205,
+          "page_id": "The_Thirteen_Chairs",
+          "sent_id": 1,
+          "score": 16.59313201904297,
+          "nli": [
+            0.0006801559356972575,
+            0.0034372922964394093,
+            0.9958826303482056
+          ],
+          "text": "The Thirteen Chairs: It was directed by Nicolas Gessner and Luciano Lucignani , and starred Sharon Tate ( her last film before her death ) , Vittorio Gassman , Orson Welles , Vittorio De Sica , and Tim Brooke-Taylor ."
+        },
+        {
+          "doc": 22087,
+          "page_id": "Orson_Scott_Card's_InterGalactic_Medicine_Show",
+          "sent_id": 0,
+          "score": 15.252579689025879,
+          "nli": [
+            0.0012131469557061791,
+            0.008201774209737778,
+            0.9905851483345032
+          ],
+          "text": "Orson Scott Card's InterGalactic Medicine Show: Orson Scott Card 's InterGalactic Medicine Show ( 2008 ) is an anthology edited by Edmund R. Schubert and Orson Scott Card ."
+        }
+      ],
+      "gold_context": [
+        "Caesar (Mercury Theatre): Caesar is the title of Orson Welles 's innovative 1937 adaptation of William Shakespeare 's Julius Caesar , a modern-dress bare-stage production that evoked comparison to contemporary Fascist Italy and Nazi Germany .",
+        "Caesar (Mercury Theatre): Considered Welles 's highest achievement in the theatre , it premiered November 11 , 1937 , as the first production of the Mercury Theatre , an independent repertory theatre company that presented an acclaimed series of productions on Broadway through 1941 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-76627",
+      "claim": "The character Poe Dameron was portrayed by Oscar Isaac.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 11255,
+          "page_id": "Poe_Dameron",
+          "sent_id": 1,
+          "score": 43.8132438659668,
+          "nli": [
+            0.9956480860710144,
+            0.004096896853297949,
+            0.0002550903882365674
+          ],
+          "text": "Poe Dameron: Introduced in the 2015 film Star Wars : The Force Awakens , he is portrayed by Oscar Isaac ."
+        },
+        {
+          "doc": 11254,
+          "page_id": "Poe_Dameron",
+          "sent_id": 0,
+          "score": 37.765174865722656,
+          "nli": [
+            0.00024412832863163203,
+            0.9716553688049316,
+            0.028100527822971344
+          ],
+          "text": "Poe Dameron: Poe Dameron is a fictional character in the Star Wars franchise ."
+        },
+        {
+          "doc": 11258,
+          "page_id": "Poe_Dameron",
+          "sent_id": 4,
+          "score": 31.581247329711914,
+          "nli": [
+            0.9901353716850281,
+            0.00870975200086832,
+            0.0011548094917088747
+          ],
+          "text": "Poe Dameron: Isaac and the character have received positive reviews , with Poe being compared to the characterization of Han Solo ( Harrison Ford ) in the original Star Wars film trilogy ."
+        },
+        {
+          "doc": 10686,
+          "page_id": "Oscar_Isaac",
+          "sent_id": 7,
+          "score": 27.479097366333008,
+          "nli": [
+            0.990853488445282,
+            0.006241270806640387,
+            0.002905296627432108
+          ],
+          "text": "Oscar Isaac: He appeared in Star Wars : The Force Awakens ( 2015 ) , as X-wing pilot Poe Dameron , and in X-Men : Apocalypse ( 2016 ) , as the titular mutant supervillain Apocalypse ."
+        },
+        {
+          "doc": 10683,
+          "page_id": "Oscar_Isaac",
+          "sent_id": 2,
+          "score": 24.981258392333984,
+          "nli": [
+            0.0007530256407335401,
+            0.001203331514261663,
+            0.9980436563491821
+          ],
+          "text": "Oscar Isaac: In 2006 , he portrayed Saint Joseph , husband of Mary , in The Nativity Story ."
+        }
+      ],
+      "gold_context": [
+        "Oscar Isaac: He appeared in Star Wars : The Force Awakens ( 2015 ) , as X-wing pilot Poe Dameron , and in X-Men : Apocalypse ( 2016 ) , as the titular mutant supervillain Apocalypse ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-48411",
+      "claim": "Julie Bowen is American.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7738,
+          "page_id": "Julie_Bowen",
+          "sent_id": 0,
+          "score": 30.3114013671875,
+          "nli": [
+            0.9766333699226379,
+            0.022887052968144417,
+            0.0004794914275407791
+          ],
+          "text": "Julie Bowen: Julie Bowen Luetkemeyer ( born March 3 , 1970 ) , known professionally as Julie Bowen , is an American actress ."
+        },
+        {
+          "doc": 163279,
+          "page_id": "Airport_2010",
+          "sent_id": 11,
+          "score": 19.668174743652344,
+          "nli": [
+            0.004191501997411251,
+            0.9940714240074158,
+            0.0017370698042213917
+          ],
+          "text": "Airport 2010: The episode references Lost which guest starred Julie Bowen ."
+        },
+        {
+          "doc": 33824,
+          "page_id": "Julie_Cobb",
+          "sent_id": 0,
+          "score": 16.534481048583984,
+          "nli": [
+            0.0134574668481946,
+            0.014103304594755173,
+            0.9724392294883728
+          ],
+          "text": "Julie Cobb: Julie Frances Cobb ( born May 29 , 1947 ) is an American actress ."
+        },
+        {
+          "doc": 105254,
+          "page_id": "Markes",
+          "sent_id": 4,
+          "score": 16.086238861083984,
+          "nli": [
+            0.0017731733387336135,
+            0.003121146699413657,
+            0.9951056241989136
+          ],
+          "text": "Markes: Julie Markes , American writer"
+        },
+        {
+          "doc": 7740,
+          "page_id": "Julie_Bowen",
+          "sent_id": 2,
+          "score": 15.931207656860352,
+          "nli": [
+            0.04049333930015564,
+            0.958454430103302,
+            0.0010521849617362022
+          ],
+          "text": "Julie Bowen: The latter earned her six nominations for the Primetime Emmy Award for Outstanding Supporting Actress in a Comedy Series , winning in 2011 and 2012 ."
+        }
+      ],
+      "gold_context": [
+        "Julie Bowen: Julie Bowen Luetkemeyer ( born March 3 , 1970 ) , known professionally as Julie Bowen , is an American actress ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-139831",
+      "claim": "Brie Larson and Destin Daniel worked together.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 2188,
+          "page_id": "Brie_Larson",
+          "sent_id": 0,
+          "score": 24.649837493896484,
+          "nli": [
+            0.009808190166950226,
+            0.97633296251297,
+            0.013858807273209095
+          ],
+          "text": "Brie Larson: Brianne Sidonie Desaulniers ( born October 1 , 1989 ) , known professionally as Brie Larson , is an American actress , director , and singer ."
+        },
+        {
+          "doc": 2191,
+          "page_id": "Brie_Larson",
+          "sent_id": 5,
+          "score": 23.672203063964844,
+          "nli": [
+            0.013589903712272644,
+            0.7913815975189209,
+            0.19502845406532288
+          ],
+          "text": "Brie Larson: As a teenager , Larson had brief roles in the 2004 films 13 Going on 30 and Sleepover ."
+        },
+        {
+          "doc": 2198,
+          "page_id": "Brie_Larson",
+          "sent_id": 14,
+          "score": 23.672203063964844,
+          "nli": [
+            0.013640528544783592,
+            0.9534773826599121,
+            0.03288209065794945
+          ],
+          "text": "Brie Larson: In 2016 , Larson was cast as Carol Danvers / Captain Marvel in the Marvel Cinematic Universe ."
+        },
+        {
+          "doc": 2189,
+          "page_id": "Brie_Larson",
+          "sent_id": 1,
+          "score": 23.007076263427734,
+          "nli": [
+            0.010111188516020775,
+            0.9707759618759155,
+            0.019112858921289444
+          ],
+          "text": "Brie Larson: Born in Sacramento , California , Larson was home-schooled before she studied acting at the American Conservatory Theater ."
+        },
+        {
+          "doc": 2193,
+          "page_id": "Brie_Larson",
+          "sent_id": 7,
+          "score": 23.007076263427734,
+          "nli": [
+            0.0056361546739935875,
+            0.8886903524398804,
+            0.10567351430654526
+          ],
+          "text": "Brie Larson: From 2009 to 2011 , Larson featured as a rebellious teenager in the television series United States of Tara ."
+        }
+      ],
+      "gold_context": [
+        "Brie Larson: Larson 's breakthrough role came with the independent drama Short Term 12 ( 2013 ) , for which she received critical acclaim .",
+        "Short Term 12: Short Term 12 is a 2013 American drama film written and directed by Destin Daniel Cretton ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-125385",
+      "claim": "Cleopatre is one of three corpses.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 225581,
+          "page_id": "House_of_1000_Corpses",
+          "sent_id": 16,
+          "score": 13.308511734008789,
+          "nli": [
+            0.0013386280043050647,
+            0.9855577349662781,
+            0.013103706762194633
+          ],
+          "text": "House of 1000 Corpses: House of 1000 Corpses received a generally negative reaction following its release ."
+        },
+        {
+          "doc": 225577,
+          "page_id": "House_of_1000_Corpses",
+          "sent_id": 10,
+          "score": 12.393548011779785,
+          "nli": [
+            0.0006796524976380169,
+            0.9854744672775269,
+            0.013845863752067089
+          ],
+          "text": "House of 1000 Corpses: House of 1000 Corpses featured a graphic amount of blood and gore , and controversial scenes involving masturbation and necrophilia ."
+        },
+        {
+          "doc": 225588,
+          "page_id": "House_of_1000_Corpses",
+          "sent_id": 23,
+          "score": 11.975970268249512,
+          "nli": [
+            0.0004131931345909834,
+            0.42566803097724915,
+            0.5739187598228455
+          ],
+          "text": "House of 1000 Corpses: The film was dedicated to his memory ."
+        },
+        {
+          "doc": 225569,
+          "page_id": "House_of_1000_Corpses",
+          "sent_id": 0,
+          "score": 11.596298217773438,
+          "nli": [
+            0.0015710938023403287,
+            0.9855287671089172,
+            0.012900173664093018
+          ],
+          "text": "House of 1000 Corpses: House of 1000 Corpses is a 2003 American exploitation horror film written , co-scored and directed by Rob Zombie in his directorial debut ."
+        },
+        {
+          "doc": 225574,
+          "page_id": "House_of_1000_Corpses",
+          "sent_id": 7,
+          "score": 11.596298217773438,
+          "nli": [
+            0.0006630837451666594,
+            0.9958524703979492,
+            0.0034845040645450354
+          ],
+          "text": "House of 1000 Corpses: Initially filmed in 2000 , House of 1000 Corpses was purchased by Universal Pictures , thus a large portion of it was filmed on the Universal Studios backlots ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-183937",
+      "claim": "Gotham City Sirens was illustrated by a river.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5778,
+          "page_id": "Gotham_City_Sirens",
+          "sent_id": 1,
+          "score": 32.308963775634766,
+          "nli": [
+            0.0006205046083778143,
+            0.972820520401001,
+            0.026559025049209595
+          ],
+          "text": "Gotham City Sirens: The term Gotham City Sirens refers to three of the most popular female characters that inhabit Gotham City , which include Catwoman , Harley Quinn , and Poison Ivy ."
+        },
+        {
+          "doc": 5777,
+          "page_id": "Gotham_City_Sirens",
+          "sent_id": 0,
+          "score": 29.58498764038086,
+          "nli": [
+            0.0004517172637861222,
+            0.9661024808883667,
+            0.033445846289396286
+          ],
+          "text": "Gotham City Sirens: Gotham City Sirens is an American comic book series was written by Paul Dini with art by Guillem March and published by DC Comics ."
+        },
+        {
+          "doc": 5780,
+          "page_id": "Gotham_City_Sirens",
+          "sent_id": 5,
+          "score": 23.043970108032227,
+          "nli": [
+            0.00156437570694834,
+            0.9698819518089294,
+            0.028553619980812073
+          ],
+          "text": "Gotham City Sirens: Warner Bros. is developing a film with the same title , although it has not been announced if the film will be based on the comic book series ."
+        },
+        {
+          "doc": 5779,
+          "page_id": "Gotham_City_Sirens",
+          "sent_id": 4,
+          "score": 22.31424331665039,
+          "nli": [
+            0.00016706681344658136,
+            0.9981974959373474,
+            0.0016354018589481711
+          ],
+          "text": "Gotham City Sirens: The first issue of the series was released in June , 2009 , as a part of the Batman : Reborn relaunch in all of DC 's Batman titles ."
+        },
+        {
+          "doc": 79632,
+          "page_id": "Gotham_Comedy_Club",
+          "sent_id": 0,
+          "score": 18.111282348632812,
+          "nli": [
+            0.06234455481171608,
+            0.8366084098815918,
+            0.101047083735466
+          ],
+          "text": "Gotham Comedy Club: Gotham Comedy Club is a venue for stand-up comedy in New York City ."
+        }
+      ],
+      "gold_context": [
+        "Gotham City Sirens: Gotham City Sirens is an American comic book series was written by Paul Dini with art by Guillem March and published by DC Comics ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-37802",
+      "claim": "The Book of Mormon predated the Grammy Award for Best Musical Theater Album.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 14303,
+          "page_id": "The_Book_of_Mormon_-LRB-musical-RRB-",
+          "sent_id": 19,
+          "score": 50.405174255371094,
+          "nli": [
+            0.0011255108984187245,
+            0.9975940585136414,
+            0.0012803626013919711
+          ],
+          "text": "The Book of Mormon (musical): The show was awarded nine Tony Awards , one of which was for Best Musical , and a Grammy Award for Best Musical Theater Album ."
+        },
+        {
+          "doc": 14290,
+          "page_id": "The_Book_of_Mormon_-LRB-musical-RRB-",
+          "sent_id": 0,
+          "score": 29.448335647583008,
+          "nli": [
+            0.0008663584594614804,
+            0.997619092464447,
+            0.0015145784709602594
+          ],
+          "text": "The Book of Mormon (musical): The Book of Mormon is a musical comedy about two young Mormon missionaries who travel to Africa to preach the Mormon religion ."
+        },
+        {
+          "doc": 22081,
+          "page_id": "Grammy_Award_for_Best_Banda_Album",
+          "sent_id": 13,
+          "score": 25.92325210571289,
+          "nli": [
+            0.0012724976986646652,
+            0.12033722549676895,
+            0.8783903121948242
+          ],
+          "text": "Grammy Award for Best Banda Album: The award was discontinued in 2012 due to a major overhaul of Grammy categories ."
+        },
+        {
+          "doc": 14305,
+          "page_id": "The_Book_of_Mormon_-LRB-musical-RRB-",
+          "sent_id": 21,
+          "score": 25.686416625976562,
+          "nli": [
+            0.005536254495382309,
+            0.9700366258621216,
+            0.024427101016044617
+          ],
+          "text": "The Book of Mormon (musical): In 2013 , the musical premiered in the West End ."
+        },
+        {
+          "doc": 14294,
+          "page_id": "The_Book_of_Mormon_-LRB-musical-RRB-",
+          "sent_id": 6,
+          "score": 25.675861358642578,
+          "nli": [
+            0.0009437624830752611,
+            0.9972583055496216,
+            0.0017979559488594532
+          ],
+          "text": "The Book of Mormon (musical): The Book of Mormon follows two Mormon missionaries as they attempt to share their scriptures with the inhabitants of a remote Ugandan village ."
+        }
+      ],
+      "gold_context": [
+        "The Book of Mormon (musical): The show was awarded nine Tony Awards , one of which was for Best Musical , and a Grammy Award for Best Musical Theater Album ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-224141",
+      "claim": "Celebrity Rehab with Dr. Drew was later known by another name.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 2744,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 0,
+          "score": 40.62723922729492,
+          "nli": [
+            0.9873859882354736,
+            0.009428093209862709,
+            0.003185893641784787
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: Celebrity Rehab with Dr. Drew , later called simply Rehab with Dr. Drew , is a reality television show that aired on the cable network VH1 in which many of the episodes chronicle a group of well-known people as they are treated for alcohol and drug addiction by Dr. Drew Pinsky and his staff at the Pasadena Recovery Center in Pasadena , California ."
+        },
+        {
+          "doc": 2746,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 4,
+          "score": 36.102210998535156,
+          "nli": [
+            0.8345056772232056,
+            0.06504515558481216,
+            0.10044918954372406
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: The sixth season , which filmed in early 2012 , featured non-celebrities as treatment subjects , and the series name shortened to Rehab with Dr. Drew ."
+        },
+        {
+          "doc": 2747,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 5,
+          "score": 35.251564025878906,
+          "nli": [
+            0.005616036709398031,
+            0.8499329686164856,
+            0.14445103704929352
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: Season 6 premiered on September 16 , 2012 ."
+        },
+        {
+          "doc": 2748,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 6,
+          "score": 26.3343505859375,
+          "nli": [
+            0.010789148509502411,
+            0.9413271546363831,
+            0.04788370057940483
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: In May 2013 , Pinsky announced that season six was the final season , explaining that he was tired of the criticism leveled at him after celebrities he treated had relapsed into addiction and died ."
+        },
+        {
+          "doc": 2745,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 1,
+          "score": 24.286516189575195,
+          "nli": [
+            0.0016105908434838057,
+            0.9528082013130188,
+            0.045581258833408356
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: The first five seasons of the series , on which Pinsky also serves as executive producer , cast celebrities struggling with addiction , with the first season premiering on January 10 , 2008 , and the fifth airing in 2011 ."
+        }
+      ],
+      "gold_context": [
+        "Celebrity Rehab with Dr. Drew: Celebrity Rehab with Dr. Drew , later called simply Rehab with Dr. Drew , is a reality television show that aired on the cable network VH1 in which many of the episodes chronicle a group of well-known people as they are treated for alcohol and drug addiction by Dr. Drew Pinsky and his staff at the Pasadena Recovery Center in Pasadena , California ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-222738",
+      "claim": "Vedic Sanskrit is an ancient writing system.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 16042,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 3,
+          "score": 27.918004989624023,
+          "nli": [
+            0.24309135973453522,
+            0.7513377666473389,
+            0.0055709099397063255
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit is an archaic language , whose consensus translation has been challenging ."
+        },
+        {
+          "doc": 16043,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 6,
+          "score": 27.769014358520508,
+          "nli": [
+            0.9752132892608643,
+            0.024494584649801254,
+            0.00029210993670858443
+          ],
+          "text": "Vedic Sanskrit: Extensive ancient literature in the Vedic Sanskrit language has survived into the modern era , and this has been a major source of information about Indo-European parent language ."
+        },
+        {
+          "doc": 16047,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 10,
+          "score": 27.48788070678711,
+          "nli": [
+            0.9104605913162231,
+            0.08901058882474899,
+            0.000528759672306478
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit developed independently in ancient India , evolved into classical Sanskrit after the grammar and linguistic treatise of P\u0101\u1e47ini , and later into many related Indian subcontinent languages in which are found the voluminous ancient and medieval literature of Buddhism , Hinduism and Jainism ."
+        },
+        {
+          "doc": 16039,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 0,
+          "score": 25.856937408447266,
+          "nli": [
+            0.0014126431196928024,
+            0.9963078498840332,
+            0.0022795500699430704
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit is an Indo-European language , more specifically one branch of the Indo-Iranian group ."
+        },
+        {
+          "doc": 16046,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 9,
+          "score": 23.88573455810547,
+          "nli": [
+            0.002830478362739086,
+            0.9940364360809326,
+            0.0031330541241914034
+          ],
+          "text": "Vedic Sanskrit: Avestan language developed in ancient Persia , was the language of Zoroastrianism , but was a dead language in the Sasanian period ."
+        }
+      ],
+      "gold_context": [
+        "Vedic Sanskrit: It was orally preserved , predating the advent of Brahmi script by several centuries ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-134908",
+      "claim": "Phoenix, Arizona is a southwestern U.S. state.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11165,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 0,
+          "score": 33.03837585449219,
+          "nli": [
+            0.003227002453058958,
+            0.9962273836135864,
+            0.0005456430953927338
+          ],
+          "text": "Phoenix, Arizona: Phoenix ( [ \u02c8fi\u02d0n\u1d7bks ] ) is the capital and most populous city of the U.S. state of Arizona ."
+        },
+        {
+          "doc": 11176,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 17,
+          "score": 24.31574821472168,
+          "nli": [
+            0.022791067138314247,
+            0.9767014980316162,
+            0.0005074693472124636
+          ],
+          "text": "Phoenix, Arizona: Phoenix is the cultural center of the Valley of the Sun , as well as the entire state ."
+        },
+        {
+          "doc": 13676,
+          "page_id": "State_songs_of_Arizona",
+          "sent_id": 0,
+          "score": 24.214204788208008,
+          "nli": [
+            0.001665356452576816,
+            0.9400910139083862,
+            0.05824365094304085
+          ],
+          "text": "State songs of Arizona: The U.S. state of Arizona has two official state songs , although neither is named as such ."
+        },
+        {
+          "doc": 10548,
+          "page_id": "Northern_Arizona",
+          "sent_id": 0,
+          "score": 22.564754486083984,
+          "nli": [
+            0.20033682882785797,
+            0.6532009840011597,
+            0.14646224677562714
+          ],
+          "text": "Northern Arizona: Northern Arizona is an unofficial , colloquially-defined region of the U.S. state of Arizona ."
+        },
+        {
+          "doc": 16784,
+          "page_id": "Yavapai_County,_Arizona",
+          "sent_id": 0,
+          "score": 21.67911720275879,
+          "nli": [
+            0.011991829611361027,
+            0.6327313184738159,
+            0.35527685284614563
+          ],
+          "text": "Yavapai County, Arizona: Yavapai County is near the center of the U.S. state of Arizona ."
+        }
+      ],
+      "gold_context": [
+        "Phoenix, Arizona: Phoenix ( [ \u02c8fi\u02d0n\u1d7bks ] ) is the capital and most populous city of the U.S. state of Arizona .",
+        "Phoenix, Arizona: With 1,615,017 people , Phoenix is the fifth most populous city nationwide , the most populous state capital in the United States , and the only state capital with a population of more than one million residents .",
+        "Phoenix, Arizona: In addition , Phoenix is the seat of Maricopa County and , at 517.9 square miles ( 1,341 km2 ) , it is the largest city in the state , more than twice the size of Tucson and one of the largest cities in the United States ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-181274",
+      "claim": "Sean Gunn was in Guardians of the Galaxy in 2015.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 12692,
+          "page_id": "Sean_Gunn",
+          "sent_id": 0,
+          "score": 34.16748809814453,
+          "nli": [
+            0.01064035389572382,
+            0.08605492860078812,
+            0.9033047556877136
+          ],
+          "text": "Sean Gunn: Sean Gunn is an American actor , best known for his role as Kirk Gleason on the television show Gilmore Girls ( 2000 -- 2007 ) and Kraglin in Guardians of the Galaxy ."
+        },
+        {
+          "doc": 5706,
+          "page_id": "Guardians_of_the_Galaxy_-LRB-film-RRB-",
+          "sent_id": 9,
+          "score": 29.104122161865234,
+          "nli": [
+            0.09867855906486511,
+            0.13194629549980164,
+            0.7693750858306885
+          ],
+          "text": "Guardians of the Galaxy (film): Gunn was hired to write and direct the film that September ."
+        },
+        {
+          "doc": 5699,
+          "page_id": "Guardians_of_the_Galaxy_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 28.36467933654785,
+          "nli": [
+            0.007393522188067436,
+            0.7630495429039001,
+            0.22955694794654846
+          ],
+          "text": "Guardians of the Galaxy (film): Guardians of the Galaxy ( retroactively referred to as Guardians of the Galaxy Vol ."
+        },
+        {
+          "doc": 5714,
+          "page_id": "Guardians_of_the_Galaxy_-LRB-film-RRB-",
+          "sent_id": 19,
+          "score": 26.899730682373047,
+          "nli": [
+            0.005269474349915981,
+            0.9713895320892334,
+            0.02334100939333439
+          ],
+          "text": "Guardians of the Galaxy (film): A sequel , Guardians of the Galaxy Vol ."
+        },
+        {
+          "doc": 20260,
+          "page_id": "Guardians_of_the_Galaxy_\u2013_Mission-COLON-_Breakout!",
+          "sent_id": 0,
+          "score": 26.165489196777344,
+          "nli": [
+            0.04591967165470123,
+            0.9133580327033997,
+            0.0407223217189312
+          ],
+          "text": "Guardians of the Galaxy \u2013 Mission: Breakout!: Guardians of the Galaxy -- Mission : BREAKOUT !"
+        }
+      ],
+      "gold_context": [
+        "Sean Gunn: Sean Gunn is an American actor , best known for his role as Kirk Gleason on the television show Gilmore Girls ( 2000 -- 2007 ) and Kraglin in Guardians of the Galaxy .",
+        "Guardians of the Galaxy (film): 1 ) is a 2014 American superhero film based on the Marvel Comics superhero team of the same name , produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-116269",
+      "claim": "One Flew Over the Cuckoo's Nest was released in a year between 1934 and 1970.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 10551,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 37.85416030883789,
+          "nli": [
+            0.10269904136657715,
+            0.012765942141413689,
+            0.884535014629364
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): One Flew Over the Cuckoo 's Nest is a 1975 American comedy-drama film directed by Milo\u0161 Forman , based on the 1962 novel One Flew Over the Cuckoo 's Nest by Ken Kesey ."
+        },
+        {
+          "doc": 10553,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 4,
+          "score": 33.796905517578125,
+          "nli": [
+            0.02887808345258236,
+            0.834924042224884,
+            0.13619782030582428
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): Considered to be one of the greatest films ever made , One Flew Over the Cuckoo 's Nest is No. 33 on the American Film Institute 's 100 Years ... 100 Movies list ."
+        },
+        {
+          "doc": 10555,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 6,
+          "score": 30.514057159423828,
+          "nli": [
+            0.015994921326637268,
+            0.3988477885723114,
+            0.5851572155952454
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): It also won numerous Golden Globe and BAFTA Awards ."
+        },
+        {
+          "doc": 10552,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 23.652889251708984,
+          "nli": [
+            0.04022720456123352,
+            0.4615013301372528,
+            0.49827149510383606
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): The film stars Jack Nicholson and features a supporting cast of Louise Fletcher , William Redfield , Will Sampson , and Brad Dourif ."
+        },
+        {
+          "doc": 6950,
+          "page_id": "Jack_Nicholson",
+          "sent_id": 6,
+          "score": 23.00625991821289,
+          "nli": [
+            0.08032240718603134,
+            0.04124561324715614,
+            0.8784319758415222
+          ],
+          "text": "Jack Nicholson: Nicholson has won the Academy Award for Best Actor twice , one for the drama One Flew Over the Cuckoo 's Nest ( 1975 ) and the other for the romantic comedy As Good as It Gets ( 1997 ) ."
+        }
+      ],
+      "gold_context": [
+        "One Flew Over the Cuckoo's Nest (film): One Flew Over the Cuckoo 's Nest is a 1975 American comedy-drama film directed by Milo\u0161 Forman , based on the 1962 novel One Flew Over the Cuckoo 's Nest by Ken Kesey ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107833",
+      "claim": "Pakistan's semi-industrialized economy is the 20th largest in the world in purchasing power parity.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 7271,
+          "page_id": "Japan",
+          "sent_id": 33,
+          "score": 45.84204864501953,
+          "nli": [
+            0.0027224093209952116,
+            0.9486433267593384,
+            0.04863433539867401
+          ],
+          "text": "Japan: The country has the world 's third-largest economy by nominal GDP and the world 's fourth-largest economy by purchasing power parity ."
+        },
+        {
+          "doc": 2908,
+          "page_id": "China",
+          "sent_id": 16,
+          "score": 44.44184494018555,
+          "nli": [
+            0.0005334283923730254,
+            0.9796492457389832,
+            0.01981738954782486
+          ],
+          "text": "China: , it is the world 's second-largest economy by nominal GDP and largest by purchasing power parity ( PPP ) ."
+        },
+        {
+          "doc": 5217,
+          "page_id": "France",
+          "sent_id": 27,
+          "score": 40.537960052490234,
+          "nli": [
+            0.0025816222187131643,
+            0.9613512754440308,
+            0.03606709465384483
+          ],
+          "text": "France: France is a developed country with the world 's sixth-largest economy by nominal GDP and ninth-largest by purchasing power parity ."
+        },
+        {
+          "doc": 15763,
+          "page_id": "United_Kingdom",
+          "sent_id": 31,
+          "score": 40.01192855834961,
+          "nli": [
+            0.003147423965856433,
+            0.9831138849258423,
+            0.013738707639276981
+          ],
+          "text": "United Kingdom: The United Kingdom is a developed country and has the world 's fifth-largest economy by nominal GDP and ninth-largest economy by purchasing power parity ."
+        },
+        {
+          "doc": 11009,
+          "page_id": "Pakistan",
+          "sent_id": 22,
+          "score": 36.880775451660156,
+          "nli": [
+            0.002083106432110071,
+            0.5167360305786133,
+            0.4811808168888092
+          ],
+          "text": "Pakistan: The Pakistani economy is the 24th-largest in the world in terms of purchasing power and the 41st-largest in terms of nominal GDP ( World Bank ) ."
+        }
+      ],
+      "gold_context": [
+        "Pakistan: The Pakistani economy is the 24th-largest in the world in terms of purchasing power and the 41st-largest in terms of nominal GDP ( World Bank ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-174978",
+      "claim": "The 1998 American action drama The Man in the Iron Mask went straight to video.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 14508,
+          "page_id": "The_Man_in_the_Iron_Mask_-LRB-1998_film-RRB-",
+          "sent_id": 0,
+          "score": 30.924222946166992,
+          "nli": [
+            0.0002721774799283594,
+            0.9691635966300964,
+            0.0305642019957304
+          ],
+          "text": "The Man in the Iron Mask (1998 film): The Man in the Iron Mask is a 1998 American action drama film directed , produced , and written by Randall Wallace , and starring Leonardo DiCaprio in a dual role as the title character and villain , Jeremy Irons as Aramis , John Malkovich as Athos , Gerard Depardieu as Porthos , and Gabriel Byrne as D'Artagnan ."
+        },
+        {
+          "doc": 14511,
+          "page_id": "The_Man_in_the_Iron_Mask_-LRB-1998_film-RRB-",
+          "sent_id": 5,
+          "score": 28.5654296875,
+          "nli": [
+            0.00161949940957129,
+            0.6228249669075012,
+            0.37555548548698425
+          ],
+          "text": "The Man in the Iron Mask (1998 film): Like the 1998 version , the two aforementioned adaptations were also released through United Artists ."
+        },
+        {
+          "doc": 14510,
+          "page_id": "The_Man_in_the_Iron_Mask_-LRB-1998_film-RRB-",
+          "sent_id": 4,
+          "score": 23.056854248046875,
+          "nli": [
+            0.0005758755141869187,
+            0.9954694509506226,
+            0.003954657819122076
+          ],
+          "text": "The Man in the Iron Mask (1998 film): The film centers on the aging four musketeers , Athos , Porthos , Aramis , and D'Artagnan , during the reign of King Louis XIV and attempts to explain the mystery of the Man in the Iron Mask , using a plot more closely related to the flamboyant 1929 version starring Douglas Fairbanks , The Iron Mask , and the 1939 version directed by James Whale , than the original Dumas book ."
+        },
+        {
+          "doc": 14509,
+          "page_id": "The_Man_in_the_Iron_Mask_-LRB-1998_film-RRB-",
+          "sent_id": 1,
+          "score": 21.79475975036621,
+          "nli": [
+            0.0014123887522146106,
+            0.9486576914787292,
+            0.04992992430925369
+          ],
+          "text": "The Man in the Iron Mask (1998 film): The picture uses characters from Alexandre Dumas ' D'Artagnan Romances and is very loosely adapted from some plot elements of The Vicomte de Bragelonne ."
+        },
+        {
+          "doc": 164387,
+          "page_id": "L\u00e9rins_Islands",
+          "sent_id": 21,
+          "score": 20.63231086730957,
+          "nli": [
+            0.0074748750776052475,
+            0.11836279183626175,
+            0.8741623759269714
+          ],
+          "text": "L\u00e9rins Islands: The \u00cele Sainte-Marguerite held a fortress where the Man in the Iron Mask was held captive for a time ."
+        }
+      ],
+      "gold_context": [
+        "The Man in the Iron Mask (1998 film): The Man in the Iron Mask is a 1998 American action drama film directed , produced , and written by Randall Wallace , and starring Leonardo DiCaprio in a dual role as the title character and villain , Jeremy Irons as Aramis , John Malkovich as Athos , Gerard Depardieu as Porthos , and Gabriel Byrne as D'Artagnan .",
+        "The Man in the Iron Mask (1998 film): Like the 1998 version , the two aforementioned adaptations were also released through United Artists ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-88865",
+      "claim": "Skopje was barely a capital from 972 and 992.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13244,
+          "page_id": "Skopje",
+          "sent_id": 8,
+          "score": 37.770809173583984,
+          "nli": [
+            0.05681098252534866,
+            0.6591172814369202,
+            0.2840717136859894
+          ],
+          "text": "Skopje: During much of the early medieval period , the town was contested between the Byzantines and the Bulgarian Empire , whose capital it was between 972 and 992 ."
+        },
+        {
+          "doc": 13238,
+          "page_id": "Skopje",
+          "sent_id": 0,
+          "score": 20.978023529052734,
+          "nli": [
+            0.002481980249285698,
+            0.4202680289745331,
+            0.5772500038146973
+          ],
+          "text": "Skopje: Skopje ( \u0421\u043a\u043e\u043f\u0458\u0435 , [ \u02c8sk\u0254pj\u025b ] ) is the capital and largest city of the Republic of Macedonia ."
+        },
+        {
+          "doc": 13253,
+          "page_id": "Skopje",
+          "sent_id": 17,
+          "score": 19.342195510864258,
+          "nli": [
+            0.016491584479808807,
+            0.9707273244857788,
+            0.012781099416315556
+          ],
+          "text": "Skopje: In 1991 , it became the capital city of an independent Macedonia ."
+        },
+        {
+          "doc": 13245,
+          "page_id": "Skopje",
+          "sent_id": 9,
+          "score": 16.4312801361084,
+          "nli": [
+            0.004837851971387863,
+            0.1557341367006302,
+            0.8394280076026917
+          ],
+          "text": "Skopje: From 1282 , the town was part of the Serbian Empire and acted as its capital city from 1346 to 1371 ."
+        },
+        {
+          "doc": 13247,
+          "page_id": "Skopje",
+          "sent_id": 11,
+          "score": 14.281913757324219,
+          "nli": [
+            0.0038850007113069296,
+            0.10482468456029892,
+            0.8912902474403381
+          ],
+          "text": "Skopje: The town stayed under Turkish control for over 500 years , serving as the capital of pashasanjak of \u00dcsk\u00fcb and later the Vilayet of Kosovo ."
+        }
+      ],
+      "gold_context": [
+        "Skopje: During much of the early medieval period , the town was contested between the Byzantines and the Bulgarian Empire , whose capital it was between 972 and 992 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-51262",
+      "claim": "Superhuman abilities may result from antelope enhancement by human evolution.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13701,
+          "page_id": "Superhuman",
+          "sent_id": 6,
+          "score": 52.053131103515625,
+          "nli": [
+            0.017025107517838478,
+            0.3874896168708801,
+            0.595485270023346
+          ],
+          "text": "Superhuman: Superhuman abilities may result from human enhancement by genetic modification , cybernetic implants , nanotechnology , radiation or from human evolution in the future ."
+        },
+        {
+          "doc": 13699,
+          "page_id": "Superhuman",
+          "sent_id": 2,
+          "score": 26.469661712646484,
+          "nli": [
+            0.0004921704530715942,
+            0.994657039642334,
+            0.004850858356803656
+          ],
+          "text": "Superhuman: Fictional characters have been portrayed as having psychic abilities , flying abilities , impossible strength , or exceptional proficiency beyond human capability ."
+        },
+        {
+          "doc": 13698,
+          "page_id": "Superhuman",
+          "sent_id": 1,
+          "score": 24.935638427734375,
+          "nli": [
+            0.0010739278513938189,
+            0.9936657547950745,
+            0.005260310135781765
+          ],
+          "text": "Superhuman: Superhuman abilities are found in some fictional characters , especially as superheroes in American comic books ."
+        },
+        {
+          "doc": 13700,
+          "page_id": "Superhuman",
+          "sent_id": 3,
+          "score": 21.325084686279297,
+          "nli": [
+            0.0018680033972486854,
+            0.6358408331871033,
+            0.362291157245636
+          ],
+          "text": "Superhuman: Superhuman can also mean something that is not human , but considered to be `` superior '' to humans in some way , e.g. a tiger may be described as having `` superhuman strength '' ."
+        },
+        {
+          "doc": 5914,
+          "page_id": "Heroes_-LRB-TV_series-RRB-",
+          "sent_id": 1,
+          "score": 19.048694610595703,
+          "nli": [
+            0.0010945227695629,
+            0.9911959171295166,
+            0.007709604687988758
+          ],
+          "text": "Heroes (TV series): The series tells the stories of ordinary people who discover that they had superhuman abilities , and how these abilities take effect in the characters ' lives as they work together to prevent catastrophic futures ."
+        }
+      ],
+      "gold_context": [
+        "Superhuman: Superhuman abilities may result from human enhancement by genetic modification , cybernetic implants , nanotechnology , radiation or from human evolution in the future ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-211011",
+      "claim": "Resident Evil is the first installment in the Resident Evil television series.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 11827,
+          "page_id": "Resident_Evil_-LRB-film-RRB-",
+          "sent_id": 2,
+          "score": 35.043643951416016,
+          "nli": [
+            0.182551309466362,
+            0.052995916455984116,
+            0.7644526958465576
+          ],
+          "text": "Resident Evil (film): It is the first installment in the Resident Evil film series , which is loosely based on the Capcom survival horror video game series Resident Evil ."
+        },
+        {
+          "doc": 217384,
+          "page_id": "Resident_Evil_7-COLON-_Biohazard",
+          "sent_id": 3,
+          "score": 30.585289001464844,
+          "nli": [
+            0.011930806562304497,
+            0.04582487419247627,
+            0.9422442317008972
+          ],
+          "text": "Resident Evil 7: Biohazard: It is the first main series installment to be played from a first-person perspective ."
+        },
+        {
+          "doc": 12683,
+          "page_id": "Shinji_Mikami",
+          "sent_id": 2,
+          "score": 30.118946075439453,
+          "nli": [
+            0.9743338227272034,
+            0.024745861068367958,
+            0.0009202685323543847
+          ],
+          "text": "Shinji Mikami: He directed the first installment of the survival horror series Resident Evil in 1996 and the first installment of Dino Crisis in 1999 ."
+        },
+        {
+          "doc": 195418,
+          "page_id": "Resident_Evil_-LRB-1996_video_game-RRB-",
+          "sent_id": 0,
+          "score": 23.172607421875,
+          "nli": [
+            0.8216122984886169,
+            0.12923845648765564,
+            0.0491492860019207
+          ],
+          "text": "Resident Evil (1996 video game): Resident Evil , known in Japan as Bio Hazard , is a survival horror video game developed and released by Capcom originally for the PlayStation in 1996 , and is the first game in the Resident Evil series ."
+        },
+        {
+          "doc": 47006,
+          "page_id": "Evil_Bong",
+          "sent_id": 6,
+          "score": 22.808975219726562,
+          "nli": [
+            0.03822525218129158,
+            0.8093494176864624,
+            0.1524253785610199
+          ],
+          "text": "Evil Bong: The series produced a new installment in 2015 with Evil Bong 420 and another in fall of 2016 , titled Evil Bong High-5 !"
+        }
+      ],
+      "gold_context": [
+        "Resident Evil (film): It is the first installment in the Resident Evil film series , which is loosely based on the Capcom survival horror video game series Resident Evil .",
+        "Resident Evil (film): Resident Evil is a 2002 German-British science fiction action horror film written and directed by Paul W. S. Anderson and produced by Bernd Eichinger ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-192774",
+      "claim": "A staging area is a location where people are assembled before the holidays.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13727,
+          "page_id": "Staging_area",
+          "sent_id": 0,
+          "score": 37.61483383178711,
+          "nli": [
+            0.0001524948311271146,
+            0.996781587600708,
+            0.0030659332405775785
+          ],
+          "text": "Staging area: A staging area ( otherwise staging point , staging base or staging post ) is a location where organisms , people , vehicles , equipment or material are assembled before use ."
+        },
+        {
+          "doc": 13736,
+          "page_id": "Staging_area",
+          "sent_id": 21,
+          "score": 27.97177505493164,
+          "nli": [
+            0.0012960458407178521,
+            0.9105105400085449,
+            0.08819346129894257
+          ],
+          "text": "Staging area: In military usage , a staging area is a place where troops or equipment in transit are assembled or processed ."
+        },
+        {
+          "doc": 13729,
+          "page_id": "Staging_area",
+          "sent_id": 4,
+          "score": 19.370258331298828,
+          "nli": [
+            0.009112660773098469,
+            0.7454303503036499,
+            0.2454570233821869
+          ],
+          "text": "Staging area: Construction"
+        },
+        {
+          "doc": 13731,
+          "page_id": "Staging_area",
+          "sent_id": 9,
+          "score": 19.370258331298828,
+          "nli": [
+            0.004073094576597214,
+            0.9812016487121582,
+            0.014725184068083763
+          ],
+          "text": "Staging area: Ecology"
+        },
+        {
+          "doc": 13728,
+          "page_id": "Staging_area",
+          "sent_id": 1,
+          "score": 19.370258331298828,
+          "nli": [
+            0.003808222245424986,
+            0.9900043606758118,
+            0.006187394727021456
+          ],
+          "text": "Staging area: It may refer to :"
+        }
+      ],
+      "gold_context": [
+        "Staging area: A staging area ( otherwise staging point , staging base or staging post ) is a location where organisms , people , vehicles , equipment or material are assembled before use .",
+        "Staging area: In military usage , a staging area is a place where troops or equipment in transit are assembled or processed ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-150829",
+      "claim": "Estonia borders the line.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 138654,
+          "page_id": "Tannenberg",
+          "sent_id": 11,
+          "score": 13.976655960083008,
+          "nli": [
+            0.021857550367712975,
+            0.9645442962646484,
+            0.013598194345831871
+          ],
+          "text": "Tannenberg: Battle of Tannenberg Line in World War II , fought in 1944 in Estonia"
+        },
+        {
+          "doc": 4571,
+          "page_id": "Estonia",
+          "sent_id": 12,
+          "score": 12.610540390014648,
+          "nli": [
+            0.01384067814797163,
+            0.8083497881889343,
+            0.17780949175357819
+          ],
+          "text": "Estonia: Estonia is a democratic parliamentary republic divided into fifteen counties ."
+        },
+        {
+          "doc": 42304,
+          "page_id": "Bank_of_Estonia",
+          "sent_id": 3,
+          "score": 12.266328811645508,
+          "nli": [
+            0.00600815936923027,
+            0.9774188995361328,
+            0.016572868451476097
+          ],
+          "text": "Bank of Estonia: The Bank of Estonia also belongs to the European System of Central Banks ."
+        },
+        {
+          "doc": 116050,
+          "page_id": "Neuschloss",
+          "sent_id": 8,
+          "score": 12.094173431396484,
+          "nli": [
+            0.013595177792012691,
+            0.9766507744789124,
+            0.009754062630236149
+          ],
+          "text": "Neuschloss: Estonia"
+        },
+        {
+          "doc": 42303,
+          "page_id": "Bank_of_Estonia",
+          "sent_id": 0,
+          "score": 11.890022277832031,
+          "nli": [
+            0.005069096572697163,
+            0.9092459678649902,
+            0.08568494766950607
+          ],
+          "text": "Bank of Estonia: The Bank of Estonia ( Eesti Pank ) is the central bank of Estonia as well as a member of the Eurosystem organisation of euro area central banks ."
+        }
+      ],
+      "gold_context": [
+        "Estonia: It is bordered to the north by the Gulf of Finland , to the west by the Baltic Sea , to the south by Latvia ( 343 km ) , and to the east by Lake Peipus and Russia ( 338.6 km ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-78855",
+      "claim": "Henry Condell had zero widows.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 6051,
+          "page_id": "Henry_Condell",
+          "sent_id": 34,
+          "score": 21.622793197631836,
+          "nli": [
+            0.0023249927908182144,
+            0.6242122054100037,
+            0.37346282601356506
+          ],
+          "text": "Henry Condell: Bonduca"
+        },
+        {
+          "doc": 6058,
+          "page_id": "Henry_Condell",
+          "sent_id": 49,
+          "score": 21.622793197631836,
+          "nli": [
+            0.0017843612004071474,
+            0.9225184917449951,
+            0.07569719851016998
+          ],
+          "text": "Henry Condell: Valentinian"
+        },
+        {
+          "doc": 6052,
+          "page_id": "Henry_Condell",
+          "sent_id": 36,
+          "score": 21.622793197631836,
+          "nli": [
+            0.002117394469678402,
+            0.9182337522506714,
+            0.07964885979890823
+          ],
+          "text": "Henry Condell: The Captain"
+        },
+        {
+          "doc": 6031,
+          "page_id": "Henry_Condell",
+          "sent_id": 4,
+          "score": 21.601459503173828,
+          "nli": [
+            0.0015613938448950648,
+            0.8056687712669373,
+            0.192769855260849
+          ],
+          "text": "Henry Condell: Condell 's early life is obscure ."
+        },
+        {
+          "doc": 6059,
+          "page_id": "Henry_Condell",
+          "sent_id": 52,
+          "score": 20.922462463378906,
+          "nli": [
+            0.0005917535163462162,
+            0.9478924870491028,
+            0.05151575058698654
+          ],
+          "text": "Henry Condell: Condell appears to have ended his stage career around 1619 ."
+        }
+      ],
+      "gold_context": [
+        "Henry Condell: His widow , Elizabeth , was buried there on 3 October 1635 .",
+        "Henry Condell: Henry Condell ( 5 September 1576 ( baptised ) -- December 1627 ) was an actor in the King 's Men , the playing company for which William Shakespeare wrote .",
+        "Henry Condell: Condell was definitely in London by 24 October 1596 , when he married , at St Laurence Pountney , Elizabeth Smart ( d. 1635 ) , the only child of John Smart of the Strand , gentleman ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-18066",
+      "claim": "Yin and yang show a balance between magnetized entities.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 16953,
+          "page_id": "Yin_and_yang",
+          "sent_id": 10,
+          "score": 30.838516235351562,
+          "nli": [
+            0.0048668645322322845,
+            0.851085364818573,
+            0.144047811627388
+          ],
+          "text": "Yin and yang: The yin yang ( i.e. taijitu symbol ) shows a balance between two opposites with a portion of the opposite element in each section ."
+        },
+        {
+          "doc": 16951,
+          "page_id": "Yin_and_yang",
+          "sent_id": 8,
+          "score": 26.132789611816406,
+          "nli": [
+            0.009936144575476646,
+            0.9318713545799255,
+            0.058192551136016846
+          ],
+          "text": "Yin and yang: Everything has both yin and yang aspects ( for instance , shadow can not exist without light ) ."
+        },
+        {
+          "doc": 16945,
+          "page_id": "Yin_and_yang",
+          "sent_id": 0,
+          "score": 25.29974365234375,
+          "nli": [
+            0.02850925177335739,
+            0.3766375780105591,
+            0.5948531627655029
+          ],
+          "text": "Yin and yang: In Chinese philosophy , yin and yang ( also yin -- yang or yin yang , y\u012bny\u00e1ng `` dark -- bright '' ) describe how seemingly opposite or contrary forces may actually be complementary , interconnected , and interdependent in the natural world , and how they may give rise to each other as they interrelate to one another ."
+        },
+        {
+          "doc": 16948,
+          "page_id": "Yin_and_yang",
+          "sent_id": 5,
+          "score": 24.81415557861328,
+          "nli": [
+            0.007231584284454584,
+            0.9144309163093567,
+            0.07833751291036606
+          ],
+          "text": "Yin and yang: Duality is found in many belief systems , but Yin and Yang are parts of a Oneness that is also equated with the Tao ."
+        },
+        {
+          "doc": 16950,
+          "page_id": "Yin_and_yang",
+          "sent_id": 7,
+          "score": 23.06816291809082,
+          "nli": [
+            0.012107128277420998,
+            0.9413453340530396,
+            0.0465475395321846
+          ],
+          "text": "Yin and yang: Yin and yang can be thought of as complementary ( rather than opposing ) forces that interact to form a dynamic system in which the whole is greater than the assembled parts ."
+        }
+      ],
+      "gold_context": [
+        "Yin and yang: The yin yang ( i.e. taijitu symbol ) shows a balance between two opposites with a portion of the opposite element in each section ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-84710",
+      "claim": "Buffy the Vampire Slayer is created by Joss Whedon in 1990.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13097,
+          "page_id": "Slayer_-LRB-Buffy_the_Vampire_Slayer-RRB-",
+          "sent_id": 0,
+          "score": 43.20130157470703,
+          "nli": [
+            0.00045262358617037535,
+            0.9987698197364807,
+            0.0007774944533593953
+          ],
+          "text": "Slayer (Buffy the Vampire Slayer): A Slayer , in the television series Buffy the Vampire Slayer and Angel ( both created by Joss Whedon ) , is a young female bestowed with mystical powers that originate from the essence of a pure-demon , which gives her superhuman senses , strength , agility , resilience and speed in the fight against forces of darkness ."
+        },
+        {
+          "doc": 2402,
+          "page_id": "Buffy_the_Vampire_Slayer_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 42.33539581298828,
+          "nli": [
+            0.003034022869542241,
+            0.9873708486557007,
+            0.00959513895213604
+          ],
+          "text": "Buffy the Vampire Slayer (film): The film was taken in a different direction from the one its writer Joss Whedon intended , and five years later , he created the darker and acclaimed TV series of the same name ."
+        },
+        {
+          "doc": 2468,
+          "page_id": "Buffy_the_Vampire_Slayer",
+          "sent_id": 0,
+          "score": 40.27048110961914,
+          "nli": [
+            0.0006256687920540571,
+            0.9983121156692505,
+            0.001062221941538155
+          ],
+          "text": "Buffy the Vampire Slayer: Buffy the Vampire Slayer is an American television series created by Joss Whedon under his production tag , Mutant Enemy Productions with later co-executive producers being Jane Espenson , David Fury , David Greenwalt , Doug Petrie , Marti Noxon , and David Solomon ."
+        },
+        {
+          "doc": 13101,
+          "page_id": "Slayer_-LRB-Buffy_the_Vampire_Slayer-RRB-",
+          "sent_id": 6,
+          "score": 39.58624267578125,
+          "nli": [
+            0.0011209807125851512,
+            0.9974675178527832,
+            0.0014115279773250222
+          ],
+          "text": "Slayer (Buffy the Vampire Slayer): She is the Slayer . ''"
+        },
+        {
+          "doc": 5344,
+          "page_id": "Giselle_Loren",
+          "sent_id": 4,
+          "score": 39.524375915527344,
+          "nli": [
+            0.0008245850913226604,
+            0.9607093930244446,
+            0.038466066122055054
+          ],
+          "text": "Giselle Loren: She is perhaps best known for Buffy the Vampire Slayer for having voiced the character of Buffy Summers in two Buffy the Vampire Slayer video games ( Buffy the Vampire Slayer and Buffy the Vampire Slayer : Chaos Bleeds ) ."
+        }
+      ],
+      "gold_context": [
+        "Buffy the Vampire Slayer: Buffy the Vampire Slayer is an American television series created by Joss Whedon under his production tag , Mutant Enemy Productions with later co-executive producers being Jane Espenson , David Fury , David Greenwalt , Doug Petrie , Marti Noxon , and David Solomon .",
+        "Joss Whedon: He is the founder of Mutant Enemy Productions and co-founder of Bellwether Pictures , and is best known as the creator of the television series Buffy the Vampire Slayer ( 1997 -- 2003 ) , Angel ( 1999 -- 2004 ) , Firefly ( 2002 ) , Dollhouse ( 2009 -- 10 ) and Agents of S.H.I.E.L.D. ( from 2013 ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-16080",
+      "claim": "Solanum contains animals with ornamental flowers.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13234,
+          "page_id": "Solanum",
+          "sent_id": 1,
+          "score": 33.16362380981445,
+          "nli": [
+            0.4852042496204376,
+            0.1780179738998413,
+            0.33677777647972107
+          ],
+          "text": "Solanum: It also contains the nightshades and horse nettles , as well as numerous plants cultivated for their ornamental flowers and fruit ."
+        },
+        {
+          "doc": 97776,
+          "page_id": "Sirdavidia",
+          "sent_id": 3,
+          "score": 19.637447357177734,
+          "nli": [
+            0.174375981092453,
+            0.793805718421936,
+            0.03181830793619156
+          ],
+          "text": "Sirdavidia: The species name refers to the resemblance of the flowers to those of Solanum species ."
+        },
+        {
+          "doc": 173416,
+          "page_id": "Selenicereus_anthonyanus",
+          "sent_id": 1,
+          "score": 18.907672882080078,
+          "nli": [
+            0.2890830338001251,
+            0.2530059814453125,
+            0.4579109847545624
+          ],
+          "text": "Selenicereus anthonyanus: It is grown as an ornamental because of its beautiful nocturnal flowers and unusual stems ."
+        },
+        {
+          "doc": 167385,
+          "page_id": "Hemerocallis_fulva",
+          "sent_id": 1,
+          "score": 16.922882080078125,
+          "nli": [
+            0.11167831718921661,
+            0.06954608857631683,
+            0.8187755942344666
+          ],
+          "text": "Hemerocallis fulva: It is very widely grown as an ornamental plant in temperate climates for its showy flowers and ease of cultivation ."
+        },
+        {
+          "doc": 13237,
+          "page_id": "Solanum",
+          "sent_id": 6,
+          "score": 16.2150821685791,
+          "nli": [
+            0.010104555636644363,
+            0.976793646812439,
+            0.013101831078529358
+          ],
+          "text": "Solanum: Thus , the genus today contains roughly 1,500 -- 2,000 species ."
+        }
+      ],
+      "gold_context": [
+        "Solanum: Solanum is a large and diverse genus of flowering plants , which include two food crops of high economic importance , the potato and the tomato .",
+        "Solanum: It also contains the nightshades and horse nettles , as well as numerous plants cultivated for their ornamental flowers and fruit ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-50502",
+      "claim": "Nero's death ended the Julio-Claudian dynasty in 1203.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 10062,
+          "page_id": "Nero",
+          "sent_id": 22,
+          "score": 43.626827239990234,
+          "nli": [
+            0.00026562251150608063,
+            0.9989879727363586,
+            0.0007464131340384483
+          ],
+          "text": "Nero: His death ended the Julio-Claudian dynasty , sparking a brief period of civil wars known as the Year of the Four Emperors ."
+        },
+        {
+          "doc": 7471,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 0,
+          "score": 39.86326599121094,
+          "nli": [
+            0.001743682543747127,
+            0.9823853373527527,
+            0.01587102934718132
+          ],
+          "text": "Julio-Claudian dynasty: The term Julio-Claudian dynasty refers to the first five Roman emperors -- Augustus , Tiberius , Caligula , Claudius , and Nero -- or the family to which they belonged ."
+        },
+        {
+          "doc": 7473,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 4,
+          "score": 38.095062255859375,
+          "nli": [
+            0.00028046660008840263,
+            0.05787521228194237,
+            0.9418443441390991
+          ],
+          "text": "Julio-Claudian dynasty: Primogeniture is notably absent in the history of the Julio-Claudian dynasty ."
+        },
+        {
+          "doc": 7480,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 13,
+          "score": 36.38371276855469,
+          "nli": [
+            0.00234473985619843,
+            0.8714367747306824,
+            0.12621848285198212
+          ],
+          "text": "Julio-Claudian dynasty: Tacitus wrote of the historiography of the Julio-Claudian emperors :"
+        },
+        {
+          "doc": 7482,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 16,
+          "score": 35.134429931640625,
+          "nli": [
+            0.00017754436703398824,
+            0.992643415927887,
+            0.0071790870279073715
+          ],
+          "text": "Julio-Claudian dynasty: The histories of Tiberius , Caius , Claudius , and Nero , while they were in power , were falsified through terror , and after their death were written under the irritation of a recent hatred ."
+        }
+      ],
+      "gold_context": [
+        "Nero: Nero ( [ \u02c8n\u026a\u0259ro\u028a ] Latin : Ner\u014d Claudius Caesar Augustus Germanicus ; 15 December 37 AD -- 9 June 68 AD ) was Roman Emperor from 54 to 68 AD , and the last in the Julio-Claudian dynasty ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-196165",
+      "claim": "Jon Hamm received Nobel Prize nominations for his performances in Mad Men.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7620,
+          "page_id": "Jon_Hamm",
+          "sent_id": 14,
+          "score": 42.936248779296875,
+          "nli": [
+            0.000634377880487591,
+            0.008672211319208145,
+            0.9906933903694153
+          ],
+          "text": "Jon Hamm: Hamm has received 16 Primetime Emmy Award nominations for his performances in Mad Men , 30 Rock ( 2006 -- 2013 ) , and Unbreakable Kimmy Schmidt ( 2015 -- present ) ."
+        },
+        {
+          "doc": 7614,
+          "page_id": "Jon_Hamm",
+          "sent_id": 6,
+          "score": 32.45604705810547,
+          "nli": [
+            0.0001945293042808771,
+            0.9864153265953064,
+            0.01339011825621128
+          ],
+          "text": "Jon Hamm: He gained wide recognition when Mad Men began broadcast during July 2007 ."
+        },
+        {
+          "doc": 7485,
+          "page_id": "John_Slattery",
+          "sent_id": 2,
+          "score": 25.853137969970703,
+          "nli": [
+            0.0003457509446889162,
+            0.0045900954864919186,
+            0.9950640797615051
+          ],
+          "text": "John Slattery: He has received four Primetime Emmy Awards nominations and two Critics ' Choice Television Awards for Mad Men ."
+        },
+        {
+          "doc": 7616,
+          "page_id": "Jon_Hamm",
+          "sent_id": 8,
+          "score": 24.32498550415039,
+          "nli": [
+            0.00033520511351525784,
+            0.02167140506207943,
+            0.977993369102478
+          ],
+          "text": "Jon Hamm: He directed two episodes of the show ."
+        },
+        {
+          "doc": 7610,
+          "page_id": "Jon_Hamm",
+          "sent_id": 0,
+          "score": 23.218387603759766,
+          "nli": [
+            0.00022747291950508952,
+            0.9637562036514282,
+            0.03601635619997978
+          ],
+          "text": "Jon Hamm: Jonathan Daniel Hamm ( born March 10 , 1971 ) is an American actor , director , and television producer best known for playing advertising executive Don Draper for the AMC television drama series , Mad Men ( 2007 -- 2015 ) ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-191878",
+      "claim": "Padua is the economic and communications hub of the area and home to the only radio tower in all of Italy.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 10948,
+          "page_id": "Padua",
+          "sent_id": 1,
+          "score": 45.04835510253906,
+          "nli": [
+            0.00011122730211354792,
+            0.9976305961608887,
+            0.0022581880912184715
+          ],
+          "text": "Padua: It is the capital of the province of Padua and the economic and communications hub of the area ."
+        },
+        {
+          "doc": 48743,
+          "page_id": "Hoyt_Radio_Tower",
+          "sent_id": 4,
+          "score": 18.30902862548828,
+          "nli": [
+            8.261340553872287e-05,
+            0.0028143657837063074,
+            0.9971030354499817
+          ],
+          "text": "Hoyt Radio Tower: It was built in 2003 by Acme Towers , LLC and is currently owned and operated by the Denver Radio Tower Company for FM-broadcasting as KJHM and KFCO , As well as emergency services communications site ."
+        },
+        {
+          "doc": 10947,
+          "page_id": "Padua",
+          "sent_id": 0,
+          "score": 18.087692260742188,
+          "nli": [
+            0.0002896844525821507,
+            0.9958683252334595,
+            0.003842018311843276
+          ],
+          "text": "Padua: Padua ( [ \u02c8p\u00e6dju.\u0259 ] or [ \u02c8p\u00e6d\u0292u.\u0259 ] , Padova [ \u02c8pa\u02d0dova ] ; P\u00e0dova ) is a city and comune in Veneto , northern Italy ."
+        },
+        {
+          "doc": 211452,
+          "page_id": "Trois-Rivi\u00e8res",
+          "sent_id": 2,
+          "score": 16.66525650024414,
+          "nli": [
+            0.00018363003619015217,
+            0.0008408450521528721,
+            0.9989755153656006
+          ],
+          "text": "Trois-Rivi\u00e8res: Trois-Rivi\u00e8res is the economic and cultural hub of the Mauricie region ."
+        },
+        {
+          "doc": 113906,
+          "page_id": "Urbana,_Veneto",
+          "sent_id": 0,
+          "score": 16.514114379882812,
+          "nli": [
+            0.0002918491663876921,
+            0.9762475490570068,
+            0.02346060611307621
+          ],
+          "text": "Urbana, Veneto: Urbana is a comune in the province of Padua , in Veneto region of northern Italy ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-88237",
+      "claim": "Vatican City was established in the 1920s.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 16092,
+          "page_id": "Vatican_City",
+          "sent_id": 15,
+          "score": 19.155445098876953,
+          "nli": [
+            0.0001751378586050123,
+            0.9985014200210571,
+            0.0013234989019110799
+          ],
+          "text": "Vatican City: Within Vatican City are religious and cultural sites such as St. Peter 's Basilica , the Sistine Chapel and the Vatican Museums ."
+        },
+        {
+          "doc": 16083,
+          "page_id": "Vatican_City",
+          "sent_id": 0,
+          "score": 17.700950622558594,
+          "nli": [
+            0.0002005154237849638,
+            0.9971035122871399,
+            0.002695998642593622
+          ],
+          "text": "Vatican City: Vatican City ( [ \u02c8v\u00e6t\u1d7bk\u0259n_\u02c8s\u026ati ] Citt\u00e0 del Vaticano [ t\u0283it\u02c8ta ddel vati\u02c8ka\u02d0no ] Civitas Vaticana ) , officially Vatican City State or the State of Vatican City ( [ Stato della Citt\u00e0 del Vaticano , links = no ] [ Status Civitatis Vaticanae , links = no ] ) , is a walled enclave within the city of Rome ."
+        },
+        {
+          "doc": 16094,
+          "page_id": "Vatican_City",
+          "sent_id": 17,
+          "score": 15.983926773071289,
+          "nli": [
+            0.00016318753478117287,
+            0.9981412887573242,
+            0.0016954788006842136
+          ],
+          "text": "Vatican City: The unique economy of Vatican City is supported financially by the sale of postage stamps and tourist mementos , fees for admission to museums , and the sale of publications ."
+        },
+        {
+          "doc": 16088,
+          "page_id": "Vatican_City",
+          "sent_id": 7,
+          "score": 15.983926773071289,
+          "nli": [
+            0.00017665789346210659,
+            0.0004935177857987583,
+            0.9993298053741455
+          ],
+          "text": "Vatican City: Since the return of the Popes from Avignon in 1377 , they have generally resided at the Apostolic Palace within what is now Vatican City , although at times residing instead in the Quirinal Palace in Rome or elsewhere ."
+        },
+        {
+          "doc": 16093,
+          "page_id": "Vatican_City",
+          "sent_id": 16,
+          "score": 15.164043426513672,
+          "nli": [
+            0.00021761751850135624,
+            0.9988697171211243,
+            0.0009126320946961641
+          ],
+          "text": "Vatican City: They feature some of the world 's most famous paintings and sculptures ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-42260",
+      "claim": "Ron Dennis owns a London-based club franchise.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12070,
+          "page_id": "Ron_Dennis",
+          "sent_id": 21,
+          "score": 20.975975036621094,
+          "nli": [
+            0.006875051185488701,
+            0.7538283467292786,
+            0.2392965853214264
+          ],
+          "text": "Ron Dennis: # 300m ( $ 513m ) ."
+        },
+        {
+          "doc": 12073,
+          "page_id": "Ron_Dennis",
+          "sent_id": 26,
+          "score": 19.250865936279297,
+          "nli": [
+            0.0009301729151047766,
+            0.008462317287921906,
+            0.990607500076294
+          ],
+          "text": "Ron Dennis: Dennis is also a main trustee for Tommy 's , a miscarriage help charity ."
+        },
+        {
+          "doc": 12058,
+          "page_id": "Ron_Dennis",
+          "sent_id": 1,
+          "score": 18.674373626708984,
+          "nli": [
+            0.003964702133089304,
+            0.8902419209480286,
+            0.10579342395067215
+          ],
+          "text": "Ron Dennis: Dennis is the Global Consultant for Minsheng Investment Corporation and also owner of Absolute Taste ."
+        },
+        {
+          "doc": 12075,
+          "page_id": "Ron_Dennis",
+          "sent_id": 28,
+          "score": 18.13245391845703,
+          "nli": [
+            0.00253090588375926,
+            0.518449604511261,
+            0.47901952266693115
+          ],
+          "text": "Ron Dennis: With interests in foreign trade , Dennis also became Chairman of the British East Asian Council in 2014 ."
+        },
+        {
+          "doc": 12068,
+          "page_id": "Ron_Dennis",
+          "sent_id": 19,
+          "score": 18.13245391845703,
+          "nli": [
+            0.0009228908456861973,
+            0.988628089427948,
+            0.010449076071381569
+          ],
+          "text": "Ron Dennis: In the Sunday Times Rich List 2011 , Dennis ' net worth is estimated to be # 177m ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-64204",
+      "claim": "In states still using the electric chair to execute people, the prisoner is allowed the choice of lethal operation as an alternative method.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 4466,
+          "page_id": "Electric_chair",
+          "sent_id": 14,
+          "score": 50.20642852783203,
+          "nli": [
+            0.010700229555368423,
+            0.9831611514091492,
+            0.006138626951724291
+          ],
+          "text": "Electric chair: They allow the prisoner to choose lethal injection as an alternative method ."
+        },
+        {
+          "doc": 4464,
+          "page_id": "Electric_chair",
+          "sent_id": 12,
+          "score": 38.55310821533203,
+          "nli": [
+            0.9622274041175842,
+            0.012919062748551369,
+            0.024853557348251343
+          ],
+          "text": "Electric chair: Although some states still maintain electrocution as a method of execution , today it is only maintained as a secondary method that may be chosen over lethal injection at the request of the prisoner , except in Tennessee where it may be used if the drugs for lethal injection are not available , without input from the prisoner ."
+        },
+        {
+          "doc": 4463,
+          "page_id": "Electric_chair",
+          "sent_id": 11,
+          "score": 32.62646484375,
+          "nli": [
+            0.05854078009724617,
+            0.9381346702575684,
+            0.0033244872465729713
+          ],
+          "text": "Electric chair: Although the electric chair has long been a symbol of the death penalty in the United States , its use is in decline due to the rise of lethal injection , which is widely believed to be a more humane method of execution ."
+        },
+        {
+          "doc": 4456,
+          "page_id": "Electric_chair",
+          "sent_id": 0,
+          "score": 28.55168342590332,
+          "nli": [
+            0.0013784824404865503,
+            0.9534106254577637,
+            0.04521096497774124
+          ],
+          "text": "Electric chair: Execution by electrocution , performed using an electric chair , is a method of execution originating in the United States in which the condemned person is strapped to a specially built wooden chair and electrocuted through electrodes fastened on the head and leg ."
+        },
+        {
+          "doc": 4468,
+          "page_id": "Electric_chair",
+          "sent_id": 16,
+          "score": 25.27333641052246,
+          "nli": [
+            0.125667005777359,
+            0.08125565946102142,
+            0.7930774092674255
+          ],
+          "text": "Electric chair: In the state of Tennessee the electric chair is available for use if lethal injection drugs are unavailable , or otherwise if the inmate so chooses if their capital crime was committed before 1999 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-225735",
+      "claim": "David Lloyd George was the subject of a UK-wide vote in 1997.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 3818,
+          "page_id": "David_Lloyd_George",
+          "sent_id": 20,
+          "score": 26.43576431274414,
+          "nli": [
+            0.031387098133563995,
+            0.09846562147140503,
+            0.8701472878456116
+          ],
+          "text": "David Lloyd George: He was voted the third greatest British prime minister of the 20th century in a poll of 139 academics organised by MORI , and in 2002 he was named among the 100 Greatest Britons following a UK-wide vote ."
+        },
+        {
+          "doc": 3807,
+          "page_id": "David_Lloyd_George",
+          "sent_id": 0,
+          "score": 23.045154571533203,
+          "nli": [
+            0.006236176006495953,
+            0.9832997918128967,
+            0.010464047081768513
+          ],
+          "text": "David Lloyd George: David Lloyd George , 1st Earl Lloyd-George of Dwyfor , ( 17 January 1863 -- 26 March 1945 ) was a British Liberal politician and statesman of Welsh parentage and upbringing ."
+        },
+        {
+          "doc": 3814,
+          "page_id": "David_Lloyd_George",
+          "sent_id": 14,
+          "score": 21.355300903320312,
+          "nli": [
+            0.04295698180794716,
+            0.9374908208847046,
+            0.019552238285541534
+          ],
+          "text": "David Lloyd George: As Prime Minister , Lloyd George favoured the Conservatives in his coalition in the 1918 elections , leaving the Liberal Party a minority ."
+        },
+        {
+          "doc": 3816,
+          "page_id": "David_Lloyd_George",
+          "sent_id": 16,
+          "score": 21.332040786743164,
+          "nli": [
+            0.006370948161929846,
+            0.04068063572049141,
+            0.9529484510421753
+          ],
+          "text": "David Lloyd George: By the 1930s he was a marginalised and widely mistrusted figure ."
+        },
+        {
+          "doc": 3808,
+          "page_id": "David_Lloyd_George",
+          "sent_id": 3,
+          "score": 20.369949340820312,
+          "nli": [
+            0.006397448014467955,
+            0.971981406211853,
+            0.021621165797114372
+          ],
+          "text": "David Lloyd George: As Chancellor of the Exchequer ( 1908 -- 1915 ) , Lloyd George was a key figure in the introduction of many reforms which laid the foundations of the modern welfare state ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-169310",
+      "claim": "Hammer Film Productions produced The Woman in Black in Canada.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 6106,
+          "page_id": "Hammer_Film_Productions",
+          "sent_id": 17,
+          "score": 32.38294982910156,
+          "nli": [
+            0.00017281428154092282,
+            0.9988170862197876,
+            0.0010101381922140718
+          ],
+          "text": "Hammer Film Productions: Since then it has produced several films , including Let Me In ( 2010 ) , The Resident ( 2011 ) , The Woman in Black ( 2012 ) and The Quiet Ones ( 2014 ) ."
+        },
+        {
+          "doc": 6093,
+          "page_id": "Hammer_Film_Productions",
+          "sent_id": 0,
+          "score": 28.475662231445312,
+          "nli": [
+            0.0008908289601095021,
+            0.9942366480827332,
+            0.004872542340308428
+          ],
+          "text": "Hammer Film Productions: Hammer Film Productions is a British film production company based in London ."
+        },
+        {
+          "doc": 6095,
+          "page_id": "Hammer_Film_Productions",
+          "sent_id": 2,
+          "score": 27.54542350769043,
+          "nli": [
+            0.00021163409110158682,
+            0.9963860511779785,
+            0.0034022852778434753
+          ],
+          "text": "Hammer Film Productions: Hammer also produced science fiction , thrillers , film noir and comedies -- and , in later years , television series ."
+        },
+        {
+          "doc": 6101,
+          "page_id": "Hammer_Film_Productions",
+          "sent_id": 10,
+          "score": 26.748435974121094,
+          "nli": [
+            9.579426841810346e-05,
+            0.003206531284376979,
+            0.9966977834701538
+          ],
+          "text": "Hammer Film Productions: The company announced plans to begin making films again after this , but none were produced ."
+        },
+        {
+          "doc": 6103,
+          "page_id": "Hammer_Film_Productions",
+          "sent_id": 14,
+          "score": 23.41889190673828,
+          "nli": [
+            0.0001576216600369662,
+            0.9947011470794678,
+            0.005141297820955515
+          ],
+          "text": "Hammer Film Productions: The new owners also acquired the Hammer group 's film library , consisting of 295 movies ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-54825",
+      "claim": "Tye Sheridan was cut from Mud.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9837,
+          "page_id": "Mud_-LRB-2012_film-RRB-",
+          "sent_id": 1,
+          "score": 26.738122940063477,
+          "nli": [
+            0.000139399227919057,
+            0.0010752524249255657,
+            0.9987853169441223
+          ],
+          "text": "Mud (2012 film): The film stars Matthew McConaughey , Tye Sheridan , Jacob Lofland , Sam Shepard , and Reese Witherspoon ."
+        },
+        {
+          "doc": 188957,
+          "page_id": "Joe_Sheridan",
+          "sent_id": 14,
+          "score": 15.426471710205078,
+          "nli": [
+            0.0012479251017794013,
+            0.005315892864018679,
+            0.9934360980987549
+          ],
+          "text": "Joe Sheridan: Sheridan had five sons and four daughters , of whom Kathy Sheridan is a journalist with The Irish Times ."
+        },
+        {
+          "doc": 91295,
+          "page_id": "Sheridan_Township,_Michigan",
+          "sent_id": 3,
+          "score": 14.230415344238281,
+          "nli": [
+            0.013707579113543034,
+            0.17072321474552155,
+            0.815569281578064
+          ],
+          "text": "Sheridan Township, Michigan: Sheridan Township , Calhoun County , Michigan"
+        },
+        {
+          "doc": 12056,
+          "page_id": "Rob_Sheridan",
+          "sent_id": 9,
+          "score": 14.230415344238281,
+          "nli": [
+            0.0007128199795261025,
+            0.0014259426388889551,
+            0.9978613257408142
+          ],
+          "text": "Rob Sheridan: Sheridan is widely known for his analog glitch art ."
+        },
+        {
+          "doc": 91296,
+          "page_id": "Sheridan_Township,_Michigan",
+          "sent_id": 5,
+          "score": 14.230415344238281,
+          "nli": [
+            0.013382470235228539,
+            0.16028891503810883,
+            0.8263286352157593
+          ],
+          "text": "Sheridan Township, Michigan: Sheridan Township , Clare County , Michigan"
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-188642",
+      "claim": "Foot Locker operates in 28 cities worldwide.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 4975,
+          "page_id": "Foot_Locker",
+          "sent_id": 0,
+          "score": 30.696712493896484,
+          "nli": [
+            0.9769969582557678,
+            0.022444510832428932,
+            0.0005586046609096229
+          ],
+          "text": "Foot Locker: Foot Locker Retail , Inc. is an American sportswear and footwear retailer , with its headquarters in Midtown Manhattan , New York City , and operating in 28 countries worldwide ."
+        },
+        {
+          "doc": 4977,
+          "page_id": "Foot_Locker",
+          "sent_id": 4,
+          "score": 28.11682891845703,
+          "nli": [
+            0.0002097245742334053,
+            0.9990350008010864,
+            0.0007552471943199635
+          ],
+          "text": "Foot Locker: The company operates the eponymous `` Foot Locker '' chain of athletic footwear retail outlets ( along with `` Kids Foot Locker '' and `` Lady Foot Locker '' stores ) , and other athletic-based divisions including Champs Sports , Footaction USA , House of Hoops , and Eastbay/Footlocker ."
+        },
+        {
+          "doc": 4979,
+          "page_id": "Foot_Locker",
+          "sent_id": 6,
+          "score": 24.479169845581055,
+          "nli": [
+            0.0002326253306819126,
+            0.9991532564163208,
+            0.0006140842451713979
+          ],
+          "text": "Foot Locker: The company is also famous for its employees ' uniforms at its flagship Foot Locker chain , resembling those of referees ."
+        },
+        {
+          "doc": 4980,
+          "page_id": "Foot_Locker",
+          "sent_id": 9,
+          "score": 23.382465362548828,
+          "nli": [
+            0.008467053063213825,
+            0.971042275428772,
+            0.02049070969223976
+          ],
+          "text": "Foot Locker: According to the company 's filings with the SEC , as of January 28 , 2017 , Foot Locker , Inc. had 3,363 primarily mall-based stores in the United States , Canada , Europe , and Asia ."
+        },
+        {
+          "doc": 4978,
+          "page_id": "Foot_Locker",
+          "sent_id": 5,
+          "score": 21.093910217285156,
+          "nli": [
+            0.000333648786181584,
+            0.9984857439994812,
+            0.0011805795365944505
+          ],
+          "text": "Foot Locker: com , which owns the rights to Final Score ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-207348",
+      "claim": "Military deception is a form of strategic use of music.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9495,
+          "page_id": "Military_deception",
+          "sent_id": 2,
+          "score": 36.2472038269043,
+          "nli": [
+            0.00046128203393891454,
+            0.0013504975941032171,
+            0.9981881976127625
+          ],
+          "text": "Military deception: As a form of strategic use of information ( disinformation ) , it overlaps with psychological warfare ."
+        },
+        {
+          "doc": 9493,
+          "page_id": "Military_deception",
+          "sent_id": 0,
+          "score": 22.298492431640625,
+          "nli": [
+            0.0003829059423878789,
+            0.005989657249301672,
+            0.9936274290084839
+          ],
+          "text": "Military deception: Military deception refers to attempts to mislead enemy forces during warfare ."
+        },
+        {
+          "doc": 9499,
+          "page_id": "Military_deception",
+          "sent_id": 8,
+          "score": 22.298492431640625,
+          "nli": [
+            0.001301900832913816,
+            0.2270018607378006,
+            0.7716962099075317
+          ],
+          "text": "Military deception: In modern times military deception has developed as a fully fledged doctrine ."
+        },
+        {
+          "doc": 9497,
+          "page_id": "Military_deception",
+          "sent_id": 6,
+          "score": 21.99016571044922,
+          "nli": [
+            0.0004169512540102005,
+            0.014434881508350372,
+            0.9851481914520264
+          ],
+          "text": "Military deception: Deception in warfare dates back to early history ."
+        },
+        {
+          "doc": 9496,
+          "page_id": "Military_deception",
+          "sent_id": 3,
+          "score": 18.933517456054688,
+          "nli": [
+            0.0004066271358169615,
+            0.008340619504451752,
+            0.9912527203559875
+          ],
+          "text": "Military deception: To the degree that any enemy that falls for the deception will lose confidence when it is revealed , he may hesitate when confronted with the truth ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-97939",
+      "claim": "Leslie Alexander is a former stock broker.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8338,
+          "page_id": "Leslie_Alexander_-LRB-businessman-RRB-",
+          "sent_id": 0,
+          "score": 20.678119659423828,
+          "nli": [
+            0.000408931024139747,
+            0.9794990420341492,
+            0.020092016085982323
+          ],
+          "text": "Leslie Alexander (businessman): Leslie L. Alexander ( born 1944 ) is an American attorney , businessman and financier ."
+        },
+        {
+          "doc": 202761,
+          "page_id": "Crossing_network",
+          "sent_id": 1,
+          "score": 15.189108848571777,
+          "nli": [
+            0.11870341002941132,
+            0.851158857345581,
+            0.030137745663523674
+          ],
+          "text": "Crossing network: These broker-dealers employ computerized systems to match buyers and sellers of large blocks of shares without using the stock exchange ."
+        },
+        {
+          "doc": 8339,
+          "page_id": "Leslie_Alexander_-LRB-businessman-RRB-",
+          "sent_id": 1,
+          "score": 13.304475784301758,
+          "nli": [
+            0.0007777120918035507,
+            0.0021223146468400955,
+            0.9970999956130981
+          ],
+          "text": "Leslie Alexander (businessman): He is a former bond trader from New Jersey who owns the National Basketball Association ( NBA ) team Houston Rockets ."
+        },
+        {
+          "doc": 17902,
+          "page_id": "Leslie_P._Peirce",
+          "sent_id": 0,
+          "score": 12.643815994262695,
+          "nli": [
+            0.0002456004440318793,
+            0.002960056997835636,
+            0.9967942833900452
+          ],
+          "text": "Leslie P. Peirce: Leslie P. Peirce is an American professor in history ."
+        },
+        {
+          "doc": 80076,
+          "page_id": "John_Leslie_-LRB-TV_presenter-RRB-",
+          "sent_id": 0,
+          "score": 12.1614351272583,
+          "nli": [
+            0.00023393308219965547,
+            0.0008657783619128168,
+            0.9989001750946045
+          ],
+          "text": "John Leslie (TV presenter): John Leslie ( born John Leslie Stott ; 22 February 1965 ) is a Scottish former television presenter and now property developer ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-197664",
+      "claim": "The University of Leicester contributed to the identification of the remains of King Richard III in 2013.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 15879,
+          "page_id": "University_of_Leicester",
+          "sent_id": 11,
+          "score": 43.95560073852539,
+          "nli": [
+            0.0002380857476964593,
+            0.998917818069458,
+            0.000844087335281074
+          ],
+          "text": "University of Leicester: The university is most famous for the invention of genetic fingerprinting and contributing to the discovery and identification of the remains of King Richard III ."
+        },
+        {
+          "doc": 4763,
+          "page_id": "Exhumation_and_reburial_of_Richard_III_of_England",
+          "sent_id": 0,
+          "score": 28.827150344848633,
+          "nli": [
+            0.0006088942755013704,
+            0.7248179912567139,
+            0.27457308769226074
+          ],
+          "text": "Exhumation and reburial of Richard III of England: The exhumation and reburial of Richard III began with the discovery of the king 's remains within the site of the former Greyfriars Friary Church in Leicester , England , in September 2012 ."
+        },
+        {
+          "doc": 4764,
+          "page_id": "Exhumation_and_reburial_of_Richard_III_of_England",
+          "sent_id": 1,
+          "score": 27.55830955505371,
+          "nli": [
+            0.0004464178055059165,
+            0.9966877102851868,
+            0.002865878865122795
+          ],
+          "text": "Exhumation and reburial of Richard III of England: Following extensive anthropological and genetic testing , the remains of Richard III , the last English king killed in battle , were ultimately reinterred at Leicester Cathedral on 26 March 2015 ."
+        },
+        {
+          "doc": 4778,
+          "page_id": "Exhumation_and_reburial_of_Richard_III_of_England",
+          "sent_id": 23,
+          "score": 26.19780731201172,
+          "nli": [
+            0.0004845231887884438,
+            0.9926815629005432,
+            0.00683389138430357
+          ],
+          "text": "Exhumation and reburial of Richard III of England: As a condition of being allowed to disinter the skeleton , the archaeologists agreed that , if Richard were found , his remains would be reburied in Leicester Cathedral ."
+        },
+        {
+          "doc": 4777,
+          "page_id": "Exhumation_and_reburial_of_Richard_III_of_England",
+          "sent_id": 20,
+          "score": 25.364994049072266,
+          "nli": [
+            0.984152615070343,
+            0.015590150840580463,
+            0.00025711828493513167
+          ],
+          "text": "Exhumation and reburial of Richard III of England: Taking these findings into account along with other historical , scientific and archaeological evidence , the University of Leicester announced on 4 February 2013 that it had concluded beyond reasonable doubt that the skeleton was that of Richard III ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-89562",
+      "claim": "Jenny McCarthy began her career in April 1993.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7243,
+          "page_id": "Jenny_McCarthy",
+          "sent_id": 1,
+          "score": 32.38902282714844,
+          "nli": [
+            0.0003850275825243443,
+            0.9991330504417419,
+            0.0004819905443582684
+          ],
+          "text": "Jenny McCarthy: She began her career in 1993 as a nude model for Playboy magazine and was later named their Playmate of the Year ."
+        },
+        {
+          "doc": 7242,
+          "page_id": "Jenny_McCarthy",
+          "sent_id": 0,
+          "score": 22.767541885375977,
+          "nli": [
+            0.0011131486389786005,
+            0.9656656384468079,
+            0.03322121500968933
+          ],
+          "text": "Jenny McCarthy: Jennifer Ann McCarthy ( born November 1 , 1972 ) , credited as Jenny McCarthy and Jenny Wahlberg , is an American actress , model , television host , author , screenwriter , and anti-vaccine activist ."
+        },
+        {
+          "doc": 7245,
+          "page_id": "Jenny_McCarthy",
+          "sent_id": 3,
+          "score": 21.74472999572754,
+          "nli": [
+            0.00019694243383128196,
+            0.9947584271430969,
+            0.005044609773904085
+          ],
+          "text": "Jenny McCarthy: She is a former co-host of the ABC talk show The View ."
+        },
+        {
+          "doc": 196733,
+          "page_id": "Cian_McCarthy",
+          "sent_id": 15,
+          "score": 20.065872192382812,
+          "nli": [
+            0.0007626605802215636,
+            0.004094816744327545,
+            0.9951425790786743
+          ],
+          "text": "Cian McCarthy: Throughout his career McCarthy made 14 championship appearances ."
+        },
+        {
+          "doc": 7246,
+          "page_id": "Jenny_McCarthy",
+          "sent_id": 6,
+          "score": 19.02815818786621,
+          "nli": [
+            0.00012542534386739135,
+            0.9966744184494019,
+            0.003200199920684099
+          ],
+          "text": "Jenny McCarthy: McCarthy has written books about parenting and has become an activist promoting research into environmental causes and alternative medical treatments for autism ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-118257",
+      "claim": "Jed Whedon is the son of someone born in August 1937.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7154,
+          "page_id": "Jed_Whedon",
+          "sent_id": 0,
+          "score": 32.88406753540039,
+          "nli": [
+            0.001292023342102766,
+            0.0018114002887159586,
+            0.9968966245651245
+          ],
+          "text": "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+        },
+        {
+          "doc": 7552,
+          "page_id": "Joss_Whedon",
+          "sent_id": 0,
+          "score": 16.284809112548828,
+          "nli": [
+            0.006976451724767685,
+            0.34698399901390076,
+            0.6460395455360413
+          ],
+          "text": "Joss Whedon: Joss Whedon ( [ \u02c8wi\u02d0d\u0259n ] ) ( born Joseph Hill Whedon on June 23 , 1964 ) is an American screenwriter , film and television director , film and television producer , comic book author , and composer ."
+        },
+        {
+          "doc": 42551,
+          "page_id": "Ian_Hogg_-LRB-actor-RRB-",
+          "sent_id": 0,
+          "score": 15.520185470581055,
+          "nli": [
+            0.0009522418258711696,
+            0.9906184077262878,
+            0.008429419249296188
+          ],
+          "text": "Ian Hogg (actor): Ian Hogg ( born 1 August 1937 ) is an English actor ."
+        },
+        {
+          "doc": 209327,
+          "page_id": "Jed_Williams",
+          "sent_id": 3,
+          "score": 15.368066787719727,
+          "nli": [
+            0.0012574429856613278,
+            0.009391664527356625,
+            0.9893508553504944
+          ],
+          "text": "Jed Williams: Williams was born in Cardiff and educated at the Howardian Grammar School ."
+        },
+        {
+          "doc": 77823,
+          "page_id": "Kurzel",
+          "sent_id": 2,
+          "score": 15.368066787719727,
+          "nli": [
+            0.001256640418432653,
+            0.008090954273939133,
+            0.9906524419784546
+          ],
+          "text": "Kurzel: Jed Kurzel ( born 1976 ) , Australian film composer and musician"
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-74467",
+      "claim": "Ron Dennis owns Cypress Catering Company.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12063,
+          "page_id": "Ron_Dennis",
+          "sent_id": 10,
+          "score": 26.208683013916016,
+          "nli": [
+            0.001257550437003374,
+            0.0015468134079128504,
+            0.9971956014633179
+          ],
+          "text": "Ron Dennis: After being handed a three-page business plan by a chef for his Formula One team , he set up a catering company , Absolute Taste , today retaining 55 % of the company ."
+        },
+        {
+          "doc": 12060,
+          "page_id": "Ron_Dennis",
+          "sent_id": 3,
+          "score": 22.076082229614258,
+          "nli": [
+            0.0007404653006233275,
+            0.05913924053311348,
+            0.9401203393936157
+          ],
+          "text": "Ron Dennis: Dennis was removed from his McLaren management roles in 2016 but remains a director of the company and a 25 % shareholder ."
+        },
+        {
+          "doc": 12070,
+          "page_id": "Ron_Dennis",
+          "sent_id": 21,
+          "score": 20.975975036621094,
+          "nli": [
+            0.0017122019780799747,
+            0.9204747676849365,
+            0.07781300693750381
+          ],
+          "text": "Ron Dennis: # 300m ( $ 513m ) ."
+        },
+        {
+          "doc": 12073,
+          "page_id": "Ron_Dennis",
+          "sent_id": 26,
+          "score": 19.250865936279297,
+          "nli": [
+            0.000914312491659075,
+            0.03294665738940239,
+            0.9661389589309692
+          ],
+          "text": "Ron Dennis: Dennis is also a main trustee for Tommy 's , a miscarriage help charity ."
+        },
+        {
+          "doc": 12058,
+          "page_id": "Ron_Dennis",
+          "sent_id": 1,
+          "score": 18.674373626708984,
+          "nli": [
+            0.0005361164803616703,
+            0.0013243119465187192,
+            0.998139500617981
+          ],
+          "text": "Ron Dennis: Dennis is the Global Consultant for Minsheng Investment Corporation and also owner of Absolute Taste ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-71166",
+      "claim": "The Burj Khalifa contains 57 cats.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 2459,
+          "page_id": "Burj_Khalifa",
+          "sent_id": 20,
+          "score": 37.9034309387207,
+          "nli": [
+            0.0018448791233822703,
+            0.01599189080297947,
+            0.9821632504463196
+          ],
+          "text": "Burj Khalifa: It contains a total of 57 elevators and 8 escalators ."
+        },
+        {
+          "doc": 2460,
+          "page_id": "Burj_Khalifa",
+          "sent_id": 23,
+          "score": 26.759254455566406,
+          "nli": [
+            0.00019736734975595027,
+            0.9872166514396667,
+            0.012585996650159359
+          ],
+          "text": "Burj Khalifa: Critical reception to Burj Khalifa has been generally positive , and the building has received many awards ."
+        },
+        {
+          "doc": 2445,
+          "page_id": "Burj_Khalifa",
+          "sent_id": 4,
+          "score": 25.47386932373047,
+          "nli": [
+            0.00012151079863542691,
+            0.9884657859802246,
+            0.011412717401981354
+          ],
+          "text": "Burj Khalifa: Construction of the Burj Khalifa began in 2004 , with the exterior completed 5 years later in 2009 ."
+        },
+        {
+          "doc": 2443,
+          "page_id": "Burj_Khalifa",
+          "sent_id": 0,
+          "score": 24.978239059448242,
+          "nli": [
+            0.00013807453797198832,
+            0.9777682423591614,
+            0.022093746811151505
+          ],
+          "text": "Burj Khalifa: The Burj Khalifa ( \u0628\u0631\u062c \u062e\u0644\u064a\u0641\u0629 , Arabic for `` Khalifa Tower '' ; pronounced [ lang\u02c8b\u025dd\u0292_k\u0259 ` li : f\u0259 ] ) , known as the Burj Dubai before its inauguration , is a megatall skyscraper in Dubai , United Arab Emirates ."
+        },
+        {
+          "doc": 2446,
+          "page_id": "Burj_Khalifa",
+          "sent_id": 5,
+          "score": 23.48735809326172,
+          "nli": [
+            0.0003599271294660866,
+            0.969309389591217,
+            0.030330708250403404
+          ],
+          "text": "Burj Khalifa: The primary structure is reinforced concrete ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-47215",
+      "claim": "Ekta Kapoor worked on an Indian soap opera that premiered in August 2000.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 4340,
+          "page_id": "Ekta_Kapoor",
+          "sent_id": 7,
+          "score": 36.74468231201172,
+          "nli": [
+            0.017359500750899315,
+            0.978838324546814,
+            0.0038022203370928764
+          ],
+          "text": "Ekta Kapoor: She has produced numerous soap opera , television series and movies ."
+        },
+        {
+          "doc": 4335,
+          "page_id": "Ekta_Kapoor",
+          "sent_id": 0,
+          "score": 30.87887191772461,
+          "nli": [
+            0.0033267273101955652,
+            0.9934739470481873,
+            0.003199282567948103
+          ],
+          "text": "Ekta Kapoor: Ekta Kapoor ( born 7 June 1975 ) is an Indian TV and film producer ."
+        },
+        {
+          "doc": 4337,
+          "page_id": "Ekta_Kapoor",
+          "sent_id": 4,
+          "score": 26.14432144165039,
+          "nli": [
+            0.0021123026963323355,
+            0.9943364262580872,
+            0.003551286645233631
+          ],
+          "text": "Ekta Kapoor: Kapoor is the daughter of actor Jeetendra and Shobha Kapoor ."
+        },
+        {
+          "doc": 4338,
+          "page_id": "Ekta_Kapoor",
+          "sent_id": 5,
+          "score": 24.460084915161133,
+          "nli": [
+            0.0037374377716332674,
+            0.9907659292221069,
+            0.005496669560670853
+          ],
+          "text": "Ekta Kapoor: Her younger brother Tusshar Kapoor is also a Bollywood actor ."
+        },
+        {
+          "doc": 8117,
+          "page_id": "Kumkum_Bhagya",
+          "sent_id": 0,
+          "score": 23.617069244384766,
+          "nli": [
+            0.0005517726531252265,
+            0.0018198247998952866,
+            0.997628390789032
+          ],
+          "text": "Kumkum Bhagya: Kumkum Bhagya ( English : Vermillion In My Fate ) is a Hindi-language Indian soap opera which premiered on 15 April 2014 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-96705",
+      "claim": "Vatican City is a city that with its surrounding territory forms an independent state.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 16083,
+          "page_id": "Vatican_City",
+          "sent_id": 0,
+          "score": 21.41840934753418,
+          "nli": [
+            0.0024487923365086317,
+            0.0096379853785038,
+            0.9879133105278015
+          ],
+          "text": "Vatican City: Vatican City ( [ \u02c8v\u00e6t\u1d7bk\u0259n_\u02c8s\u026ati ] Citt\u00e0 del Vaticano [ t\u0283it\u02c8ta ddel vati\u02c8ka\u02d0no ] Civitas Vaticana ) , officially Vatican City State or the State of Vatican City ( [ Stato della Citt\u00e0 del Vaticano , links = no ] [ Status Civitatis Vaticanae , links = no ] ) , is a walled enclave within the city of Rome ."
+        },
+        {
+          "doc": 16092,
+          "page_id": "Vatican_City",
+          "sent_id": 15,
+          "score": 19.155445098876953,
+          "nli": [
+            0.002365764696151018,
+            0.28350621461868286,
+            0.7141280174255371
+          ],
+          "text": "Vatican City: Within Vatican City are religious and cultural sites such as St. Peter 's Basilica , the Sistine Chapel and the Vatican Museums ."
+        },
+        {
+          "doc": 16087,
+          "page_id": "Vatican_City",
+          "sent_id": 6,
+          "score": 18.40329933166504,
+          "nli": [
+            0.014274120330810547,
+            0.5900031328201294,
+            0.39572274684906006
+          ],
+          "text": "Vatican City: The highest state functionaries are all Catholic clergy of various national origins ."
+        },
+        {
+          "doc": 16091,
+          "page_id": "Vatican_City",
+          "sent_id": 12,
+          "score": 17.62531280517578,
+          "nli": [
+            0.0007978448993526399,
+            0.003881377400830388,
+            0.9953208565711975
+          ],
+          "text": "Vatican City: According to the terms of the treaty , the Holy See has `` full ownership , exclusive dominion , and sovereign authority and jurisdiction '' over the city-state ."
+        },
+        {
+          "doc": 16086,
+          "page_id": "Vatican_City",
+          "sent_id": 5,
+          "score": 17.115402221679688,
+          "nli": [
+            0.01554271299391985,
+            0.05153815448284149,
+            0.9329190850257874
+          ],
+          "text": "Vatican City: It is an ecclesiastical or sacerdotal-monarchical state ( a type of theocracy ) ruled by the Bishop of Rome -- the Pope ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-160493",
+      "claim": "No Strings Attached was first released in the United States.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10389,
+          "page_id": "No_Strings_Attached_-LRB-film-RRB-",
+          "sent_id": 2,
+          "score": 30.573753356933594,
+          "nli": [
+            0.8135810494422913,
+            0.18448327481746674,
+            0.0019356242846697569
+          ],
+          "text": "No Strings Attached (film): The film was released in the United States on January 21 , 2011 ."
+        },
+        {
+          "doc": 10387,
+          "page_id": "No_Strings_Attached_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 21.29598617553711,
+          "nli": [
+            0.01803460903465748,
+            0.9812964797019958,
+            0.000668886408675462
+          ],
+          "text": "No Strings Attached (film): No Strings Attached is a 2011 American romantic comedy film directed by Ivan Reitman and written by Elizabeth Meriwether ."
+        },
+        {
+          "doc": 10388,
+          "page_id": "No_Strings_Attached_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 19.95482063293457,
+          "nli": [
+            0.001009175437502563,
+            0.9978650212287903,
+            0.001125816605053842
+          ],
+          "text": "No Strings Attached (film): Starring Natalie Portman and Ashton Kutcher , the film is about two friends who decide to make a pact to have `` no strings attached '' casual sex without falling in love with each other ."
+        },
+        {
+          "doc": 247014,
+          "page_id": "Elevator_to_the_Gallows",
+          "sent_id": 1,
+          "score": 14.632951736450195,
+          "nli": [
+            0.0039121415466070175,
+            0.8870604038238525,
+            0.1090274378657341
+          ],
+          "text": "Elevator to the Gallows: It was released as Elevator to the Gallows in the United States , where it was also released as Frantic , and as Lift to the Scaffold in the United Kingdom ."
+        },
+        {
+          "doc": 242243,
+          "page_id": "Richard_Zuley",
+          "sent_id": 11,
+          "score": 14.306436538696289,
+          "nli": [
+            0.004374436568468809,
+            0.952023983001709,
+            0.043601613491773605
+          ],
+          "text": "Richard Zuley: He has since been released as posing no threat to the United States ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-70683",
+      "claim": "Anna Nicole Smith modelled for Diesel.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1324,
+          "page_id": "Anna_Nicole_Smith",
+          "sent_id": 5,
+          "score": 25.449947357177734,
+          "nli": [
+            0.004817476030439138,
+            0.8950320482254028,
+            0.10015048831701279
+          ],
+          "text": "Anna Nicole Smith: Smith dropped out of high school and was married three years later in 1985 ."
+        },
+        {
+          "doc": 1322,
+          "page_id": "Anna_Nicole_Smith",
+          "sent_id": 1,
+          "score": 24.6522216796875,
+          "nli": [
+            0.0005796069744974375,
+            0.0014067944139242172,
+            0.9980134963989258
+          ],
+          "text": "Anna Nicole Smith: Smith first gained popularity in Playboy , winning the title of 1993 Playmate of the Year ."
+        },
+        {
+          "doc": 1321,
+          "page_id": "Anna_Nicole_Smith",
+          "sent_id": 0,
+          "score": 24.499088287353516,
+          "nli": [
+            0.0009445836767554283,
+            0.9655292630195618,
+            0.03352611884474754
+          ],
+          "text": "Anna Nicole Smith: Vickie Lynn Hogan professionally known as Anna Nicole Smith ( born November 28 , 1967 -- February 8 , 2007 ) was an American model , actress and television personality ."
+        },
+        {
+          "doc": 1326,
+          "page_id": "Anna_Nicole_Smith",
+          "sent_id": 7,
+          "score": 23.201087951660156,
+          "nli": [
+            0.0016395840793848038,
+            0.015047917142510414,
+            0.9833125472068787
+          ],
+          "text": "Anna Nicole Smith: Following Marshall 's death , Smith began a lengthy legal battle over a share of his estate ."
+        },
+        {
+          "doc": 1328,
+          "page_id": "Anna_Nicole_Smith",
+          "sent_id": 11,
+          "score": 21.914560317993164,
+          "nli": [
+            0.0013177832588553429,
+            0.0131926778703928,
+            0.985489547252655
+          ],
+          "text": "Anna Nicole Smith: Smith died on February 8 , 2007 , in a Hollywood , Florida , hotel room as a result of an overdose of prescription drugs ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "halueval-qa-698-hallucinated",
+    "split": "train",
+    "question": "Who is an American journalist and has been Literary Editor of \"The Weekly Standard,\",  Philip Terzian or Derek Sherinian",
+    "answer": "Derek Sherinian is the Literary Editor.",
+    "current_fallback_claims": [
+      "Derek Sherinian is the Literary Editor."
+    ],
+    "raw_model_response": "```json\n[\"Derek Sherinian is an American journalist.\", \"Derek Sherinian has been the Literary Editor of \\\"The Weekly Standard.\\\"]\n```",
+    "syntax_proposal": {
+      "proposed_claims": [
+        "Derek Sherinian is an American journalist.",
+        "Derek Sherinian has been the Literary Editor of \"The Weekly Standard.\""
+      ],
+      "added_string_delimiters": 1,
+      "removed_extra_array_closers": 0,
+      "applied_to_dataset": false
+    },
+    "human_accepted": null
+  },
+  {
+    "id": "halueval-qa-8136-right",
+    "split": "test",
+    "question": "Which record producer helped produce the album \"I Brought You My Bullets, You Brought Me Your Love?\"",
+    "answer": "Kato Khandwala",
+    "current_fallback_claims": [
+      "Kato Khandwala"
+    ],
+    "raw_model_response": "[\"Kato Khandwala helped produce the album \\\"I Brought You My Bullets, You Brought Me Your Love.\\\"]]",
+    "syntax_proposal": {
+      "proposed_claims": [
+        "Kato Khandwala helped produce the album \"I Brought You My Bullets, You Brought Me Your Love.\""
+      ],
+      "added_string_delimiters": 1,
+      "removed_extra_array_closers": 1,
+      "applied_to_dataset": false
+    },
+    "human_accepted": null
+  },
+  {
+    "id": "halueval-qa-2590-right",
+    "split": "test",
+    "question": "Who is an English actress who starred in \"The Truth About Charlie?\"",
+    "answer": "Thandie Newton",
+    "current_fallback_claims": [
+      "Thandie Newton"
+    ],
+    "raw_model_response": "```json\n[\"Thandie Newton is an English actress.\", \"Thandie Newton starred in the movie \\\"The Truth About Charlie.\\\"]\n```",
+    "syntax_proposal": {
+      "proposed_claims": [
+        "Thandie Newton is an English actress.",
+        "Thandie Newton starred in the movie \"The Truth About Charlie.\""
+      ],
+      "added_string_delimiters": 1,
+      "removed_extra_array_closers": 0,
+      "applied_to_dataset": false
+    },
+    "human_accepted": null
+  }
+]

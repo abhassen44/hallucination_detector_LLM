@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "provided_extracted_claims": {
+      "false_positive": 106,
+      "false_negative": 62
+    },
+    "bm25_extracted_claims": {
+      "false_positive": 296,
+      "false_negative": 1
+    },
+    "dense_extracted_claims": {
+      "false_positive": 296,
+      "false_negative": 1
+    },
+    "hybrid_extracted_claims": {
+      "false_positive": 296,
+      "false_negative": 1
+    }
+  },
+  "review_examples": 103,
+  "human_categories_assigned": 0
+}

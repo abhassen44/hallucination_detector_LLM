@@ -1,0 +1,10 @@
+-r requirements-app.txt
+# Pretrained model loading and retrieval; no training commands are included.
+torch>=2.6
+transformers>=4.44
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+scipy>=1.13
+scikit-learn>=1.5
+sentencepiece>=0.2
+protobuf>=4.25

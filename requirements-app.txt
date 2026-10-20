@@ -1,0 +1,7 @@
+# Lightweight API and offline tests. Does not install/download ML models.
+numpy>=1.26,<3
+pyyaml>=6,<7
+requests>=2.32,<3
+tqdm>=4.66,<5
+fastapi>=0.111,<1
+uvicorn>=0.30,<1

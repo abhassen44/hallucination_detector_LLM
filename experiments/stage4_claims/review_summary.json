@@ -1,0 +1,14 @@
+{
+  "flagged_examples": 121,
+  "comparison_examples": 50,
+  "queue_size": 171,
+  "flag_counts_overlap": {
+    "short": 90,
+    "empty": 9,
+    "duplicates": 20,
+    "fallback": 3,
+    "long": 2
+  },
+  "human_annotations_completed": 0,
+  "training_performed": false
+}

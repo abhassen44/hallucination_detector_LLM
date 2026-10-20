@@ -1,0 +1,27 @@
+{
+  "model": "gemma4:31b-cloud",
+  "expected_examples": 4000,
+  "splits": {
+    "train": {
+      "expected": 2800,
+      "cached": 2800,
+      "valid_cached": 2799,
+      "claims": 4560
+    },
+    "val": {
+      "expected": 600,
+      "cached": 600,
+      "valid_cached": 600,
+      "claims": 947
+    },
+    "test": {
+      "expected": 600,
+      "cached": 600,
+      "valid_cached": 598,
+      "claims": 952
+    }
+  },
+  "cached_examples": 4000,
+  "all_responses_cached": true,
+  "valid_cached_examples": 3997
+}

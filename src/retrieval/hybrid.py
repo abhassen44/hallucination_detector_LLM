@@ -11,7 +11,7 @@ from pathlib import Path
 
 from src.retrieval.bm25 import BM25Index
 from src.retrieval.corpus import SentenceCorpus
-from src.retrieval.dense import DenseIndex
+from src.retrieval.dense import DenseIndex, INDEX_FILENAME
 from src.utils.config import PROJECT_ROOT, load_config
 
 Hits = list[tuple[int, float]]
@@ -35,7 +35,7 @@ class Retriever:
         self.index_dir = index_dir or PROJECT_ROOT / cfg["paths"]["processed"] / "indexes"
         self.corpus = SentenceCorpus.from_fever()
 
-        bm25_p, dense_p = self.index_dir / "bm25.pkl", self.index_dir / "dense.faiss"
+        bm25_p, dense_p = self.index_dir / "bm25.pkl", self.index_dir / INDEX_FILENAME
         if bm25_p.exists() and not rebuild:
             self.bm25 = BM25Index.load(bm25_p)
         else:
@@ -50,9 +50,9 @@ class Retriever:
             t = time.time()
             self.dense = DenseIndex().fit(self.corpus.texts)
             self.dense.save(dense_p)
-            print(f"[retrieval] FAISS built in {time.time() - t:.0f}s")
+            print(f"[retrieval] Dense index ({INDEX_FILENAME}) built in {time.time() - t:.0f}s")
 
-        n = self.dense.index.ntotal
+        n = self.dense.size
         if n != len(self.corpus) or self.bm25.W.shape[0] != len(self.corpus):
             raise RuntimeError("Index/corpus size mismatch - rerun with rebuild=True")
 

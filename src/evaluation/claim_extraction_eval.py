@@ -47,12 +47,17 @@ def _evaluate_split(
     if not exs:
         return {}
 
+    quality_cfg = load_config().get("claims", {})
     stats_all = ClaimExtractionStats()
     stats_by_label: dict[str, ClaimExtractionStats] = {}
     issues: list[dict] = []
 
     for e in exs:
-        report = assess_claims(e.id, e.answer, e.claims)
+        report = assess_claims(e.id, e.answer, e.claims,
+                               is_fallback=e.meta.get("claim_extraction", {}).get("is_fallback", False),
+                               short_threshold=quality_cfg.get("short_claim_threshold", 5),
+                               long_threshold=quality_cfg.get("long_claim_threshold", 40),
+                               dup_threshold=quality_cfg.get("duplicate_jaccard", 0.85))
         stats_all.add(report)
 
         label = e.binary_label

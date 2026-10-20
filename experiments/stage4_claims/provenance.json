@@ -1,0 +1,19 @@
+{
+  "model": "gemma4:31b-cloud",
+  "temperature": 0.0,
+  "cached_examples": 4000,
+  "generation_window_utc": {
+    "first": "2026-10-20T16:29:51.735727+00:00",
+    "last": "2026-10-20T18:06:17.839410+00:00"
+  },
+  "system_prompt_sha256": "807d825c2e802f7863c08eeab6aada0fb77b493e5a72fc6f79ee0c61c36ea5f9",
+  "dataset_sha256": {
+    "data/splits/halueval_train.jsonl": "dd8d1e0dd2dba90687471f225799c5d5261bd20eb99c0f216007c30c2f2709e2",
+    "data/splits/halueval_val.jsonl": "6f3b54159ccf27d12d5106907f796391db80af89b4b844daa48020926b172210",
+    "data/splits/halueval_test.jsonl": "a942f91a3fa9ef00be30a2dc51a31fb6f8f742dba0a16e2bc4d2ebba5dc98060"
+  },
+  "fallback_examples": 3,
+  "syntax_proposals_applied": false,
+  "training_performed": false,
+  "cloud_model_revision": "not exposed; cached responses freeze this extraction run"
+}

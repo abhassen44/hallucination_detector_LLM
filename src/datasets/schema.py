@@ -9,6 +9,8 @@ Label design (resolves the 2-vs-3 class mismatch in the plan):
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Iterable, Iterator
@@ -44,10 +46,18 @@ def write_jsonl(path: str | Path, rows: Iterable[Example | dict]) -> int:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     n = 0
-    with open(path, "w", encoding="utf-8") as f:
-        for r in rows:
-            f.write(json.dumps(r.to_dict() if isinstance(r, Example) else r, ensure_ascii=False) + "\n")
-            n += 1
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         suffix=".tmp", delete=False) as f:
+            temp_path = Path(f.name)
+            for r in rows:
+                f.write(json.dumps(r.to_dict() if isinstance(r, Example) else r, ensure_ascii=False) + "\n")
+                n += 1
+        os.replace(temp_path, path)
+    finally:
+        if temp_path is not None:
+            temp_path.unlink(missing_ok=True)
     return n
 
 

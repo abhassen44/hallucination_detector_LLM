@@ -1,0 +1,34 @@
+{
+  "method": "dense",
+  "mode": "fixed_threshold_cache_replay",
+  "n": 1998,
+  "accuracy": 0.6381381381381381,
+  "macro_f1": 0.6116050497219278,
+  "labels": [
+    "SUPPORTED",
+    "CONTRADICTED",
+    "INSUFFICIENT"
+  ],
+  "confusion_matrix": [
+    [
+      499,
+      131,
+      36
+    ],
+    [
+      24,
+      598,
+      44
+    ],
+    [
+      81,
+      407,
+      178
+    ]
+  ],
+  "thresholds": {
+    "entail": 0.7,
+    "contra": 0.95
+  },
+  "training_performed": false
+}

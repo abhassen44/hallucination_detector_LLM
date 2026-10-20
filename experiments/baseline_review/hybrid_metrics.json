@@ -1,0 +1,34 @@
+{
+  "method": "hybrid",
+  "mode": "fixed_threshold_cache_replay",
+  "n": 1998,
+  "accuracy": 0.6521521521521522,
+  "macro_f1": 0.6328201025982089,
+  "labels": [
+    "SUPPORTED",
+    "CONTRADICTED",
+    "INSUFFICIENT"
+  ],
+  "confusion_matrix": [
+    [
+      497,
+      126,
+      43
+    ],
+    [
+      22,
+      593,
+      51
+    ],
+    [
+      79,
+      374,
+      213
+    ]
+  ],
+  "thresholds": {
+    "entail": 0.7,
+    "contra": 0.95
+  },
+  "training_performed": false
+}

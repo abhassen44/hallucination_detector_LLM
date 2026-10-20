@@ -1,6 +1,8 @@
 """Semantic-similarity verifier (Method A). A weak signal, not proof (plan §8)."""
 from __future__ import annotations
 
+import sys
+
 import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer
@@ -13,7 +15,12 @@ class SimilarityModel:
         cfg = cfg or load_config()["embeddings"]
         self.model_name = model_name or cfg["model"]
         self.batch_size = cfg["batch_size"]
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        if sys.platform == 'darwin':
+            torch.set_num_threads(1)
+        device = cfg.get('device', 'auto')
+        if device == 'auto':
+            device = ('cuda' if torch.cuda.is_available() else
+                      'mps' if torch.backends.mps.is_available() else 'cpu')
         self.model = SentenceTransformer(self.model_name, device=device)
 
     def encode(self, texts: list[str], show_progress: bool = False) -> np.ndarray:

@@ -1,0 +1,302 @@
+{
+  "timestamp": "2026-10-20T18:37:31.138379+00:00",
+  "training_performed": false,
+  "checks": [
+    {
+      "route": "/verify",
+      "input": {
+        "claim": "The Eiffel Tower was completed in 1889.",
+        "evidence": [
+          "The Eiffel Tower was completed in 1889."
+        ]
+      },
+      "output": {
+        "claim": "The Eiffel Tower was completed in 1889.",
+        "label": "SUPPORTED",
+        "evidence_conflict": false,
+        "signals": {
+          "entailment": 0.9953528642654419,
+          "neutral": 0.00441859605780337,
+          "contradiction": 0.0002285396767547354
+        },
+        "evidence": [
+          {
+            "text": "The Eiffel Tower was completed in 1889.",
+            "nli": {
+              "entailment": 0.9953528642654419,
+              "neutral": 0.004418608266860247,
+              "contradiction": 0.0002285396767547354
+            }
+          }
+        ]
+      },
+      "seconds": 1.328
+    },
+    {
+      "route": "/verify",
+      "input": {
+        "claim": "The Eiffel Tower was completed in 1895.",
+        "evidence": [
+          "The Eiffel Tower was completed in 1889."
+        ]
+      },
+      "output": {
+        "claim": "The Eiffel Tower was completed in 1895.",
+        "label": "CONTRADICTED",
+        "evidence_conflict": false,
+        "signals": {
+          "entailment": 0.0018367667216807604,
+          "neutral": 0.0026402573566883802,
+          "contradiction": 0.9955229759216309
+        },
+        "evidence": [
+          {
+            "text": "The Eiffel Tower was completed in 1889.",
+            "nli": {
+              "entailment": 0.0018367667216807604,
+              "neutral": 0.002640318125486374,
+              "contradiction": 0.9955229759216309
+            }
+          }
+        ]
+      },
+      "seconds": 0.114
+    },
+    {
+      "route": "/verify",
+      "input": {
+        "claim": "The Eiffel Tower was completed in 1889.",
+        "evidence": []
+      },
+      "output": {
+        "claim": "The Eiffel Tower was completed in 1889.",
+        "label": "INSUFFICIENT",
+        "evidence_conflict": false,
+        "signals": {
+          "entailment": 0.0,
+          "neutral": 1.0,
+          "contradiction": 0.0
+        },
+        "evidence": []
+      },
+      "seconds": 0.002
+    },
+    {
+      "route": "/detect",
+      "input": {
+        "answer": "Chris Paul is a four-time NBA assist leader and six-time steal leader."
+      },
+      "output": {
+        "label": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "Chris Paul is a four-time NBA assist leader.",
+            "label": "SUPPORTED",
+            "evidence_conflict": false,
+            "signals": {
+              "entailment": 0.989316999912262,
+              "neutral": 0.0,
+              "contradiction": 0.010683000087738037
+            },
+            "evidence": [
+              {
+                "text": "Chris Paul: The point guard has won the NBA Rookie of the Year Award , two Olympic gold medals , and led the NBA in assists four times and steals six times .",
+                "page_id": "Chris_Paul",
+                "sent_id": 1,
+                "score": 0.032266458495966696,
+                "nli": {
+                  "entailment": 0.989316999912262,
+                  "neutral": 0.010293936356902122,
+                  "contradiction": 0.0003890929219778627
+                }
+              },
+              {
+                "text": "Chris Paul: He has also been selected to nine NBA All-Star teams , eight All-NBA teams , and eight All-Defensive teams .",
+                "page_id": "Chris_Paul",
+                "sent_id": 2,
+                "score": 0.03177805800756621,
+                "nli": {
+                  "entailment": 0.00043122071656398475,
+                  "neutral": 0.9973931312561035,
+                  "contradiction": 0.0021756114438176155
+                }
+              },
+              {
+                "text": "Chris Paul: Christopher Emmanuel Paul ( born May 6 , 1985 ) is an American professional basketball player for the Los Angeles Clippers of the National Basketball Association ( NBA ) .",
+                "page_id": "Chris_Paul",
+                "sent_id": 0,
+                "score": 0.0315136476426799,
+                "nli": {
+                  "entailment": 0.00023498678638134152,
+                  "neutral": 0.9986653327941895,
+                  "contradiction": 0.001099615590646863
+                }
+              },
+              {
+                "text": "Chris Paul: He was selected fourth overall in the 2005 NBA draft by the New Orleans Hornets and traded to the Clippers in 2011 .",
+                "page_id": "Chris_Paul",
+                "sent_id": 7,
+                "score": 0.03149801587301587,
+                "nli": {
+                  "entailment": 0.00019487326790113002,
+                  "neutral": 0.9979957342147827,
+                  "contradiction": 0.0018094379920512438
+                }
+              },
+              {
+                "text": "1994\u201395 Utah Jazz season: In a year of milestones , John Stockton became the NBA 's all-time assist leader passing Magic Johnson with 9,921 on his way to a record tying eighth straight assist title .",
+                "page_id": "1994\u201395_Utah_Jazz_season",
+                "sent_id": 2,
+                "score": 0.030834914611005692,
+                "nli": {
+                  "entailment": 0.00047827442176640034,
+                  "neutral": 0.16409015655517578,
+                  "contradiction": 0.8354315161705017
+                }
+              }
+            ]
+          },
+          {
+            "claim": "Chris Paul is a six-time NBA steal leader.",
+            "label": "SUPPORTED",
+            "evidence_conflict": false,
+            "signals": {
+              "entailment": 0.9566905498504639,
+              "neutral": 0.0,
+              "contradiction": 0.04330945014953613
+            },
+            "evidence": [
+              {
+                "text": "Chris Paul: He has also been selected to nine NBA All-Star teams , eight All-NBA teams , and eight All-Defensive teams .",
+                "page_id": "Chris_Paul",
+                "sent_id": 2,
+                "score": 0.03252247488101534,
+                "nli": {
+                  "entailment": 0.0016403270419687033,
+                  "neutral": 0.9354167580604553,
+                  "contradiction": 0.06294292211532593
+                }
+              },
+              {
+                "text": "Chris Paul: The point guard has won the NBA Rookie of the Year Award , two Olympic gold medals , and led the NBA in assists four times and steals six times .",
+                "page_id": "Chris_Paul",
+                "sent_id": 1,
+                "score": 0.03252247488101534,
+                "nli": {
+                  "entailment": 0.9566905498504639,
+                  "neutral": 0.04210706055164337,
+                  "contradiction": 0.001202376326546073
+                }
+              },
+              {
+                "text": "Chris Paul: Christopher Emmanuel Paul ( born May 6 , 1985 ) is an American professional basketball player for the Los Angeles Clippers of the National Basketball Association ( NBA ) .",
+                "page_id": "Chris_Paul",
+                "sent_id": 0,
+                "score": 0.03125763125763126,
+                "nli": {
+                  "entailment": 0.00017554064106661826,
+                  "neutral": 0.9979357719421387,
+                  "contradiction": 0.0018886090256273746
+                }
+              },
+              {
+                "text": "Chris Paul: He was selected fourth overall in the 2005 NBA draft by the New Orleans Hornets and traded to the Clippers in 2011 .",
+                "page_id": "Chris_Paul",
+                "sent_id": 7,
+                "score": 0.031009615384615385,
+                "nli": {
+                  "entailment": 0.0005042630946263671,
+                  "neutral": 0.9492293000221252,
+                  "contradiction": 0.05026649683713913
+                }
+              },
+              {
+                "text": "Kareem Abdul-Jabbar: During his career as a center , Abdul-Jabbar was a record six-time NBA Most Valuable Player ( MVP ) , a record 19-time NBA All-Star , a 15-time All-NBA selection , and an 11-time NBA All-Defensive Team member .",
+                "page_id": "Kareem_Abdul-Jabbar",
+                "sent_id": 1,
+                "score": 0.03007688828584351,
+                "nli": {
+                  "entailment": 0.0056041572242975235,
+                  "neutral": 0.23208734393119812,
+                  "contradiction": 0.7623085379600525
+                }
+              }
+            ]
+          }
+        ],
+        "extraction_fallback": false,
+        "method": "hybrid",
+        "evidence_source": "wikipedia",
+        "detector": "threshold_baseline",
+        "extraction_model": "gemma4:31b-cloud",
+        "warnings": []
+      },
+      "seconds": 5.498
+    },
+    {
+      "route": "/detect",
+      "input": {
+        "question": "How many times has Chris Paul led the NBA in assists and steals?",
+        "answer": "Chris Paul is a four-time NBA assist leader and six-time steal leader.",
+        "evidence": [
+          "Chris Paul has led the NBA in assists four times and steals six times."
+        ]
+      },
+      "output": {
+        "label": "SUPPORTED",
+        "claims": [
+          {
+            "claim": "Chris Paul has led the NBA in assists four times.",
+            "label": "SUPPORTED",
+            "evidence_conflict": false,
+            "signals": {
+              "entailment": 0.9934042096138,
+              "neutral": 0.006252054707147181,
+              "contradiction": 0.00034373567905277014
+            },
+            "evidence": [
+              {
+                "text": "Chris Paul has led the NBA in assists four times and steals six times.",
+                "source": "provided",
+                "nli": {
+                  "entailment": 0.9934042096138,
+                  "neutral": 0.0062520261853933334,
+                  "contradiction": 0.00034373567905277014
+                }
+              }
+            ]
+          },
+          {
+            "claim": "Chris Paul has led the NBA in steals six times.",
+            "label": "SUPPORTED",
+            "evidence_conflict": false,
+            "signals": {
+              "entailment": 0.986472487449646,
+              "neutral": 0.012946621456649154,
+              "contradiction": 0.0005808910937048495
+            },
+            "evidence": [
+              {
+                "text": "Chris Paul has led the NBA in assists four times and steals six times.",
+                "source": "provided",
+                "nli": {
+                  "entailment": 0.986472487449646,
+                  "neutral": 0.012946589849889278,
+                  "contradiction": 0.0005808910937048495
+                }
+              }
+            ]
+          }
+        ],
+        "extraction_fallback": false,
+        "method": "provided",
+        "evidence_source": "provided",
+        "detector": "threshold_baseline",
+        "extraction_model": "gemma4:31b-cloud",
+        "warnings": []
+      },
+      "seconds": 0.209
+    }
+  ],
+  "passed": true
+}

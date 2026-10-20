@@ -2,14 +2,12 @@
 from __future__ import annotations
 
 import numpy as np
-from sklearn.metrics import (
-    accuracy_score, confusion_matrix, f1_score, precision_recall_fscore_support,
-)
 
 from src.datasets.schema import BIN_HALLUCINATED, LABELS
 
 
 def multiclass_metrics(y_true: list[str], y_pred: list[str], labels: tuple[str, ...] = LABELS) -> dict:
+    from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_recall_fscore_support
     labels = [l for l in labels if l in set(y_true) | set(y_pred)]
     p, r, f, s = precision_recall_fscore_support(y_true, y_pred, labels=labels, zero_division=0)
     return {

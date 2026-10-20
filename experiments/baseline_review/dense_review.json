@@ -1,0 +1,4372 @@
+{
+  "categories": [
+    "retrieval_failure",
+    "claim_extraction_failure",
+    "nli_failure",
+    "ambiguous_evidence",
+    "numerical_reasoning",
+    "temporal_information",
+    "entity_confusion",
+    "multi_hop_reasoning"
+  ],
+  "examples": [
+    {
+      "id": "fever-135151",
+      "claim": "The House of the Spirits received Bavarian Film Awards.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14791,
+          "page_id": "The_House_of_the_Spirits_-LRB-film-RRB-",
+          "sent_id": 5,
+          "score": 0.875516951084137,
+          "nli": [
+            0.9950504899024963,
+            0.0043926904909312725,
+            0.0005568342166952789
+          ],
+          "text": "The House of the Spirits (film): The film won some awards , ( Bavarian Film Awards , German Film Awards , the Golden Screen ( Germany ) , Havana Film Festival , and Robert Festival ( Denmark ) , the German Phono Academy and the Guild of German Art House Cinemas ) ."
+        },
+        {
+          "doc": 14788,
+          "page_id": "The_House_of_the_Spirits_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.7408130168914795,
+          "nli": [
+            0.0002859611122403294,
+            0.9985494017601013,
+            0.0011646229540929198
+          ],
+          "text": "The House of the Spirits (film): The House of the Spirits is a 1993 German-Danish-Portuguese period drama film directed by Bille August and starring Jeremy Irons , Meryl Streep , Glenn Close , Winona Ryder , Antonio Banderas and Vanessa Redgrave ."
+        },
+        {
+          "doc": 14789,
+          "page_id": "The_House_of_the_Spirits_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 0.7385104298591614,
+          "nli": [
+            0.00048183012404479086,
+            0.99880051612854,
+            0.0007176838698796928
+          ],
+          "text": "The House of the Spirits (film): The supporting cast includes Mar\u00eda Conchita Alonso , Armin Mueller-Stahl , and Jan Niklas ."
+        },
+        {
+          "doc": 14790,
+          "page_id": "The_House_of_the_Spirits_-LRB-film-RRB-",
+          "sent_id": 4,
+          "score": 0.736730694770813,
+          "nli": [
+            0.0002279082254972309,
+            0.9962520003318787,
+            0.0035201103892177343
+          ],
+          "text": "The House of the Spirits (film): Based on the 1982 novel La Casa de los Esp\u00edritus by Isabel Allende , the film is about the life of a young lady named Clara during the military dictatorship in Chile , and her recollection of her family history , mainly the rise of her husband , Esteban Trueba ."
+        },
+        {
+          "doc": 111064,
+          "page_id": "The_Spirit_of_America",
+          "sent_id": 1,
+          "score": 0.6675978899002075,
+          "nli": [
+            0.0006424642633646727,
+            0.0018975501880049706,
+            0.9974600672721863
+          ],
+          "text": "The Spirit of America: It was nominated for an Academy Award for Best Documentary Short ."
+        }
+      ],
+      "gold_context": [
+        "The House of the Spirits (film): The film won some awards , ( Bavarian Film Awards , German Film Awards , the Golden Screen ( Germany ) , Havana Film Festival , and Robert Festival ( Denmark ) , the German Phono Academy and the Guild of German Art House Cinemas ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-37153",
+      "claim": "Salt River Valley is in the middle part of Arizona.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12386,
+          "page_id": "Salt_River_Valley",
+          "sent_id": 0,
+          "score": 0.8950818777084351,
+          "nli": [
+            0.9905568361282349,
+            0.009259589947760105,
+            0.0001835106231737882
+          ],
+          "text": "Salt River Valley: The Salt River Valley is an extensive valley on the Salt River in central Arizona , which contains the Phoenix Metropolitan Area ."
+        },
+        {
+          "doc": 194399,
+          "page_id": "Salado_River",
+          "sent_id": 24,
+          "score": 0.8003251552581787,
+          "nli": [
+            0.0029405993409454823,
+            0.9950889945030212,
+            0.0019703726284205914
+          ],
+          "text": "Salado River: Salt River ( Arizona ) , United States"
+        },
+        {
+          "doc": 11167,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 4,
+          "score": 0.7803288698196411,
+          "nli": [
+            0.016319461166858673,
+            0.9814567565917969,
+            0.002223748480901122
+          ],
+          "text": "Phoenix, Arizona: Phoenix is the anchor of the Phoenix metropolitan area , also known as the Valley of the Sun , which in turn is a part of the Salt River Valley ."
+        },
+        {
+          "doc": 12388,
+          "page_id": "Salt_River_Valley",
+          "sent_id": 6,
+          "score": 0.7374886274337769,
+          "nli": [
+            0.0004942944506183267,
+            0.9970003962516785,
+            0.002505336422473192
+          ],
+          "text": "Salt River Valley: A common dust for testing air filter efficiency was derived from top soil dust from the Salt River Valley , referred to as Arizona Dust ."
+        },
+        {
+          "doc": 218215,
+          "page_id": "Scottsdale,_Arizona",
+          "sent_id": 10,
+          "score": 0.7314776182174683,
+          "nli": [
+            0.0005086162127554417,
+            0.005167028866708279,
+            0.9943243265151978
+          ],
+          "text": "Scottsdale, Arizona: The southern boundary is also occupied by the Salt River Pima-Maricopa Indian Community , which extends along the eastern boundary , which also borders Fountain Hills , the McDowell Mountain Regional Park and more unincorporated Maricopa County land ."
+        }
+      ],
+      "gold_context": [
+        "Salt River Valley: The Salt River Valley is an extensive valley on the Salt River in central Arizona , which contains the Phoenix Metropolitan Area ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-136290",
+      "claim": "Java is an landform.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7011,
+          "page_id": "Java",
+          "sent_id": 0,
+          "score": 0.7859496474266052,
+          "nli": [
+            0.013169988058507442,
+            0.0049550216645002365,
+            0.9818750023841858
+          ],
+          "text": "Java: Java ( Indonesian : Jawa ; Javanese : \ua997\ua9ae ; Sundanese : ) is an island of Indonesia ."
+        },
+        {
+          "doc": 7014,
+          "page_id": "Java",
+          "sent_id": 3,
+          "score": 0.754000186920166,
+          "nli": [
+            0.32439178228378296,
+            0.6607514023780823,
+            0.014856773428618908
+          ],
+          "text": "Java: Much of Indonesian history took place on Java ."
+        },
+        {
+          "doc": 7017,
+          "page_id": "Java",
+          "sent_id": 6,
+          "score": 0.7466138005256653,
+          "nli": [
+            0.32785317301750183,
+            0.41247686743736267,
+            0.2596700191497803
+          ],
+          "text": "Java: Java dominates Indonesia politically , economically and culturally ."
+        },
+        {
+          "doc": 7018,
+          "page_id": "Java",
+          "sent_id": 9,
+          "score": 0.7348330020904541,
+          "nli": [
+            0.02188071608543396,
+            0.012552774511277676,
+            0.9655665755271912
+          ],
+          "text": "Java: Formed mostly as the result of volcanic eruptions , Java is the 13th largest island in the world and the fifth largest in Indonesia ."
+        },
+        {
+          "doc": 7013,
+          "page_id": "Java",
+          "sent_id": 2,
+          "score": 0.7340553998947144,
+          "nli": [
+            0.7058110237121582,
+            0.2853127419948578,
+            0.008876177482306957
+          ],
+          "text": "Java: The Indonesian capital city , Jakarta , is located on western Java ."
+        }
+      ],
+      "gold_context": [
+        "Java: Java ( Indonesian : Jawa ; Javanese : \ua997\ua9ae ; Sundanese : ) is an island of Indonesia .",
+        "Island: An island or isle is any piece of sub-continental land that is surrounded by water ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-93782",
+      "claim": "SummerSlam is thrown by the WWE in arenas.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13658,
+          "page_id": "SummerSlam",
+          "sent_id": 0,
+          "score": 0.7880904674530029,
+          "nli": [
+            0.0009891432709991932,
+            0.9973478317260742,
+            0.0016629865858703852
+          ],
+          "text": "SummerSlam: SummerSlam is a professional wrestling pay-per-view ( PPV ) event , produced annually in August by professional wrestling promotion WWE ."
+        },
+        {
+          "doc": 13661,
+          "page_id": "SummerSlam",
+          "sent_id": 3,
+          "score": 0.7642712593078613,
+          "nli": [
+            0.0035192733630537987,
+            0.9960150122642517,
+            0.0004657033714465797
+          ],
+          "text": "SummerSlam: SummerSlam has been touted by WWE as their second biggest event of the year after WrestleMania ."
+        },
+        {
+          "doc": 13663,
+          "page_id": "SummerSlam",
+          "sent_id": 5,
+          "score": 0.7606780529022217,
+          "nli": [
+            0.012516126036643982,
+            0.9836554527282715,
+            0.0038284023758023977
+          ],
+          "text": "SummerSlam: Since 2015 , the event has took place at the Barclays Center in the New York City borough of Brooklyn ."
+        },
+        {
+          "doc": 13703,
+          "page_id": "SummerSlam_-LRB-2015-RRB-",
+          "sent_id": 1,
+          "score": 0.7586370706558228,
+          "nli": [
+            0.012258758768439293,
+            0.9853131175041199,
+            0.0024280783254653215
+          ],
+          "text": "SummerSlam (2015): It took place on August 23 , 2015 , at Barclays Center in Brooklyn , New York ."
+        },
+        {
+          "doc": 13660,
+          "page_id": "SummerSlam",
+          "sent_id": 2,
+          "score": 0.7581254839897156,
+          "nli": [
+            0.013155500404536724,
+            0.9779256582260132,
+            0.00891885906457901
+          ],
+          "text": "SummerSlam: The inaugural SummerSlam took place on August 29 , 1988 at Madison Square Garden in New York City and was broadcast via pay-per-view ."
+        }
+      ],
+      "gold_context": [
+        "SummerSlam: Since 2015 , the event has took place at the Barclays Center in the New York City borough of Brooklyn .",
+        "SummerSlam: From 2009 to 2014 , SummerSlam remained exclusive to Staples Center in Los Angeles .",
+        "SummerSlam: The inaugural SummerSlam took place on August 29 , 1988 at Madison Square Garden in New York City and was broadcast via pay-per-view ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-206441",
+      "claim": "Uta Hagan was born on June 12th, 1919.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 221286,
+          "page_id": "Elmo_N\u00fcganen",
+          "sent_id": 0,
+          "score": 0.6104773283004761,
+          "nli": [
+            0.0006193700828589499,
+            0.0014205239713191986,
+            0.997960090637207
+          ],
+          "text": "Elmo N\u00fcganen: Elmo N\u00fcganen , born 15 February 1962 in J\u00f5hvi , is an Estonian theatre director , film director and actor ."
+        },
+        {
+          "doc": 15652,
+          "page_id": "Uta_Hagen",
+          "sent_id": 0,
+          "score": 0.592032790184021,
+          "nli": [
+            0.5152852535247803,
+            0.47749263048171997,
+            0.007222076412290335
+          ],
+          "text": "Uta Hagen: Uta Thyra Hagen ( 12 June 1919 -- 14 January 2004 ) was an American actress and theatre practitioner ."
+        },
+        {
+          "doc": 86070,
+          "page_id": "Hiroki_Uchi",
+          "sent_id": 1,
+          "score": 0.5827701687812805,
+          "nli": [
+            0.0006595740560442209,
+            0.010691868141293526,
+            0.9886485934257507
+          ],
+          "text": "Hiroki Uchi: He was born in Habikino , Osaka Prefecture , Japan ."
+        },
+        {
+          "doc": 87886,
+          "page_id": "Gran_Hamada",
+          "sent_id": 0,
+          "score": 0.574229896068573,
+          "nli": [
+            0.002965414896607399,
+            0.07977356761693954,
+            0.9172609448432922
+          ],
+          "text": "Gran Hamada: , better known by his ring name , ( born November 27 , 1950 ) is a Japanese professional wrestler , the first to adopt the high-flying Mexican lucha libre style ."
+        },
+        {
+          "doc": 221476,
+          "page_id": "Zuzzurro",
+          "sent_id": 3,
+          "score": 0.5696598291397095,
+          "nli": [
+            0.061045173555612564,
+            0.08214525878429413,
+            0.8568096160888672
+          ],
+          "text": "Zuzzurro: Zuzzurro was born on 21 August 1946 in Varese ."
+        }
+      ],
+      "gold_context": [
+        "Uta Hagen: Uta Thyra Hagen ( 12 June 1919 -- 14 January 2004 ) was an American actress and theatre practitioner ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-180695",
+      "claim": "Cary Elwes was born in 1962.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 2678,
+          "page_id": "Cary_Elwes",
+          "sent_id": 0,
+          "score": 0.8657877445220947,
+          "nli": [
+            0.9899407029151917,
+            0.009587287902832031,
+            0.00047199235996231437
+          ],
+          "text": "Cary Elwes: Ivan Simon Cary Elwes ( [ \u02c8\u025blw\u026as ] born 26 October 1962 ) , known professionally as Cary Elwes , is an English actor and writer ."
+        },
+        {
+          "doc": 2679,
+          "page_id": "Cary_Elwes",
+          "sent_id": 1,
+          "score": 0.7257222533226013,
+          "nli": [
+            0.0011392117012292147,
+            0.9940832257270813,
+            0.0047775618731975555
+          ],
+          "text": "Cary Elwes: He is best known for his roles in films such as The Princess Bride , Glory , Robin Hood : Men in Tights , Days of Thunder , Bram Stoker 's Dracula , Hot Shots !"
+        },
+        {
+          "doc": 2680,
+          "page_id": "Cary_Elwes",
+          "sent_id": 2,
+          "score": 0.6870665550231934,
+          "nli": [
+            0.0005251372349448502,
+            0.9969817996025085,
+            0.002493086736649275
+          ],
+          "text": "Cary Elwes: , Twister , The Jungle Book , Liar , Liar , and Saw ."
+        },
+        {
+          "doc": 2681,
+          "page_id": "Cary_Elwes",
+          "sent_id": 3,
+          "score": 0.6841058731079102,
+          "nli": [
+            0.0004256180545780808,
+            0.997799813747406,
+            0.00177450489718467
+          ],
+          "text": "Cary Elwes: He has also had recurring roles in series such as The X-Files and Psych , and currently stars in the Crackle series The Art of More ."
+        },
+        {
+          "doc": 101164,
+          "page_id": "Amanda_Elwes",
+          "sent_id": 0,
+          "score": 0.6421542167663574,
+          "nli": [
+            0.001722407410852611,
+            0.002924196654930711,
+            0.9953534603118896
+          ],
+          "text": "Amanda Elwes: Amanda Elwes ( born 25 July 1964 ) is an English actress ."
+        }
+      ],
+      "gold_context": [
+        "Cary Elwes: Ivan Simon Cary Elwes ( [ \u02c8\u025blw\u026as ] born 26 October 1962 ) , known professionally as Cary Elwes , is an English actor and writer ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-124719",
+      "claim": "Louie (season 1) is a comedy-drama television show.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 8597,
+          "page_id": "Louie_-LRB-season_1-RRB-",
+          "sent_id": 12,
+          "score": 0.8250288963317871,
+          "nli": [
+            0.007492669392377138,
+            0.9919446110725403,
+            0.0005627374048344791
+          ],
+          "text": "Louie (season 1): The season received critical acclaim ."
+        },
+        {
+          "doc": 8589,
+          "page_id": "Louie_-LRB-season_1-RRB-",
+          "sent_id": 0,
+          "score": 0.8088006973266602,
+          "nli": [
+            0.04652027785778046,
+            0.010846404358744621,
+            0.942633330821991
+          ],
+          "text": "Louie (season 1): The first season of the American television comedy series Louie premiered on June 29 , 2010 and concluded on September 7 , 2010 ."
+        },
+        {
+          "doc": 8596,
+          "page_id": "Louie_-LRB-season_1-RRB-",
+          "sent_id": 9,
+          "score": 0.7546558380126953,
+          "nli": [
+            0.2805975079536438,
+            0.34530410170555115,
+            0.37409839034080505
+          ],
+          "text": "Louie (season 1): The show has a loose format atypical for television comedy series , consisting of largely unconnected storylines and segments ( described as `` extended vignettes '' ) that revolve around Louie 's life , punctuated by live stand-up performances ."
+        },
+        {
+          "doc": 8591,
+          "page_id": "Louie_-LRB-season_1-RRB-",
+          "sent_id": 2,
+          "score": 0.7380118370056152,
+          "nli": [
+            0.008480258285999298,
+            0.990770697593689,
+            0.0007489995914511383
+          ],
+          "text": "Louie (season 1): FX broadcast the first season on Tuesdays at 11:00 pm in the United States ."
+        },
+        {
+          "doc": 8595,
+          "page_id": "Louie_-LRB-season_1-RRB-",
+          "sent_id": 8,
+          "score": 0.7368609309196472,
+          "nli": [
+            0.18894566595554352,
+            0.8080180883407593,
+            0.0030361798126250505
+          ],
+          "text": "Louie (season 1): C.K. stars as a fictionalized version of himself , a comedian and newly divorced father raising his two daughters in New York City ."
+        }
+      ],
+      "gold_context": [
+        "Louie (season 1): The first season of the American television comedy series Louie premiered on June 29 , 2010 and concluded on September 7 , 2010 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-1423",
+      "claim": "Roberto Orci wrote Star Trek.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12213,
+          "page_id": "Roberto_Orci",
+          "sent_id": 0,
+          "score": 0.7860502600669861,
+          "nli": [
+            0.0002388891443843022,
+            0.9771602153778076,
+            0.022600863128900528
+          ],
+          "text": "Roberto Orci: Roberto Gaston Orci ( born July 20 , 1973 ) is a Mexican-American film and television screenwriter and producer ."
+        },
+        {
+          "doc": 13464,
+          "page_id": "Star_Trek_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.7666764259338379,
+          "nli": [
+            0.9755536317825317,
+            0.019367018714547157,
+            0.0050793979316949844
+          ],
+          "text": "Star Trek (film): Star Trek is a 2009 American science fiction adventure film directed by J. J. Abrams and written by Roberto Orci and Alex Kurtzman ."
+        },
+        {
+          "doc": 12222,
+          "page_id": "Roberto_Orci",
+          "sent_id": 11,
+          "score": 0.7605798840522766,
+          "nli": [
+            0.021615242585539818,
+            0.09965547919273376,
+            0.8787292838096619
+          ],
+          "text": "Roberto Orci: In April 2014 , Orci and Kurtzman announced that they would only collaborate in television projects , and Orci worked on the third Star Trek film , Star Trek Beyond , until being replaced the following December ."
+        },
+        {
+          "doc": 13473,
+          "page_id": "Star_Trek_-LRB-film-RRB-",
+          "sent_id": 11,
+          "score": 0.7433044910430908,
+          "nli": [
+            0.8853919506072998,
+            0.08530104160308838,
+            0.02930702641606331
+          ],
+          "text": "Star Trek (film): Orci and Kurtzman , both fans of Star Trek , were approached to write the film , and J. J. Abrams was approached to direct it ."
+        },
+        {
+          "doc": 12216,
+          "page_id": "Roberto_Orci",
+          "sent_id": 3,
+          "score": 0.7164484262466431,
+          "nli": [
+            0.000841807690449059,
+            0.002938197460025549,
+            0.996220052242279
+          ],
+          "text": "Roberto Orci: In 2008 , together with J. J. Abrams , they created Fringe ."
+        }
+      ],
+      "gold_context": [
+        "Roberto Orci: He and Kurtzman since returned to working with Abrams on Mission : Impossible III and both Star Trek and Star Trek Into Darkness .",
+        "Star Trek (film): Star Trek is a 2009 American science fiction adventure film directed by J. J. Abrams and written by Roberto Orci and Alex Kurtzman .",
+        "Star Trek Into Darkness: Star Trek Into Darkness is a 2013 American science fiction action film directed by J. J. Abrams and written by Roberto Orci , Alex Kurtzman , and Damon Lindelof .",
+        "Roberto Orci: In April 2014 , Orci and Kurtzman announced that they would only collaborate in television projects , and Orci worked on the third Star Trek film , Star Trek Beyond , until being replaced the following December ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-27806",
+      "claim": "The Beguiled's script was written by an American.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14206,
+          "page_id": "The_Beguiled_-LRB-1971_film-RRB-",
+          "sent_id": 1,
+          "score": 0.7664058208465576,
+          "nli": [
+            0.00966805499047041,
+            0.0232378002256155,
+            0.9670941829681396
+          ],
+          "text": "The Beguiled (1971 film): The script was written by Albert Maltz and is based on the 1966 Southern Gothic novel written by Thomas P. Cullinan , originally titled A Painted Devil ."
+        },
+        {
+          "doc": 14205,
+          "page_id": "The_Beguiled_-LRB-1971_film-RRB-",
+          "sent_id": 0,
+          "score": 0.7266250848770142,
+          "nli": [
+            0.0015548977535218,
+            0.9965511560440063,
+            0.001893970649689436
+          ],
+          "text": "The Beguiled (1971 film): The Beguiled is a 1971 American drama film directed by Don Siegel , starring Clint Eastwood and Geraldine Page ."
+        },
+        {
+          "doc": 14207,
+          "page_id": "The_Beguiled_-LRB-1971_film-RRB-",
+          "sent_id": 2,
+          "score": 0.6777853965759277,
+          "nli": [
+            0.00965163018554449,
+            0.6994748711585999,
+            0.29087352752685547
+          ],
+          "text": "The Beguiled (1971 film): The film marks the third of five collaborations between Siegel and Eastwood , following Coogan 's Bluff ( 1968 ) and Two Mules for Sister Sara ( 1970 ) , and continuing with Dirty Harry ( 1971 ) and Escape from Alcatraz ( 1979 ) ."
+        },
+        {
+          "doc": 3596,
+          "page_id": "Dan_O'Bannon",
+          "sent_id": 3,
+          "score": 0.6441348791122437,
+          "nli": [
+            0.14321666955947876,
+            0.6795886158943176,
+            0.177194744348526
+          ],
+          "text": "Dan O'Bannon: O'Bannon is best known for having written the screenplay for Alien , adapted from a story he wrote with Ronald Shusett ."
+        },
+        {
+          "doc": 244024,
+          "page_id": "Glorifying_the_American_Girl",
+          "sent_id": 7,
+          "score": 0.6409235000610352,
+          "nli": [
+            0.002389148809015751,
+            0.01282762736082077,
+            0.9847832322120667
+          ],
+          "text": "Glorifying the American Girl: The script for the film was written by J.P. McEvoy and Millard Webb and directed by John W. Harkrider and Millard Webb ."
+        }
+      ],
+      "gold_context": [
+        "The Beguiled (1971 film): The script was written by Albert Maltz and is based on the 1966 Southern Gothic novel written by Thomas P. Cullinan , originally titled A Painted Devil .",
+        "Albert Maltz: Albert Maltz ( October 28 , 1908 -- April 26 , 1985 ) was an American playwright , fiction writer and screenwriter ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-16701",
+      "claim": "Lucy Hale was in American Juniors.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8827,
+          "page_id": "Lucy_Hale",
+          "sent_id": 2,
+          "score": 0.866188108921051,
+          "nli": [
+            0.9909204244613647,
+            0.008240684866905212,
+            0.0008389665163122118
+          ],
+          "text": "Lucy Hale: Hale first came to prominence as one of the five winners of the reality show American Juniors , a children 's spin off of American Idol ."
+        },
+        {
+          "doc": 8825,
+          "page_id": "Lucy_Hale",
+          "sent_id": 0,
+          "score": 0.773174524307251,
+          "nli": [
+            0.0009471052908338606,
+            0.9814335703849792,
+            0.01761929877102375
+          ],
+          "text": "Lucy Hale: Karen Lucille Hale ( born June 14 , 1989 ) is an American actress and singer ."
+        },
+        {
+          "doc": 8826,
+          "page_id": "Lucy_Hale",
+          "sent_id": 1,
+          "score": 0.7223162651062012,
+          "nli": [
+            0.0005034445784986019,
+            0.9880660772323608,
+            0.011430405080318451
+          ],
+          "text": "Lucy Hale: Earlier in her career , she was sometimes credited as Lucy Kate Hale ."
+        },
+        {
+          "doc": 8828,
+          "page_id": "Lucy_Hale",
+          "sent_id": 3,
+          "score": 0.6751126050949097,
+          "nli": [
+            0.000494633219204843,
+            0.0018217037431895733,
+            0.9976836442947388
+          ],
+          "text": "Lucy Hale: She is best known for her role as Aria Montgomery on the Freeform series Pretty Little Liars , which won her a People 's Choice Award for Favorite Cable TV Actress in 2014 ."
+        },
+        {
+          "doc": 68838,
+          "page_id": "Lucy_Ward_-LRB-footballer-RRB-",
+          "sent_id": 2,
+          "score": 0.6641813516616821,
+          "nli": [
+            0.0008190697408281267,
+            0.0010517063783481717,
+            0.9981291890144348
+          ],
+          "text": "Lucy Ward (footballer): She represented England at Under-21 level ."
+        }
+      ],
+      "gold_context": [
+        "Lucy Hale: Hale first came to prominence as one of the five winners of the reality show American Juniors , a children 's spin off of American Idol ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-190081",
+      "claim": "Terrence Howard reprised the role of James Rhodes in the video game adaptation.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14048,
+          "page_id": "Terrence_Howard",
+          "sent_id": 4,
+          "score": 0.920018196105957,
+          "nli": [
+            0.9949617385864258,
+            0.0047076488845050335,
+            0.00033052885555662215
+          ],
+          "text": "Terrence Howard: Howard played James Rhodes in Iron Man and reprised the role in the video game adaptation ."
+        },
+        {
+          "doc": 14050,
+          "page_id": "Terrence_Howard",
+          "sent_id": 6,
+          "score": 0.7191205024719238,
+          "nli": [
+            0.00026594960945658386,
+            0.0014674986014142632,
+            0.9982665181159973
+          ],
+          "text": "Terrence Howard: He currently stars as the lead character Lucious Lyon in the television series Empire ."
+        },
+        {
+          "doc": 14049,
+          "page_id": "Terrence_Howard",
+          "sent_id": 5,
+          "score": 0.6950024962425232,
+          "nli": [
+            0.0007055756286717951,
+            0.1494879275560379,
+            0.8498064875602722
+          ],
+          "text": "Terrence Howard: However , he was replaced by Don Cheadle for the future films ."
+        },
+        {
+          "doc": 14047,
+          "page_id": "Terrence_Howard",
+          "sent_id": 3,
+          "score": 0.6716288328170776,
+          "nli": [
+            0.005090294871479273,
+            0.4891970753669739,
+            0.505712628364563
+          ],
+          "text": "Terrence Howard: Howard has had prominent roles in many other movies including Winnie , Ray , Lackawanna Blues , Crash , Four Brothers , Get Rich or Die Tryin ' , Idlewild , August Rush , The Brave One and Prisoners ."
+        },
+        {
+          "doc": 14045,
+          "page_id": "Terrence_Howard",
+          "sent_id": 1,
+          "score": 0.6636133193969727,
+          "nli": [
+            0.0021191276609897614,
+            0.4182840585708618,
+            0.579596757888794
+          ],
+          "text": "Terrence Howard: Having his first major roles in the 1995 films Dead Presidents and Mr. Holland 's Opus , Howard broke into the mainstream with a succession of television and cinema roles between 2004 and 2006 ."
+        }
+      ],
+      "gold_context": [
+        "Terrence Howard: Howard played James Rhodes in Iron Man and reprised the role in the video game adaptation ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-196154",
+      "claim": "Jon Hamm received 16 Primetime Emmy Award nominations.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7620,
+          "page_id": "Jon_Hamm",
+          "sent_id": 14,
+          "score": 0.8721401691436768,
+          "nli": [
+            0.995415210723877,
+            0.004099940415471792,
+            0.0004849094548262656
+          ],
+          "text": "Jon Hamm: Hamm has received 16 Primetime Emmy Award nominations for his performances in Mad Men , 30 Rock ( 2006 -- 2013 ) , and Unbreakable Kimmy Schmidt ( 2015 -- present ) ."
+        },
+        {
+          "doc": 7615,
+          "page_id": "Jon_Hamm",
+          "sent_id": 7,
+          "score": 0.8073183298110962,
+          "nli": [
+            0.0010157956276088953,
+            0.9965946078300476,
+            0.0023896358907222748
+          ],
+          "text": "Jon Hamm: His performance earned him the Golden Globe Award for Best Actor in a Television Series -- Drama during 2008 and 2016 and the Primetime Emmy Award for Outstanding Lead Actor in a Drama Series during 2015 ."
+        },
+        {
+          "doc": 370,
+          "page_id": "66th_Primetime_Emmy_Awards",
+          "sent_id": 3,
+          "score": 0.7106952667236328,
+          "nli": [
+            0.00018255552276968956,
+            0.9970170259475708,
+            0.002800415735691786
+          ],
+          "text": "66th Primetime Emmy Awards: The nominations were announced on July 10 , 2014 ."
+        },
+        {
+          "doc": 7614,
+          "page_id": "Jon_Hamm",
+          "sent_id": 6,
+          "score": 0.710351824760437,
+          "nli": [
+            0.0003273280744906515,
+            0.9988905787467957,
+            0.0007821579929441214
+          ],
+          "text": "Jon Hamm: He gained wide recognition when Mad Men began broadcast during July 2007 ."
+        },
+        {
+          "doc": 7485,
+          "page_id": "John_Slattery",
+          "sent_id": 2,
+          "score": 0.7075187563896179,
+          "nli": [
+            0.0005983096198178828,
+            0.002829398028552532,
+            0.9965723752975464
+          ],
+          "text": "John Slattery: He has received four Primetime Emmy Awards nominations and two Critics ' Choice Television Awards for Mad Men ."
+        }
+      ],
+      "gold_context": [
+        "Jon Hamm: Hamm has received 16 Primetime Emmy Award nominations for his performances in Mad Men , 30 Rock ( 2006 -- 2013 ) , and Unbreakable Kimmy Schmidt ( 2015 -- present ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-48658",
+      "claim": "The Danish language is spoken in Sweden.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 3491,
+          "page_id": "Danish_language",
+          "sent_id": 0,
+          "score": 0.8300961256027222,
+          "nli": [
+            0.0011136364191770554,
+            0.7553354501724243,
+            0.24355091154575348
+          ],
+          "text": "Danish language: Danish [ \u02c8de\u026an\u1d7b\u0283 ] ( dansk [ \u02c8d\u0325an\u02c0s\u0261\u030a ] ; dansk sprog , [ \u02c8d\u0325an\u02c0s\u0261\u030a \u02c8sb\u0325\u0281\u0254\u028a\u032f\u02c0 ] ) is a North Germanic language spoken by around six million people , principally in Denmark and in the region of Southern Schleswig in northern Germany , where it has minority language status ."
+        },
+        {
+          "doc": 3494,
+          "page_id": "Danish_language",
+          "sent_id": 5,
+          "score": 0.8091995716094971,
+          "nli": [
+            0.0002083225699607283,
+            0.996240496635437,
+            0.0035511446185410023
+          ],
+          "text": "Danish language: Along with the other North Germanic languages , Danish is a descendant of Old Norse , the common language of the Germanic peoples that lived in Scandinavia during the Viking Era ."
+        },
+        {
+          "doc": 3496,
+          "page_id": "Danish_language",
+          "sent_id": 7,
+          "score": 0.8069847226142883,
+          "nli": [
+            0.010829825885593891,
+            0.27524334192276,
+            0.7139268517494202
+          ],
+          "text": "Danish language: A more recent classification based on mutual intelligibility separates modern spoken Danish , Norwegian and Swedish as Mainland Scandinavian while Icelandic and Faroese are classified as Insular Scandinavian ."
+        },
+        {
+          "doc": 3492,
+          "page_id": "Danish_language",
+          "sent_id": 1,
+          "score": 0.7991515398025513,
+          "nli": [
+            0.44622862339019775,
+            0.23566320538520813,
+            0.3181081712245941
+          ],
+          "text": "Danish language: There are also minor Danish-speaking communities in Norway , Sweden , Spain , the United States , Canada , Brazil and Argentina ."
+        },
+        {
+          "doc": 12552,
+          "page_id": "Scandinavia",
+          "sent_id": 21,
+          "score": 0.7967818975448608,
+          "nli": [
+            0.0276909489184618,
+            0.9223871231079102,
+            0.04992196336388588
+          ],
+          "text": "Scandinavia: The Danish , Norwegian and Swedish languages form a dialect continuum and are known as the Scandinavian languages -- all of which are considered mutually intelligible with one another ."
+        }
+      ],
+      "gold_context": [
+        "Danish language: There are also minor Danish-speaking communities in Norway , Sweden , Spain , the United States , Canada , Brazil and Argentina .",
+        "Sweden: Sweden ( Konungariket Sverige ) , is a Scandinavian country in Northern Europe .",
+        "Danish language: Following the loss of territory to Germany and Sweden , a nationalist movement adopted the language as a token of Danish identity , and the language experienced a strong surge in use and popularity with major works of literature produced in the 18th and 19th centuries ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-34309",
+      "claim": "Theresa May served as a councillor.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14338,
+          "page_id": "Theresa_May",
+          "sent_id": 0,
+          "score": 0.7612926363945007,
+          "nli": [
+            0.0005957761313766241,
+            0.0012200679630041122,
+            0.9981841444969177
+          ],
+          "text": "Theresa May: Theresa Mary May ( n\u00e9e Brasier ; born 1 October 1956 ) is a British politician who has served as Prime Minister of the United Kingdom since 2016 ."
+        },
+        {
+          "doc": 14344,
+          "page_id": "Theresa_May",
+          "sent_id": 8,
+          "score": 0.7606099843978882,
+          "nli": [
+            0.0006246577249839902,
+            0.0026765449438244104,
+            0.996698796749115
+          ],
+          "text": "Theresa May: From 1999 to 2010 , May held a number of roles in the Shadow Cabinets of William Hague , Iain Duncan Smith , Michael Howard and David Cameron , including Shadow Transport Secretary and Shadow Work and Pensions Secretary ."
+        },
+        {
+          "doc": 14342,
+          "page_id": "Theresa_May",
+          "sent_id": 6,
+          "score": 0.7562031745910645,
+          "nli": [
+            0.986873209476471,
+            0.012230302207171917,
+            0.0008964035660028458
+          ],
+          "text": "Theresa May: From 1977 until 1983 , she worked for the Bank of England , and from 1985 until 1997 at the Association for Payment Clearing Services , also serving as a councillor for Durnsford in Merton ."
+        },
+        {
+          "doc": 14339,
+          "page_id": "Theresa_May",
+          "sent_id": 1,
+          "score": 0.7525086998939514,
+          "nli": [
+            0.00046749430475756526,
+            0.0016381017630919814,
+            0.9978944659233093
+          ],
+          "text": "Theresa May: She has been the Member of Parliament ( MP ) for Maidenhead since 1997 and Leader of the Conservative Party since July 2016 ."
+        },
+        {
+          "doc": 14340,
+          "page_id": "Theresa_May",
+          "sent_id": 2,
+          "score": 0.7490586042404175,
+          "nli": [
+            0.0002937865792773664,
+            0.0015022052684798837,
+            0.9982039928436279
+          ],
+          "text": "Theresa May: She is the second female Prime Minister and Conservative leader after Margaret Thatcher ."
+        }
+      ],
+      "gold_context": [
+        "Theresa May: From 1977 until 1983 , she worked for the Bank of England , and from 1985 until 1997 at the Association for Payment Clearing Services , also serving as a councillor for Durnsford in Merton ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-160850",
+      "claim": "Jarhead was directed by Sam Mendes.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7435,
+          "page_id": "Jarhead_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.8085365891456604,
+          "nli": [
+            0.9945464134216309,
+            0.004926700610667467,
+            0.0005269329412840307
+          ],
+          "text": "Jarhead (film): Jarhead is a 2005 American biographical war drama film based on U.S. Marine Anthony Swofford 's 2003 memoir of the same name , directed by Sam Mendes , starring Jake Gyllenhaal as Swofford with Jamie Foxx , Peter Sarsgaard and Chris Cooper ."
+        },
+        {
+          "doc": 7436,
+          "page_id": "Jarhead_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 0.669529378414154,
+          "nli": [
+            0.0002941578277386725,
+            0.9975152015686035,
+            0.0021905957255512476
+          ],
+          "text": "Jarhead (film): The title comes from the slang term used to refer to United States Marines ."
+        },
+        {
+          "doc": 9373,
+          "page_id": "Menace_II_Society",
+          "sent_id": 0,
+          "score": 0.6428663730621338,
+          "nli": [
+            0.0002514133811928332,
+            0.0010502527002245188,
+            0.9986982345581055
+          ],
+          "text": "Menace II Society: Menace II Society ( pronounced Menace to Society ) is a 1993 American hood drama thriller film directed by Allen and Albert Hughes in their directorial debut , and starring Tyrin Turner , Jada Pinkett , Larenz Tate and Samuel L. Jackson ."
+        },
+        {
+          "doc": 76908,
+          "page_id": "Loggerheads_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.6129542589187622,
+          "nli": [
+            0.00032806003582663834,
+            0.0005012098117731512,
+            0.9991707801818848
+          ],
+          "text": "Loggerheads (film): Loggerheads is an independent film written and directed by Tim Kirkman , produced by Gill Holland and released in the United States by Strand Releasing in October 2005 ."
+        },
+        {
+          "doc": 4680,
+          "page_id": "Eva_Mendes",
+          "sent_id": 2,
+          "score": 0.5994089841842651,
+          "nli": [
+            0.0008203720790334046,
+            0.018799657002091408,
+            0.9803799390792847
+          ],
+          "text": "Eva Mendes: Since then , Mendes has co-starred in films such as All About the Benjamins , 2 Fast 2 Furious , Ghost Rider , We Own the Night , Stuck on You , Hitch , and The Other Guys ."
+        }
+      ],
+      "gold_context": [
+        "Jarhead (film): Jarhead is a 2005 American biographical war drama film based on U.S. Marine Anthony Swofford 's 2003 memoir of the same name , directed by Sam Mendes , starring Jake Gyllenhaal as Swofford with Jamie Foxx , Peter Sarsgaard and Chris Cooper ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-225792",
+      "claim": "Chinatown's screenplay had a writer.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12238,
+          "page_id": "Robert_Towne",
+          "sent_id": 2,
+          "score": 0.7161619067192078,
+          "nli": [
+            0.9906874299049377,
+            0.007834643125534058,
+            0.0014778474578633904
+          ],
+          "text": "Robert Towne: He is best-known for his Academy Award-winning original screenplay for Roman Polanski 's Chinatown ( 1974 ) , which is widely considered one of the greatest screenplays ever written ."
+        },
+        {
+          "doc": 2754,
+          "page_id": "Chinatown_-LRB-1974_film-RRB-",
+          "sent_id": 7,
+          "score": 0.7072421312332153,
+          "nli": [
+            0.9131401181221008,
+            0.08518446236848831,
+            0.0016754940152168274
+          ],
+          "text": "Chinatown (1974 film): The Golden Globe Awards honored it for Best Drama , Best Director , Best Actor and Best Screenplay ."
+        },
+        {
+          "doc": 2749,
+          "page_id": "Chinatown_-LRB-1974_film-RRB-",
+          "sent_id": 0,
+          "score": 0.6905908584594727,
+          "nli": [
+            0.9766628742218018,
+            0.012561365030705929,
+            0.010775827802717686
+          ],
+          "text": "Chinatown (1974 film): Chinatown is a 1974 American neo-noir mystery film , directed by Roman Polanski from a screenplay by Robert Towne , starring Jack Nicholson and Faye Dunaway ."
+        },
+        {
+          "doc": 14823,
+          "page_id": "The_X-Files_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 0.6742733716964722,
+          "nli": [
+            0.0026250651571899652,
+            0.004452323541045189,
+            0.9929225444793701
+          ],
+          "text": "The X-Files (film): Chris Carter wrote the screenplay ."
+        },
+        {
+          "doc": 2753,
+          "page_id": "Chinatown_-LRB-1974_film-RRB-",
+          "sent_id": 6,
+          "score": 0.6708892583847046,
+          "nli": [
+            0.986535370349884,
+            0.01220821775496006,
+            0.0012563158525153995
+          ],
+          "text": "Chinatown (1974 film): At the 47th Academy Awards , it was nominated for eleven Oscars , with Towne winning Best Original Screenplay ."
+        }
+      ],
+      "gold_context": [
+        "Chinatown (1974 film): Chinatown is a 1974 American neo-noir mystery film , directed by Roman Polanski from a screenplay by Robert Towne , starring Jack Nicholson and Faye Dunaway .",
+        "Robert Towne: Robert Towne ( born Robert Bertram Schwartz ; November 23 , 1934 ) is an American screenwriter , producer , director and actor ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-67274",
+      "claim": "Grease's soundtrack sold second-best as album of the year and gained much fame.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5555,
+          "page_id": "Grease_-LRB-film-RRB-",
+          "sent_id": 4,
+          "score": 0.8402714133262634,
+          "nli": [
+            0.0002088975888909772,
+            0.9989903569221497,
+            0.0008007863652892411
+          ],
+          "text": "Grease (film): Its soundtrack album ended 1978 as the second-best selling album of the year in the United States , behind the soundtrack of Saturday Night Fever ."
+        },
+        {
+          "doc": 5492,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 3,
+          "score": 0.8090437054634094,
+          "nli": [
+            0.00017291100812144578,
+            0.9974260926246643,
+            0.0024009901098906994
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: It sold 28 million copies worldwide ."
+        },
+        {
+          "doc": 5554,
+          "page_id": "Grease_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 0.7674320936203003,
+          "nli": [
+            0.00044248515041545033,
+            0.9956557750701904,
+            0.003901688614860177
+          ],
+          "text": "Grease (film): Grease was successful both critically and commercially ."
+        },
+        {
+          "doc": 5490,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 1,
+          "score": 0.7669291496276855,
+          "nli": [
+            0.0001657463435549289,
+            0.9980747699737549,
+            0.0017594617092981935
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: It was originally released by RSO Records ."
+        },
+        {
+          "doc": 5489,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 0,
+          "score": 0.7149409055709839,
+          "nli": [
+            0.0002187422796851024,
+            0.998166561126709,
+            0.0016147212591022253
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: Grease : The Original Soundtrack from the Motion Picture is the original motion picture soundtrack for the 1978 film Grease ."
+        }
+      ],
+      "gold_context": [
+        "Grease (film): Its soundtrack album ended 1978 as the second-best selling album of the year in the United States , behind the soundtrack of Saturday Night Fever .",
+        "Grease: The Original Soundtrack from the Motion Picture: The song `` You 're the One That I Want '' was a US and UK # 1 for stars John Travolta and Olivia Newton-John ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-109728",
+      "claim": "Two and a Half Men starred Angus T. Jones in 2005.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1022,
+          "page_id": "Angus_T._Jones",
+          "sent_id": 1,
+          "score": 0.8097266554832458,
+          "nli": [
+            0.003142290748655796,
+            0.9776839017868042,
+            0.019173821434378624
+          ],
+          "text": "Angus T. Jones: Jones is best known for playing Jake Harper in the CBS sitcom Two and a Half Men , for which he had won two Young Artist and a TV Land Award during his 10-year tenure as one of the show 's main characters ."
+        },
+        {
+          "doc": 15606,
+          "page_id": "Two_and_a_Half_Men",
+          "sent_id": 1,
+          "score": 0.7655488848686218,
+          "nli": [
+            0.0029831689316779375,
+            0.7831299901008606,
+            0.21388684213161469
+          ],
+          "text": "Two and a Half Men: Originally starring Charlie Sheen , Jon Cryer , and Angus T. Jones , the series was about a hedonistic jingle writer , Charlie Harper ; his uptight brother Alan ; and Alan 's troublesome son Jake ."
+        },
+        {
+          "doc": 15608,
+          "page_id": "Two_and_a_Half_Men",
+          "sent_id": 5,
+          "score": 0.7122578620910645,
+          "nli": [
+            0.0007759909494780004,
+            0.008209338411688805,
+            0.9910146594047546
+          ],
+          "text": "Two and a Half Men: In 2010 , CBS and Warner Bros. ."
+        },
+        {
+          "doc": 15613,
+          "page_id": "Two_and_a_Half_Men",
+          "sent_id": 12,
+          "score": 0.6843058466911316,
+          "nli": [
+            0.0031571765430271626,
+            0.027866143733263016,
+            0.9689767360687256
+          ],
+          "text": "Two and a Half Men: In April 2013 , CBS renewed the series for an eleventh season after closing one-year deals with Kutcher and Cryer ."
+        },
+        {
+          "doc": 1021,
+          "page_id": "Angus_T._Jones",
+          "sent_id": 0,
+          "score": 0.6836143136024475,
+          "nli": [
+            0.0040738643147051334,
+            0.9775610566139221,
+            0.01836508698761463
+          ],
+          "text": "Angus T. Jones: Angus Turner Jones ( born October 8 , 1993 ) is an American actor ."
+        }
+      ],
+      "gold_context": [
+        "Two and a Half Men: Originally starring Charlie Sheen , Jon Cryer , and Angus T. Jones , the series was about a hedonistic jingle writer , Charlie Harper ; his uptight brother Alan ; and Alan 's troublesome son Jake .",
+        "Angus T. Jones: Jones is best known for playing Jake Harper in the CBS sitcom Two and a Half Men , for which he had won two Young Artist and a TV Land Award during his 10-year tenure as one of the show 's main characters ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-21959",
+      "claim": "The Incredibles 2 is scheduled to be released at 2 p. m. on June 15, 2018.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14745,
+          "page_id": "The_Incredibles_2",
+          "sent_id": 3,
+          "score": 0.9273717999458313,
+          "nli": [
+            0.0004013738944195211,
+            0.9957979321479797,
+            0.003800699021667242
+          ],
+          "text": "The Incredibles 2: The movie is scheduled to be released on June 15 , 2018 and will be given an IMAX release ."
+        },
+        {
+          "doc": 14742,
+          "page_id": "The_Incredibles_2",
+          "sent_id": 0,
+          "score": 0.8431856036186218,
+          "nli": [
+            0.0006912953685969114,
+            0.998448371887207,
+            0.0008603308815509081
+          ],
+          "text": "The Incredibles 2: The Incredibles 2 is an upcoming 2018 American 3D computer-animated superhero film , and is the sequel to The Incredibles ( 2004 ) ."
+        },
+        {
+          "doc": 14743,
+          "page_id": "The_Incredibles_2",
+          "sent_id": 1,
+          "score": 0.8218599557876587,
+          "nli": [
+            0.0003308346786070615,
+            0.997829258441925,
+            0.0018398495158180594
+          ],
+          "text": "The Incredibles 2: It is in production by Pixar Animation Studios , and will be released by Walt Disney Pictures ."
+        },
+        {
+          "doc": 14744,
+          "page_id": "The_Incredibles_2",
+          "sent_id": 2,
+          "score": 0.7251466512680054,
+          "nli": [
+            0.0006242882227525115,
+            0.9980565905570984,
+            0.0013190394965931773
+          ],
+          "text": "The Incredibles 2: It is being written and directed by Brad Bird , the writer and director of the first film ."
+        },
+        {
+          "doc": 5028,
+          "page_id": "Frozen_-LRB-2013_film-RRB-",
+          "sent_id": 24,
+          "score": 0.6989082098007202,
+          "nli": [
+            0.0023692408576607704,
+            0.011469805613160133,
+            0.9861608743667603
+          ],
+          "text": "Frozen (2013 film): It is set for release on November 27 , 2019 ."
+        }
+      ],
+      "gold_context": [
+        "The Incredibles 2: The movie is scheduled to be released on June 15 , 2018 and will be given an IMAX release ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-57374",
+      "claim": "The Paper was directed by Ron Howard.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14938,
+          "page_id": "The_Paper_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.7257652282714844,
+          "nli": [
+            0.9948021173477173,
+            0.004734554328024387,
+            0.0004633228527382016
+          ],
+          "text": "The Paper (film): The Paper is a 1994 American comedy-drama film directed by Ron Howard and starring Michael Keaton , Glenn Close , Marisa Tomei , Randy Quaid and Robert Duvall ."
+        },
+        {
+          "doc": 1133,
+          "page_id": "Arrested_Development_-LRB-TV_series-RRB-",
+          "sent_id": 5,
+          "score": 0.6408671140670776,
+          "nli": [
+            0.0009100254974327981,
+            0.005016580689698458,
+            0.9940734505653381
+          ],
+          "text": "Arrested Development (TV series): Ron Howard serves as both an executive producer and the series ' uncredited narrator ."
+        },
+        {
+          "doc": 185520,
+          "page_id": "W._Davis_Merritt",
+          "sent_id": 1,
+          "score": 0.6310297250747681,
+          "nli": [
+            0.0003621162904892117,
+            0.0013065802631899714,
+            0.9983312487602234
+          ],
+          "text": "W. Davis Merritt: He is considered one of the fathers of public journalism , a reform movement that urged journalists to do their jobs in ways that could help citizens engage in public life rather than discouraging them ."
+        },
+        {
+          "doc": 174801,
+          "page_id": "Howard_Paul",
+          "sent_id": 6,
+          "score": 0.6282651424407959,
+          "nli": [
+            0.009598441421985626,
+            0.5772528052330017,
+            0.41314876079559326
+          ],
+          "text": "Howard Paul: Howard R. Paul , American businessman and musician"
+        },
+        {
+          "doc": 215250,
+          "page_id": "Single-celling",
+          "sent_id": 1,
+          "score": 0.6173838376998901,
+          "nli": [
+            0.0005815838230773807,
+            0.0019050786504521966,
+            0.9975132942199707
+          ],
+          "text": "Single-celling: John Howard has been credited as establishing the practice of single-celling in the United Kingdom and , by extension , in the United States ."
+        }
+      ],
+      "gold_context": [
+        "The Paper (film): The Paper is a 1994 American comedy-drama film directed by Ron Howard and starring Michael Keaton , Glenn Close , Marisa Tomei , Randy Quaid and Robert Duvall ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-217177",
+      "claim": "The Pakistan Movement resulted from a series of transformations in Pakistan.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10764,
+          "page_id": "Pakistan_Movement",
+          "sent_id": 13,
+          "score": 0.9024723172187805,
+          "nli": [
+            0.9956405162811279,
+            0.004104875028133392,
+            0.0002545907045714557
+          ],
+          "text": "Pakistan Movement: The Pakistan Movement was the result of a series of social , political , and intellectual transformations in Pakistani society , government , and ways of thinking ."
+        },
+        {
+          "doc": 10760,
+          "page_id": "Pakistan_Movement",
+          "sent_id": 7,
+          "score": 0.7962137460708618,
+          "nli": [
+            0.03914138302206993,
+            0.956680417060852,
+            0.004178178962320089
+          ],
+          "text": "Pakistan Movement: Muhammad Ali Jinnah 's constitutional struggle further helped gaining public support for the movement in the four provinces ."
+        },
+        {
+          "doc": 10755,
+          "page_id": "Pakistan_Movement",
+          "sent_id": 0,
+          "score": 0.7865336537361145,
+          "nli": [
+            0.0015413970686495304,
+            0.9840468764305115,
+            0.014411705546081066
+          ],
+          "text": "Pakistan Movement: The Pakistan Movement or Tehrik-e-Pakistan ( [ -- ) was a religious political movement in the 1940s that aimed for and succeeded in the creation of Pakistan from the Muslim-majority areas of British Indian Empire ."
+        },
+        {
+          "doc": 10763,
+          "page_id": "Pakistan_Movement",
+          "sent_id": 12,
+          "score": 0.7855768799781799,
+          "nli": [
+            0.0053405677899718285,
+            0.9844951033592224,
+            0.0101643530651927
+          ],
+          "text": "Pakistan Movement: The Pakistan Movement was led by a large and diversified group of people whose struggle ultimately resulted in the British Empire announcing the Indian Independence Act 1947 , which created the independent dominions of India and Pakistan ."
+        },
+        {
+          "doc": 10756,
+          "page_id": "Pakistan_Movement",
+          "sent_id": 3,
+          "score": 0.7775505781173706,
+          "nli": [
+            0.002513388404622674,
+            0.16504235565662384,
+            0.8324442505836487
+          ],
+          "text": "Pakistan Movement: The movement progressed within India alongside the Indian independence movement , but the Pakistan Movement sought to establish a new nation-state that protected the religious identity and political interests of Muslims in South Asia ."
+        }
+      ],
+      "gold_context": [
+        "Pakistan Movement: The Pakistan Movement was the result of a series of social , political , and intellectual transformations in Pakistani society , government , and ways of thinking .",
+        "Pakistan Movement: The Pakistan Movement was led by a large and diversified group of people whose struggle ultimately resulted in the British Empire announcing the Indian Independence Act 1947 , which created the independent dominions of India and Pakistan ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-224141",
+      "claim": "Celebrity Rehab with Dr. Drew was later known by another name.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 2744,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 0,
+          "score": 0.8197691440582275,
+          "nli": [
+            0.9873859882354736,
+            0.009428093209862709,
+            0.003185893641784787
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: Celebrity Rehab with Dr. Drew , later called simply Rehab with Dr. Drew , is a reality television show that aired on the cable network VH1 in which many of the episodes chronicle a group of well-known people as they are treated for alcohol and drug addiction by Dr. Drew Pinsky and his staff at the Pasadena Recovery Center in Pasadena , California ."
+        },
+        {
+          "doc": 2746,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 4,
+          "score": 0.8157617449760437,
+          "nli": [
+            0.8345056772232056,
+            0.06504515558481216,
+            0.10044918954372406
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: The sixth season , which filmed in early 2012 , featured non-celebrities as treatment subjects , and the series name shortened to Rehab with Dr. Drew ."
+        },
+        {
+          "doc": 2747,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 5,
+          "score": 0.7562083005905151,
+          "nli": [
+            0.005616036709398031,
+            0.8499329686164856,
+            0.14445103704929352
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: Season 6 premiered on September 16 , 2012 ."
+        },
+        {
+          "doc": 2745,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 1,
+          "score": 0.7328939437866211,
+          "nli": [
+            0.0016105908434838057,
+            0.9528082013130188,
+            0.045581258833408356
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: The first five seasons of the series , on which Pinsky also serves as executive producer , cast celebrities struggling with addiction , with the first season premiering on January 10 , 2008 , and the fifth airing in 2011 ."
+        },
+        {
+          "doc": 2748,
+          "page_id": "Celebrity_Rehab_with_Dr._Drew",
+          "sent_id": 6,
+          "score": 0.6994252800941467,
+          "nli": [
+            0.010789148509502411,
+            0.9413271546363831,
+            0.04788370057940483
+          ],
+          "text": "Celebrity Rehab with Dr. Drew: In May 2013 , Pinsky announced that season six was the final season , explaining that he was tired of the criticism leveled at him after celebrities he treated had relapsed into addiction and died ."
+        }
+      ],
+      "gold_context": [
+        "Celebrity Rehab with Dr. Drew: Celebrity Rehab with Dr. Drew , later called simply Rehab with Dr. Drew , is a reality television show that aired on the cable network VH1 in which many of the episodes chronicle a group of well-known people as they are treated for alcohol and drug addiction by Dr. Drew Pinsky and his staff at the Pasadena Recovery Center in Pasadena , California ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107124",
+      "claim": "Key & Peele has won a car.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 7975,
+          "page_id": "Key_&_Peele",
+          "sent_id": 10,
+          "score": 0.7541608810424805,
+          "nli": [
+            0.001891695661470294,
+            0.19361883401870728,
+            0.8044894933700562
+          ],
+          "text": "Key & Peele: Key & Peele won a Peabody Award and two Primetime Emmy Awards and has been nominated for various other awards , including Writers Guild Award , NAACP Image Award and 16 additional Primetime Emmy Awards in various categories ."
+        },
+        {
+          "doc": 7970,
+          "page_id": "Key_&_Peele",
+          "sent_id": 1,
+          "score": 0.6947295665740967,
+          "nli": [
+            0.0024039619602262974,
+            0.9604026079177856,
+            0.0371934249997139
+          ],
+          "text": "Key & Peele: Both Key and Peele previously worked on MADtv ."
+        },
+        {
+          "doc": 7969,
+          "page_id": "Key_&_Peele",
+          "sent_id": 0,
+          "score": 0.6771540641784668,
+          "nli": [
+            0.0033262516371905804,
+            0.9331488609313965,
+            0.06352483481168747
+          ],
+          "text": "Key & Peele: Key & Peele is an American sketch comedy television series created by Keegan-Michael Key and Jordan Peele for Comedy Central ."
+        },
+        {
+          "doc": 7974,
+          "page_id": "Key_&_Peele",
+          "sent_id": 7,
+          "score": 0.6583510637283325,
+          "nli": [
+            0.0007899453048594296,
+            0.962637722492218,
+            0.03657231107354164
+          ],
+          "text": "Key & Peele: A special entitled `` Key & Peele 's Super Bowl Special '' aired on January 30 , 2015 ."
+        },
+        {
+          "doc": 7973,
+          "page_id": "Key_&_Peele",
+          "sent_id": 6,
+          "score": 0.6523537635803223,
+          "nli": [
+            0.0006928645889274776,
+            0.9813592433929443,
+            0.017947912216186523
+          ],
+          "text": "Key & Peele: Key & Peele premiered on January 31 , 2012 and ended on September 9 , 2015 , with a total of 53 episodes , over the course of five seasons ."
+        }
+      ],
+      "gold_context": [
+        "Key & Peele: Key & Peele won a Peabody Award and two Primetime Emmy Awards and has been nominated for various other awards , including Writers Guild Award , NAACP Image Award and 16 additional Primetime Emmy Awards in various categories ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-50223",
+      "claim": "Doxycycline may not cause diarrhea.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 3924,
+          "page_id": "Doxycycline",
+          "sent_id": 6,
+          "score": 0.8349334001541138,
+          "nli": [
+            0.002394413575530052,
+            0.7930393218994141,
+            0.2045663446187973
+          ],
+          "text": "Doxycycline: Common side effects include diarrhea , nausea , vomiting , a red rash , and an increased risk of a sunburn ."
+        },
+        {
+          "doc": 3925,
+          "page_id": "Doxycycline",
+          "sent_id": 7,
+          "score": 0.7688261270523071,
+          "nli": [
+            0.0011249217204749584,
+            0.9739747643470764,
+            0.024900341406464577
+          ],
+          "text": "Doxycycline: If used during pregnancy or in young children may result in permanent problems with the teeth including changes in their color ."
+        },
+        {
+          "doc": 3926,
+          "page_id": "Doxycycline",
+          "sent_id": 8,
+          "score": 0.7627674341201782,
+          "nli": [
+            0.005732426885515451,
+            0.9907702803611755,
+            0.003497324651107192
+          ],
+          "text": "Doxycycline: Its use during breastfeeding is probably safe ."
+        },
+        {
+          "doc": 3920,
+          "page_id": "Doxycycline",
+          "sent_id": 0,
+          "score": 0.7493530511856079,
+          "nli": [
+            0.0009326774743385613,
+            0.9952166080474854,
+            0.003850769018754363
+          ],
+          "text": "Doxycycline: Doxycycline is an antibiotic that is used in the treatment of a number of types of infections caused by bacteria and protozoa ."
+        },
+        {
+          "doc": 3921,
+          "page_id": "Doxycycline",
+          "sent_id": 1,
+          "score": 0.7466601133346558,
+          "nli": [
+            0.0020477045327425003,
+            0.971487820148468,
+            0.026464425027370453
+          ],
+          "text": "Doxycycline: It is useful for bacterial pneumonia , acne , chlamydia infections , early Lyme disease , cholera and syphilis ."
+        }
+      ],
+      "gold_context": [
+        "Doxycycline: Common side effects include diarrhea , nausea , vomiting , a red rash , and an increased risk of a sunburn ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-135340",
+      "claim": "Moves Like Jagger is on Overexposed.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10787,
+          "page_id": "Overexposed_-LRB-album-RRB-",
+          "sent_id": 1,
+          "score": 0.8164417147636414,
+          "nli": [
+            0.9265570044517517,
+            0.04736306518316269,
+            0.026079852133989334
+          ],
+          "text": "Overexposed (album): The album was recorded between 2011 and 2012 and was driven after the moderate success of their third album , Hands All Over ( 2010 ) , and later by the enormous success of the re-released edition , which was promoted by the single `` Moves Like Jagger '' , recorded as a collaboration with Christina Aguilera ."
+        },
+        {
+          "doc": 9721,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 16,
+          "score": 0.7872251272201538,
+          "nli": [
+            0.0034761170390993357,
+            0.11206290125846863,
+            0.8844609260559082
+          ],
+          "text": "Moves like Jagger: The video features an old video footage of Jagger and his iconic dance moves ."
+        },
+        {
+          "doc": 9711,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 2,
+          "score": 0.7807173728942871,
+          "nli": [
+            0.004338685888797045,
+            0.9761215448379517,
+            0.019539818167686462
+          ],
+          "text": "Moves like Jagger: `` Moves Like Jagger '' is a dance-pop and electropop song and is backed by synths and electronic drums ."
+        },
+        {
+          "doc": 10792,
+          "page_id": "Overexposed_-LRB-album-RRB-",
+          "sent_id": 8,
+          "score": 0.7675446271896362,
+          "nli": [
+            0.9574506282806396,
+            0.03710626810789108,
+            0.005443119443953037
+          ],
+          "text": "Overexposed (album): Its title is a smirking allusion to Levine 's ubiquity , while its sound is a reflection of how the group wishes to retain the large audience they won once again with `` Moves Like Jagger '' ."
+        },
+        {
+          "doc": 9720,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 15,
+          "score": 0.7456334829330444,
+          "nli": [
+            0.006727722939103842,
+            0.3666044771671295,
+            0.6266677379608154
+          ],
+          "text": "Moves like Jagger: The music video was directed by Jonas \u00c5kerlund ."
+        }
+      ],
+      "gold_context": [
+        "Overexposed (album): The album was recorded between 2011 and 2012 and was driven after the moderate success of their third album , Hands All Over ( 2010 ) , and later by the enormous success of the re-released edition , which was promoted by the single `` Moves Like Jagger '' , recorded as a collaboration with Christina Aguilera .",
+        "Moves like Jagger: `` Moves Like Jagger '' is a song by American band Maroon 5 featuring recording artist Christina Aguilera , released by A&M Octone Records on June 21 , 2011 , as the fourth and final single from the re-release of the group 's third studio album Hands All Over ( 2010 ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-3598",
+      "claim": "Ice-T began his career as a rapper in 1984.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 6476,
+          "page_id": "Ice-T",
+          "sent_id": 1,
+          "score": 0.8388170003890991,
+          "nli": [
+            0.14631225168704987,
+            0.8327184915542603,
+            0.02096920646727085
+          ],
+          "text": "Ice-T: He began his career as a rapper in the 1980s and was signed to Sire Records in 1987 , when he released his debut album Rhyme Pays , one of the first hip-hop albums to carry an explicit content sticker ."
+        },
+        {
+          "doc": 6475,
+          "page_id": "Ice-T",
+          "sent_id": 0,
+          "score": 0.784574031829834,
+          "nli": [
+            0.00044894524035044014,
+            0.9925898313522339,
+            0.006961233448237181
+          ],
+          "text": "Ice-T: Tracy Lauren Marrow ( born February 16 , 1958 ) , better known by his stage name Ice-T , is an American rapper , metal vocalist and actor ."
+        },
+        {
+          "doc": 6479,
+          "page_id": "Ice-T",
+          "sent_id": 6,
+          "score": 0.7298529148101807,
+          "nli": [
+            0.001790845999494195,
+            0.43992069363594055,
+            0.5582883954048157
+          ],
+          "text": "Ice-T: Body Count released its self-titled debut album in 1992 ."
+        },
+        {
+          "doc": 6477,
+          "page_id": "Ice-T",
+          "sent_id": 2,
+          "score": 0.7140902280807495,
+          "nli": [
+            0.002637288300320506,
+            0.9687448740005493,
+            0.028617791831493378
+          ],
+          "text": "Ice-T: The next year , he founded the record label Rhyme $ yndicate Records ( named after his collective of fellow hip-hop artists called the ` Rhyme $ yndicate ' ) and released another album , Power ."
+        },
+        {
+          "doc": 6478,
+          "page_id": "Ice-T",
+          "sent_id": 5,
+          "score": 0.6936153769493103,
+          "nli": [
+            0.0007694103987887502,
+            0.3973984718322754,
+            0.6018320918083191
+          ],
+          "text": "Ice-T: He co-founded the heavy metal band Body Count , which he introduced in his 1991 album O.G. : Original Gangster ."
+        }
+      ],
+      "gold_context": [
+        "Ice-T: He began his career as a rapper in the 1980s and was signed to Sire Records in 1987 , when he released his debut album Rhyme Pays , one of the first hip-hop albums to carry an explicit content sticker ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-154252",
+      "claim": "In 2005, The Quiet was released.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 14713,
+          "page_id": "The_Quiet",
+          "sent_id": 0,
+          "score": 0.7549299597740173,
+          "nli": [
+            0.9943763017654419,
+            0.005386274307966232,
+            0.00023746665101498365
+          ],
+          "text": "The Quiet: The Quiet is a 2005 American drama thriller film directed by Jamie Babbit and starring Camilla Belle and Elisha Cuthbert ."
+        },
+        {
+          "doc": 14716,
+          "page_id": "The_Quiet",
+          "sent_id": 5,
+          "score": 0.7468059659004211,
+          "nli": [
+            0.0039536431431770325,
+            0.9903663396835327,
+            0.0056799487210810184
+          ],
+          "text": "The Quiet: ."
+        },
+        {
+          "doc": 14715,
+          "page_id": "The_Quiet",
+          "sent_id": 4,
+          "score": 0.719508171081543,
+          "nli": [
+            0.00498622003942728,
+            0.005991081241518259,
+            0.9890226125717163
+          ],
+          "text": "The Quiet: The film was acquired by Destination Films , which released this film in the United States theatrically through Sony Pictures Classics on August 25 , 2006 , and marketed with the tagline : `` Is n't it time everyone hears your secrets ? ''"
+        },
+        {
+          "doc": 4506,
+          "page_id": "Elisha_Cuthbert",
+          "sent_id": 8,
+          "score": 0.6956480145454407,
+          "nli": [
+            0.9917925596237183,
+            0.007786145433783531,
+            0.00042140623554587364
+          ],
+          "text": "Elisha Cuthbert: Subsequently , Cuthbert appeared in the lead role in the films The Quiet ( 2005 ) and Captivity ( 2007 ) ."
+        },
+        {
+          "doc": 14717,
+          "page_id": "The_Quiet",
+          "sent_id": 8,
+          "score": 0.6600430011749268,
+          "nli": [
+            0.0005608787760138512,
+            0.9983705878257751,
+            0.0010685266461223364
+          ],
+          "text": "The Quiet: The film 's soundtrack features songs by Low , Cat Power , Le Tigre , and numerous Beethoven piano sonatas ."
+        }
+      ],
+      "gold_context": [
+        "The Quiet: The film was acquired by Destination Films , which released this film in the United States theatrically through Sony Pictures Classics on August 25 , 2006 , and marketed with the tagline : `` Is n't it time everyone hears your secrets ? ''"
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-102173",
+      "claim": "Tom Constanten was a fan of the Grateful Dead.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5730,
+          "page_id": "Grateful_Dead",
+          "sent_id": 15,
+          "score": 0.7725573778152466,
+          "nli": [
+            0.0012367835734039545,
+            0.9903525710105896,
+            0.008410713635385036
+          ],
+          "text": "Grateful Dead: The other official members of the band are Tom Constanten ( keyboards ; 1968 -- 1970 ) , John Perry Barlow ( nonperforming lyricist ; 1971 -- 1995 ) , Keith Godchaux ( keyboards ; 1971 -- 1979 ) , Donna Godchaux ( vocals ; 1972 -- 1979 ) , Brent Mydland ( keyboards , vocals ; 1979 -- 1990 ) , and Vince Welnick ( keyboards , vocals ; 1990 -- 1995 ) ."
+        },
+        {
+          "doc": 5725,
+          "page_id": "Grateful_Dead",
+          "sent_id": 10,
+          "score": 0.7085055112838745,
+          "nli": [
+            0.005231540184468031,
+            0.9920990467071533,
+            0.0026694010011851788
+          ],
+          "text": "Grateful Dead: The founding members were Jerry Garcia ( lead guitar , vocals ) , Bob Weir ( rhythm guitar , vocals ) , Ron `` Pigpen '' McKernan ( keyboards , harmonica , vocals ) , Phil Lesh ( bass , vocals ) , and Bill Kreutzmann ( drums ) ."
+        },
+        {
+          "doc": 127221,
+          "page_id": "Fare_Thee_Well",
+          "sent_id": 9,
+          "score": 0.695338249206543,
+          "nli": [
+            0.08428556472063065,
+            0.8993229866027832,
+            0.016391443088650703
+          ],
+          "text": "Fare Thee Well: Fare Thee Well : Celebrating 50 Years of the Grateful Dead , a series of concerts by surviving members of the Grateful Dead"
+        },
+        {
+          "doc": 5723,
+          "page_id": "Grateful_Dead",
+          "sent_id": 6,
+          "score": 0.6944737434387207,
+          "nli": [
+            0.02600240148603916,
+            0.9719288349151611,
+            0.0020687382202595472
+          ],
+          "text": "Grateful Dead: The Grateful Dead have sold more than 35 million albums worldwide ."
+        },
+        {
+          "doc": 5728,
+          "page_id": "Grateful_Dead",
+          "sent_id": 13,
+          "score": 0.6785498857498169,
+          "nli": [
+            0.03375893086194992,
+            0.9590322375297546,
+            0.0072087799198925495
+          ],
+          "text": "Grateful Dead: Drummer Mickey Hart and nonperforming lyricist Robert Hunter joined in 1967 ."
+        }
+      ],
+      "gold_context": [
+        "Grateful Dead: The other official members of the band are Tom Constanten ( keyboards ; 1968 -- 1970 ) , John Perry Barlow ( nonperforming lyricist ; 1971 -- 1995 ) , Keith Godchaux ( keyboards ; 1971 -- 1979 ) , Donna Godchaux ( vocals ; 1972 -- 1979 ) , Brent Mydland ( keyboards , vocals ; 1979 -- 1990 ) , and Vince Welnick ( keyboards , vocals ; 1990 -- 1995 ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-222174",
+      "claim": "Rehab was unqualified to win Best Contemporary Song.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11680,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 7,
+          "score": 0.8258354663848877,
+          "nli": [
+            0.00028941326308995485,
+            0.2095707654953003,
+            0.7901397347450256
+          ],
+          "text": "Rehab (Amy Winehouse song): It also won an Ivor Novello Award for Best Contemporary Song ."
+        },
+        {
+          "doc": 11679,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 6,
+          "score": 0.7623454332351685,
+          "nli": [
+            0.0003700682718772441,
+            0.48761487007141113,
+            0.5120150446891785
+          ],
+          "text": "Rehab (Amy Winehouse song): It won three Grammy Awards at the 50th ceremony , including Record of the Year , Song of the Year , and Best Female Pop Vocal Performance ."
+        },
+        {
+          "doc": 11675,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 0,
+          "score": 0.7380514144897461,
+          "nli": [
+            0.0025846699718385935,
+            0.9328736662864685,
+            0.06454161554574966
+          ],
+          "text": "Rehab (Amy Winehouse song): `` Rehab '' is a song written and performed by English singer and songwriter Amy Winehouse , from her second and final studio album Back to Black ( 2006 ) ."
+        },
+        {
+          "doc": 11678,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 5,
+          "score": 0.733994722366333,
+          "nli": [
+            0.0019948699045926332,
+            0.861726701259613,
+            0.1362784057855606
+          ],
+          "text": "Rehab (Amy Winehouse song): `` Rehab '' has become a critical and commercial success internationally , and has been referred to as Winehouse 's `` signature song '' ."
+        },
+        {
+          "doc": 11677,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 2,
+          "score": 0.7190791368484497,
+          "nli": [
+            0.0004226788878440857,
+            0.9793649911880493,
+            0.020212257280945778
+          ],
+          "text": "Rehab (Amy Winehouse song): `` Rehab '' was released as the lead single from Back to Black on 23 October 2006 , and it peaked at number 7 in the United Kingdom on its Singles Chart and number 9 in the United States on the Billboard Hot 100 , becoming Winehouse 's only top 10 hit in the US ."
+        }
+      ],
+      "gold_context": [
+        "Rehab (Amy Winehouse song): It also won an Ivor Novello Award for Best Contemporary Song ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-25238",
+      "claim": "Python features a dynamic avenger.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11603,
+          "page_id": "Python_-LRB-programming_language-RRB-",
+          "sent_id": 5,
+          "score": 0.7769566774368286,
+          "nli": [
+            0.3426927924156189,
+            0.1445571929216385,
+            0.5127500295639038
+          ],
+          "text": "Python (programming language): Python features a dynamic type system and automatic memory management and supports multiple programming paradigms , including object-oriented , imperative , functional programming , and procedural styles ."
+        },
+        {
+          "doc": 11600,
+          "page_id": "Python_-LRB-programming_language-RRB-",
+          "sent_id": 0,
+          "score": 0.7390115261077881,
+          "nli": [
+            0.0003410361532587558,
+            0.9950060248374939,
+            0.004653010051697493
+          ],
+          "text": "Python (programming language): Python is a widely used high-level programming language for general-purpose programming , created by Guido van Rossum and first released in 1991 ."
+        },
+        {
+          "doc": 11604,
+          "page_id": "Python_-LRB-programming_language-RRB-",
+          "sent_id": 6,
+          "score": 0.7257394194602966,
+          "nli": [
+            0.006651689764112234,
+            0.679817259311676,
+            0.3135310113430023
+          ],
+          "text": "Python (programming language): It has a large and comprehensive standard library ."
+        },
+        {
+          "doc": 11605,
+          "page_id": "Python_-LRB-programming_language-RRB-",
+          "sent_id": 9,
+          "score": 0.7008692622184753,
+          "nli": [
+            0.010259653441607952,
+            0.8795328736305237,
+            0.1102074533700943
+          ],
+          "text": "Python (programming language): Python interpreters are available for many operating systems , allowing Python code to run on a wide variety of systems ."
+        },
+        {
+          "doc": 11602,
+          "page_id": "Python_-LRB-programming_language-RRB-",
+          "sent_id": 2,
+          "score": 0.6812161207199097,
+          "nli": [
+            0.005523503292351961,
+            0.6822652220726013,
+            0.3122113049030304
+          ],
+          "text": "Python (programming language): The language provides constructs intended to enable writing clear programs on both a small and large scale ."
+        }
+      ],
+      "gold_context": [
+        "Python (programming language): Python features a dynamic type system and automatic memory management and supports multiple programming paradigms , including object-oriented , imperative , functional programming , and procedural styles ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-177964",
+      "claim": "It is normal to wear clothing while Trick-or-Treating.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 15399,
+          "page_id": "Trick-or-treating",
+          "sent_id": 13,
+          "score": 0.7269651889801025,
+          "nli": [
+            0.038367170840501785,
+            0.5879807472229004,
+            0.37365207076072693
+          ],
+          "text": "Trick-or-treating: While going house-to-house in costume has remained popular among Scots and Irish , the custom of saying `` trick or treat '' has only recently become common ."
+        },
+        {
+          "doc": 15389,
+          "page_id": "Trick-or-treating",
+          "sent_id": 0,
+          "score": 0.7253817915916443,
+          "nli": [
+            0.00028197336359880865,
+            0.9981787204742432,
+            0.001539292628876865
+          ],
+          "text": "Trick-or-treating: Trick-or-treating is a Halloween custom for children in many countries ."
+        },
+        {
+          "doc": 15392,
+          "page_id": "Trick-or-treating",
+          "sent_id": 4,
+          "score": 0.7109679579734802,
+          "nli": [
+            0.0003481418825685978,
+            0.9980389475822449,
+            0.001612938940525055
+          ],
+          "text": "Trick-or-treating: It typically happens during the evening of October 31 ."
+        },
+        {
+          "doc": 15397,
+          "page_id": "Trick-or-treating",
+          "sent_id": 11,
+          "score": 0.7011018395423889,
+          "nli": [
+            0.00498527567833662,
+            0.30872946977615356,
+            0.6862853169441223
+          ],
+          "text": "Trick-or-treating: In 19th century Britain and Ireland , there are many accounts of people going house-to-house in costume at Halloween , reciting verses in exchange for food , and sometimes warning of misfortune if they were not welcomed ."
+        },
+        {
+          "doc": 15395,
+          "page_id": "Trick-or-treating",
+          "sent_id": 9,
+          "score": 0.6889297962188721,
+          "nli": [
+            0.0002111559733748436,
+            0.9980260133743286,
+            0.0017628151690587401
+          ],
+          "text": "Trick-or-treating: In North America , trick-or-treating has been a Halloween tradition since the late 1920s ."
+        }
+      ],
+      "gold_context": [
+        "Trick-or-treating: In Britain and Ireland the tradition of going house-to-house collecting food at Halloween goes back at least as far as the 16th century , as had the tradition of people wearing costumes at Halloween ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-167166",
+      "claim": "Westworld's first season premiered on October 2, 2016, to 10 billion viewers.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 16672,
+          "page_id": "Westworld_-LRB-TV_series-RRB-",
+          "sent_id": 4,
+          "score": 0.9185470342636108,
+          "nli": [
+            0.00013914916780777276,
+            0.9950482249259949,
+            0.0048126522451639175
+          ],
+          "text": "Westworld (TV series): The first season premiered on October 2 , 2016 , concluded on December 4 , 2016 , and consists of ten episodes ."
+        },
+        {
+          "doc": 16673,
+          "page_id": "Westworld_-LRB-TV_series-RRB-",
+          "sent_id": 5,
+          "score": 0.836966872215271,
+          "nli": [
+            0.0004307741182856262,
+            0.9769065976142883,
+            0.02266267128288746
+          ],
+          "text": "Westworld (TV series): In November 2016 , HBO renewed the show for a 10-episode second season , planned for a 2018 debut ."
+        },
+        {
+          "doc": 16676,
+          "page_id": "Westworld_-LRB-TV_series-RRB-",
+          "sent_id": 12,
+          "score": 0.8263526558876038,
+          "nli": [
+            0.0003254780313000083,
+            0.9589328169822693,
+            0.040741682052612305
+          ],
+          "text": "Westworld (TV series): The series ' debut on HBO garnered the network 's highest viewership ratings for a premiere since the first episode of True Detective in 2014 and Westworld ranks as the most-watched first season of an HBO original series ever ."
+        },
+        {
+          "doc": 16677,
+          "page_id": "Westworld_-LRB-TV_series-RRB-",
+          "sent_id": 13,
+          "score": 0.7492901086807251,
+          "nli": [
+            0.00022555397299584,
+            0.9821169972419739,
+            0.017657414078712463
+          ],
+          "text": "Westworld (TV series): Westworld has received positive reviews by critics , with particular praise for the visuals , story , and acting ."
+        },
+        {
+          "doc": 16668,
+          "page_id": "Westworld_-LRB-TV_series-RRB-",
+          "sent_id": 0,
+          "score": 0.7083638906478882,
+          "nli": [
+            0.00034768058685585856,
+            0.9164265990257263,
+            0.08322569727897644
+          ],
+          "text": "Westworld (TV series): Westworld is an American science fiction western thriller television series created by Jonathan Nolan and Lisa Joy for HBO ."
+        }
+      ],
+      "gold_context": [
+        "Westworld (TV series): The first season premiered on October 2 , 2016 , concluded on December 4 , 2016 , and consists of ten episodes .",
+        "World population: The world population was estimated to have reached 7,500,000,000 at 16:21 ( UTC ) on April 24 , 2017 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-130325",
+      "claim": "Dark matter is different from neutrinos.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 3677,
+          "page_id": "Dark_matter",
+          "sent_id": 0,
+          "score": 0.826913595199585,
+          "nli": [
+            0.9805692434310913,
+            0.018647849559783936,
+            0.0007829556125216186
+          ],
+          "text": "Dark matter: Dark matter is a hypothetical type of matter distinct from baryonic matter ( ordinary matter such as protons and neutrons ) , neutrinos and dark energy ."
+        },
+        {
+          "doc": 3687,
+          "page_id": "Dark_matter",
+          "sent_id": 13,
+          "score": 0.7322883605957031,
+          "nli": [
+            0.0007378171430900693,
+            0.9932861924171448,
+            0.0059759169816970825
+          ],
+          "text": "Dark matter: Many experiments to detect proposed dark matter particles through non-gravitational means are under way ; however , no dark matter particle has been conclusively identified ."
+        },
+        {
+          "doc": 3685,
+          "page_id": "Dark_matter",
+          "sent_id": 11,
+          "score": 0.7238748073577881,
+          "nli": [
+            0.0015490896767005324,
+            0.9928286671638489,
+            0.005622238386422396
+          ],
+          "text": "Dark matter: The dark matter hypothesis plays a central role in current modeling of cosmic structure formation and galaxy formation and evolution and on explanations of the anisotropies observed in the cosmic microwave background ( CMB ) ."
+        },
+        {
+          "doc": 3679,
+          "page_id": "Dark_matter",
+          "sent_id": 2,
+          "score": 0.7223851680755615,
+          "nli": [
+            0.0013220044784247875,
+            0.9944561123847961,
+            0.004221885930746794
+          ],
+          "text": "Dark matter: The name refers to the fact that it does not emit or interact with electromagnetic radiation , such as light , and is thus invisible to the entire electromagnetic spectrum ."
+        },
+        {
+          "doc": 3678,
+          "page_id": "Dark_matter",
+          "sent_id": 1,
+          "score": 0.7180601358413696,
+          "nli": [
+            0.0009459572611376643,
+            0.995680570602417,
+            0.0033734182361513376
+          ],
+          "text": "Dark matter: The existence of dark matter would explain a number of otherwise puzzling astronomical observations ."
+        }
+      ],
+      "gold_context": [
+        "Dark matter: Dark matter is a hypothetical type of matter distinct from baryonic matter ( ordinary matter such as protons and neutrons ) , neutrinos and dark energy ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-138263",
+      "claim": "The Walking Dead (comic book) inspired a film.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 15081,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 0,
+          "score": 0.746366560459137,
+          "nli": [
+            0.00019135611364617944,
+            0.9972232580184937,
+            0.0025854420382529497
+          ],
+          "text": "The Walking Dead (comic book): The Walking Dead is an ongoing black-and-white comic book series created by writer Robert Kirkman and artist Tony Moore ."
+        },
+        {
+          "doc": 15088,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 11,
+          "score": 0.7205660939216614,
+          "nli": [
+            0.004646686837077141,
+            0.9820773601531982,
+            0.013276017270982265
+          ],
+          "text": "The Walking Dead (comic book): The television program loosely follows the storyline of the comic book ."
+        },
+        {
+          "doc": 15087,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 10,
+          "score": 0.7110570669174194,
+          "nli": [
+            0.04110018536448479,
+            0.9354358315467834,
+            0.023463962599635124
+          ],
+          "text": "The Walking Dead (comic book): The series was adapted into the AMC television series The Walking Dead , which premiered in 2010 ."
+        },
+        {
+          "doc": 15084,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 5,
+          "score": 0.7080469131469727,
+          "nli": [
+            0.00016961607616394758,
+            0.9977171421051025,
+            0.00211328431032598
+          ],
+          "text": "The Walking Dead (comic book): First issued in 2003 by publisher Image Comics , the comic is written by Kirkman with art by Moore ( issues No. 1 -- 6 ) and Charlie Adlard ( issue No. 7 onward ) ."
+        },
+        {
+          "doc": 15089,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 12,
+          "score": 0.6634603142738342,
+          "nli": [
+            0.3275347948074341,
+            0.5289489030838013,
+            0.14351628720760345
+          ],
+          "text": "The Walking Dead (comic book): The franchise has also spawned multiple additional media properties , including video games ( such as The Walking Dead video game ) , a companion television series ( Fear the Walking Dead ) , webisode series ( The Walking Dead : Torn Apart , The Walking Dead : Cold Storage , and The Walking Dead : The Oath ) , and various additional publications , including novels ( The Walking Dead : Rise of the Governor ) ."
+        }
+      ],
+      "gold_context": [
+        "The Walking Dead (comic book): The series was adapted into the AMC television series The Walking Dead , which premiered in 2010 .",
+        "The Walking Dead (comic book): The franchise has also spawned multiple additional media properties , including video games ( such as The Walking Dead video game ) , a companion television series ( Fear the Walking Dead ) , webisode series ( The Walking Dead : Torn Apart , The Walking Dead : Cold Storage , and The Walking Dead : The Oath ) , and various additional publications , including novels ( The Walking Dead : Rise of the Governor ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-222763",
+      "claim": "Practical Magic is a 1998 event.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 11432,
+          "page_id": "Practical_Magic",
+          "sent_id": 0,
+          "score": 0.8187505006790161,
+          "nli": [
+            0.9840107560157776,
+            0.015310684219002724,
+            0.0006786430021747947
+          ],
+          "text": "Practical Magic: Practical Magic is a 1998 American romantic comedy film based on the 1995 novel of the same name by Alice Hoffman ."
+        },
+        {
+          "doc": 23998,
+          "page_id": "Magic_realism",
+          "sent_id": 0,
+          "score": 0.6848113536834717,
+          "nli": [
+            0.002444156911224127,
+            0.03623368591070175,
+            0.9613221883773804
+          ],
+          "text": "Magic realism: Magical realism , magic realism , or marvelous realism is a genre of narrative fiction and , more broadly , art ( literature , painting , film , theatre , etc. ) that , while encompassing a range of subtly different concepts , expresses a primarily realistic view of the real world while also adding or revealing magical elements ."
+        },
+        {
+          "doc": 24000,
+          "page_id": "Magic_realism",
+          "sent_id": 2,
+          "score": 0.6820114850997925,
+          "nli": [
+            0.0011251481482759118,
+            0.032285045832395554,
+            0.9665897488594055
+          ],
+          "text": "Magic realism: `` Magical realism '' , perhaps the most common term , often refers to fiction and literature in particular , with magic or the supernatural presented in an otherwise real-world or mundane setting ."
+        },
+        {
+          "doc": 24002,
+          "page_id": "Magic_realism",
+          "sent_id": 6,
+          "score": 0.6803768277168274,
+          "nli": [
+            0.0009211146971210837,
+            0.02954660914838314,
+            0.9695321917533875
+          ],
+          "text": "Magic realism: Matthew Strecher defines magic realism as `` what happens when a highly detailed , realistic setting is invaded by something too strange to believe . ''"
+        },
+        {
+          "doc": 11434,
+          "page_id": "Practical_Magic",
+          "sent_id": 2,
+          "score": 0.6571775674819946,
+          "nli": [
+            0.0004778824804816395,
+            0.9983868598937988,
+            0.0011352398432791233
+          ],
+          "text": "Practical Magic: The film score was composed by Alan Silvestri ."
+        }
+      ],
+      "gold_context": [
+        "Practical Magic: Practical Magic is a 1998 American romantic comedy film based on the 1995 novel of the same name by Alice Hoffman ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-136914",
+      "claim": "Rick Ross released less than nine studio albums.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11919,
+          "page_id": "Rather_You_Than_Me",
+          "sent_id": 0,
+          "score": 0.7632994651794434,
+          "nli": [
+            0.09377558529376984,
+            0.023861167952418327,
+            0.8823632597923279
+          ],
+          "text": "Rather You Than Me: Rather You Than Me is the ninth studio album by American rapper Rick Ross ."
+        },
+        {
+          "doc": 11719,
+          "page_id": "Rick_Ross",
+          "sent_id": 3,
+          "score": 0.7527616024017334,
+          "nli": [
+            0.8465114235877991,
+            0.09341221302747726,
+            0.06007632613182068
+          ],
+          "text": "Rick Ross: In 2009 , Ross founded the record label Maybach Music Group , on which he released his studio albums Deeper Than Rap ( 2009 ) , Teflon Don ( 2010 ) , God Forgives , I Do n't ( 2012 ) , Mastermind , Hood Billionaire ( 2014 ) , Black Market ( 2015 ) , and Rather You Than Me ( 2017 ) ."
+        },
+        {
+          "doc": 11720,
+          "page_id": "Rick_Ross",
+          "sent_id": 4,
+          "score": 0.67085200548172,
+          "nli": [
+            0.002101835561916232,
+            0.85626220703125,
+            0.1416359692811966
+          ],
+          "text": "Rick Ross: Ross was also the first artist signed to Diddy 's management company Ciroc Entertainment ."
+        },
+        {
+          "doc": 11718,
+          "page_id": "Rick_Ross",
+          "sent_id": 0,
+          "score": 0.6562705039978027,
+          "nli": [
+            0.0012155171716585755,
+            0.9867221117019653,
+            0.012062380090355873
+          ],
+          "text": "Rick Ross: William Leonard Roberts II ( born January 28 , 1976 ) , known professionally by his stage name Rick Ross , is an American rapper and entrepreneur ."
+        },
+        {
+          "doc": 19550,
+          "page_id": "Operation-COLON-_Get_Down",
+          "sent_id": 1,
+          "score": 0.6525722742080688,
+          "nli": [
+            0.004924873821437359,
+            0.0872102826833725,
+            0.9078648686408997
+          ],
+          "text": "Operation: Get Down: After his split from Bad Boy Records , Mack 's popularity quickly went downhill ; Operation : Get Down failed to reach Gold status by the RIAA , and also failed to produce a hit single ."
+        }
+      ],
+      "gold_context": [
+        "Rick Ross: In 2009 , Ross founded the record label Maybach Music Group , on which he released his studio albums Deeper Than Rap ( 2009 ) , Teflon Don ( 2010 ) , God Forgives , I Do n't ( 2012 ) , Mastermind , Hood Billionaire ( 2014 ) , Black Market ( 2015 ) , and Rather You Than Me ( 2017 ) .",
+        "Rather You Than Me: Rather You Than Me is the ninth studio album by American rapper Rick Ross ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-145707",
+      "claim": "The great white shark does not prefer to prey on humans because it's a herbivore.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5800,
+          "page_id": "Great_white_shark",
+          "sent_id": 16,
+          "score": 0.8042434453964233,
+          "nli": [
+            0.0001480935898143798,
+            0.9699052572250366,
+            0.02994658425450325
+          ],
+          "text": "Great white shark: Humans are not the preferred prey of the great white shark , but , nevertheless , the great white is responsible for the largest number of reported and identified fatal unprovoked shark attacks on humans ."
+        },
+        {
+          "doc": 5794,
+          "page_id": "Great_white_shark",
+          "sent_id": 8,
+          "score": 0.7957584857940674,
+          "nli": [
+            0.0003367910685483366,
+            0.0979599803686142,
+            0.9017032980918884
+          ],
+          "text": "Great white shark: The great white shark has no known natural predators other than the killer whale ."
+        },
+        {
+          "doc": 5795,
+          "page_id": "Great_white_shark",
+          "sent_id": 9,
+          "score": 0.7302470803260803,
+          "nli": [
+            0.00045791472075507045,
+            0.204883873462677,
+            0.7946581840515137
+          ],
+          "text": "Great white shark: The great white shark is arguably the world 's largest known extant macropredatory fish , and is one of the primary predators of marine mammals ."
+        },
+        {
+          "doc": 5796,
+          "page_id": "Great_white_shark",
+          "sent_id": 10,
+          "score": 0.7219997644424438,
+          "nli": [
+            0.0007605620194226503,
+            0.8605333566665649,
+            0.1387060582637787
+          ],
+          "text": "Great white shark: It is also known to prey upon a variety of other marine animals , including fish and seabirds ."
+        },
+        {
+          "doc": 5788,
+          "page_id": "Great_white_shark",
+          "sent_id": 0,
+          "score": 0.6917299628257751,
+          "nli": [
+            0.0006597155588679016,
+            0.1617426574230194,
+            0.8375976085662842
+          ],
+          "text": "Great white shark: The great white shark ( Carcharodon carcharias ) , also known as the great white , white pointer , white shark , or white death , is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans ."
+        }
+      ],
+      "gold_context": [
+        "Great white shark: It is also known to prey upon a variety of other marine animals , including fish and seabirds ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-101017",
+      "claim": "The Punisher stars Americans.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 14735,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 6,
+          "score": 0.758985698223114,
+          "nli": [
+            0.036392372101545334,
+            0.9603601694107056,
+            0.0032474021427333355
+          ],
+          "text": "The Punisher (TV series): Ben Barnes , Ebon Moss-Bachrach , Amber Rose Revah , Deborah Ann Woll , Daniel Webber , Jason R. Moore , Paul Schulze , Jaime Ray Newman , and Michael Nathanson also star ."
+        },
+        {
+          "doc": 14741,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 14,
+          "score": 0.7341659665107727,
+          "nli": [
+            0.00047304786858148873,
+            0.9979848861694336,
+            0.0015420025447383523
+          ],
+          "text": "The Punisher (TV series): The Punisher is scheduled to be released in 2017 ."
+        },
+        {
+          "doc": 14731,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 0,
+          "score": 0.7222005128860474,
+          "nli": [
+            0.009890560060739517,
+            0.9883856773376465,
+            0.0017237643478438258
+          ],
+          "text": "The Punisher (TV series): Marvel 's The Punisher , or simply The Punisher , is an upcoming American web television series created for Netflix by Steve Lightfoot , based on the Marvel Comics character of the same name ."
+        },
+        {
+          "doc": 14733,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 2,
+          "score": 0.7020062208175659,
+          "nli": [
+            0.0010088065173476934,
+            0.9975002408027649,
+            0.0014909195015206933
+          ],
+          "text": "The Punisher (TV series): The series is produced by Marvel Television in association with ABC Studios , with Lightfoot serving as showrunner ."
+        },
+        {
+          "doc": 14732,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 1,
+          "score": 0.6967647075653076,
+          "nli": [
+            0.0008515287772752345,
+            0.9979311227798462,
+            0.0012173786526545882
+          ],
+          "text": "The Punisher (TV series): It is set in the Marvel Cinematic Universe ( MCU ) , sharing continuity with the films and other television series of the franchise , and is a spin-off of Marvel 's Daredevil ."
+        }
+      ],
+      "gold_context": [
+        "The Punisher (TV series): Ben Barnes , Ebon Moss-Bachrach , Amber Rose Revah , Deborah Ann Woll , Daniel Webber , Jason R. Moore , Paul Schulze , Jaime Ray Newman , and Michael Nathanson also star .",
+        "Ben Barnes (actor): Benjamin Thomas `` Ben '' Barnes ( born 20 August 1981 ) is an English actor ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-108753",
+      "claim": "Scaramouche is a translation.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 12301,
+          "page_id": "Scaramouche",
+          "sent_id": 0,
+          "score": 0.7902932167053223,
+          "nli": [
+            0.26658546924591064,
+            0.4669591784477234,
+            0.26645535230636597
+          ],
+          "text": "Scaramouche: Scaramuccia ( literally `` little skirmisher '' ) , also known as Scaramouche or Scaramouch , is a stock clown character of the Italian commedia dell ` arte ."
+        },
+        {
+          "doc": 12303,
+          "page_id": "Scaramouche",
+          "sent_id": 2,
+          "score": 0.6955342292785645,
+          "nli": [
+            0.18261127173900604,
+            0.5169194340705872,
+            0.3004692792892456
+          ],
+          "text": "Scaramouche: Usually attired in black Spanish dress and burlesquing a don , he was often beaten by Harlequin for his boasting and cowardice ."
+        },
+        {
+          "doc": 41673,
+          "page_id": "Tiberio",
+          "sent_id": 14,
+          "score": 0.6919690370559692,
+          "nli": [
+            0.21624504029750824,
+            0.2297985851764679,
+            0.5539563894271851
+          ],
+          "text": "Tiberio: Tiberio Fiorilli , ( 1608 -- 1694 ) , Italian actor of commedia dell ` arte known for developing the role of Scaramouche"
+        },
+        {
+          "doc": 12302,
+          "page_id": "Scaramouche",
+          "sent_id": 1,
+          "score": 0.6797071695327759,
+          "nli": [
+            0.26806193590164185,
+            0.7189489006996155,
+            0.012989201582968235
+          ],
+          "text": "Scaramouche: The role combined characteristics of the zanni ( servant ) and the Capitano ( masked henchman ) ."
+        },
+        {
+          "doc": 81945,
+          "page_id": "Hugueninia",
+          "sent_id": 3,
+          "score": 0.6376419067382812,
+          "nli": [
+            0.3945919871330261,
+            0.5093326568603516,
+            0.09607533365488052
+          ],
+          "text": "Hugueninia: Hugueninia ( plant ) , a genus of plants in the Brassicaceae family"
+        }
+      ],
+      "gold_context": [
+        "Scaramouche: Scaramuccia ( literally `` little skirmisher '' ) , also known as Scaramouche or Scaramouch , is a stock clown character of the Italian commedia dell ` arte ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-97025",
+      "claim": "Babur was born on February 24, 1483.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 1559,
+          "page_id": "Babur",
+          "sent_id": 0,
+          "score": 0.790712833404541,
+          "nli": [
+            0.06409263610839844,
+            0.009353671222925186,
+            0.9265537261962891
+          ],
+          "text": "Babur: Babur ( [ \u0628\u0627\u0628\u0631 , lit = Tiger , translit = B\u0101bur ] 14 February 148326 December 1530 ) , born \u1e92ah\u012br-ud-D\u012bn Mu\u1e25ammad ( [ \u0638\u0647\u06cc\u0631\u0627\u0644\u062f\u06cc\u0646 \u0645\u062d\u0645\u062f , translit = \u1e92ah\u012br ad-D\u012bn Mu\u1e25ammad ] ) , was a conqueror from Central Asia who , following a series of setbacks , finally succeeded in laying the basis for the Mughal dynasty in the Indian subcontinent and became the first Mughal emperor ."
+        },
+        {
+          "doc": 1562,
+          "page_id": "Babur",
+          "sent_id": 5,
+          "score": 0.7238415479660034,
+          "nli": [
+            0.0005122058209963143,
+            0.9974380731582642,
+            0.002049693139269948
+          ],
+          "text": "Babur: Babur was the eldest son of Umar Sheikh Mirza ."
+        },
+        {
+          "doc": 15347,
+          "page_id": "Timur",
+          "sent_id": 29,
+          "score": 0.7039227485656738,
+          "nli": [
+            0.005389342084527016,
+            0.944295346736908,
+            0.05031534284353256
+          ],
+          "text": "Timur: He was the grandfather of the renowned Timurid sultan , astronomer and mathematician Ulugh Beg , who ruled Central Asia from 1411 to 1449 , and the great-great-great-grandfather of Babur ( 1483-1530 ) , founder of the Mughal Empire , which ruled parts of South Asia for over three centuries , from 1526 until 1857 ."
+        },
+        {
+          "doc": 1572,
+          "page_id": "Babur",
+          "sent_id": 17,
+          "score": 0.7023278474807739,
+          "nli": [
+            0.0027487792540341616,
+            0.6926008462905884,
+            0.30465036630630493
+          ],
+          "text": "Babur: Babur defeated Ibrahim Lodi at the First Battle of Panipat in 1526 and founded the Mughal empire ."
+        },
+        {
+          "doc": 1560,
+          "page_id": "Babur",
+          "sent_id": 1,
+          "score": 0.7001456022262573,
+          "nli": [
+            0.00032668086350895464,
+            0.9949702620506287,
+            0.0047030942514538765
+          ],
+          "text": "Babur: He was a direct descendant of Turco-Mongol conqueror Timur ( Tamurlane ) from the Barlas clan , through his father , and also a descendant of Genghis Khan through his mother ."
+        }
+      ],
+      "gold_context": [
+        "Babur: Babur ( [ \u0628\u0627\u0628\u0631 , lit = Tiger , translit = B\u0101bur ] 14 February 148326 December 1530 ) , born \u1e92ah\u012br-ud-D\u012bn Mu\u1e25ammad ( [ \u0638\u0647\u06cc\u0631\u0627\u0644\u062f\u06cc\u0646 \u0645\u062d\u0645\u062f , translit = \u1e92ah\u012br ad-D\u012bn Mu\u1e25ammad ] ) , was a conqueror from Central Asia who , following a series of setbacks , finally succeeded in laying the basis for the Mughal dynasty in the Indian subcontinent and became the first Mughal emperor ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-179090",
+      "claim": "The film The Good German starred Miguel Ferrer.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14843,
+          "page_id": "The_Good_German",
+          "sent_id": 1,
+          "score": 0.7361354827880859,
+          "nli": [
+            0.0005333223380148411,
+            0.0006942262407392263,
+            0.9987724423408508
+          ],
+          "text": "The Good German: It was directed by Steven Soderbergh , and stars George Clooney , Cate Blanchett , and Tobey Maguire ."
+        },
+        {
+          "doc": 14842,
+          "page_id": "The_Good_German",
+          "sent_id": 0,
+          "score": 0.7095491886138916,
+          "nli": [
+            0.00023984276049304754,
+            0.9984585046768188,
+            0.0013016524026170373
+          ],
+          "text": "The Good German: The Good German is a 2006 film adaptation of Joseph Kanon 's eponymous 2001 novel ."
+        },
+        {
+          "doc": 14848,
+          "page_id": "The_Good_German",
+          "sent_id": 10,
+          "score": 0.7033094763755798,
+          "nli": [
+            0.00022231631737668067,
+            0.998747706413269,
+            0.0010299900313839316
+          ],
+          "text": "The Good German: The film received mixed reviews and grossed $ 5.9 million worldwide against a budget of $ 32 million ."
+        },
+        {
+          "doc": 14846,
+          "page_id": "The_Good_German",
+          "sent_id": 6,
+          "score": 0.6645858287811279,
+          "nli": [
+            0.0002102807047776878,
+            0.9977789521217346,
+            0.0020107352174818516
+          ],
+          "text": "The Good German: Its poster is an homage to the poster for the classic film Casablanca ( 1942 , also a Warner Bros. film ) , as is the closing scene at an airport ."
+        },
+        {
+          "doc": 14844,
+          "page_id": "The_Good_German",
+          "sent_id": 2,
+          "score": 0.6460318565368652,
+          "nli": [
+            0.00021594585268758237,
+            0.9970216155052185,
+            0.002762401942163706
+          ],
+          "text": "The Good German: Set in Berlin following the Allied victory over the Nazis , it begins as a murder mystery but weaves in elements involving the American postwar employment of Nazi rocket scientists in Operation Paperclip ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-42399",
+      "claim": "Therasia is in the Society Islands.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 14988,
+          "page_id": "Therasia",
+          "sent_id": 0,
+          "score": 0.8099725246429443,
+          "nli": [
+            0.5227839350700378,
+            0.09813231229782104,
+            0.3790837526321411
+          ],
+          "text": "Therasia: Therasia , also known as Thiras\u00eda , is an island in the volcanic island group of Santorini in the Greek Cyclades ."
+        },
+        {
+          "doc": 14990,
+          "page_id": "Therasia",
+          "sent_id": 2,
+          "score": 0.7894574999809265,
+          "nli": [
+            0.013225946575403214,
+            0.9473464488983154,
+            0.039427582174539566
+          ],
+          "text": "Therasia: Therasia is the second largest island of the group , the largest by far being Thera ."
+        },
+        {
+          "doc": 14991,
+          "page_id": "Therasia",
+          "sent_id": 5,
+          "score": 0.748555064201355,
+          "nli": [
+            0.0010147724533453584,
+            0.9481456875801086,
+            0.05083954334259033
+          ],
+          "text": "Therasia: Therasia has a land area of 9.299 km \u00b2 and its population was 319 inhabitants at the 2011 census ."
+        },
+        {
+          "doc": 14995,
+          "page_id": "Therasia",
+          "sent_id": 13,
+          "score": 0.7227755784988403,
+          "nli": [
+            0.004180953372269869,
+            0.12076185643672943,
+            0.8750572204589844
+          ],
+          "text": "Therasia: However this probably refers to a god or a person rather than to an island * Qherasia > Therasia ."
+        },
+        {
+          "doc": 4712,
+          "page_id": "Faroe_Islands",
+          "sent_id": 1,
+          "score": 0.6998082995414734,
+          "nli": [
+            0.007842033170163631,
+            0.03852452337741852,
+            0.9536334276199341
+          ],
+          "text": "Faroe Islands: The Islands are an autonomous country within the Kingdom of Denmark ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-192784",
+      "claim": "A staging area is a location where vehicles are assembled after use.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 13727,
+          "page_id": "Staging_area",
+          "sent_id": 0,
+          "score": 0.8830199241638184,
+          "nli": [
+            0.000685301551129669,
+            0.0017602626467123628,
+            0.9975544810295105
+          ],
+          "text": "Staging area: A staging area ( otherwise staging point , staging base or staging post ) is a location where organisms , people , vehicles , equipment or material are assembled before use ."
+        },
+        {
+          "doc": 13730,
+          "page_id": "Staging_area",
+          "sent_id": 6,
+          "score": 0.8780136108398438,
+          "nli": [
+            0.0065981741063296795,
+            0.003569891443476081,
+            0.9898319244384766
+          ],
+          "text": "Staging area: Designated area where vehicles , supplies , and construction equipment are positioned for access and use to a construction site ."
+        },
+        {
+          "doc": 13736,
+          "page_id": "Staging_area",
+          "sent_id": 21,
+          "score": 0.8777773380279541,
+          "nli": [
+            0.675250232219696,
+            0.039806440472602844,
+            0.2849433422088623
+          ],
+          "text": "Staging area: In military usage , a staging area is a place where troops or equipment in transit are assembled or processed ."
+        },
+        {
+          "doc": 13728,
+          "page_id": "Staging_area",
+          "sent_id": 1,
+          "score": 0.8771629333496094,
+          "nli": [
+            0.018497595563530922,
+            0.9740940928459167,
+            0.00740830460563302
+          ],
+          "text": "Staging area: It may refer to :"
+        },
+        {
+          "doc": 13743,
+          "page_id": "Staging_area",
+          "sent_id": 36,
+          "score": 0.850985050201416,
+          "nli": [
+            0.7921289801597595,
+            0.04615248367190361,
+            0.1617184728384018
+          ],
+          "text": "Staging area: Area where final assembly is done on space vehicles before they are moved out to their launch pad ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-40293",
+      "claim": "Olympic medals no longer display the Colosseum as of the 2004 Athens Olympics.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 112899,
+          "page_id": "DR_Congo_at_the_2004_Summer_Olympics",
+          "sent_id": 0,
+          "score": 0.7157565355300903,
+          "nli": [
+            0.019560430198907852,
+            0.8116706609725952,
+            0.16876891255378723
+          ],
+          "text": "DR Congo at the 2004 Summer Olympics: The Democratic Republic of the Congo competed at the 2004 Summer Olympics in Athens , Greece , from 13 to 29 August 2004 ."
+        },
+        {
+          "doc": 91059,
+          "page_id": "Bosnia_and_Herzegovina_at_the_2004_Summer_Olympics",
+          "sent_id": 1,
+          "score": 0.7116039991378784,
+          "nli": [
+            0.005415949039161205,
+            0.8228596448898315,
+            0.17172443866729736
+          ],
+          "text": "Bosnia and Herzegovina at the 2004 Summer Olympics: This was the nation 's fourth appearance at the Summer Olympics since the post-Yugoslav era ."
+        },
+        {
+          "doc": 232340,
+          "page_id": "Aleksandr_Dokturishvili",
+          "sent_id": 1,
+          "score": 0.7087805271148682,
+          "nli": [
+            0.0037162958178669214,
+            0.04329554736614227,
+            0.9529882073402405
+          ],
+          "text": "Aleksandr Dokturishvili: In 2004 , he won gold medals in the Greco-Roman \u2212 74 kg division at the Summer Olympics and Asian Championships ."
+        },
+        {
+          "doc": 83274,
+          "page_id": "Romania_at_the_Olympics",
+          "sent_id": 8,
+          "score": 0.6976093649864197,
+          "nli": [
+            0.002557214815169573,
+            0.14384032785892487,
+            0.853602409362793
+          ],
+          "text": "Romania at the Olympics: Romania has won the second highest total number of medals ( after Hungary ) of nations that have never hosted the Games ."
+        },
+        {
+          "doc": 52819,
+          "page_id": "Athletics_at_the_2012_Summer_Olympics_\u2013_Women's_4_\u00d7_400_metres_relay",
+          "sent_id": 11,
+          "score": 0.6970514059066772,
+          "nli": [
+            0.0023361200001090765,
+            0.017662446945905685,
+            0.9800013899803162
+          ],
+          "text": "Athletics at the 2012 Summer Olympics \u2013 Women's 4 \u00d7 400 metres relay: The three medaling countries finished in identical places in 2004 , 2008 and 2012 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-164401",
+      "claim": "Carey Hayes is a communist.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 2569,
+          "page_id": "Carey_Hayes",
+          "sent_id": 0,
+          "score": 0.71262526512146,
+          "nli": [
+            0.0004756839189212769,
+            0.180453822016716,
+            0.8190705180168152
+          ],
+          "text": "Carey Hayes: Carey Hayes ( born April 21 , 1961 in Portland , Oregon ) is an American screenwriter and producer ."
+        },
+        {
+          "doc": 2570,
+          "page_id": "Carey_Hayes",
+          "sent_id": 1,
+          "score": 0.7019806504249573,
+          "nli": [
+            0.0007660981500521302,
+            0.6329249739646912,
+            0.36630889773368835
+          ],
+          "text": "Carey Hayes: He is the twin brother of Chad Hayes ."
+        },
+        {
+          "doc": 4644,
+          "page_id": "Fidel_Castro",
+          "sent_id": 1,
+          "score": 0.6698487401008606,
+          "nli": [
+            0.002075249794870615,
+            0.017206992954015732,
+            0.9807177186012268
+          ],
+          "text": "Fidel Castro: Politically a Marxist -- Leninist and Cuban nationalist , he also served as the First Secretary of the Communist Party of Cuba from 1961 until 2011 ."
+        },
+        {
+          "doc": 151874,
+          "page_id": "Jackie_E._Hayes",
+          "sent_id": 2,
+          "score": 0.6599708795547485,
+          "nli": [
+            0.00021705642575398088,
+            0.0015408942708745599,
+            0.9982420206069946
+          ],
+          "text": "Jackie E. Hayes: He is a member of the Democratic party ."
+        },
+        {
+          "doc": 2571,
+          "page_id": "Carey_Hayes",
+          "sent_id": 2,
+          "score": 0.6488043069839478,
+          "nli": [
+            0.00013724170275963843,
+            0.0068861739709973335,
+            0.9929766058921814
+          ],
+          "text": "Carey Hayes: They are partners in the business and have written most of their work together ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-187532",
+      "claim": "Matthew Vaughn is a protestant and Californian.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9075,
+          "page_id": "Matthew_Vaughn",
+          "sent_id": 0,
+          "score": 0.6628226041793823,
+          "nli": [
+            0.00030494341626763344,
+            0.007160794455558062,
+            0.9925342798233032
+          ],
+          "text": "Matthew Vaughn: Matthew Allard de Vere Drummond ( born Matthew Allard Robert Vaughn ; 7 March 1971 ) is an English film producer , director , and screenwriter ."
+        },
+        {
+          "doc": 161523,
+          "page_id": "Roman_Catholic_Archdiocese_of_Hangzhou",
+          "sent_id": 2,
+          "score": 0.6331044435501099,
+          "nli": [
+            0.00020650825172197074,
+            0.0005882872501388192,
+            0.9992051720619202
+          ],
+          "text": "Roman Catholic Archdiocese of Hangzhou: Matthew Cao Xiangde was appointed bishop by the Patriotic Association but not recognized by the Vatican ."
+        },
+        {
+          "doc": 9076,
+          "page_id": "Matthew_Vaughn",
+          "sent_id": 1,
+          "score": 0.6312177777290344,
+          "nli": [
+            0.0005640736198984087,
+            0.9923598170280457,
+            0.007076124660670757
+          ],
+          "text": "Matthew Vaughn: He is best known for producing such films as Lock , Stock and Two Smoking Barrels ( 1998 ) and Snatch ( 2000 ) and directing the films Layer Cake ( 2004 ) , Stardust ( 2007 ) , Kick-Ass ( 2010 ) , X-Men : First Class ( 2011 ) , and Kingsman : The Secret Service ( 2015 ) ."
+        },
+        {
+          "doc": 172128,
+          "page_id": "Matt_Tittle",
+          "sent_id": 9,
+          "score": 0.6273646950721741,
+          "nli": [
+            0.000832551799248904,
+            0.004232177510857582,
+            0.9949352145195007
+          ],
+          "text": "Matt Tittle: He graduated from Meadville Lombard Theological School in 2004 with a Master of Divinity degree ."
+        },
+        {
+          "doc": 168404,
+          "page_id": "Jerome_Xavier",
+          "sent_id": 0,
+          "score": 0.619170069694519,
+          "nli": [
+            0.039995722472667694,
+            0.05678990110754967,
+            0.9032144546508789
+          ],
+          "text": "Jerome Xavier: Jerome Xavier , born Jer\u00f3nimo de Ezpeleta y Go\u00f1i ( 1549 -- June 27 , 1617 ) , was a Spanish Jesuit missionary into the Mughal court of Akbar ( 1542 -- 1605 ) , and his son Jahangir ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-9869",
+      "claim": "Google Search can return information about houses.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 5591,
+          "page_id": "Google_Search",
+          "sent_id": 12,
+          "score": 0.7521177530288696,
+          "nli": [
+            0.0005994130624458194,
+            0.9984103441238403,
+            0.0009901970624923706
+          ],
+          "text": "Google Search: Google Search provides several features beyond searching for words ."
+        },
+        {
+          "doc": 5583,
+          "page_id": "Google_Search",
+          "sent_id": 0,
+          "score": 0.7266989946365356,
+          "nli": [
+            0.00027416617376729846,
+            0.9974459409713745,
+            0.0022799265570938587
+          ],
+          "text": "Google Search: Google Search , commonly referred to as Google Web Search or simply Google , is a web search engine developed by Google ."
+        },
+        {
+          "doc": 5592,
+          "page_id": "Google_Search",
+          "sent_id": 13,
+          "score": 0.7248502969741821,
+          "nli": [
+            0.9899685978889465,
+            0.009494384750723839,
+            0.0005369458813220263
+          ],
+          "text": "Google Search: These include synonyms , weather forecasts , time zones , stock quotes , maps , earthquake data , movie showtimes , airports , home listings , and sports scores ."
+        },
+        {
+          "doc": 5584,
+          "page_id": "Google_Search",
+          "sent_id": 1,
+          "score": 0.724312961101532,
+          "nli": [
+            0.00032664931495673954,
+            0.9987679123878479,
+            0.0009054375695995986
+          ],
+          "text": "Google Search: It is the most-used search engine on the World Wide Web , handling more than three billion searches each day ."
+        },
+        {
+          "doc": 5597,
+          "page_id": "Google_Search",
+          "sent_id": 20,
+          "score": 0.7047439813613892,
+          "nli": [
+            0.0016761231236159801,
+            0.6509270071983337,
+            0.3473968505859375
+          ],
+          "text": "Google Search: Data about the frequency of use of search terms on Google can be openly inquired via Google Trends and have been shown to correlate with flu outbreaks and unemployment levels , and provide the information faster than traditional reporting methods and surveys ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-2342",
+      "claim": "SummerSlam is crushed by the WWE.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 13661,
+          "page_id": "SummerSlam",
+          "sent_id": 3,
+          "score": 0.7810747027397156,
+          "nli": [
+            0.0002984288439620286,
+            0.005336475092917681,
+            0.9943650960922241
+          ],
+          "text": "SummerSlam: SummerSlam has been touted by WWE as their second biggest event of the year after WrestleMania ."
+        },
+        {
+          "doc": 13658,
+          "page_id": "SummerSlam",
+          "sent_id": 0,
+          "score": 0.7647163271903992,
+          "nli": [
+            0.0008665191126056015,
+            0.05811462923884392,
+            0.9410189390182495
+          ],
+          "text": "SummerSlam: SummerSlam is a professional wrestling pay-per-view ( PPV ) event , produced annually in August by professional wrestling promotion WWE ."
+        },
+        {
+          "doc": 13702,
+          "page_id": "SummerSlam_-LRB-2015-RRB-",
+          "sent_id": 0,
+          "score": 0.741385817527771,
+          "nli": [
+            0.0011289071990177035,
+            0.07346338778734207,
+            0.9254077076911926
+          ],
+          "text": "SummerSlam (2015): SummerSlam ( 2015 ) was a professional wrestling pay-per-view ( PPV ) event produced by WWE ."
+        },
+        {
+          "doc": 38018,
+          "page_id": "SummerSlam_-LRB-1991-RRB-",
+          "sent_id": 7,
+          "score": 0.7327722311019897,
+          "nli": [
+            0.0007033971487544477,
+            0.0688483715057373,
+            0.9304481744766235
+          ],
+          "text": "SummerSlam (1991): The last two were uninvited guests ."
+        },
+        {
+          "doc": 13703,
+          "page_id": "SummerSlam_-LRB-2015-RRB-",
+          "sent_id": 1,
+          "score": 0.7278459668159485,
+          "nli": [
+            0.0006809359765611589,
+            0.4334462583065033,
+            0.5658727884292603
+          ],
+          "text": "SummerSlam (2015): It took place on August 23 , 2015 , at Barclays Center in Brooklyn , New York ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-178243",
+      "claim": "Nawaz Sharif is a conservative politician.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10174,
+          "page_id": "Nawaz_Sharif",
+          "sent_id": 5,
+          "score": 0.7970020771026611,
+          "nli": [
+            0.0008569596684537828,
+            0.998428463935852,
+            0.0007146194693632424
+          ],
+          "text": "Nawaz Sharif: Sharif studied business at Government College and later law at the University of Punjab before entering politics in the later 1970s ."
+        },
+        {
+          "doc": 10187,
+          "page_id": "Nawaz_Sharif",
+          "sent_id": 22,
+          "score": 0.7924377918243408,
+          "nli": [
+            0.002241285052150488,
+            0.9969549179077148,
+            0.0008038509986363351
+          ],
+          "text": "Nawaz Sharif: As a result , Sharif was elected Prime Minister by Parliament ."
+        },
+        {
+          "doc": 10171,
+          "page_id": "Nawaz_Sharif",
+          "sent_id": 0,
+          "score": 0.7918494939804077,
+          "nli": [
+            0.0007609554450027645,
+            0.9987524747848511,
+            0.00048653516569174826
+          ],
+          "text": "Nawaz Sharif: Mian Muhammad Nawaz Sharif , is a Pakistani politician who is the 20th and current Prime Minister of Pakistan , in office since June 2013 ."
+        },
+        {
+          "doc": 10177,
+          "page_id": "Nawaz_Sharif",
+          "sent_id": 8,
+          "score": 0.7896122932434082,
+          "nli": [
+            0.8772545456886292,
+            0.12147960066795349,
+            0.0012658977648243308
+          ],
+          "text": "Nawaz Sharif: In 1990 , Sharif led a conservative alliance to victory , leading him to become the Prime Minister ."
+        },
+        {
+          "doc": 10172,
+          "page_id": "Nawaz_Sharif",
+          "sent_id": 1,
+          "score": 0.7851443290710449,
+          "nli": [
+            0.00115056405775249,
+            0.998123824596405,
+            0.0007256516837514937
+          ],
+          "text": "Nawaz Sharif: He has previously also served as the Prime Minister from 1990 to 1993 and from 1997 to 1999 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-60531",
+      "claim": "Psych (season 2) ended at 9:00 PM, February 15th, 2008.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 11670,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 0,
+          "score": 0.8701772689819336,
+          "nli": [
+            0.0003178129845764488,
+            0.9986878037452698,
+            0.0009943488985300064
+          ],
+          "text": "Psych (season 2): The second season of Psych originally aired in the United States on USA Network from July 13 , 2007 to February 15 , 2008 ."
+        },
+        {
+          "doc": 11674,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 4,
+          "score": 0.8383046388626099,
+          "nli": [
+            0.0019307853654026985,
+            0.12740613520145416,
+            0.8706629872322083
+          ],
+          "text": "Psych (season 2): A DVD of the season was released on July 8 , 2008 ."
+        },
+        {
+          "doc": 11388,
+          "page_id": "Psych",
+          "sent_id": 10,
+          "score": 0.8312779664993286,
+          "nli": [
+            0.0005487446906045079,
+            0.0034144038800150156,
+            0.9960368275642395
+          ],
+          "text": "Psych: On February 5 , 2014 , USA Network confirmed that the eighth season of Psych would be its last , with the series finale airing on March 26 , 2014 ."
+        },
+        {
+          "doc": 11387,
+          "page_id": "Psych",
+          "sent_id": 9,
+          "score": 0.791090190410614,
+          "nli": [
+            0.0011792653240263462,
+            0.014989831484854221,
+            0.9838309288024902
+          ],
+          "text": "Psych: USA Network renewed the series for an eighth season on December 19 , 2012 , to include eight episodes , and ordered two more episodes on June 25 , 2013 , bringing the episode order to ten ."
+        },
+        {
+          "doc": 11671,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 1,
+          "score": 0.7812768816947937,
+          "nli": [
+            0.0004489017592277378,
+            0.9983261227607727,
+            0.0012250173604115844
+          ],
+          "text": "Psych (season 2): It consisted of 16 episodes ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-70846",
+      "claim": "Kaya Scodelario performed in New York.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7926,
+          "page_id": "Kaya_Scodelario",
+          "sent_id": 0,
+          "score": 0.6890031099319458,
+          "nli": [
+            0.0008563289884477854,
+            0.995746910572052,
+            0.003396783722564578
+          ],
+          "text": "Kaya Scodelario: Kaya Scodelario-Davis ( born Kaya Rose Humphrey ; March 13 , 1992 ) is an English actress ."
+        },
+        {
+          "doc": 136885,
+          "page_id": "Spontaneous_Broadway",
+          "sent_id": 11,
+          "score": 0.6630809307098389,
+          "nli": [
+            0.001874377834610641,
+            0.9901020526885986,
+            0.008023529313504696
+          ],
+          "text": "Spontaneous Broadway: The format was created in New York City and has been performed by a number of different companies around the US ."
+        },
+        {
+          "doc": 136887,
+          "page_id": "Spontaneous_Broadway",
+          "sent_id": 15,
+          "score": 0.6299958825111389,
+          "nli": [
+            0.005210468079894781,
+            0.37946242094039917,
+            0.6153271198272705
+          ],
+          "text": "Spontaneous Broadway: The Spontaneous Broadway format was created by Kat Koppett in association with Freestyle Repertory Theatre in New York ."
+        },
+        {
+          "doc": 7928,
+          "page_id": "Kaya_Scodelario",
+          "sent_id": 2,
+          "score": 0.6296215057373047,
+          "nli": [
+            0.0009720227681100368,
+            0.9974656105041504,
+            0.0015624159714207053
+          ],
+          "text": "Kaya Scodelario: Following her film debut in the science-fiction film Moon ( 2009 ) and a role in the fantasy adventure film Clash of the Titans ( 2010 ) , Scodelario was nominated for the Glamour Award for PANDORA Breakthrough for her portrayal of Catherine Earnshaw in the 2011 film adaptation of Emily Bront\u00eb 's novel Wuthering Heights ."
+        },
+        {
+          "doc": 139339,
+          "page_id": "San_Francisco_Girls_Chorus",
+          "sent_id": 9,
+          "score": 0.6241201162338257,
+          "nli": [
+            0.005797026678919792,
+            0.006837240420281887,
+            0.98736572265625
+          ],
+          "text": "San Francisco Girls Chorus: Bielawa currently resides in New York ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-146214",
+      "claim": "Ned Stark worked with a cast in a film.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10210,
+          "page_id": "Ned_Stark",
+          "sent_id": 7,
+          "score": 0.7428371906280518,
+          "nli": [
+            0.9808791279792786,
+            0.018788576126098633,
+            0.00033227738458663225
+          ],
+          "text": "Ned Stark: He and the rest of the cast were nominated for Screen Actors Guild Awards for Outstanding Performance by an Ensemble in a Drama Series in 2011 ."
+        },
+        {
+          "doc": 10208,
+          "page_id": "Ned_Stark",
+          "sent_id": 5,
+          "score": 0.7184990644454956,
+          "nli": [
+            0.9783938527107239,
+            0.020335683599114418,
+            0.0012705221306532621
+          ],
+          "text": "Ned Stark: Ned is portrayed by Sean Bean in the first season of HBO 's adaptation of the series , Game of Thrones , and as a child and young man by Sebastian Croft and Robert Aramayo respectively in the sixth season ."
+        },
+        {
+          "doc": 10205,
+          "page_id": "Ned_Stark",
+          "sent_id": 0,
+          "score": 0.6723654270172119,
+          "nli": [
+            0.03718378022313118,
+            0.3924142122268677,
+            0.5704020261764526
+          ],
+          "text": "Ned Stark: Eddard `` Ned '' Stark is a fictional character in the first book of George R. R. Martin 's A Song of Ice and Fire series of fantasy novels and the first season of its television adaptation ."
+        },
+        {
+          "doc": 6774,
+          "page_id": "Iron_Man_-LRB-2008_film-RRB-",
+          "sent_id": 2,
+          "score": 0.6673001646995544,
+          "nli": [
+            0.04065105319023132,
+            0.3608182370662689,
+            0.5985307097434998
+          ],
+          "text": "Iron Man (2008 film): The film was directed by Jon Favreau , with a screenplay by Mark Fergus & Hawk Ostby and Art Marcum & Matt Holloway ."
+        },
+        {
+          "doc": 10209,
+          "page_id": "Ned_Stark",
+          "sent_id": 6,
+          "score": 0.6634550094604492,
+          "nli": [
+            0.8077304363250732,
+            0.10878196358680725,
+            0.08348751813173294
+          ],
+          "text": "Ned Stark: Bean was nominated for a Saturn Award for Best Actor on Television and a Scream Award for Best Fantasy Actor for the role ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-80167",
+      "claim": "John Goodman has had cancer.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 128672,
+          "page_id": "Brian_Mansfield",
+          "sent_id": 5,
+          "score": 0.6965512037277222,
+          "nli": [
+            0.0010922112269327044,
+            0.013661361299455166,
+            0.985246479511261
+          ],
+          "text": "Brian Mansfield: In 2012 Mansfield was diagnosed with colon cancer ."
+        },
+        {
+          "doc": 7688,
+          "page_id": "John_Goodman",
+          "sent_id": 0,
+          "score": 0.684453547000885,
+          "nli": [
+            0.00016643284470774233,
+            0.9983015060424805,
+            0.001531983376480639
+          ],
+          "text": "John Goodman: John Stephen Goodman ( born June 20 , 1952 ) is an American actor ."
+        },
+        {
+          "doc": 206469,
+          "page_id": "James_Wilson_-LRB-athlete-RRB-",
+          "sent_id": 15,
+          "score": 0.6734150052070618,
+          "nli": [
+            0.002150370739400387,
+            0.02056216262280941,
+            0.9772874116897583
+          ],
+          "text": "James Wilson (athlete): He died from a bowel cancer aged 81 -- 82 ."
+        },
+        {
+          "doc": 23162,
+          "page_id": "Alan_Kimber",
+          "sent_id": 9,
+          "score": 0.6667441129684448,
+          "nli": [
+            0.0018798065138980746,
+            0.014800271950662136,
+            0.9833199381828308
+          ],
+          "text": "Alan Kimber: He died of cancer three weeks after being hospitalized ."
+        },
+        {
+          "doc": 81479,
+          "page_id": "Louis_S._Goodman",
+          "sent_id": 1,
+          "score": 0.6622983813285828,
+          "nli": [
+            0.0035014168825000525,
+            0.9191784262657166,
+            0.07732021063566208
+          ],
+          "text": "Louis S. Goodman: He is best known for his collaborations with Alfred Gilman , Sr. , with whom he authored the popular textbook The Pharmacological Basis of Therapeutics in 1941 and pioneered the first chemotherapy trials using nitrogen mustard ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-160057",
+      "claim": "Levoamphetamine increases height.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8334,
+          "page_id": "Levoamphetamine",
+          "sent_id": 1,
+          "score": 0.7555149793624878,
+          "nli": [
+            0.0008256985456682742,
+            0.6235491633415222,
+            0.3756251335144043
+          ],
+          "text": "Levoamphetamine: Pharmaceuticals that contain levoamphetamine are currently indicated and prescribed for the treatment of attention deficit hyperactivity disorder ( ADHD ) , obesity , and narcolepsy in some countries ."
+        },
+        {
+          "doc": 8333,
+          "page_id": "Levoamphetamine",
+          "sent_id": 0,
+          "score": 0.7522677183151245,
+          "nli": [
+            0.0012802231358364224,
+            0.19565075635910034,
+            0.803068995475769
+          ],
+          "text": "Levoamphetamine: Levoamphetamine , also known as levamfetamine ( INN ) , ( R ) - amphetamine , - amphetamine , and L-amphetamine , is a central nervous system ( CNS ) stimulant known to increase wakefulness and concentration in association with decreased appetite and fatigue ."
+        },
+        {
+          "doc": 8335,
+          "page_id": "Levoamphetamine",
+          "sent_id": 4,
+          "score": 0.7272623777389526,
+          "nli": [
+            0.0005327045801095665,
+            0.9726043939590454,
+            0.026862842962145805
+          ],
+          "text": "Levoamphetamine: Levoamphetamine is the levorotatory stereoisomer of the amphetamine molecule ."
+        },
+        {
+          "doc": 104590,
+          "page_id": "Capromorelin",
+          "sent_id": 4,
+          "score": 0.6661437749862671,
+          "nli": [
+            0.008350526914000511,
+            0.9391552805900574,
+            0.052494242787361145
+          ],
+          "text": "Capromorelin: Initial studies have shown the drug to directly raise insulin growth factor 1 ( IGF-1 ) and growth hormone levels ."
+        },
+        {
+          "doc": 63740,
+          "page_id": "Levothyroxine",
+          "sent_id": 8,
+          "score": 0.6578531265258789,
+          "nli": [
+            0.00020522162958513945,
+            0.002928640926256776,
+            0.9968661665916443
+          ],
+          "text": "Levothyroxine: Side effects from excessive doses include weight loss , trouble tolerating heat , sweating , anxiety , trouble sleeping , tremor , and fast heart rate ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-163819",
+      "claim": "William Blackstone died in London.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 16633,
+          "page_id": "William_Blackstone",
+          "sent_id": 14,
+          "score": 0.7571091651916504,
+          "nli": [
+            0.00031117306207306683,
+            0.9990578293800354,
+            0.0006310470635071397
+          ],
+          "text": "William Blackstone: He remained in this position until his death , on 14 February 1780 ."
+        },
+        {
+          "doc": 16621,
+          "page_id": "William_Blackstone",
+          "sent_id": 0,
+          "score": 0.7530417442321777,
+          "nli": [
+            0.000581765198148787,
+            0.9978244304656982,
+            0.00159380491822958
+          ],
+          "text": "William Blackstone: Sir William Blackstone ( 10 July 1723 -- 14 February 1780 ) was an English jurist , judge and Tory politician of the eighteenth century ."
+        },
+        {
+          "doc": 16622,
+          "page_id": "William_Blackstone",
+          "sent_id": 1,
+          "score": 0.714377760887146,
+          "nli": [
+            0.0005413120379671454,
+            0.9980185031890869,
+            0.0014401627704501152
+          ],
+          "text": "William Blackstone: He is most noted for writing the Commentaries on the Laws of England ."
+        },
+        {
+          "doc": 16634,
+          "page_id": "William_Blackstone",
+          "sent_id": 17,
+          "score": 0.7063100337982178,
+          "nli": [
+            0.00041697369306348264,
+            0.9987634420394897,
+            0.0008195902337320149
+          ],
+          "text": "William Blackstone: Blackstone 's legacy and main work of note is his Commentaries ."
+        },
+        {
+          "doc": 47235,
+          "page_id": "Morris_Ximenes",
+          "sent_id": 14,
+          "score": 0.6776008605957031,
+          "nli": [
+            0.0025867244694381952,
+            0.0055244374088943005,
+            0.9918889403343201
+          ],
+          "text": "Morris Ximenes: He died in London in 1837 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-111030",
+      "claim": "The English Wikipedia is the English-language edition of an almanac.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 4490,
+          "page_id": "English_Wikipedia",
+          "sent_id": 0,
+          "score": 0.84389328956604,
+          "nli": [
+            0.0012786121806129813,
+            0.002491207327693701,
+            0.9962301850318909
+          ],
+          "text": "English Wikipedia: The English Wikipedia is the English-language edition of the free online encyclopedia Wikipedia ."
+        },
+        {
+          "doc": 4491,
+          "page_id": "English_Wikipedia",
+          "sent_id": 1,
+          "score": 0.7890981435775757,
+          "nli": [
+            0.001787915243767202,
+            0.13493332266807556,
+            0.8632788062095642
+          ],
+          "text": "English Wikipedia: Founded on 15 January 2001 , it is the first edition of Wikipedia and , as of July 2016 , has the most articles of any of the editions ."
+        },
+        {
+          "doc": 4497,
+          "page_id": "English_Wikipedia",
+          "sent_id": 9,
+          "score": 0.7678512334823608,
+          "nli": [
+            0.004054062534123659,
+            0.12732475996017456,
+            0.8686211705207825
+          ],
+          "text": "English Wikipedia: The Simple English Wikipedia is a variation in which most of the articles use only basic English vocabulary ."
+        },
+        {
+          "doc": 118778,
+          "page_id": "Danish_Wikipedia",
+          "sent_id": 0,
+          "score": 0.7640770673751831,
+          "nli": [
+            0.03385310247540474,
+            0.7042876482009888,
+            0.2618592381477356
+          ],
+          "text": "Danish Wikipedia: The Danish Wikipedia ( Danish : Dansk Wikipedia ) started on 1 February 2002 and is the Danish language edition of Wikipedia ."
+        },
+        {
+          "doc": 4498,
+          "page_id": "English_Wikipedia",
+          "sent_id": 10,
+          "score": 0.7559428811073303,
+          "nli": [
+            0.0021757076028734446,
+            0.20484954118728638,
+            0.7929747700691223
+          ],
+          "text": "English Wikipedia: There is also the Old English ( \u00c6nglisc / Anglo-Saxon ) Wikipedia ( angwiki ) ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-177965",
+      "claim": "Children get candy from Trick-or-Treating.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 15390,
+          "page_id": "Trick-or-treating",
+          "sent_id": 1,
+          "score": 0.8296651244163513,
+          "nli": [
+            0.9491195678710938,
+            0.04919252544641495,
+            0.0016879310132935643
+          ],
+          "text": "Trick-or-treating: Children in costumes travel from house to house asking for treats such as candy ( or , in some cultures , money ) with the phrase `` Trick or treat '' ."
+        },
+        {
+          "doc": 15389,
+          "page_id": "Trick-or-treating",
+          "sent_id": 0,
+          "score": 0.7695242166519165,
+          "nli": [
+            0.0011780840577557683,
+            0.9983230233192444,
+            0.0004988322034478188
+          ],
+          "text": "Trick-or-treating: Trick-or-treating is a Halloween custom for children in many countries ."
+        },
+        {
+          "doc": 15393,
+          "page_id": "Trick-or-treating",
+          "sent_id": 5,
+          "score": 0.716756284236908,
+          "nli": [
+            0.14236220717430115,
+            0.8560423254966736,
+            0.0015954624395817518
+          ],
+          "text": "Trick-or-treating: Some homeowners signal that they are willing to hand out treats , for example by putting up Halloween decorations outside their door ."
+        },
+        {
+          "doc": 15402,
+          "page_id": "Trick-or-treating",
+          "sent_id": 16,
+          "score": 0.7138650417327881,
+          "nli": [
+            0.05393359437584877,
+            0.9420940279960632,
+            0.003972339443862438
+          ],
+          "text": "Trick-or-treating: ( `` can you give me my little skull ? '' )"
+        },
+        {
+          "doc": 15391,
+          "page_id": "Trick-or-treating",
+          "sent_id": 2,
+          "score": 0.7034595012664795,
+          "nli": [
+            0.11807151883840561,
+            0.7782382369041443,
+            0.10369020700454712
+          ],
+          "text": "Trick-or-treating: The `` trick '' is a ( usually idle ) threat to perform mischief on the homeowners or their property if no treat is given to them ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-194434",
+      "claim": "The Indiana Pacers were first established in Portugal.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 6828,
+          "page_id": "Indiana_Pacers",
+          "sent_id": 2,
+          "score": 0.8205926418304443,
+          "nli": [
+            0.00019550493743736297,
+            0.0006665720138698816,
+            0.9991379976272583
+          ],
+          "text": "Indiana Pacers: The Pacers were first established in 1967 as a member of the American Basketball Association ( ABA ) and became a member of the NBA in 1976 as a result of the ABA -- NBA merger ."
+        },
+        {
+          "doc": 6826,
+          "page_id": "Indiana_Pacers",
+          "sent_id": 0,
+          "score": 0.7873290777206421,
+          "nli": [
+            0.00013895602023694664,
+            0.0023048047441989183,
+            0.997556209564209
+          ],
+          "text": "Indiana Pacers: The Indiana Pacers are an American professional basketball team based in Indianapolis ."
+        },
+        {
+          "doc": 6830,
+          "page_id": "Indiana_Pacers",
+          "sent_id": 4,
+          "score": 0.7250778675079346,
+          "nli": [
+            0.00018696134793572128,
+            0.00043725266004912555,
+            0.9993758797645569
+          ],
+          "text": "Indiana Pacers: The team is named after Indiana 's history with the Indianapolis 500 's pace cars and with the harness racing industry ."
+        },
+        {
+          "doc": 6827,
+          "page_id": "Indiana_Pacers",
+          "sent_id": 1,
+          "score": 0.7240628004074097,
+          "nli": [
+            0.0003255712508689612,
+            0.07721363753080368,
+            0.9224607348442078
+          ],
+          "text": "Indiana Pacers: The Pacers compete in the National Basketball Association ( NBA ) as a member club of the league 's Eastern Conference Central Division ."
+        },
+        {
+          "doc": 6832,
+          "page_id": "Indiana_Pacers",
+          "sent_id": 8,
+          "score": 0.7111142873764038,
+          "nli": [
+            0.00053254613885656,
+            0.10547653585672379,
+            0.8939908742904663
+          ],
+          "text": "Indiana Pacers: The Pacers were Eastern Conference champions in 2000 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-109365",
+      "claim": "Minor League Baseball is a hierarchy of baseball leagues such as the International League, the Pacific Coast League, and the Mexican League.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9427,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 0,
+          "score": 0.9114381074905396,
+          "nli": [
+            0.0003782878920901567,
+            0.9990516304969788,
+            0.0005700999754481018
+          ],
+          "text": "Minor League Baseball: Minor League Baseball is a hierarchy of professional baseball leagues in the Americas that compete at levels below Major League Baseball ( MLB ) and provide opportunities for player development and a way to prepare for the major leagues ."
+        },
+        {
+          "doc": 9431,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 6,
+          "score": 0.8385748863220215,
+          "nli": [
+            0.043494660407304764,
+            0.9039895534515381,
+            0.05251582711935043
+          ],
+          "text": "Minor League Baseball: Except for the Mexican League , teams in the organized minor leagues are generally independently owned and operated but are directly affiliated with one major league team through a standardized Player Development Contract ( PDC ) ."
+        },
+        {
+          "doc": 9439,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 20,
+          "score": 0.8179960250854492,
+          "nli": [
+            0.014168821275234222,
+            0.9571254253387451,
+            0.02870577946305275
+          ],
+          "text": "Minor League Baseball: Several more independent leagues operate in the United States and Canada ."
+        },
+        {
+          "doc": 9438,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 19,
+          "score": 0.8178362846374512,
+          "nli": [
+            0.1209431141614914,
+            0.7703791856765747,
+            0.1086777076125145
+          ],
+          "text": "Minor League Baseball: Today , 19 affiliated minor baseball leagues operate with 244 member clubs in large , medium , and small cities , as well as the suburbs of major cities , across the United States , Canada , Mexico , and the Dominican Republic ."
+        },
+        {
+          "doc": 9429,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 2,
+          "score": 0.8164565563201904,
+          "nli": [
+            0.0007427820237353444,
+            0.009004861116409302,
+            0.9902523756027222
+          ],
+          "text": "Minor League Baseball: Most are members of the umbrella organization known as Minor League Baseball ( MiLB ) , which operates under the Commissioner of Baseball within the scope of organized baseball ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-35686",
+      "claim": "Zoe Saldana is a Texan.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 16778,
+          "page_id": "Zoe_Saldana",
+          "sent_id": 0,
+          "score": 0.7303495407104492,
+          "nli": [
+            0.0016490498092025518,
+            0.18958322703838348,
+            0.8087676763534546
+          ],
+          "text": "Zoe Saldana: Zoe Saldana-Perego ( born Zoe Yadira Salda\u00f1a Nazario , June 19 , 1978 ) , known professionally as Zoe Saldana or Zo\u00eb Saldana , is an American actress and dancer ."
+        },
+        {
+          "doc": 16782,
+          "page_id": "Zoe_Saldana",
+          "sent_id": 4,
+          "score": 0.6998574733734131,
+          "nli": [
+            0.0004405282670632005,
+            0.9664008617401123,
+            0.03315861150622368
+          ],
+          "text": "Zoe Saldana: The latter film received widespread acclaim , and is the highest-grossing film of all time ."
+        },
+        {
+          "doc": 3310,
+          "page_id": "Colombiana",
+          "sent_id": 2,
+          "score": 0.6880781650543213,
+          "nli": [
+            0.0005137063562870026,
+            0.003026279853656888,
+            0.9964600205421448
+          ],
+          "text": "Colombiana: The film stars Zoe Saldana in the lead role with supporting roles by Michael Vartan , Cliff Curtis , Lennie James , Callum Blue , and Jordi Moll\u00e0 ."
+        },
+        {
+          "doc": 16783,
+          "page_id": "Zoe_Saldana",
+          "sent_id": 5,
+          "score": 0.6740235090255737,
+          "nli": [
+            0.000857643608469516,
+            0.9169405698776245,
+            0.08220182359218597
+          ],
+          "text": "Zoe Saldana: Saldana continued her career with films such as Colombiana ( 2011 ) , Guardians of the Galaxy ( 2014 ) and Star Trek Beyond ( 2016 ) ."
+        },
+        {
+          "doc": 16779,
+          "page_id": "Zoe_Saldana",
+          "sent_id": 1,
+          "score": 0.6659070253372192,
+          "nli": [
+            0.00044637807877734303,
+            0.9754161238670349,
+            0.024137521162629128
+          ],
+          "text": "Zoe Saldana: Following her performances with the theater group Faces , Saldana made her screen debut in an episode of Law & Order ( 1999 ) ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    }
+  ]
+}

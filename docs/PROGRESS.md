@@ -1,5 +1,7 @@
 # Claim-Level Hallucination Detection — Progress Report
 
+> 2026-10-20 update: see [current implementation status](IMPLEMENTATION_STATUS.md). Stage 4 code is present, but the committed HaluEval splits still require extraction and validation. API/UI code has been added; model training remains deferred.
+
 _Last updated: 2026-10-04 · Covers Stages 0–4 of [plan.md](../plan.md)_
 
 ## 1. Project Goal

@@ -1,0 +1,184 @@
+{
+  "protocol": {
+    "dataset": "halueval",
+    "split": "test",
+    "expected_examples": 600,
+    "extraction_model": "gemma4:31b-cloud",
+    "top_k": 5,
+    "rules": [
+      "argmax",
+      "fixed_threshold"
+    ],
+    "entail_threshold": 0.7,
+    "contra_threshold": 0.95,
+    "threshold_source": "existing Stage 3 configuration; frozen before this evaluation",
+    "answer_aggregation": "supported iff nonempty and every claim is supported",
+    "provided_context": "all supplied knowledge joined; evidence upper bound, no retrieval",
+    "retrieved_context": "FEVER Wikipedia corpus, BM25/dense/hybrid top-5 per claim",
+    "training_performed": false,
+    "threshold_tuning_performed": false,
+    "gold_label_unit": "answer only; no claim-level accuracy is computed"
+  },
+  "dataset_sha256": "a942f91a3fa9ef00be30a2dc51a31fb6f8f742dba0a16e2bc4d2ebba5dc98060",
+  "nli_fingerprint": [
+    "MoritzLaurer/DeBERTa-v3-base-mnli",
+    null,
+    512,
+    false
+  ],
+  "fallback_examples": 2,
+  "empty_claim_examples": 2,
+  "versions": {
+    "torch": "2.14.1",
+    "transformers": "5.20.2",
+    "numpy": "2.5.4"
+  },
+  "results": {
+    "provided_whole_answer": {
+      "argmax": {
+        "n": 600,
+        "accuracy": 0.5866666666666667,
+        "precision": 0.5718232044198895,
+        "recall": 0.69,
+        "hallucination_detection_rate": 0.69,
+        "f1": 0.6253776435045317
+      },
+      "fixed_threshold": {
+        "n": 600,
+        "accuracy": 0.5766666666666667,
+        "precision": 0.5572139303482587,
+        "recall": 0.7466666666666667,
+        "hallucination_detection_rate": 0.7466666666666667,
+        "f1": 0.6381766381766383
+      }
+    },
+    "provided_extracted_claims": {
+      "argmax": {
+        "n": 600,
+        "accuracy": 0.7333333333333333,
+        "precision": 0.717391304347826,
+        "recall": 0.77,
+        "hallucination_detection_rate": 0.77,
+        "f1": 0.7427652733118971
+      },
+      "fixed_threshold": {
+        "n": 600,
+        "accuracy": 0.72,
+        "precision": 0.6918604651162791,
+        "recall": 0.7933333333333333,
+        "hallucination_detection_rate": 0.7933333333333333,
+        "f1": 0.7391304347826088
+      }
+    },
+    "bm25_extracted_claims": {
+      "argmax": {
+        "n": 600,
+        "accuracy": 0.5066666666666667,
+        "precision": 0.5033783783783784,
+        "recall": 0.9933333333333333,
+        "hallucination_detection_rate": 0.9933333333333333,
+        "f1": 0.6681614349775785
+      },
+      "fixed_threshold": {
+        "n": 600,
+        "accuracy": 0.505,
+        "precision": 0.5025210084033613,
+        "recall": 0.9966666666666667,
+        "hallucination_detection_rate": 0.9966666666666667,
+        "f1": 0.6681564245810057
+      }
+    },
+    "dense_extracted_claims": {
+      "argmax": {
+        "n": 600,
+        "accuracy": 0.505,
+        "precision": 0.5025295109612141,
+        "recall": 0.9933333333333333,
+        "hallucination_detection_rate": 0.9933333333333333,
+        "f1": 0.6674132138857782
+      },
+      "fixed_threshold": {
+        "n": 600,
+        "accuracy": 0.505,
+        "precision": 0.5025210084033613,
+        "recall": 0.9966666666666667,
+        "hallucination_detection_rate": 0.9966666666666667,
+        "f1": 0.6681564245810057
+      }
+    },
+    "hybrid_extracted_claims": {
+      "argmax": {
+        "n": 600,
+        "accuracy": 0.505,
+        "precision": 0.5025295109612141,
+        "recall": 0.9933333333333333,
+        "hallucination_detection_rate": 0.9933333333333333,
+        "f1": 0.6674132138857782
+      },
+      "fixed_threshold": {
+        "n": 600,
+        "accuracy": 0.505,
+        "precision": 0.5025210084033613,
+        "recall": 0.9966666666666667,
+        "hallucination_detection_rate": 0.9966666666666667,
+        "f1": 0.6681564245810057
+      }
+    }
+  },
+  "timestamp": "2026-10-20T18:28:03.561681+00:00",
+  "retrieval_provenance": {
+    "configuration": {
+      "top_k": 5,
+      "bm25_k": 50,
+      "dense_k": 50,
+      "rrf_k": 60
+    },
+    "embedding_configuration": {
+      "model": "BAAI/bge-small-en-v1.5",
+      "batch_size": 128
+    },
+    "files": {
+      "data/processed/fever_corpus.jsonl": {
+        "sha256": "23bd8fc728620534d38d18c6d0842723236bb3fec082c355256fddeb5cb507c6",
+        "bytes": 35224649
+      },
+      "data/processed/indexes/bm25.pkl": {
+        "sha256": "d59a0f1745bab3bf7e1f34cdd90815cc969283f6b8a1899e03dd5f462809c090",
+        "bytes": 27261993
+      },
+      "data/processed/indexes/dense.npy": {
+        "sha256": "f5ac088bd7da09614a4e5487d9309f32c21146d3a2d21051a49528fe66c6cb36",
+        "bytes": 380694656
+      }
+    }
+  },
+  "nli_cache_provenance": {
+    "cached_revision": "2529eceb600de4c5f41ae815d95afb0e008cae06",
+    "files": {
+      "model.safetensors": {
+        "sha256": "d60ea56c15d3e58e568dbfc0f2d662b5b3afec5bb0bbe2e10751a4f5a9a6efe7",
+        "bytes": 737726552
+      },
+      "added_tokens.json": {
+        "sha256": "cd0141b19e809eb963a8f8244fad72530233f729e1f6960d281e1fbb3537b2fb",
+        "bytes": 18
+      },
+      "tokenizer_config.json": {
+        "sha256": "2a8feb86858778ebd5bd60ece0dc59ab96a25a15802e610c128dfb1e6c93382f",
+        "bytes": 417
+      },
+      "special_tokens_map.json": {
+        "sha256": "fcfbeb4e25cd37fb5b8030406394253b245230fd3b552750092bab7d24d827da",
+        "bytes": 156
+      },
+      "config.json": {
+        "sha256": "7a560daaf9ed9b419db8729d8425342326a5b051f33d8008ca41cb8ec5958abe",
+        "bytes": 1078
+      },
+      "spm.model": {
+        "sha256": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd",
+        "bytes": 2464616
+      }
+    }
+  }
+}

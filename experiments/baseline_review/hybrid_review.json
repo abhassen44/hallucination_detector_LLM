@@ -1,0 +1,4383 @@
+{
+  "categories": [
+    "retrieval_failure",
+    "claim_extraction_failure",
+    "nli_failure",
+    "ambiguous_evidence",
+    "numerical_reasoning",
+    "temporal_information",
+    "entity_confusion",
+    "multi_hop_reasoning"
+  ],
+  "examples": [
+    {
+      "id": "fever-3637",
+      "claim": "There are currently 15,882,417 Mormon members as of 2017.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 9772,
+          "page_id": "Mormons",
+          "sent_id": 24,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9888456463813782,
+            0.010835918597877026,
+            0.00031839028815738857
+          ],
+          "text": "Mormons: The number of members in 1971 was 3,090,953 and now in 2017 based on the Annual Report , there are 15,882,417 worldwide ."
+        },
+        {
+          "doc": 162240,
+          "page_id": "Knights_of_Saint_Mulumba",
+          "sent_id": 1,
+          "score": 0.02761904761904762,
+          "nli": [
+            0.0005314334994181991,
+            0.004233453422784805,
+            0.9952351450920105
+          ],
+          "text": "Knights of Saint Mulumba: Currently , there are 10,772 members ."
+        },
+        {
+          "doc": 32028,
+          "page_id": "Current_members_of_Palestinian_Legislative_Council",
+          "sent_id": 2,
+          "score": 0.02325895875591616,
+          "nli": [
+            0.0013827069196850061,
+            0.004188913851976395,
+            0.9944283962249756
+          ],
+          "text": "Current members of Palestinian Legislative Council: 15 members are imprisoned by Israeli authorities and three are deceased , according to the count on 31 December 2010 ."
+        },
+        {
+          "doc": 87433,
+          "page_id": "Evangelical_Lutheran_Church_\u2013_Synod_of_France_and_Belgium",
+          "sent_id": 12,
+          "score": 0.020101010101010102,
+          "nli": [
+            0.00024407445744145662,
+            0.0013854795834049582,
+            0.9983704686164856
+          ],
+          "text": "Evangelical Lutheran Church \u2013 Synod of France and Belgium: It currently has 957 baptized members in France ."
+        },
+        {
+          "doc": 14307,
+          "page_id": "The_Book_of_Mormon_-LRB-musical-RRB-",
+          "sent_id": 23,
+          "score": 0.016129032258064516,
+          "nli": [
+            0.0016227092128247023,
+            0.9286263585090637,
+            0.06975093483924866
+          ],
+          "text": "The Book of Mormon (musical): An Australian production opened in Melbourne and a Swedish production opened in Stockholm in 2017 ."
+        }
+      ],
+      "gold_context": [
+        "Mormons: The number of members in 1971 was 3,090,953 and now in 2017 based on the Annual Report , there are 15,882,417 worldwide ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-44380",
+      "claim": "Richard Dawson was born November 20th 1932.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12031,
+          "page_id": "Richard_Dawson",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.991038978099823,
+            0.008102018386125565,
+            0.0008589648059569299
+          ],
+          "text": "Richard Dawson: Richard Dawson ( born Colin Lionel Emm ; 20 November 1932 -- 2 June 2012 ) was a British-American actor and comedian , and a game show host and panellist in the United States ."
+        },
+        {
+          "doc": 127534,
+          "page_id": "Richard_Weber",
+          "sent_id": 7,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.001120518776588142,
+            0.013439079746603966,
+            0.9854404330253601
+          ],
+          "text": "Richard Weber: Richard Weber ( poet ) ( born 1932 ) , Irish poet"
+        },
+        {
+          "doc": 12033,
+          "page_id": "Richard_Dawson",
+          "sent_id": 2,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.0008413050672970712,
+            0.9898084998130798,
+            0.009350240230560303
+          ],
+          "text": "Richard Dawson: In 1984 , he became an American citizen while retaining his British citizenship ."
+        },
+        {
+          "doc": 12226,
+          "page_id": "Rosario_Dawson",
+          "sent_id": 0,
+          "score": 0.02786377708978328,
+          "nli": [
+            0.0008226525387726724,
+            0.0025389022193849087,
+            0.9966384172439575
+          ],
+          "text": "Rosario Dawson: Rosario Isabel Dawson ( born May 9 , 1979 ) is an American actress , producer , and comic book writer ."
+        },
+        {
+          "doc": 103751,
+          "page_id": "Glen_Dawson_-LRB-mountaineer-RRB-",
+          "sent_id": 0,
+          "score": 0.027651515151515153,
+          "nli": [
+            0.0004145586572121829,
+            0.0007714780513197184,
+            0.9988139867782593
+          ],
+          "text": "Glen Dawson (mountaineer): Glen Dawson ( June 3 , 1912 -- March 22 , 2016 )"
+        }
+      ],
+      "gold_context": [
+        "Richard Dawson: Richard Dawson ( born Colin Lionel Emm ; 20 November 1932 -- 2 June 2012 ) was a British-American actor and comedian , and a game show host and panellist in the United States ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-135311",
+      "claim": "Robert Lorenz directed Trouble with the Curve.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 15219,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9949907660484314,
+            0.004358244594186544,
+            0.0006509660743176937
+          ],
+          "text": "Trouble with the Curve: Trouble with the Curve is a 2012 sports-drama film directed by Robert Lorenz , and starring Clint Eastwood , Amy Adams , Justin Timberlake , Matthew Lillard and John Goodman ."
+        },
+        {
+          "doc": 15221,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 2,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0010355859994888306,
+            0.9866766929626465,
+            0.012287718243896961
+          ],
+          "text": "Trouble with the Curve: Filming began in March 2012 , and the film was released on September 21 , 2012 ."
+        },
+        {
+          "doc": 15220,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 1,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.0015195767628028989,
+            0.9184879064559937,
+            0.07999249547719955
+          ],
+          "text": "Trouble with the Curve: The film revolves around an aging baseball scout whose daughter joins him on a scouting trip ."
+        },
+        {
+          "doc": 15222,
+          "page_id": "Trouble_with_the_Curve",
+          "sent_id": 5,
+          "score": 0.03057889822595705,
+          "nli": [
+            0.00038059131475165486,
+            0.002306494163349271,
+            0.9973129630088806
+          ],
+          "text": "Trouble with the Curve: This was Eastwood 's first acting project since 2008 's Gran Torino and his first acting role in a film he did not direct since his cameo in 1995 's Casper ."
+        },
+        {
+          "doc": 9861,
+          "page_id": "Mystic_River_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.0006047080387361348,
+            0.007780947256833315,
+            0.9916143417358398
+          ],
+          "text": "Mystic River (film): The film was produced by Robert Lorenz , Judie G. Hoyt and Eastwood ."
+        }
+      ],
+      "gold_context": [
+        "Trouble with the Curve: Trouble with the Curve is a 2012 sports-drama film directed by Robert Lorenz , and starring Clint Eastwood , Amy Adams , Justin Timberlake , Matthew Lillard and John Goodman ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-99971",
+      "claim": "Quay had its first public showing at a nonprofit movie theater.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11398,
+          "page_id": "Quay_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.030834914611005692,
+          "nli": [
+            0.0002861862303689122,
+            0.9780943989753723,
+            0.02161947451531887
+          ],
+          "text": "Quay (film): Quay is a 2015 British short documentary film composed , shot , edited , produced , and directed by Christopher Nolan about animators Stephen and Timothy Quay ."
+        },
+        {
+          "doc": 200787,
+          "page_id": "De_Munt",
+          "sent_id": 10,
+          "score": 0.028177225029148854,
+          "nli": [
+            0.0008147652843035758,
+            0.9870830774307251,
+            0.012102197855710983
+          ],
+          "text": "De Munt: Path\u00e9 De Munt movie theater"
+        },
+        {
+          "doc": 75724,
+          "page_id": "Centenary_Quay",
+          "sent_id": 0,
+          "score": 0.027046783625730993,
+          "nli": [
+            0.0004146824649069458,
+            0.9913371801376343,
+            0.008248177357017994
+          ],
+          "text": "Centenary Quay: Centenary Quay ( also known as Woolston Riverside ) is a new development which has commenced in the suburb of Woolston in Southampton , England ."
+        },
+        {
+          "doc": 33343,
+          "page_id": "Capitol_Theater_-LRB-Burlington,_Iowa-RRB-",
+          "sent_id": 2,
+          "score": 0.02701252236135957,
+          "nli": [
+            0.0010974149918183684,
+            0.9957579970359802,
+            0.0031446157954633236
+          ],
+          "text": "Capitol Theater (Burlington, Iowa): The theater was both a movie theater and an auditorium used for performances ( though the stage was only used for approximately an hour during its Grand Opening , and was never used again ) ."
+        },
+        {
+          "doc": 112698,
+          "page_id": "Bill_Quay",
+          "sent_id": 0,
+          "score": 0.02604430914933198,
+          "nli": [
+            0.0013381768949329853,
+            0.9852256178855896,
+            0.013436149805784225
+          ],
+          "text": "Bill Quay: Bill Quay is a suburb in the northeast of Gateshead in North East England , situated between Hebburn to the east and Pelaw to the southwest ."
+        }
+      ],
+      "gold_context": [
+        "Quay (film): The film premiered at the Film Forum theatre in New York City on 19 August 2015 .",
+        "Film Forum: Film Forum is a nonprofit movie theater at 209 West Houston Street in Hudson Square , Manhattan ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-67274",
+      "claim": "Grease's soundtrack sold second-best as album of the year and gained much fame.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5555,
+          "page_id": "Grease_-LRB-film-RRB-",
+          "sent_id": 4,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0002088975888909772,
+            0.9989903569221497,
+            0.0008007863652892411
+          ],
+          "text": "Grease (film): Its soundtrack album ended 1978 as the second-best selling album of the year in the United States , behind the soundtrack of Saturday Night Fever ."
+        },
+        {
+          "doc": 5492,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 3,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.00017291100812144578,
+            0.9974260926246643,
+            0.0024009901098906994
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: It sold 28 million copies worldwide ."
+        },
+        {
+          "doc": 5489,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 0,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.0002187422796851024,
+            0.998166561126709,
+            0.0016147212591022253
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: Grease : The Original Soundtrack from the Motion Picture is the original motion picture soundtrack for the 1978 film Grease ."
+        },
+        {
+          "doc": 5490,
+          "page_id": "Grease-COLON-_The_Original_Soundtrack_from_the_Motion_Picture",
+          "sent_id": 1,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.0001657463435549289,
+            0.9980747699737549,
+            0.0017594617092981935
+          ],
+          "text": "Grease: The Original Soundtrack from the Motion Picture: It was originally released by RSO Records ."
+        },
+        {
+          "doc": 5554,
+          "page_id": "Grease_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 0.029571646010002173,
+          "nli": [
+            0.00044248515041545033,
+            0.9956557750701904,
+            0.003901688614860177
+          ],
+          "text": "Grease (film): Grease was successful both critically and commercially ."
+        }
+      ],
+      "gold_context": [
+        "Grease (film): Its soundtrack album ended 1978 as the second-best selling album of the year in the United States , behind the soundtrack of Saturday Night Fever .",
+        "Grease: The Original Soundtrack from the Motion Picture: The song `` You 're the One That I Want '' was a US and UK # 1 for stars John Travolta and Olivia Newton-John ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-12420",
+      "claim": "Catherine Keener appeared in Into the Wild.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 2776,
+          "page_id": "Catherine_Keener",
+          "sent_id": 2,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9944955706596375,
+            0.0045296018943190575,
+            0.000974823662545532
+          ],
+          "text": "Catherine Keener: Keener also appeared in the films Into the Wild ( 2007 ) , Synecdoche , New York ( 2008 ) , and Get Out ( 2017 ) , which were well received by critics ."
+        },
+        {
+          "doc": 2777,
+          "page_id": "Catherine_Keener",
+          "sent_id": 3,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.00019648375746328384,
+            0.9866436123847961,
+            0.013159846886992455
+          ],
+          "text": "Catherine Keener: Keener is the muse of director Nicole Holofcener , having appeared in every work of hers to date ."
+        },
+        {
+          "doc": 6710,
+          "page_id": "Into_the_Wild_-LRB-film-RRB-",
+          "sent_id": 2,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.9941176176071167,
+            0.005231956485658884,
+            0.0006503948243334889
+          ],
+          "text": "Into the Wild (film): The film stars Emile Hirsch as McCandless , and Marcia Gay Harden and William Hurt as his parents , and features Jena Malone , Catherine Keener , Vince Vaughn , Kristen Stewart , and Hal Holbrook ."
+        },
+        {
+          "doc": 2774,
+          "page_id": "Catherine_Keener",
+          "sent_id": 0,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.00025788380298763514,
+            0.9987181425094604,
+            0.0010239422554150224
+          ],
+          "text": "Catherine Keener: Catherine Ann Keener ( born March 23 , 1959 ) is an American actress ."
+        },
+        {
+          "doc": 2775,
+          "page_id": "Catherine_Keener",
+          "sent_id": 1,
+          "score": 0.029418126757516764,
+          "nli": [
+            0.0006892360397614539,
+            0.003836748655885458,
+            0.9954740405082703
+          ],
+          "text": "Catherine Keener: She has been twice nominated for the Academy Award for Best Supporting Actress for her roles as Maxine Lund in Being John Malkovich ( 1999 ) and Harper Lee in Capote ( 2005 ) ."
+        }
+      ],
+      "gold_context": [
+        "Catherine Keener: Keener also appeared in the films Into the Wild ( 2007 ) , Synecdoche , New York ( 2008 ) , and Get Out ( 2017 ) , which were well received by critics ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-27073",
+      "claim": "See You on the Other Side was involved with the production team of The Matrix.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12855,
+          "page_id": "See_You_on_the_Other_Side_-LRB-Korn_album-RRB-",
+          "sent_id": 4,
+          "score": 0.030886196246139225,
+          "nli": [
+            0.9925129413604736,
+            0.0066614276729524136,
+            0.0008256726432591677
+          ],
+          "text": "See You on the Other Side (Korn album): The album is best known for the involvement of renowned production team ` The Matrix ' , best known for coproduction on works by Avril Lavigne , Britney Spears , and Shakira , who managed to give Korn 's music a different sound ."
+        },
+        {
+          "doc": 14220,
+          "page_id": "Syco",
+          "sent_id": 16,
+          "score": 0.026597524255603883,
+          "nli": [
+            0.0003261083329562098,
+            0.002560035791248083,
+            0.997113823890686
+          ],
+          "text": "Syco: Syco Film is involved in the production of films such as One Direction : This Is Us ."
+        },
+        {
+          "doc": 40147,
+          "page_id": "Pre-production_-LRB-disambiguation-RRB-",
+          "sent_id": 0,
+          "score": 0.016129032258064516,
+          "nli": [
+            0.05442427098751068,
+            0.8749387860298157,
+            0.07063688337802887
+          ],
+          "text": "Pre-production (disambiguation): Pre-production is the process of preparing all the elements involved in a film , play , or other performance ."
+        },
+        {
+          "doc": 12851,
+          "page_id": "See_You_on_the_Other_Side_-LRB-Korn_album-RRB-",
+          "sent_id": 0,
+          "score": 0.016129032258064516,
+          "nli": [
+            0.0009719122317619622,
+            0.8767288327217102,
+            0.12229927629232407
+          ],
+          "text": "See You on the Other Side (Korn album): See You on the Other Side is the seventh studio album by Korn ."
+        },
+        {
+          "doc": 144002,
+          "page_id": "General_linear_model",
+          "sent_id": 5,
+          "score": 0.015873015873015872,
+          "nli": [
+            0.02785639837384224,
+            0.9452757835388184,
+            0.026867834851145744
+          ],
+          "text": "General linear model: where Y is a matrix with series of multivariate measurements , X is a matrix that might be a design matrix , B is a matrix containing parameters that are usually to be estimated and U is a matrix containing errors or noise ."
+        }
+      ],
+      "gold_context": [
+        "See You on the Other Side (Korn album): The album is best known for the involvement of renowned production team ` The Matrix ' , best known for coproduction on works by Avril Lavigne , Britney Spears , and Shakira , who managed to give Korn 's music a different sound ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-68282",
+      "claim": "Daredevil is based on the Marvel Comics character of the same name.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 3795,
+          "page_id": "Daredevil_-LRB-TV_series-RRB-",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.984122633934021,
+            0.015553560107946396,
+            0.00032375092268921435
+          ],
+          "text": "Daredevil (TV series): Marvel 's Daredevil , or simply Daredevil , is an American web television series created for Netflix by Drew Goddard , based on the Marvel Comics character of the same name ."
+        },
+        {
+          "doc": 2119,
+          "page_id": "Black_Panther_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.029211087420042643,
+          "nli": [
+            0.0004980346420779824,
+            0.008598150685429573,
+            0.9909037947654724
+          ],
+          "text": "Black Panther (film): Black Panther is an upcoming American superhero film based on the Marvel Comics character of the same name ."
+        },
+        {
+          "doc": 3800,
+          "page_id": "Daredevil_-LRB-TV_series-RRB-",
+          "sent_id": 7,
+          "score": 0.0288981288981289,
+          "nli": [
+            0.03670301288366318,
+            0.9612550139427185,
+            0.002042026724666357
+          ],
+          "text": "Daredevil (TV series): Daredevil entered development in late 2013 , a year after the film rights to the character reverted to Marvel , with Goddard initially hired in December 2013 ."
+        },
+        {
+          "doc": 14731,
+          "page_id": "The_Punisher_-LRB-TV_series-RRB-",
+          "sent_id": 0,
+          "score": 0.027692895339954164,
+          "nli": [
+            0.0008291903650388122,
+            0.019797308370471,
+            0.979373574256897
+          ],
+          "text": "The Punisher (TV series): Marvel 's The Punisher , or simply The Punisher , is an upcoming American web television series created for Netflix by Steve Lightfoot , based on the Marvel Comics character of the same name ."
+        },
+        {
+          "doc": 6772,
+          "page_id": "Iron_Man_-LRB-2008_film-RRB-",
+          "sent_id": 0,
+          "score": 0.026153846153846153,
+          "nli": [
+            0.000364998122677207,
+            0.0070228432305157185,
+            0.9926121830940247
+          ],
+          "text": "Iron Man (2008 film): Iron Man is a 2008 American superhero film based on the Marvel Comics character of the same name , produced by Marvel Studios and distributed by Paramount Pictures ."
+        }
+      ],
+      "gold_context": [
+        "Daredevil (TV series): Marvel 's Daredevil , or simply Daredevil , is an American web television series created for Netflix by Drew Goddard , based on the Marvel Comics character of the same name ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-152471",
+      "claim": "Fred Seibert has a career as a jazz record audio engineer.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 4957,
+          "page_id": "Fred_Seibert",
+          "sent_id": 3,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.004696234129369259,
+            0.01623217575252056,
+            0.9790715575218201
+          ],
+          "text": "Fred Seibert: He has produced live action and animated programs for cable television , and the internet , and began his professional career as a jazz and blues record producer ."
+        },
+        {
+          "doc": 4954,
+          "page_id": "Fred_Seibert",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.00021846868912689388,
+            0.0009144138894043863,
+            0.9988671541213989
+          ],
+          "text": "Fred Seibert: Frederick `` Fred '' Seibert ( born September 15 , 1951 ) is a serial entrepreneur and American television and film producer ."
+        },
+        {
+          "doc": 4955,
+          "page_id": "Fred_Seibert",
+          "sent_id": 1,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.00026376143796369433,
+            0.028832511976361275,
+            0.9709036946296692
+          ],
+          "text": "Fred Seibert: He owns Frederator Networks , Inc. and Frederator Studios ."
+        },
+        {
+          "doc": 4956,
+          "page_id": "Fred_Seibert",
+          "sent_id": 2,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.00018119167361874133,
+            0.0024890906643122435,
+            0.9973297119140625
+          ],
+          "text": "Fred Seibert: Seibert has held leading positions with MTV Networks , Hanna-Barbera , and Next New Networks , and is an angel investor in several technology and media start-ups ."
+        },
+        {
+          "doc": 20549,
+          "page_id": "Fred_Emney",
+          "sent_id": 11,
+          "score": 0.029631255487269532,
+          "nli": [
+            0.0009986109798774123,
+            0.007717818953096867,
+            0.9912835359573364
+          ],
+          "text": "Fred Emney: Some were released on record ."
+        }
+      ],
+      "gold_context": [
+        "Fred Seibert: He has produced live action and animated programs for cable television , and the internet , and began his professional career as a jazz and blues record producer ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-129767",
+      "claim": "George Harrisongot married in 1966.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 66947,
+          "page_id": "Jerry_Sterner",
+          "sent_id": 4,
+          "score": 0.032266458495966696,
+          "nli": [
+            0.0008700634934939444,
+            0.00504121370613575,
+            0.9940887689590454
+          ],
+          "text": "Jerry Sterner: In 1966 he married Jean Sterner ."
+        },
+        {
+          "doc": 5338,
+          "page_id": "George_Harrison",
+          "sent_id": 21,
+          "score": 0.03021353930031804,
+          "nli": [
+            0.1392088532447815,
+            0.8555728793144226,
+            0.005218248814344406
+          ],
+          "text": "George Harrison: The following year he married Olivia Harrison ( n\u00e9e Arias ) , with whom he had one son , Dhani ."
+        },
+        {
+          "doc": 5337,
+          "page_id": "George_Harrison",
+          "sent_id": 20,
+          "score": 0.03009207275993712,
+          "nli": [
+            0.9919169545173645,
+            0.007283248007297516,
+            0.000799788860604167
+          ],
+          "text": "George Harrison: Harrison 's first marriage , to model Pattie Boyd in 1966 , ended in divorce in 1977 ."
+        },
+        {
+          "doc": 140838,
+          "page_id": "George_Venables-Vernon,_1st_Baron_Vernon",
+          "sent_id": 9,
+          "score": 0.024269005847953218,
+          "nli": [
+            0.0009968923404812813,
+            0.11021729558706284,
+            0.8887857794761658
+          ],
+          "text": "George Venables-Vernon, 1st Baron Vernon: Lord Vernon was married three times and several of his descendants gained distinction ."
+        },
+        {
+          "doc": 140840,
+          "page_id": "George_Venables-Vernon,_1st_Baron_Vernon",
+          "sent_id": 11,
+          "score": 0.02299154334038055,
+          "nli": [
+            0.0004057808837387711,
+            0.0006970303365960717,
+            0.9988970756530762
+          ],
+          "text": "George Venables-Vernon, 1st Baron Vernon: After her death in 1740 he married secondly Ann , daughter of Sir Thomas Lee , in 1741 ."
+        }
+      ],
+      "gold_context": [
+        "George Harrison: Harrison 's first marriage , to model Pattie Boyd in 1966 , ended in divorce in 1977 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-52509",
+      "claim": "Stomp the Yard stars an American actor born in 1982.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 13613,
+          "page_id": "Stomp_the_Yard",
+          "sent_id": 0,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.0005694482824765146,
+            0.9979096055030823,
+            0.0015209490666165948
+          ],
+          "text": "Stomp the Yard: Stomp the Yard is a 2007 dance drama film produced by Rainforest Films and released through Sony Pictures ' Screen Gems division on January 12 , 2007 ."
+        },
+        {
+          "doc": 3821,
+          "page_id": "Darrin_Henson",
+          "sent_id": 4,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.015757301822304726,
+            0.9825156927108765,
+            0.0017269663512706757
+          ],
+          "text": "Darrin Henson: Henson also starred in productions such as the motion picture Stomp the Yard ."
+        },
+        {
+          "doc": 13614,
+          "page_id": "Stomp_the_Yard",
+          "sent_id": 1,
+          "score": 0.031746031746031744,
+          "nli": [
+            0.0014633724931627512,
+            0.8984450697898865,
+            0.10009156912565231
+          ],
+          "text": "Stomp the Yard: Directed by Sylvain White , Stomp the Yard centers on DJ Williams , a college student at a fictional historically Black university who pledges to join a fictional Greek-letter fraternity ."
+        },
+        {
+          "doc": 13620,
+          "page_id": "Stomp_the_Yard",
+          "sent_id": 9,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.0002555915853008628,
+            0.9976044297218323,
+            0.0021400421392172575
+          ],
+          "text": "Stomp the Yard: Stomp the Yard was filmed in Atlanta , Georgia , on the campuses of Morris Brown College , Georgia Institute of Technology , Morehouse College , and Clark Atlanta University , and in the MAK Historic District of Decatur , Georgia ."
+        },
+        {
+          "doc": 13621,
+          "page_id": "Stomp_the_Yard",
+          "sent_id": 10,
+          "score": 0.029906956136464335,
+          "nli": [
+            0.0056266034953296185,
+            0.9820236563682556,
+            0.012349787168204784
+          ],
+          "text": "Stomp the Yard: Elsewhere Short and Brown had also starred together in the film This Christmas '' ."
+        }
+      ],
+      "gold_context": [
+        "Stomp the Yard: The film stars Columbus Short , Meagan Good , Darrin Henson , Brian White , Laz Alonso , and Valarie Pettiford , with Harry Lennix , and , in their film debuts , R&B singers Ne-Yo & Chris Brown .",
+        "Columbus Short: Columbus Keith Short , Jr. ( born September 19 , 1982 ) is an American choreographer , actor , and singer ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-132160",
+      "claim": "Amy Winehouse died.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 525,
+          "page_id": "Amy_Winehouse",
+          "sent_id": 10,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9937558174133301,
+            0.005772204603999853,
+            0.0004719641583506018
+          ],
+          "text": "Amy Winehouse: Winehouse died of alcohol poisoning on 23 July 2011 , aged 27 ."
+        },
+        {
+          "doc": 519,
+          "page_id": "Amy_Winehouse",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.9761644005775452,
+            0.023047037422657013,
+            0.0007886263192631304
+          ],
+          "text": "Amy Winehouse: Amy Jade Winehouse ( 14 September 1983 -- 23 July 2011 ) was an English singer and songwriter ."
+        },
+        {
+          "doc": 521,
+          "page_id": "Amy_Winehouse",
+          "sent_id": 2,
+          "score": 0.03125,
+          "nli": [
+            0.00028575898613780737,
+            0.01542014442384243,
+            0.9842941164970398
+          ],
+          "text": "Amy Winehouse: Winehouse 's debut album , Frank ( 2003 ) , was a critical success in the UK and was nominated for the Mercury Prize ."
+        },
+        {
+          "doc": 11675,
+          "page_id": "Rehab_-LRB-Amy_Winehouse_song-RRB-",
+          "sent_id": 0,
+          "score": 0.030158730158730156,
+          "nli": [
+            0.002691849833354354,
+            0.9887867569923401,
+            0.008521330542862415
+          ],
+          "text": "Rehab (Amy Winehouse song): `` Rehab '' is a song written and performed by English singer and songwriter Amy Winehouse , from her second and final studio album Back to Black ( 2006 ) ."
+        },
+        {
+          "doc": 92107,
+          "page_id": "Amy_Barrington",
+          "sent_id": 14,
+          "score": 0.029957522915269395,
+          "nli": [
+            0.0007004371145740151,
+            0.00333182280883193,
+            0.9959677457809448
+          ],
+          "text": "Amy Barrington: Barrington died in 1942 , aged 84 ."
+        }
+      ],
+      "gold_context": [
+        "Amy Winehouse: Amy Jade Winehouse ( 14 September 1983 -- 23 July 2011 ) was an English singer and songwriter .",
+        "Amy Winehouse: Winehouse died of alcohol poisoning on 23 July 2011 , aged 27 ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-136290",
+      "claim": "Java is an landform.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7014,
+          "page_id": "Java",
+          "sent_id": 3,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.32439178228378296,
+            0.6607514023780823,
+            0.014856773428618908
+          ],
+          "text": "Java: Much of Indonesian history took place on Java ."
+        },
+        {
+          "doc": 7024,
+          "page_id": "Java",
+          "sent_id": 17,
+          "score": 0.03131881575727918,
+          "nli": [
+            0.7706955671310425,
+            0.20045369863510132,
+            0.02885078266263008
+          ],
+          "text": "Java: Java is divided into four provinces , West Java , Central Java , East Java , and Banten , and two special regions , Jakarta and Yogyakarta ."
+        },
+        {
+          "doc": 7017,
+          "page_id": "Java",
+          "sent_id": 6,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.32785317301750183,
+            0.41247686743736267,
+            0.2596700191497803
+          ],
+          "text": "Java: Java dominates Indonesia politically , economically and culturally ."
+        },
+        {
+          "doc": 7011,
+          "page_id": "Java",
+          "sent_id": 0,
+          "score": 0.030886196246139225,
+          "nli": [
+            0.013169988058507442,
+            0.0049550216645002365,
+            0.9818750023841858
+          ],
+          "text": "Java: Java ( Indonesian : Jawa ; Javanese : \ua997\ua9ae ; Sundanese : ) is an island of Indonesia ."
+        },
+        {
+          "doc": 7023,
+          "page_id": "Java",
+          "sent_id": 14,
+          "score": 0.030158730158730156,
+          "nli": [
+            0.18200111389160156,
+            0.7072857022285461,
+            0.11071313172578812
+          ],
+          "text": "Java: While the majority of the people of Java are Muslim , Java has a diverse mixture of religious beliefs , ethnicities , and cultures ."
+        }
+      ],
+      "gold_context": [
+        "Java: Java ( Indonesian : Jawa ; Javanese : \ua997\ua9ae ; Sundanese : ) is an island of Indonesia .",
+        "Island: An island or isle is any piece of sub-continental land that is surrounded by water ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-127402",
+      "claim": "Mandy Moore is a writer.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8791,
+          "page_id": "Mandy_Moore",
+          "sent_id": 0,
+          "score": 0.032018442622950824,
+          "nli": [
+            0.002832501893863082,
+            0.004361434374004602,
+            0.9928061366081238
+          ],
+          "text": "Mandy Moore: Amanda Leigh Moore ( born April 10 , 1984 ) is an American singer-songwriter and actress ."
+        },
+        {
+          "doc": 8798,
+          "page_id": "Mandy_Moore",
+          "sent_id": 11,
+          "score": 0.03177805800756621,
+          "nli": [
+            0.0004815425490960479,
+            0.0013140913797542453,
+            0.9982043504714966
+          ],
+          "text": "Mandy Moore: Outside of her musical career , Moore has also branched out into acting ."
+        },
+        {
+          "doc": 8796,
+          "page_id": "Mandy_Moore",
+          "sent_id": 7,
+          "score": 0.03128054740957967,
+          "nli": [
+            0.0024592739064246416,
+            0.011195266619324684,
+            0.9863454699516296
+          ],
+          "text": "Mandy Moore: As of 2009 , Moore has sold more than 10 million albums worldwide , according to Billboard ."
+        },
+        {
+          "doc": 8794,
+          "page_id": "Mandy_Moore",
+          "sent_id": 3,
+          "score": 0.030798389007344232,
+          "nli": [
+            0.002404707483947277,
+            0.044371142983436584,
+            0.9532241821289062
+          ],
+          "text": "Mandy Moore: It went on to receive a Platinum certification from the RIAA ."
+        },
+        {
+          "doc": 8793,
+          "page_id": "Mandy_Moore",
+          "sent_id": 2,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.021480003371834755,
+            0.1533743441104889,
+            0.8251456618309021
+          ],
+          "text": "Mandy Moore: After signing with Epic Records , she released her debut album , So Real , in 1999 ."
+        }
+      ],
+      "gold_context": [
+        "Mandy Moore: Amanda Leigh Moore ( born April 10 , 1984 ) is an American singer-songwriter and actress ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-88401",
+      "claim": "Salman Rushdie wrote a novel published in the eighties.",
+      "gold": "SUPPORTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 12507,
+          "page_id": "Salman_Rushdie",
+          "sent_id": 2,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0013759498251602054,
+            0.9953840374946594,
+            0.0032400526106357574
+          ],
+          "text": "Salman Rushdie: Much of his fiction is set on the Indian subcontinent ."
+        },
+        {
+          "doc": 12511,
+          "page_id": "Salman_Rushdie",
+          "sent_id": 8,
+          "score": 0.03131881575727918,
+          "nli": [
+            0.03271742910146713,
+            0.95707768201828,
+            0.01020490936934948
+          ],
+          "text": "Salman Rushdie: The British government put Rushdie under police protection ."
+        },
+        {
+          "doc": 12505,
+          "page_id": "Salman_Rushdie",
+          "sent_id": 0,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.0011993380030617118,
+            0.9947314262390137,
+            0.004069211892783642
+          ],
+          "text": "Salman Rushdie: Ahmed Salman Rushdie , FRSL ( [ s\u00e6l\u02c8m\u0251\u02d0n_\u02c8r\u028a\u0283di ] \u0905\u0939\u092e\u0926 \u0938\u0932\u092e\u093e\u0928 \u0930\u0941\u0936\u0926\u0940 , ; born 19 June 1947 ) is a British Indian novelist and essayist ."
+        },
+        {
+          "doc": 12516,
+          "page_id": "Salman_Rushdie",
+          "sent_id": 17,
+          "score": 0.030834914611005692,
+          "nli": [
+            0.007987753488123417,
+            0.9507075548171997,
+            0.041304685175418854
+          ],
+          "text": "Salman Rushdie: Since 2000 , Rushdie has lived in the United States ."
+        },
+        {
+          "doc": 12520,
+          "page_id": "Salman_Rushdie",
+          "sent_id": 21,
+          "score": 0.03076923076923077,
+          "nli": [
+            0.06368149816989899,
+            0.05636361241340637,
+            0.8799548745155334
+          ],
+          "text": "Salman Rushdie: In 2012 , he published Joseph Anton : A Memoir , an account of his life in the wake of the controversy over The Satanic Verses ."
+        }
+      ],
+      "gold_context": [
+        "Salman Rushdie: His second novel , Midnight 's Children ( 1981 ) , won the Booker Prize in 1981 and was deemed to be `` the best novel of all winners '' on two separate occasions , marking the 25th and the 40th anniversary of the prize .",
+        "Salman Rushdie: His epic fourth novel , The Satanic Verses ( 1988 ) , was the subject of a major controversy , provoking protests from Muslims in several countries ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-195483",
+      "claim": "Offers of appointment to a United States court were declined by William Howard Taft.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 16557,
+          "page_id": "William_Howard_Taft",
+          "sent_id": 11,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9959237575531006,
+            0.0036555584520101547,
+            0.00042068937909789383
+          ],
+          "text": "William Howard Taft: Despite his personal ambition to become chief justice , Taft declined repeated offers of appointment to the Supreme Court of the United States , believing his political work to be more important ."
+        },
+        {
+          "doc": 16548,
+          "page_id": "William_Howard_Taft",
+          "sent_id": 0,
+          "score": 0.031746031746031744,
+          "nli": [
+            0.00013963684614282101,
+            0.0013248373288661242,
+            0.9985355138778687
+          ],
+          "text": "William Howard Taft: William Howard Taft ( September 15 , 1857 -- March 8 , 1930 ) served as the 27th President of the United States ( 1909 -- 1913 ) and as the tenth Chief Justice of the United States ( 1921 -- 1930 ) , the only person to have held both offices ."
+        },
+        {
+          "doc": 16568,
+          "page_id": "William_Howard_Taft",
+          "sent_id": 26,
+          "score": 0.029857397504456328,
+          "nli": [
+            0.00014546068268828094,
+            0.02078406699001789,
+            0.9790705442428589
+          ],
+          "text": "William Howard Taft: Chief Justice Taft was a conservative on business issues , but under him , there were advances in individual rights ."
+        },
+        {
+          "doc": 16551,
+          "page_id": "William_Howard_Taft",
+          "sent_id": 5,
+          "score": 0.029827662395050816,
+          "nli": [
+            0.004558040760457516,
+            0.8386024236679077,
+            0.1568395048379898
+          ],
+          "text": "William Howard Taft: Taft was born in Cincinnati in 1857 ."
+        },
+        {
+          "doc": 16567,
+          "page_id": "William_Howard_Taft",
+          "sent_id": 25,
+          "score": 0.029827662395050816,
+          "nli": [
+            0.00041294185211881995,
+            0.0007744964095763862,
+            0.9988125562667847
+          ],
+          "text": "William Howard Taft: In 1921 , President Harding appointed Taft as chief justice , an office he had long sought ."
+        }
+      ],
+      "gold_context": [
+        "William Howard Taft: Despite his personal ambition to become chief justice , Taft declined repeated offers of appointment to the Supreme Court of the United States , believing his political work to be more important ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-25722",
+      "claim": "Jed Whedon is a citizen of the United States.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7154,
+          "page_id": "Jed_Whedon",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.5244497656822205,
+            0.47472718358039856,
+            0.0008230967214331031
+          ],
+          "text": "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+        },
+        {
+          "doc": 7552,
+          "page_id": "Joss_Whedon",
+          "sent_id": 0,
+          "score": 0.03128054740957967,
+          "nli": [
+            0.7477164268493652,
+            0.25167953968048096,
+            0.0006040671723894775
+          ],
+          "text": "Joss Whedon: Joss Whedon ( [ \u02c8wi\u02d0d\u0259n ] ) ( born Joseph Hill Whedon on June 23 , 1964 ) is an American screenwriter , film and television director , film and television producer , comic book author , and composer ."
+        },
+        {
+          "doc": 234748,
+          "page_id": "Ed_McIlvenny",
+          "sent_id": 9,
+          "score": 0.02701252236135957,
+          "nli": [
+            0.0024408274330198765,
+            0.49756181240081787,
+            0.49999725818634033
+          ],
+          "text": "Ed McIlvenny: Although he was not a US citizen , he had declared his intention of becoming one and thus was eligible to play , according to the rules of the United States Soccer Football Association at the time ."
+        },
+        {
+          "doc": 102000,
+          "page_id": "Gouverneur_Morris",
+          "sent_id": 4,
+          "score": 0.02492401215805471,
+          "nli": [
+            0.07841438800096512,
+            0.7631068825721741,
+            0.158478781580925
+          ],
+          "text": "Gouverneur Morris: In an era when most Americans thought of themselves as citizens of their respective states , Morris advanced the idea of being a citizen of a single union of states ."
+        },
+        {
+          "doc": 47242,
+          "page_id": "Anne_Samplonius",
+          "sent_id": 1,
+          "score": 0.016129032258064516,
+          "nli": [
+            0.0015887720510363579,
+            0.02867506444454193,
+            0.9697360992431641
+          ],
+          "text": "Anne Samplonius: She was born in the United States , has lived most of her life in Canada , and is a citizen of both countries ."
+        }
+      ],
+      "gold_context": [
+        "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-191877",
+      "claim": "Padua is the economic and communications hub of the area.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 10948,
+          "page_id": "Padua",
+          "sent_id": 1,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9877927899360657,
+            0.01199906226247549,
+            0.00020817611948587
+          ],
+          "text": "Padua: It is the capital of the province of Padua and the economic and communications hub of the area ."
+        },
+        {
+          "doc": 10950,
+          "page_id": "Padua",
+          "sent_id": 3,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0002489382750354707,
+            0.9985703229904175,
+            0.0011806796537712216
+          ],
+          "text": "Padua: The city is sometimes included , with Venice ( Italian Venezia ) and Treviso , in the Padua-Treviso-Venice Metropolitan Area , which has a population of c. 1,600,000 ."
+        },
+        {
+          "doc": 10949,
+          "page_id": "Padua",
+          "sent_id": 2,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.0004670204361900687,
+            0.9988319277763367,
+            0.0007010807748883963
+          ],
+          "text": "Padua: Padua 's population is 214,000 ."
+        },
+        {
+          "doc": 14260,
+          "page_id": "Syracuse,_New_York",
+          "sent_id": 3,
+          "score": 0.029273504273504274,
+          "nli": [
+            0.0003510713577270508,
+            0.0010440193582326174,
+            0.998604953289032
+          ],
+          "text": "Syracuse, New York: It is the economic and educational hub of Central New York , a region with over a million inhabitants ."
+        },
+        {
+          "doc": 10947,
+          "page_id": "Padua",
+          "sent_id": 0,
+          "score": 0.029116045245077504,
+          "nli": [
+            0.00044736804557032883,
+            0.9988092184066772,
+            0.0007433701539412141
+          ],
+          "text": "Padua: Padua ( [ \u02c8p\u00e6dju.\u0259 ] or [ \u02c8p\u00e6d\u0292u.\u0259 ] , Padova [ \u02c8pa\u02d0dova ] ; P\u00e0dova ) is a city and comune in Veneto , northern Italy ."
+        }
+      ],
+      "gold_context": [
+        "Padua: It is the capital of the province of Padua and the economic and communications hub of the area ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-60978",
+      "claim": "DodgeBall: A True Underdog Story was written and directed by Rawson Marshall.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 4016,
+          "page_id": "DodgeBall-COLON-_A_True_Underdog_Story",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9930135607719421,
+            0.005968445912003517,
+            0.0010180935496464372
+          ],
+          "text": "DodgeBall: A True Underdog Story: DodgeBall : A True Underdog Story is a 2004 American sports comedy film written and directed by Rawson Marshall Thurber and starring Vince Vaughn and Ben Stiller ."
+        },
+        {
+          "doc": 4018,
+          "page_id": "DodgeBall-COLON-_A_True_Underdog_Story",
+          "sent_id": 4,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0001898969931062311,
+            0.9973809123039246,
+            0.0024291821755468845
+          ],
+          "text": "DodgeBall: A True Underdog Story: DodgeBall received generally positive reviews , including a 70 % approval rating on Rotten Tomatoes , and grossed $ 167 million worldwide ."
+        },
+        {
+          "doc": 4017,
+          "page_id": "DodgeBall-COLON-_A_True_Underdog_Story",
+          "sent_id": 1,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.00021494438988156617,
+            0.9962820410728455,
+            0.003503069980069995
+          ],
+          "text": "DodgeBall: A True Underdog Story: The film follows friends who enter a dodgeball tournament in order to win enough money to save their failing gym from being bought by a corporate fitness chain ."
+        },
+        {
+          "doc": 15923,
+          "page_id": "Underdog_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.028309409888357256,
+          "nli": [
+            0.0013722229050472379,
+            0.9198810458183289,
+            0.07874671369791031
+          ],
+          "text": "Underdog (film): Underdog is a 2007 American family superhero comedy film based on the 1960s cartoon series of the same name ."
+        },
+        {
+          "doc": 15924,
+          "page_id": "Underdog_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 0.025093353248693055,
+          "nli": [
+            0.0003804996085818857,
+            0.0005974419182166457,
+            0.9990220069885254
+          ],
+          "text": "Underdog (film): Directed by Frederik Du Chau and written by Joe Piscatella , Adam Rifkin , and Craig A. Williams , the film stars Jim Belushi , Peter Dinklage , John Slattery , and Patrick Warburton with the voice talents of Jason Lee , Amy Adams , and Brad Garrett ."
+        }
+      ],
+      "gold_context": [
+        "DodgeBall: A True Underdog Story: DodgeBall : A True Underdog Story is a 2004 American sports comedy film written and directed by Rawson Marshall Thurber and starring Vince Vaughn and Ben Stiller ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-215283",
+      "claim": "PBS is a distributor.",
+      "gold": "SUPPORTED",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 10827,
+          "page_id": "PBS",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9872782230377197,
+            0.011986956931650639,
+            0.0007347881910391152
+          ],
+          "text": "PBS: The Public Broadcasting Service ( PBS ) is an American public broadcaster and television program distributor ."
+        },
+        {
+          "doc": 10829,
+          "page_id": "PBS",
+          "sent_id": 4,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.44830554723739624,
+            0.45972180366516113,
+            0.09197259694337845
+          ],
+          "text": "PBS: PBS is funded by member station dues , the Corporation for Public Broadcasting , government agencies , corporations , foundations and individual citizens ."
+        },
+        {
+          "doc": 246118,
+          "page_id": "The_American_Collection",
+          "sent_id": 2,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.27310818433761597,
+            0.7258961796760559,
+            0.0009956196881830692
+          ],
+          "text": "The American Collection: It aired on PBS ."
+        },
+        {
+          "doc": 232949,
+          "page_id": "Amplification",
+          "sent_id": 5,
+          "score": 0.030621785881252923,
+          "nli": [
+            0.0006375566008500755,
+            0.0037048894446343184,
+            0.9956575632095337
+          ],
+          "text": "Amplification: Amplify ( distributor ) , a NY-based all-rights film distributor ."
+        },
+        {
+          "doc": 10835,
+          "page_id": "PBS",
+          "sent_id": 14,
+          "score": 0.03007688828584351,
+          "nli": [
+            0.3396214246749878,
+            0.6413489580154419,
+            0.01902959868311882
+          ],
+          "text": "PBS: It also operates National Datacast ( NDI ) , a subsidiary which offers datacasting services via member stations , and provides additional revenue for PBS and its member stations ."
+        }
+      ],
+      "gold_context": [
+        "PBS: The Public Broadcasting Service ( PBS ) is an American public broadcaster and television program distributor .",
+        "PBS: Headquartered in Arlington , Virginia , PBS is an independently operated non-profit organization and is the most prominent provider of television programming to public television stations in the United States , distributing series such as Keeping Up Appearances , BBC World News , NOVA scienceNOW , NOVA , Barney and Friends , Arthur , Sesame Street , PBS NewsHour , Walking with Dinosaurs , Masterpiece , Nature , American Masters , Frontline , and Antiques Roadshow ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-138263",
+      "claim": "The Walking Dead (comic book) inspired a film.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 15088,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 11,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.004646686837077141,
+            0.9820773601531982,
+            0.013276017270982265
+          ],
+          "text": "The Walking Dead (comic book): The television program loosely follows the storyline of the comic book ."
+        },
+        {
+          "doc": 15081,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 0,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.00019135611364617944,
+            0.9972232580184937,
+            0.0025854420382529497
+          ],
+          "text": "The Walking Dead (comic book): The Walking Dead is an ongoing black-and-white comic book series created by writer Robert Kirkman and artist Tony Moore ."
+        },
+        {
+          "doc": 15087,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 10,
+          "score": 0.031746031746031744,
+          "nli": [
+            0.04110018536448479,
+            0.9354358315467834,
+            0.023463962599635124
+          ],
+          "text": "The Walking Dead (comic book): The series was adapted into the AMC television series The Walking Dead , which premiered in 2010 ."
+        },
+        {
+          "doc": 15089,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 12,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.3275347948074341,
+            0.5289489030838013,
+            0.14351628720760345
+          ],
+          "text": "The Walking Dead (comic book): The franchise has also spawned multiple additional media properties , including video games ( such as The Walking Dead video game ) , a companion television series ( Fear the Walking Dead ) , webisode series ( The Walking Dead : Torn Apart , The Walking Dead : Cold Storage , and The Walking Dead : The Oath ) , and various additional publications , including novels ( The Walking Dead : Rise of the Governor ) ."
+        },
+        {
+          "doc": 15084,
+          "page_id": "The_Walking_Dead_-LRB-comic_book-RRB-",
+          "sent_id": 5,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.00016961607616394758,
+            0.9977171421051025,
+            0.00211328431032598
+          ],
+          "text": "The Walking Dead (comic book): First issued in 2003 by publisher Image Comics , the comic is written by Kirkman with art by Moore ( issues No. 1 -- 6 ) and Charlie Adlard ( issue No. 7 onward ) ."
+        }
+      ],
+      "gold_context": [
+        "The Walking Dead (comic book): The series was adapted into the AMC television series The Walking Dead , which premiered in 2010 .",
+        "The Walking Dead (comic book): The franchise has also spawned multiple additional media properties , including video games ( such as The Walking Dead video game ) , a companion television series ( Fear the Walking Dead ) , webisode series ( The Walking Dead : Torn Apart , The Walking Dead : Cold Storage , and The Walking Dead : The Oath ) , and various additional publications , including novels ( The Walking Dead : Rise of the Governor ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-134908",
+      "claim": "Phoenix, Arizona is a southwestern U.S. state.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11165,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 0,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.003227002453058958,
+            0.9962273836135864,
+            0.0005456430953927338
+          ],
+          "text": "Phoenix, Arizona: Phoenix ( [ \u02c8fi\u02d0n\u1d7bks ] ) is the capital and most populous city of the U.S. state of Arizona ."
+        },
+        {
+          "doc": 11176,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 17,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.022791067138314247,
+            0.9767014980316162,
+            0.0005074693472124636
+          ],
+          "text": "Phoenix, Arizona: Phoenix is the cultural center of the Valley of the Sun , as well as the entire state ."
+        },
+        {
+          "doc": 1269,
+          "page_id": "Arizona",
+          "sent_id": 3,
+          "score": 0.030117753623188408,
+          "nli": [
+            0.1383359730243683,
+            0.8607553243637085,
+            0.0009087317739613354
+          ],
+          "text": "Arizona: Its capital and largest city is Phoenix ."
+        },
+        {
+          "doc": 10548,
+          "page_id": "Northern_Arizona",
+          "sent_id": 0,
+          "score": 0.029709507042253523,
+          "nli": [
+            0.20033682882785797,
+            0.6532009840011597,
+            0.14646224677562714
+          ],
+          "text": "Northern Arizona: Northern Arizona is an unofficial , colloquially-defined region of the U.S. state of Arizona ."
+        },
+        {
+          "doc": 11166,
+          "page_id": "Phoenix,_Arizona",
+          "sent_id": 1,
+          "score": 0.029211087420042643,
+          "nli": [
+            0.0019898060709238052,
+            0.9970830082893372,
+            0.0009271547896787524
+          ],
+          "text": "Phoenix, Arizona: With 1,615,017 people , Phoenix is the fifth most populous city nationwide , the most populous state capital in the United States , and the only state capital with a population of more than one million residents ."
+        }
+      ],
+      "gold_context": [
+        "Phoenix, Arizona: Phoenix ( [ \u02c8fi\u02d0n\u1d7bks ] ) is the capital and most populous city of the U.S. state of Arizona .",
+        "Phoenix, Arizona: With 1,615,017 people , Phoenix is the fifth most populous city nationwide , the most populous state capital in the United States , and the only state capital with a population of more than one million residents .",
+        "Phoenix, Arizona: In addition , Phoenix is the seat of Maricopa County and , at 517.9 square miles ( 1,341 km2 ) , it is the largest city in the state , more than twice the size of Tucson and one of the largest cities in the United States ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-23861",
+      "claim": "Minor League Baseball provides opportunities for river development.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 9427,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9191268682479858,
+            0.06661385297775269,
+            0.01425928808748722
+          ],
+          "text": "Minor League Baseball: Minor League Baseball is a hierarchy of professional baseball leagues in the Americas that compete at levels below Major League Baseball ( MLB ) and provide opportunities for player development and a way to prepare for the major leagues ."
+        },
+        {
+          "doc": 9428,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 1,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0022312987130135298,
+            0.9619764685630798,
+            0.03579220920801163
+          ],
+          "text": "Minor League Baseball: All of the minor leagues are operated as independent businesses ."
+        },
+        {
+          "doc": 9433,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 10,
+          "score": 0.030834914611005692,
+          "nli": [
+            0.004358530975878239,
+            0.9844242930412292,
+            0.011217191815376282
+          ],
+          "text": "Minor League Baseball: Major League Baseball and Minor League Baseball teams may enter into a PDC for a two - or four-year term ."
+        },
+        {
+          "doc": 9431,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 6,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.042234867811203,
+            0.9472827911376953,
+            0.010482335463166237
+          ],
+          "text": "Minor League Baseball: Except for the Mexican League , teams in the organized minor leagues are generally independently owned and operated but are directly affiliated with one major league team through a standardized Player Development Contract ( PDC ) ."
+        },
+        {
+          "doc": 9429,
+          "page_id": "Minor_League_Baseball",
+          "sent_id": 2,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.001146517926827073,
+            0.988802969455719,
+            0.010050555691123009
+          ],
+          "text": "Minor League Baseball: Most are members of the umbrella organization known as Minor League Baseball ( MiLB ) , which operates under the Commissioner of Baseball within the scope of organized baseball ."
+        }
+      ],
+      "gold_context": [
+        "Minor League Baseball: Minor League Baseball is a hierarchy of professional baseball leagues in the Americas that compete at levels below Major League Baseball ( MLB ) and provide opportunities for player development and a way to prepare for the major leagues ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107287",
+      "claim": "Port of Spain is a retail center.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 11566,
+          "page_id": "Port_of_Spain",
+          "sent_id": 5,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9712539911270142,
+            0.025581497699022293,
+            0.003164596389979124
+          ],
+          "text": "Port of Spain: The city serves primarily as a retail and administrative centre and it has been the capital of the island since 1757 ."
+        },
+        {
+          "doc": 11573,
+          "page_id": "Port_of_Spain",
+          "sent_id": 18,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.002349850721657276,
+            0.9780900478363037,
+            0.019560111686587334
+          ],
+          "text": "Port of Spain: Today , Port of Spain is a leading city in the Caribbean region ."
+        },
+        {
+          "doc": 11578,
+          "page_id": "Port_of_Spain",
+          "sent_id": 25,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0016769010107964277,
+            0.09506350755691528,
+            0.9032595753669739
+          ],
+          "text": "Port of Spain: Some of the tallest skyscrapers in the Caribbean are located in Port of Spain ."
+        },
+        {
+          "doc": 11569,
+          "page_id": "Port_of_Spain",
+          "sent_id": 10,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.010911536403000355,
+            0.9831848740577698,
+            0.005903603043407202
+          ],
+          "text": "Port of Spain: Caricom was established in Chaguaramas , west of Port of Spain ."
+        },
+        {
+          "doc": 11563,
+          "page_id": "Port_of_Spain",
+          "sent_id": 0,
+          "score": 0.030090497737556562,
+          "nli": [
+            0.0013282245490700006,
+            0.9855679273605347,
+            0.013103842735290527
+          ],
+          "text": "Port of Spain: Port of Spain is the capital city of the Republic of Trinidad and Tobago and the country 's third-largest municipality , after Chaguanas and San Fernando ."
+        }
+      ],
+      "gold_context": [
+        "Port of Spain: Port of Spain is the capital city of the Republic of Trinidad and Tobago and the country 's third-largest municipality , after Chaguanas and San Fernando .",
+        "Port of Spain: The city has a municipal population of 37,074 ( 2011 census ) , a metropolitan population of 128,026 ( 1990 unofficial estimate ) and a transient daily population of 250,000 .",
+        "Port of Spain: The city serves primarily as a retail and administrative centre and it has been the capital of the island since 1757 .",
+        "Port of Spain: It is also an important financial services centre for the Caribbean and is home to two of the largest banks in the region .",
+        "Port of Spain: Port of Spain was also the de facto capital of the short-lived West Indies Federation , which united the Caribbean .",
+        "Port of Spain: The city is also home to the largest container port on the island and is one of several shipping hubs of the Caribbean , exporting both agricultural products and manufactured goods .",
+        "Port of Spain: Bauxite from Guyana is trans-shipped via facilities at Chaguaramas , about 5 mi west of the city .",
+        "Port of Spain: Today , Port of Spain is a leading city in the Caribbean region ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-134099",
+      "claim": "Floyd Mayweather Jr. has made 30 career music albums.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5117,
+          "page_id": "Floyd_Mayweather_Jr.",
+          "sent_id": 6,
+          "score": 0.03128054740957967,
+          "nli": [
+            0.0003283313999418169,
+            0.9980460405349731,
+            0.0016256009694188833
+          ],
+          "text": "Floyd Mayweather Jr.: In 2016 , Mayweather was ranked by ESPN as the greatest boxer , pound for pound , of the last 25 years ."
+        },
+        {
+          "doc": 5113,
+          "page_id": "Floyd_Mayweather_Jr.",
+          "sent_id": 0,
+          "score": 0.031099324975891997,
+          "nli": [
+            0.00013940857024863362,
+            0.996903121471405,
+            0.0029574905056506395
+          ],
+          "text": "Floyd Mayweather Jr.: Floyd Joy Mayweather Jr. ( born Floyd Joy Sinclair ; February 24 , 1977 ) is an American former professional boxer who competed from 1996 to 2015 , and currently works as a boxing promoter ."
+        },
+        {
+          "doc": 5114,
+          "page_id": "Floyd_Mayweather_Jr.",
+          "sent_id": 1,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.0003000704455189407,
+            0.9939935803413391,
+            0.005706320982426405
+          ],
+          "text": "Floyd Mayweather Jr.: Widely considered to be one of the greatest boxers of all time , undefeated as a professional , and a five-division world champion , Mayweather won fifteen world titles and the lineal championship in four different weight classes ( twice at welterweight ) ."
+        },
+        {
+          "doc": 5125,
+          "page_id": "Floyd_Mayweather_Jr.",
+          "sent_id": 16,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.00023506257275585085,
+            0.9978591799736023,
+            0.0019057391909882426
+          ],
+          "text": "Floyd Mayweather Jr.: Mayweather has generated approximately 19.5 million in PPV buys and $ 1.3 billion in revenue throughout his career , surpassing the likes of former top PPV attractions including Mike Tyson , Evander Holyfield , Lennox Lewis , Oscar De La Hoya , and Manny Pacquiao ."
+        },
+        {
+          "doc": 5122,
+          "page_id": "Floyd_Mayweather_Jr.",
+          "sent_id": 13,
+          "score": 0.029709507042253523,
+          "nli": [
+            0.00032021457445807755,
+            0.9925709366798401,
+            0.007108801510185003
+          ],
+          "text": "Floyd Mayweather Jr.: In addition to his accomplishments in the ring , Mayweather is well known for being one of the most lucrative pay-per-view ( PPV ) attractions of all time , in any sport ."
+        }
+      ],
+      "gold_context": [
+        "Floyd Mayweather Jr.: He finished his career with a record of 26 wins without a loss or draw in world title fights ( 10 by KO ) ; 23 wins ( 9 KOs ) in lineal title fights ; 24 wins ( 7 KOs ) against former or current world titlists ; 12 wins ( 3 KOs ) against former or current lineal champions ; and 2 wins ( 1 KO ) against International Boxing Hall of Fame inductees .",
+        "Floyd Mayweather Jr.: Mayweather has generated approximately 19.5 million in PPV buys and $ 1.3 billion in revenue throughout his career , surpassing the likes of former top PPV attractions including Mike Tyson , Evander Holyfield , Lennox Lewis , Oscar De La Hoya , and Manny Pacquiao ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107124",
+      "claim": "Key & Peele has won a car.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 7970,
+          "page_id": "Key_&_Peele",
+          "sent_id": 1,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.0024039619602262974,
+            0.9604026079177856,
+            0.0371934249997139
+          ],
+          "text": "Key & Peele: Both Key and Peele previously worked on MADtv ."
+        },
+        {
+          "doc": 7969,
+          "page_id": "Key_&_Peele",
+          "sent_id": 0,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0033262516371905804,
+            0.9331488609313965,
+            0.06352483481168747
+          ],
+          "text": "Key & Peele: Key & Peele is an American sketch comedy television series created by Keegan-Michael Key and Jordan Peele for Comedy Central ."
+        },
+        {
+          "doc": 7975,
+          "page_id": "Key_&_Peele",
+          "sent_id": 10,
+          "score": 0.031544957774465976,
+          "nli": [
+            0.001891695661470294,
+            0.19361883401870728,
+            0.8044894933700562
+          ],
+          "text": "Key & Peele: Key & Peele won a Peabody Award and two Primetime Emmy Awards and has been nominated for various other awards , including Writers Guild Award , NAACP Image Award and 16 additional Primetime Emmy Awards in various categories ."
+        },
+        {
+          "doc": 7974,
+          "page_id": "Key_&_Peele",
+          "sent_id": 7,
+          "score": 0.03125,
+          "nli": [
+            0.0007899453048594296,
+            0.962637722492218,
+            0.03657231107354164
+          ],
+          "text": "Key & Peele: A special entitled `` Key & Peele 's Super Bowl Special '' aired on January 30 , 2015 ."
+        },
+        {
+          "doc": 7838,
+          "page_id": "Keegan-Michael_Key",
+          "sent_id": 7,
+          "score": 0.031024531024531024,
+          "nli": [
+            0.002643024083226919,
+            0.8567736148834229,
+            0.1405833661556244
+          ],
+          "text": "Keegan-Michael Key: In 2016 , he produced and starred in Keanu ( 2016 ) with his Key & Peele co-star Jordan Peele ."
+        }
+      ],
+      "gold_context": [
+        "Key & Peele: Key & Peele won a Peabody Award and two Primetime Emmy Awards and has been nominated for various other awards , including Writers Guild Award , NAACP Image Award and 16 additional Primetime Emmy Awards in various categories ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-102173",
+      "claim": "Tom Constanten was a fan of the Grateful Dead.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5723,
+          "page_id": "Grateful_Dead",
+          "sent_id": 6,
+          "score": 0.032018442622950824,
+          "nli": [
+            0.02600240148603916,
+            0.9719288349151611,
+            0.0020687382202595472
+          ],
+          "text": "Grateful Dead: The Grateful Dead have sold more than 35 million albums worldwide ."
+        },
+        {
+          "doc": 127221,
+          "page_id": "Fare_Thee_Well",
+          "sent_id": 9,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.08428556472063065,
+            0.8993229866027832,
+            0.016391443088650703
+          ],
+          "text": "Fare Thee Well: Fare Thee Well : Celebrating 50 Years of the Grateful Dead , a series of concerts by surviving members of the Grateful Dead"
+        },
+        {
+          "doc": 5730,
+          "page_id": "Grateful_Dead",
+          "sent_id": 15,
+          "score": 0.031099324975891997,
+          "nli": [
+            0.0012367835734039545,
+            0.9903525710105896,
+            0.008410713635385036
+          ],
+          "text": "Grateful Dead: The other official members of the band are Tom Constanten ( keyboards ; 1968 -- 1970 ) , John Perry Barlow ( nonperforming lyricist ; 1971 -- 1995 ) , Keith Godchaux ( keyboards ; 1971 -- 1979 ) , Donna Godchaux ( vocals ; 1972 -- 1979 ) , Brent Mydland ( keyboards , vocals ; 1979 -- 1990 ) , and Vince Welnick ( keyboards , vocals ; 1990 -- 1995 ) ."
+        },
+        {
+          "doc": 5717,
+          "page_id": "Grateful_Dead",
+          "sent_id": 0,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.0042472411878407,
+            0.9936129450798035,
+            0.0021398223470896482
+          ],
+          "text": "Grateful Dead: The Grateful Dead was an American rock band formed in 1965 in Palo Alto , California ."
+        },
+        {
+          "doc": 5724,
+          "page_id": "Grateful_Dead",
+          "sent_id": 9,
+          "score": 0.03057889822595705,
+          "nli": [
+            0.004976506810635328,
+            0.9919275045394897,
+            0.0030960242729634047
+          ],
+          "text": "Grateful Dead: The Grateful Dead was founded in the San Francisco Bay Area amid the rise of the counterculture of the 1960s ."
+        }
+      ],
+      "gold_context": [
+        "Grateful Dead: The other official members of the band are Tom Constanten ( keyboards ; 1968 -- 1970 ) , John Perry Barlow ( nonperforming lyricist ; 1971 -- 1995 ) , Keith Godchaux ( keyboards ; 1971 -- 1979 ) , Donna Godchaux ( vocals ; 1972 -- 1979 ) , Brent Mydland ( keyboards , vocals ; 1979 -- 1990 ) , and Vince Welnick ( keyboards , vocals ; 1990 -- 1995 ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-222763",
+      "claim": "Practical Magic is a 1998 event.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 11432,
+          "page_id": "Practical_Magic",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9840107560157776,
+            0.015310684219002724,
+            0.0006786430021747947
+          ],
+          "text": "Practical Magic: Practical Magic is a 1998 American romantic comedy film based on the 1995 novel of the same name by Alice Hoffman ."
+        },
+        {
+          "doc": 11434,
+          "page_id": "Practical_Magic",
+          "sent_id": 2,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.0004778824804816395,
+            0.9983868598937988,
+            0.0011352398432791233
+          ],
+          "text": "Practical Magic: The film score was composed by Alan Silvestri ."
+        },
+        {
+          "doc": 11436,
+          "page_id": "Practical_Magic",
+          "sent_id": 6,
+          "score": 0.029957522915269395,
+          "nli": [
+            0.0005079898401163518,
+            0.9969866871833801,
+            0.0025053019635379314
+          ],
+          "text": "Practical Magic: Raised by their aunts after their parents ' death , the sisters grew up in a household that was anything but typical -- their aunts fed them chocolate cake for breakfast and taught them the uses of practical magic ."
+        },
+        {
+          "doc": 241177,
+          "page_id": "Portsmouth_and_District_Magic_Circle",
+          "sent_id": 12,
+          "score": 0.02803921568627451,
+          "nli": [
+            0.0014412874588742852,
+            0.02670167200267315,
+            0.9718570113182068
+          ],
+          "text": "Portsmouth and District Magic Circle: According to the PDMC , `` Jumbo Day '' is southern England 's `` largest annual one-day magic event . ''"
+        },
+        {
+          "doc": 11433,
+          "page_id": "Practical_Magic",
+          "sent_id": 1,
+          "score": 0.027984344422700584,
+          "nli": [
+            0.0003910273953806609,
+            0.997021496295929,
+            0.0025874446146190166
+          ],
+          "text": "Practical Magic: The film was directed by Griffin Dunne and stars Sandra Bullock , Nicole Kidman , Stockard Channing , Dianne Wiest , Aidan Quinn , and Goran Visnjic ."
+        }
+      ],
+      "gold_context": [
+        "Practical Magic: Practical Magic is a 1998 American romantic comedy film based on the 1995 novel of the same name by Alice Hoffman ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-129051",
+      "claim": "Aestheticism values ethics over cultural themes.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 441,
+          "page_id": "Aestheticism",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9838896989822388,
+            0.015504390932619572,
+            0.0006058854050934315
+          ],
+          "text": "Aestheticism: Aestheticism ( also the Aesthetic Movement ) is an intellectual and art movement supporting the emphasis of aesthetic values more than social-political themes for literature , fine art , music and other arts ."
+        },
+        {
+          "doc": 157325,
+          "page_id": "Cultural_influence_of_Metamorphoses",
+          "sent_id": 2,
+          "score": 0.029850746268656716,
+          "nli": [
+            0.006368254777044058,
+            0.5312079191207886,
+            0.46242377161979675
+          ],
+          "text": "Cultural influence of Metamorphoses: Although meeting the criteria for an epic , the poem defies simple genre classification by its use of varying themes and tones ."
+        },
+        {
+          "doc": 442,
+          "page_id": "Aestheticism",
+          "sent_id": 1,
+          "score": 0.02878726010616578,
+          "nli": [
+            0.003069820813834667,
+            0.028646111488342285,
+            0.9682840704917908
+          ],
+          "text": "Aestheticism: This meant that Art from this particular movement focused more on being beautiful rather than having a deeper meaning - ` Art for Art 's sake ' ."
+        },
+        {
+          "doc": 161075,
+          "page_id": "Commensurability",
+          "sent_id": 11,
+          "score": 0.027623285131627734,
+          "nli": [
+            0.006072700023651123,
+            0.054924070835113525,
+            0.9390032291412354
+          ],
+          "text": "Commensurability: Commensurability ( ethics ) , the commensurability of values in ethics"
+        },
+        {
+          "doc": 199850,
+          "page_id": "Ethics_of_technology",
+          "sent_id": 0,
+          "score": 0.025693893735130847,
+          "nli": [
+            0.00204065116122365,
+            0.03359221667051315,
+            0.9643670916557312
+          ],
+          "text": "Ethics of technology: Ethics in technology is a sub-field of ethics addressing the ethical questions specific to the Technology Age ."
+        }
+      ],
+      "gold_context": [
+        "Aestheticism: Aestheticism ( also the Aesthetic Movement ) is an intellectual and art movement supporting the emphasis of aesthetic values more than social-political themes for literature , fine art , music and other arts ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-135340",
+      "claim": "Moves Like Jagger is on Overexposed.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 9711,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 2,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.004338685888797045,
+            0.9761215448379517,
+            0.019539818167686462
+          ],
+          "text": "Moves like Jagger: `` Moves Like Jagger '' is a dance-pop and electropop song and is backed by synths and electronic drums ."
+        },
+        {
+          "doc": 9721,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 16,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0034761170390993357,
+            0.11206290125846863,
+            0.8844609260559082
+          ],
+          "text": "Moves like Jagger: The video features an old video footage of Jagger and his iconic dance moves ."
+        },
+        {
+          "doc": 9713,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 6,
+          "score": 0.031544957774465976,
+          "nli": [
+            0.006051809061318636,
+            0.6331756114959717,
+            0.3607725501060486
+          ],
+          "text": "Moves like Jagger: `` Moves Like Jagger '' was well received by music critics , who praised the song 's chorus ."
+        },
+        {
+          "doc": 9720,
+          "page_id": "Moves_like_Jagger",
+          "sent_id": 15,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.006727722939103842,
+            0.3666044771671295,
+            0.6266677379608154
+          ],
+          "text": "Moves like Jagger: The music video was directed by Jonas \u00c5kerlund ."
+        },
+        {
+          "doc": 10792,
+          "page_id": "Overexposed_-LRB-album-RRB-",
+          "sent_id": 8,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.9574506282806396,
+            0.03710626810789108,
+            0.005443119443953037
+          ],
+          "text": "Overexposed (album): Its title is a smirking allusion to Levine 's ubiquity , while its sound is a reflection of how the group wishes to retain the large audience they won once again with `` Moves Like Jagger '' ."
+        }
+      ],
+      "gold_context": [
+        "Overexposed (album): The album was recorded between 2011 and 2012 and was driven after the moderate success of their third album , Hands All Over ( 2010 ) , and later by the enormous success of the re-released edition , which was promoted by the single `` Moves Like Jagger '' , recorded as a collaboration with Christina Aguilera .",
+        "Moves like Jagger: `` Moves Like Jagger '' is a song by American band Maroon 5 featuring recording artist Christina Aguilera , released by A&M Octone Records on June 21 , 2011 , as the fourth and final single from the re-release of the group 's third studio album Hands All Over ( 2010 ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-85454",
+      "claim": "Nero is a person.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 10060,
+          "page_id": "Nero",
+          "sent_id": 20,
+          "score": 0.032018442622950824,
+          "nli": [
+            0.9786760210990906,
+            0.020765550434589386,
+            0.0005584728205576539
+          ],
+          "text": "Nero: Nero fled Rome ."
+        },
+        {
+          "doc": 10046,
+          "page_id": "Nero",
+          "sent_id": 2,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.9779174327850342,
+            0.02079763449728489,
+            0.0012848727637901902
+          ],
+          "text": "Nero: Nero 's mother , Agrippina the Younger , was implicated in Claudius ' death and Nero 's nomination as emperor ."
+        },
+        {
+          "doc": 10063,
+          "page_id": "Nero",
+          "sent_id": 25,
+          "score": 0.0304147465437788,
+          "nli": [
+            0.9795336723327637,
+            0.01951737515628338,
+            0.0009489714866504073
+          ],
+          "text": "Nero: Nero 's rule is usually associated with tyranny and extravagance ; his more infamous executions include that of his mother ."
+        },
+        {
+          "doc": 10055,
+          "page_id": "Nero",
+          "sent_id": 13,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.9409083127975464,
+            0.056097012013196945,
+            0.002994704991579056
+          ],
+          "text": "Nero: He made public appearances as a poet , musician and charioteer ; in the eyes of traditionalists , this undermined the dignity and authority of his person , status and office ."
+        },
+        {
+          "doc": 10048,
+          "page_id": "Nero",
+          "sent_id": 6,
+          "score": 0.030303030303030304,
+          "nli": [
+            0.9607154726982117,
+            0.038155313581228256,
+            0.0011292848503217101
+          ],
+          "text": "Nero: His reign began well ."
+        }
+      ],
+      "gold_context": [
+        "Nero: Nero ( [ \u02c8n\u026a\u0259ro\u028a ] Latin : Ner\u014d Claudius Caesar Augustus Germanicus ; 15 December 37 AD -- 9 June 68 AD ) was Roman Emperor from 54 to 68 AD , and the last in the Julio-Claudian dynasty .",
+        "Julio-Claudian dynasty: The term Julio-Claudian dynasty refers to the first five Roman emperors -- Augustus , Tiberius , Caligula , Claudius , and Nero -- or the family to which they belonged .",
+        "Nero: Nero was adopted by his great-uncle Claudius to become his heir and successor , and like him , became emperor with the consent of the praetorian guard .",
+        "Nero: As time passed , he played a more active and independent role in government and foreign policy .",
+        "Nero: Nero focused much of his attention on diplomacy , trade and the cultural life of the empire , ordering theatres built and promoting athletic games .",
+        "Nero: He made public appearances as a poet , musician and charioteer ; in the eyes of traditionalists , this undermined the dignity and authority of his person , status and office .",
+        "Nero: He committed suicide on June 9 , 68 AD when told that he had been tried in absentia and condemned to death as a public enemy ( The first Roman Emperor to do so ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-93646",
+      "claim": "Carol Danvers is a fictional setting.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 2546,
+          "page_id": "Carol_Danvers",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.77540522813797,
+            0.09954912960529327,
+            0.12504562735557556
+          ],
+          "text": "Carol Danvers: Carol Danvers is a fictional character appearing in American comic books published by Marvel Comics ."
+        },
+        {
+          "doc": 2550,
+          "page_id": "Carol_Danvers",
+          "sent_id": 6,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.06137120723724365,
+            0.1596713364124298,
+            0.7789574265480042
+          ],
+          "text": "Carol Danvers: Due to her long history in Marvel Comics , Carol Danvers has been highly regarded ."
+        },
+        {
+          "doc": 2548,
+          "page_id": "Carol_Danvers",
+          "sent_id": 2,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.5993448495864868,
+            0.28229087591171265,
+            0.11836425960063934
+          ],
+          "text": "Carol Danvers: Debuting in the Silver Age of comics , the character was featured in a self-titled series in the late 1970s before becoming associated with superhero teams the Avengers and the X-Men ."
+        },
+        {
+          "doc": 2198,
+          "page_id": "Brie_Larson",
+          "sent_id": 14,
+          "score": 0.031024531024531024,
+          "nli": [
+            0.2828918397426605,
+            0.532396674156189,
+            0.1847114861011505
+          ],
+          "text": "Brie Larson: In 2016 , Larson was cast as Carol Danvers / Captain Marvel in the Marvel Cinematic Universe ."
+        },
+        {
+          "doc": 2547,
+          "page_id": "Carol_Danvers",
+          "sent_id": 1,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.7851247191429138,
+            0.13583597540855408,
+            0.07903921604156494
+          ],
+          "text": "Carol Danvers: Created by writer Roy Thomas and designed by artist Gene Colan , Major Carol Danvers first appeared as a member of the United States Air Force in Marvel Super-Heroes # 13 ( March 1968 ) and debuted as the first incarnation of Ms. Marvel in Ms. Marvel # 1 ( January 1977 ) after a fusion of alien Kree and human genes gives her superhuman powers , which occurred in Captain Marvel # 18 ( November 1969 ) ."
+        }
+      ],
+      "gold_context": [
+        "Carol Danvers: Carol Danvers is a fictional character appearing in American comic books published by Marvel Comics .",
+        "Carol Danvers: She has been labeled `` Marvel 's biggest female hero '' , a `` feminist icon '' , as `` quite possibly Marvel 's mightiest Avenger '' , She was ranked twenty-ninth in Comics Buyer 's Guides `` 100 Sexiest Women in Comics '' list , and was ranked # 11 on IGN 's `` Top 50 Avengers '' ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-206993",
+      "claim": "Punch-Drunk Love was distributed by a thirty-year-old film studio.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 11668,
+          "page_id": "Punch-Drunk_Love",
+          "sent_id": 4,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0037309767212718725,
+            0.9909868836402893,
+            0.005282113328576088
+          ],
+          "text": "Punch-Drunk Love: The film was produced by Revolution Studios and New Line Cinema , and distributed by Columbia Pictures ; it features the video art of Jeremy Blake in the form of visual interludes ."
+        },
+        {
+          "doc": 11666,
+          "page_id": "Punch-Drunk_Love",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.0009564014035277069,
+            0.9949455857276917,
+            0.004098006058484316
+          ],
+          "text": "Punch-Drunk Love: Punch-Drunk Love is a 2002 American romantic comedy-drama film written and directed by Paul Thomas Anderson and starring Adam Sandler , Emily Watson , Philip Seymour Hoffman , Luis Guzm\u00e1n , and Mary Lynn Rajskub ."
+        },
+        {
+          "doc": 11669,
+          "page_id": "Punch-Drunk_Love",
+          "sent_id": 5,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.0003879025171045214,
+            0.9987598657608032,
+            0.0008522359421476722
+          ],
+          "text": "Punch-Drunk Love: The film received positive reviews from critics , with Sandler 's performance receiving critical praise , but just failed to recoup its production budget at the box office ."
+        },
+        {
+          "doc": 10753,
+          "page_id": "P.S._I_Love_You_-LRB-film-RRB-",
+          "sent_id": 3,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.033628739416599274,
+            0.8622296452522278,
+            0.10414166003465652
+          ],
+          "text": "P.S. I Love You (film): It was distributed by Warner Bros. ."
+        },
+        {
+          "doc": 222407,
+          "page_id": "Contraband_Love",
+          "sent_id": 2,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.007992723025381565,
+            0.5037530660629272,
+            0.48825421929359436
+          ],
+          "text": "Contraband Love: The film was distributed by the American studio Paramount Pictures as a quota quickie ."
+        }
+      ],
+      "gold_context": [
+        "Punch-Drunk Love: The film was produced by Revolution Studios and New Line Cinema , and distributed by Columbia Pictures ; it features the video art of Jeremy Blake in the form of visual interludes .",
+        "Columbia Pictures: What would eventually become Columbia Pictures , CBC Film Sales Corporation , was founded on June 19 , 1918 by Harry Cohn , his brother Jack Cohn , and Joe Brandt ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-116269",
+      "claim": "One Flew Over the Cuckoo's Nest was released in a year between 1934 and 1970.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 10551,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.10269904136657715,
+            0.012765942141413689,
+            0.884535014629364
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): One Flew Over the Cuckoo 's Nest is a 1975 American comedy-drama film directed by Milo\u0161 Forman , based on the 1962 novel One Flew Over the Cuckoo 's Nest by Ken Kesey ."
+        },
+        {
+          "doc": 10553,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 4,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.02887808345258236,
+            0.834924042224884,
+            0.13619782030582428
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): Considered to be one of the greatest films ever made , One Flew Over the Cuckoo 's Nest is No. 33 on the American Film Institute 's 100 Years ... 100 Movies list ."
+        },
+        {
+          "doc": 10555,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 6,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.015994921326637268,
+            0.3988477885723114,
+            0.5851572155952454
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): It also won numerous Golden Globe and BAFTA Awards ."
+        },
+        {
+          "doc": 10554,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 5,
+          "score": 0.030798389007344232,
+          "nli": [
+            0.5573950409889221,
+            0.2308865785598755,
+            0.21171832084655762
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): The film was the second to win all five major Academy Awards ( Best Picture , Actor in Lead Role , Actress in Lead Role , Director , and Screenplay ) following It Happened One Night in 1934 , an accomplishment not repeated until 1991 by The Silence of the Lambs ."
+        },
+        {
+          "doc": 10552,
+          "page_id": "One_Flew_Over_the_Cuckoo's_Nest_-LRB-film-RRB-",
+          "sent_id": 1,
+          "score": 0.03055037313432836,
+          "nli": [
+            0.04022720456123352,
+            0.4615013301372528,
+            0.49827149510383606
+          ],
+          "text": "One Flew Over the Cuckoo's Nest (film): The film stars Jack Nicholson and features a supporting cast of Louise Fletcher , William Redfield , Will Sampson , and Brad Dourif ."
+        }
+      ],
+      "gold_context": [
+        "One Flew Over the Cuckoo's Nest (film): One Flew Over the Cuckoo 's Nest is a 1975 American comedy-drama film directed by Milo\u0161 Forman , based on the 1962 novel One Flew Over the Cuckoo 's Nest by Ken Kesey ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-222738",
+      "claim": "Vedic Sanskrit is an ancient writing system.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 16042,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 3,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.24309135973453522,
+            0.7513377666473389,
+            0.0055709099397063255
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit is an archaic language , whose consensus translation has been challenging ."
+        },
+        {
+          "doc": 16043,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 6,
+          "score": 0.031754032258064516,
+          "nli": [
+            0.9752132892608643,
+            0.024494584649801254,
+            0.00029210993670858443
+          ],
+          "text": "Vedic Sanskrit: Extensive ancient literature in the Vedic Sanskrit language has survived into the modern era , and this has been a major source of information about Indo-European parent language ."
+        },
+        {
+          "doc": 16039,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 0,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0014126431196928024,
+            0.9963078498840332,
+            0.0022795500699430704
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit is an Indo-European language , more specifically one branch of the Indo-Iranian group ."
+        },
+        {
+          "doc": 16040,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 1,
+          "score": 0.03128054740957967,
+          "nli": [
+            0.9565000534057617,
+            0.042901672422885895,
+            0.0005982944858260453
+          ],
+          "text": "Vedic Sanskrit: It is the ancient language of the Vedas of Hinduism , texts compiled over the period of the mid-2nd to mid-1st millennium BCE ."
+        },
+        {
+          "doc": 16047,
+          "page_id": "Vedic_Sanskrit",
+          "sent_id": 10,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.9104605913162231,
+            0.08901058882474899,
+            0.000528759672306478
+          ],
+          "text": "Vedic Sanskrit: Vedic Sanskrit developed independently in ancient India , evolved into classical Sanskrit after the grammar and linguistic treatise of P\u0101\u1e47ini , and later into many related Indian subcontinent languages in which are found the voluminous ancient and medieval literature of Buddhism , Hinduism and Jainism ."
+        }
+      ],
+      "gold_context": [
+        "Vedic Sanskrit: It was orally preserved , predating the advent of Brahmi script by several centuries ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-50502",
+      "claim": "Nero's death ended the Julio-Claudian dynasty in 1203.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 10062,
+          "page_id": "Nero",
+          "sent_id": 22,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.00026562251150608063,
+            0.9989879727363586,
+            0.0007464131340384483
+          ],
+          "text": "Nero: His death ended the Julio-Claudian dynasty , sparking a brief period of civil wars known as the Year of the Four Emperors ."
+        },
+        {
+          "doc": 7471,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 0,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.001743682543747127,
+            0.9823853373527527,
+            0.01587102934718132
+          ],
+          "text": "Julio-Claudian dynasty: The term Julio-Claudian dynasty refers to the first five Roman emperors -- Augustus , Tiberius , Caligula , Claudius , and Nero -- or the family to which they belonged ."
+        },
+        {
+          "doc": 7478,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 9,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.0002744344819802791,
+            0.9867900013923645,
+            0.012935617938637733
+          ],
+          "text": "Julio-Claudian dynasty: Caligula adopted his cousin and Tiberius ' grandson Tiberius Gemellus shortly before executing him ; Claudius adopted his great nephew and stepson Nero , who , lacking a natural or adopted son of his own , ended the reign of the Julio-Claudian dynasty with his fall from power and subsequent suicide ."
+        },
+        {
+          "doc": 10044,
+          "page_id": "Nero",
+          "sent_id": 0,
+          "score": 0.03057889822595705,
+          "nli": [
+            0.06565286219120026,
+            0.022711191326379776,
+            0.9116358757019043
+          ],
+          "text": "Nero: Nero ( [ \u02c8n\u026a\u0259ro\u028a ] Latin : Ner\u014d Claudius Caesar Augustus Germanicus ; 15 December 37 AD -- 9 June 68 AD ) was Roman Emperor from 54 to 68 AD , and the last in the Julio-Claudian dynasty ."
+        },
+        {
+          "doc": 7482,
+          "page_id": "Julio-Claudian_dynasty",
+          "sent_id": 16,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.00017754436703398824,
+            0.992643415927887,
+            0.0071790870279073715
+          ],
+          "text": "Julio-Claudian dynasty: The histories of Tiberius , Caius , Claudius , and Nero , while they were in power , were falsified through terror , and after their death were written under the irritation of a recent hatred ."
+        }
+      ],
+      "gold_context": [
+        "Nero: Nero ( [ \u02c8n\u026a\u0259ro\u028a ] Latin : Ner\u014d Claudius Caesar Augustus Germanicus ; 15 December 37 AD -- 9 June 68 AD ) was Roman Emperor from 54 to 68 AD , and the last in the Julio-Claudian dynasty ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-25025",
+      "claim": "Bonaire was part of the Netherlands Antilles until 2000.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 2211,
+          "page_id": "Bonaire",
+          "sent_id": 9,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.020404499024152756,
+            0.16454066336154938,
+            0.8150548338890076
+          ],
+          "text": "Bonaire: Bonaire was part of the Netherlands Antilles until the country 's dissolution in 2010 , when the island became a special municipality within the country of the Netherlands ."
+        },
+        {
+          "doc": 2204,
+          "page_id": "Bonaire",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.0003122956841252744,
+            0.9948594570159912,
+            0.004828213714063168
+          ],
+          "text": "Bonaire: Bonaire ( pronounced [ b\u0254\u02d0\u02c8n\u025b\u0259r ] or [ b\u0252n\u02c8\u025b\u0259r ] Bonaire , [ bo\u02c8n\u025b\u02d0r ] ; Papiamentu : Boneiru ) is an island in the Leeward Antilles in the Caribbean Sea ."
+        },
+        {
+          "doc": 171,
+          "page_id": "ABC_islands_-LRB-Lesser_Antilles-RRB-",
+          "sent_id": 3,
+          "score": 0.031746031746031744,
+          "nli": [
+            0.0003900446172337979,
+            0.9964600205421448,
+            0.0031499075703322887
+          ],
+          "text": "ABC islands (Lesser Antilles): Aruba and Cura\u00e7ao are autonomous , self-governing constituent countries of the Kingdom of the Netherlands , while Bonaire is a special municipality of the Netherlands proper ."
+        },
+        {
+          "doc": 2209,
+          "page_id": "Bonaire",
+          "sent_id": 7,
+          "score": 0.030117753623188408,
+          "nli": [
+            0.0004042378277517855,
+            0.9950986504554749,
+            0.004497078247368336
+          ],
+          "text": "Bonaire: Bonaire 's capital is Kralendijk ."
+        },
+        {
+          "doc": 169,
+          "page_id": "ABC_islands_-LRB-Lesser_Antilles-RRB-",
+          "sent_id": 1,
+          "score": 0.028850145288501453,
+          "nli": [
+            0.0003891657979693264,
+            0.9922749400138855,
+            0.0073358528316020966
+          ],
+          "text": "ABC islands (Lesser Antilles): From west to east they are , in order Aruba , Cura\u00e7ao , and Bonaire ."
+        }
+      ],
+      "gold_context": [
+        "Bonaire: Bonaire was part of the Netherlands Antilles until the country 's dissolution in 2010 , when the island became a special municipality within the country of the Netherlands ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-61552",
+      "claim": "Azithromycin is available as a generic curtain.",
+      "gold": "CONTRADICTED",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 1455,
+          "page_id": "Azithromycin",
+          "sent_id": 17,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9905967712402344,
+            0.008612290024757385,
+            0.0007909623091109097
+          ],
+          "text": "Azithromycin: It is available as a generic medication and is sold under many trade names worldwide ."
+        },
+        {
+          "doc": 1451,
+          "page_id": "Azithromycin",
+          "sent_id": 11,
+          "score": 0.030834914611005692,
+          "nli": [
+            0.005171311087906361,
+            0.3061823844909668,
+            0.6886463165283203
+          ],
+          "text": "Azithromycin: Azithromycin is an azalide , a type of macrolide antibiotic ."
+        },
+        {
+          "doc": 1442,
+          "page_id": "Azithromycin",
+          "sent_id": 0,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.005684318020939827,
+            0.9672237634658813,
+            0.027091894298791885
+          ],
+          "text": "Azithromycin: Azithromycin is an antibiotic useful for the treatment of a number of bacterial infections ."
+        },
+        {
+          "doc": 1453,
+          "page_id": "Azithromycin",
+          "sent_id": 15,
+          "score": 0.030090497737556562,
+          "nli": [
+            0.00257526570931077,
+            0.9683951735496521,
+            0.0290296021848917
+          ],
+          "text": "Azithromycin: Azithromycin was first made in 1980 ."
+        },
+        {
+          "doc": 1445,
+          "page_id": "Azithromycin",
+          "sent_id": 3,
+          "score": 0.029709507042253523,
+          "nli": [
+            0.0013517537154257298,
+            0.9817075133323669,
+            0.01694076880812645
+          ],
+          "text": "Azithromycin: Along with other medications , it may also be used for malaria ."
+        }
+      ],
+      "gold_context": [
+        "Azithromycin: It is available as a generic medication and is sold under many trade names worldwide .",
+        "Azithromycin: Azithromycin is an antibiotic useful for the treatment of a number of bacterial infections .",
+        "Azithromycin: Azithromycin is an azalide , a type of macrolide antibiotic ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-103050",
+      "claim": "General Motors had non-automotive factories.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 5379,
+          "page_id": "General_Motors",
+          "sent_id": 12,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.030005060136318207,
+            0.8023130297660828,
+            0.1676819622516632
+          ],
+          "text": "General Motors: In addition to brands selling assembled vehicles , GM has also had various automotive-component and non-automotive brands , many of which it divested in the 1980s through 2000s ."
+        },
+        {
+          "doc": 5376,
+          "page_id": "General_Motors",
+          "sent_id": 5,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.0023760346230119467,
+            0.7306602597236633,
+            0.2669636905193329
+          ],
+          "text": "General Motors: Former GM automotive brands include McLaughlin , Oakland , Oldsmobile , Pontiac , Hummer , Saab , Saturn , Vauxhall , and Opel ."
+        },
+        {
+          "doc": 5378,
+          "page_id": "General_Motors",
+          "sent_id": 9,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.0019892428535968065,
+            0.4644617438316345,
+            0.5335490703582764
+          ],
+          "text": "General Motors: The company was the largest automobile manufacturer from 1931 through 2007 ."
+        },
+        {
+          "doc": 5382,
+          "page_id": "General_Motors",
+          "sent_id": 19,
+          "score": 0.02964254577157803,
+          "nli": [
+            0.0007612759945914149,
+            0.9856056571006775,
+            0.013633017428219318
+          ],
+          "text": "General Motors: The current company , General Motors Company ( `` new GM '' ) , was formed in 2009 following the bankruptcy of General Motors Corporation ( `` old GM '' ) , which became Motors Liquidation Company ."
+        },
+        {
+          "doc": 5371,
+          "page_id": "General_Motors",
+          "sent_id": 0,
+          "score": 0.029030910609857977,
+          "nli": [
+            0.0049130842089653015,
+            0.914579451084137,
+            0.08050744235515594
+          ],
+          "text": "General Motors: General Motors Company , commonly known as GM , is an American multinational corporation headquartered in Detroit , Michigan , that designs , manufactures , markets , and distributes vehicles and vehicle parts , and sells financial services ."
+        }
+      ],
+      "gold_context": [
+        "General Motors: General Motors Company , commonly known as GM , is an American multinational corporation headquartered in Detroit , Michigan , that designs , manufactures , markets , and distributes vehicles and vehicle parts , and sells financial services ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107833",
+      "claim": "Pakistan's semi-industrialized economy is the 20th largest in the world in purchasing power parity.",
+      "gold": "CONTRADICTED",
+      "prediction": "INSUFFICIENT",
+      "evidence": [
+        {
+          "doc": 7271,
+          "page_id": "Japan",
+          "sent_id": 33,
+          "score": 0.032018442622950824,
+          "nli": [
+            0.0027224093209952116,
+            0.9486433267593384,
+            0.04863433539867401
+          ],
+          "text": "Japan: The country has the world 's third-largest economy by nominal GDP and the world 's fourth-largest economy by purchasing power parity ."
+        },
+        {
+          "doc": 2908,
+          "page_id": "China",
+          "sent_id": 16,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0005334283923730254,
+            0.9796492457389832,
+            0.01981738954782486
+          ],
+          "text": "China: , it is the world 's second-largest economy by nominal GDP and largest by purchasing power parity ( PPP ) ."
+        },
+        {
+          "doc": 11009,
+          "page_id": "Pakistan",
+          "sent_id": 22,
+          "score": 0.03177805800756621,
+          "nli": [
+            0.002083106432110071,
+            0.5167360305786133,
+            0.4811808168888092
+          ],
+          "text": "Pakistan: The Pakistani economy is the 24th-largest in the world in terms of purchasing power and the 41st-largest in terms of nominal GDP ( World Bank ) ."
+        },
+        {
+          "doc": 11008,
+          "page_id": "Pakistan",
+          "sent_id": 21,
+          "score": 0.03128054740957967,
+          "nli": [
+            0.00018709742289502174,
+            0.9981518387794495,
+            0.0016610798193141818
+          ],
+          "text": "Pakistan: Pakistan has a semi-industrialised economy with a well-integrated agriculture sector , and a growing services sector ."
+        },
+        {
+          "doc": 15763,
+          "page_id": "United_Kingdom",
+          "sent_id": 31,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.003147423965856433,
+            0.9831138849258423,
+            0.013738707639276981
+          ],
+          "text": "United Kingdom: The United Kingdom is a developed country and has the world 's fifth-largest economy by nominal GDP and ninth-largest economy by purchasing power parity ."
+        }
+      ],
+      "gold_context": [
+        "Pakistan: The Pakistani economy is the 24th-largest in the world in terms of purchasing power and the 41st-largest in terms of nominal GDP ( World Bank ) ."
+      ],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-150794",
+      "claim": "Georgians arose from an ancient kingdom on a death bed.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 5467,
+          "page_id": "Georgians",
+          "sent_id": 4,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.00013221347762737423,
+            0.009043121710419655,
+            0.9908246397972107
+          ],
+          "text": "Georgians: Georgians arose from the ancient Colchian and Iberian civilizations ."
+        },
+        {
+          "doc": 5465,
+          "page_id": "Georgians",
+          "sent_id": 0,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.00046070112148299813,
+            0.85605788230896,
+            0.14348137378692627
+          ],
+          "text": "Georgians: The Georgians or Kartvelians ( [ \u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10d4\u10d1\u10d8 , tr ] ) are a nation and ethnic group who constitute a majority of the population in Georgia ."
+        },
+        {
+          "doc": 5473,
+          "page_id": "Georgians",
+          "sent_id": 14,
+          "score": 0.029957522915269395,
+          "nli": [
+            0.0009639944182708859,
+            0.7629239559173584,
+            0.23611211776733398
+          ],
+          "text": "Georgians: By the early 11th century they formed a unified Kingdom of Georgia and inaugurated the Georgian Golden Age , a height of political and cultural power of the nation ."
+        },
+        {
+          "doc": 5474,
+          "page_id": "Georgians",
+          "sent_id": 15,
+          "score": 0.029857397504456328,
+          "nli": [
+            0.00034660566598176956,
+            0.002129446482285857,
+            0.9975239634513855
+          ],
+          "text": "Georgians: This lasted until being weakened by Mongol invasions , as well as internal divisions following the death of George V the Brilliant , the last of the great kings of Georgia ."
+        },
+        {
+          "doc": 5475,
+          "page_id": "Georgians",
+          "sent_id": 16,
+          "score": 0.02854251012145749,
+          "nli": [
+            0.00014059283421374857,
+            0.0023115479853004217,
+            0.9975479245185852
+          ],
+          "text": "Georgians: Thereafter and throughout the early modern period Georgians became politically fractured and fell into decline due to the onslaught of various hostile empires , including the Ottoman Empire and successive dynasties of Persia ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-115353",
+      "claim": "Lee Daniels directed a film based on the novel \"Wicked.\"",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 8329,
+          "page_id": "Lee_Daniels",
+          "sent_id": 0,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.0004773879481945187,
+            0.9973536729812622,
+            0.0021689562126994133
+          ],
+          "text": "Lee Daniels: Lee Louis Daniels ( born December 24 , 1959 ) is an American film and television producer and director ."
+        },
+        {
+          "doc": 11408,
+          "page_id": "Precious_-LRB-film-RRB-",
+          "sent_id": 0,
+          "score": 0.031544957774465976,
+          "nli": [
+            0.001626526121981442,
+            0.0017079171957448125,
+            0.9966655373573303
+          ],
+          "text": "Precious (film): Precious : Base on Nol by Saf ( Based on the Novel `` Push '' by Sapphire ) , or simply Precious , is a 2009 American drama film , directed and co-produced by Lee Daniels ."
+        },
+        {
+          "doc": 8330,
+          "page_id": "Lee_Daniels",
+          "sent_id": 1,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.0003843269660137594,
+            0.0386323444545269,
+            0.9609833359718323
+          ],
+          "text": "Lee Daniels: He produced Monster 's Ball and directed Precious , which received six Academy Award nominations , including Best Director ; the film won two of the awards ."
+        },
+        {
+          "doc": 8331,
+          "page_id": "Lee_Daniels",
+          "sent_id": 4,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.00021207418467383832,
+            0.001329919439740479,
+            0.9984580278396606
+          ],
+          "text": "Lee Daniels: In 2012 , Daniels directed The Butler , a historical fiction drama featuring an ensemble cast portraying unique events on the 20th century presidents of the United States at the White House ."
+        },
+        {
+          "doc": 8332,
+          "page_id": "Lee_Daniels",
+          "sent_id": 5,
+          "score": 0.029418126757516764,
+          "nli": [
+            0.002160795731469989,
+            0.0824909433722496,
+            0.9153482913970947
+          ],
+          "text": "Lee Daniels: Daniels is also a co-creator , executive producer and director of the television series Empire and Star , which debuted in 2015 and 2016 , respectively ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-219703",
+      "claim": "Corsica is only at the top of Cap Corse.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 182509,
+          "page_id": "Torra_di_Capu_Neru",
+          "sent_id": 0,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.0002511804923415184,
+            0.001975687686353922,
+            0.9977731108665466
+          ],
+          "text": "Torra di Capu Neru: The Tower of Capu Neru ( Torra di Capu Neru ) is a Genoese tower located in the commune of Coti-Chiavari ( Corse-du-Sud ) on the west coast of the Corsica ."
+        },
+        {
+          "doc": 221371,
+          "page_id": "Carcheto-Brustico",
+          "sent_id": 0,
+          "score": 0.031099324975891997,
+          "nli": [
+            0.0002598442661110312,
+            0.0032091273460537195,
+            0.996531069278717
+          ],
+          "text": "Carcheto-Brustico: Carcheto-Brustico is a commune in the Haute-Corse department of France on the island of Corsica ."
+        },
+        {
+          "doc": 160210,
+          "page_id": "Tov",
+          "sent_id": 13,
+          "score": 0.027425373134328357,
+          "nli": [
+            0.004463884048163891,
+            0.6477846503257751,
+            0.3477514386177063
+          ],
+          "text": "Tov: Treaty of Versailles ( 1768 ) , in which the Republic of Genoa ceded Corsica to France"
+        },
+        {
+          "doc": 32347,
+          "page_id": "Italians_in_France",
+          "sent_id": 1,
+          "score": 0.026494565217391304,
+          "nli": [
+            0.0004948864225298166,
+            0.0052023581229150295,
+            0.9943027496337891
+          ],
+          "text": "Italians in France: In addition , Corsica passed from the Republic of Genoa to France in 1768 , and the county of Nice and Savoy from the Kingdom of Sardinia to France in 1860 ."
+        },
+        {
+          "doc": 84787,
+          "page_id": "Mount_Capanne",
+          "sent_id": 0,
+          "score": 0.01639344262295082,
+          "nli": [
+            0.00048037373926490545,
+            0.003738060826435685,
+            0.9957815408706665
+          ],
+          "text": "Mount Capanne: Mount Capanne ( Monte Capanne ) is the highest mountain on the Italian island of Elba and in the province of Livorno , Tuscany , Italy ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-90792",
+      "claim": "Alcoholic drink is one of the most widely used recreational drugs in the rope.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 777,
+          "page_id": "Alcoholic_drink",
+          "sent_id": 12,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9895532131195068,
+            0.009849200956523418,
+            0.0005975867388769984
+          ],
+          "text": "Alcoholic drink: Alcohol is one of the most widely used recreational drugs in the world ."
+        },
+        {
+          "doc": 775,
+          "page_id": "Alcoholic_drink",
+          "sent_id": 8,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0002966189931612462,
+            0.9692184329032898,
+            0.030484888702630997
+          ],
+          "text": "Alcoholic drink: However , alcoholic drinks are legal in most parts of the world ."
+        },
+        {
+          "doc": 772,
+          "page_id": "Alcoholic_drink",
+          "sent_id": 4,
+          "score": 0.03057889822595705,
+          "nli": [
+            0.000768692116253078,
+            0.6642469763755798,
+            0.33498436212539673
+          ],
+          "text": "Alcoholic drink: Drinking alcohol plays an important social role in many cultures ."
+        },
+        {
+          "doc": 770,
+          "page_id": "Alcoholic_drink",
+          "sent_id": 0,
+          "score": 0.030536130536130537,
+          "nli": [
+            0.00019753036031033844,
+            0.9977280497550964,
+            0.0020744570065289736
+          ],
+          "text": "Alcoholic drink: An alcoholic drink , or alcoholic beverage , is a drink that contains a substantial amount of ethanol ( informally called alcohol ) , a depressant which in low doses causes euphoria , reduced anxiety , and sociability and in higher doses causes intoxication ( drunkenness ) , stupor and unconsciousness ."
+        },
+        {
+          "doc": 774,
+          "page_id": "Alcoholic_drink",
+          "sent_id": 7,
+          "score": 0.030090497737556562,
+          "nli": [
+            0.00037397962296381593,
+            0.9819034337997437,
+            0.01772266812622547
+          ],
+          "text": "Alcoholic drink: some countries ban such activities entirely ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-158649",
+      "claim": "Bill Graham Civic Auditorium was owned by John Galen Howard.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1983,
+          "page_id": "Bill_Graham_Civic_Auditorium",
+          "sent_id": 2,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.05386793613433838,
+            0.26241034269332886,
+            0.6837217211723328
+          ],
+          "text": "Bill Graham Civic Auditorium: It was designed by renowned Bay Area architect John Galen Howard and built in 1915 as part of the Panama -- Pacific International Exposition ."
+        },
+        {
+          "doc": 1981,
+          "page_id": "Bill_Graham_Civic_Auditorium",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.00026762025663629174,
+            0.022290527820587158,
+            0.9774417877197266
+          ],
+          "text": "Bill Graham Civic Auditorium: The Bill Graham Civic Auditorium ( formerly San Francisco Civic Auditorium ) is a multi-purpose arena in San Francisco , California , named after promoter Bill Graham ."
+        },
+        {
+          "doc": 1986,
+          "page_id": "Bill_Graham_Civic_Auditorium",
+          "sent_id": 9,
+          "score": 0.031009615384615385,
+          "nli": [
+            0.00026836118195205927,
+            0.9537100791931152,
+            0.04602154716849327
+          ],
+          "text": "Bill Graham Civic Auditorium: In 1992 , the San Francisco Board of Supervisors voted to rename the San Francisco Civic Auditorium after the rock concert impresario Bill Graham , who had died the year before in a helicopter crash ."
+        },
+        {
+          "doc": 1988,
+          "page_id": "Bill_Graham_Civic_Auditorium",
+          "sent_id": 13,
+          "score": 0.030798389007344232,
+          "nli": [
+            0.00025935727171599865,
+            0.0011841271771118045,
+            0.9985564351081848
+          ],
+          "text": "Bill Graham Civic Auditorium: It is owned by the City of San Francisco and since 2010 has been operated by Another Planet Entertainment , generating about $ 100,000 in leasing revenue for the city annually ."
+        },
+        {
+          "doc": 1982,
+          "page_id": "Bill_Graham_Civic_Auditorium",
+          "sent_id": 1,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.0002955950330942869,
+            0.996532678604126,
+            0.0031717452220618725
+          ],
+          "text": "Bill Graham Civic Auditorium: The arena holds 7,000 people ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-60531",
+      "claim": "Psych (season 2) ended at 9:00 PM, February 15th, 2008.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 11670,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0003178129845764488,
+            0.9986878037452698,
+            0.0009943488985300064
+          ],
+          "text": "Psych (season 2): The second season of Psych originally aired in the United States on USA Network from July 13 , 2007 to February 15 , 2008 ."
+        },
+        {
+          "doc": 11674,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 4,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0019307853654026985,
+            0.12740613520145416,
+            0.8706629872322083
+          ],
+          "text": "Psych (season 2): A DVD of the season was released on July 8 , 2008 ."
+        },
+        {
+          "doc": 11671,
+          "page_id": "Psych_-LRB-season_2-RRB-",
+          "sent_id": 1,
+          "score": 0.030309988518943745,
+          "nli": [
+            0.0004489017592277378,
+            0.9983261227607727,
+            0.0012250173604115844
+          ],
+          "text": "Psych (season 2): It consisted of 16 episodes ."
+        },
+        {
+          "doc": 11388,
+          "page_id": "Psych",
+          "sent_id": 10,
+          "score": 0.029571646010002173,
+          "nli": [
+            0.0005487446906045079,
+            0.0034144038800150156,
+            0.9960368275642395
+          ],
+          "text": "Psych: On February 5 , 2014 , USA Network confirmed that the eighth season of Psych would be its last , with the series finale airing on March 26 , 2014 ."
+        },
+        {
+          "doc": 11390,
+          "page_id": "Psych",
+          "sent_id": 16,
+          "score": 0.02512945476698142,
+          "nli": [
+            0.004409685265272856,
+            0.01887625642120838,
+            0.976714015007019
+          ],
+          "text": "Psych: On May 8 , 2017 , USA Network announced `` Psych : The Movie '' , a 2-hour TV movie to air in December 2017 ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-72801",
+      "claim": "Riz Ahmed acted in a historical miniseries based on a British television series.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 12115,
+          "page_id": "Riz_Ahmed",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0006814163061790168,
+            0.9977280497550964,
+            0.0015905414475128055
+          ],
+          "text": "Riz Ahmed: Rizwan Ahmed ( [ ; born 1 December 1982 ) , also known as Riz MC , is a British actor and rapper of Pakistani descent ."
+        },
+        {
+          "doc": 12118,
+          "page_id": "Riz_Ahmed",
+          "sent_id": 3,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.1674799919128418,
+            0.8290073871612549,
+            0.0035126188304275274
+          ],
+          "text": "Riz Ahmed: He also starred in the HBO miniseries The Night Of as Nasir Khan ; the show and his performance were critically lauded , earning him Golden Globe and SAG nominations ."
+        },
+        {
+          "doc": 12117,
+          "page_id": "Riz_Ahmed",
+          "sent_id": 2,
+          "score": 0.030303030303030304,
+          "nli": [
+            0.0014927498996257782,
+            0.00561709888279438,
+            0.9928901195526123
+          ],
+          "text": "Riz Ahmed: Since then , he has appeared in the films Una , Jason Bourne , and the first Star Wars Anthology film , Rogue One ."
+        },
+        {
+          "doc": 149366,
+          "page_id": "Daniel_Boone_-LRB-1960_TV_series-RRB-",
+          "sent_id": 4,
+          "score": 0.029273504273504274,
+          "nli": [
+            0.04781375452876091,
+            0.3360515534877777,
+            0.616134762763977
+          ],
+          "text": "Daniel Boone (1960 TV series): The miniseries was loosely based on Kentucky pioneer Daniel Boone ."
+        },
+        {
+          "doc": 14801,
+          "page_id": "The_Night_Of",
+          "sent_id": 0,
+          "score": 0.028949545078577336,
+          "nli": [
+            0.0022430967073887587,
+            0.9899961948394775,
+            0.007760666776448488
+          ],
+          "text": "The Night Of: The Night Of is an American eight-part crime drama television miniseries based on Criminal Justice , a 2008 -- 09 British television series ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-166917",
+      "claim": "Baadshah was dubbed under the same name.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 1701,
+          "page_id": "Baadshah_-LRB-2013_film-RRB-",
+          "sent_id": 17,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.9644655585289001,
+            0.03076143190264702,
+            0.004773025866597891
+          ],
+          "text": "Baadshah (2013 film): Later , this movie was dubbed into Malayalam , Japanese , and Korean under the same name ."
+        },
+        {
+          "doc": 1699,
+          "page_id": "Baadshah_-LRB-2013_film-RRB-",
+          "sent_id": 15,
+          "score": 0.032266458495966696,
+          "nli": [
+            0.037371132522821426,
+            0.07472164183855057,
+            0.8879072666168213
+          ],
+          "text": "Baadshah (2013 film): The film was also dubbed into Hindi under the title Rowdy Baadshah by Goldmines TeleFilms ."
+        },
+        {
+          "doc": 1690,
+          "page_id": "Baadshah_-LRB-2013_film-RRB-",
+          "sent_id": 0,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.002844198141247034,
+            0.9456965923309326,
+            0.051459189504384995
+          ],
+          "text": "Baadshah (2013 film): For disambiguation , See Baadshah"
+        },
+        {
+          "doc": 1700,
+          "page_id": "Baadshah_-LRB-2013_film-RRB-",
+          "sent_id": 16,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.0016466674860566854,
+            0.9590479135513306,
+            0.03930536285042763
+          ],
+          "text": "Baadshah (2013 film): Baadshah released in 1550 Screens worldwide with 1200 Prints ."
+        },
+        {
+          "doc": 1691,
+          "page_id": "Baadshah_-LRB-2013_film-RRB-",
+          "sent_id": 3,
+          "score": 0.030309988518943745,
+          "nli": [
+            0.0015680587384849787,
+            0.26603490114212036,
+            0.7323970794677734
+          ],
+          "text": "Baadshah (2013 film): Baadshah ( Emperor ) is a 2013 Telugu action thriller film directed by Sreenu Vaitla ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-173047",
+      "claim": "Barcelona has a GDP of 1.6 million.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1657,
+          "page_id": "Barcelona",
+          "sent_id": 16,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0012588566169142723,
+            0.9827552437782288,
+            0.01598590984940529
+          ],
+          "text": "Barcelona: In 2012 Barcelona had a GDP of $ 170 billion ; it is leading Spain in both employment rate and GDP per capita change ."
+        },
+        {
+          "doc": 1645,
+          "page_id": "Barcelona",
+          "sent_id": 0,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0018562187906354666,
+            0.9843474626541138,
+            0.013796304352581501
+          ],
+          "text": "Barcelona: Barcelona ( [ b\u0251rs\u0259\u02c8lo\u028an\u0259 ] , [ b\u0259\u027es\u0259\u02c8lon\u0259 ] , [ bar\u03b8e\u02c8lona ] ) is the capital city of the autonomous community of Catalonia in the Kingdom of Spain , as well as the country 's second most populous municipality , with a population of 1.6 million within city limits ."
+        },
+        {
+          "doc": 1656,
+          "page_id": "Barcelona",
+          "sent_id": 15,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0007185621652752161,
+            0.9922406673431396,
+            0.007040811702609062
+          ],
+          "text": "Barcelona: In 2008 it was the fourth most economically powerful city by GDP in the European Union and 35th in the world with GDP amounting to $ 177 billion ."
+        },
+        {
+          "doc": 16003,
+          "page_id": "Valencia",
+          "sent_id": 1,
+          "score": 0.026973565905412694,
+          "nli": [
+            0.0007876609452068806,
+            0.01659603789448738,
+            0.9826163053512573
+          ],
+          "text": "Valencia: Its urban area extends beyond the administrative city limits with a population of around 1.5 -- 1.6 million people ."
+        },
+        {
+          "doc": 1661,
+          "page_id": "Barcelona",
+          "sent_id": 20,
+          "score": 0.0264808362369338,
+          "nli": [
+            0.00024754757760092616,
+            0.9988272786140442,
+            0.0009251558221876621
+          ],
+          "text": "Barcelona: Barcelona is a transport hub , with the Port of Barcelona being one of Europe 's principal seaports and busiest European passenger port , an international airport , Barcelona -- El Prat Airport , which handles over 40 million passengers per year , an extensive motorway network , and a high-speed rail line with a link to France and the rest of Europe ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-153139",
+      "claim": "The Catcher in the Rye deals with issues of war and peace.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 13888,
+          "page_id": "The_Catcher_in_the_Rye",
+          "sent_id": 6,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0006084758788347244,
+            0.01898466795682907,
+            0.9804068207740784
+          ],
+          "text": "The Catcher in the Rye: The novel also deals with complex issues of innocence , identity , belonging , loss , and connection ."
+        },
+        {
+          "doc": 13885,
+          "page_id": "The_Catcher_in_the_Rye",
+          "sent_id": 2,
+          "score": 0.031746031746031744,
+          "nli": [
+            0.00045912619680166245,
+            0.9974116683006287,
+            0.0021292066667228937
+          ],
+          "text": "The Catcher in the Rye: It has been translated into almost all of the world 's major languages ."
+        },
+        {
+          "doc": 13883,
+          "page_id": "The_Catcher_in_the_Rye",
+          "sent_id": 0,
+          "score": 0.0315136476426799,
+          "nli": [
+            0.0003289435990154743,
+            0.9979559183120728,
+            0.001715146005153656
+          ],
+          "text": "The Catcher in the Rye: The Catcher in the Rye is a 1951 novel by J. D. Salinger ."
+        },
+        {
+          "doc": 13884,
+          "page_id": "The_Catcher_in_the_Rye",
+          "sent_id": 1,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.0015847748145461082,
+            0.47096240520477295,
+            0.527452826499939
+          ],
+          "text": "The Catcher in the Rye: A controversial novel originally published for adults , it has since become popular with adolescent readers for its themes of teenage angst and alienation ."
+        },
+        {
+          "doc": 13887,
+          "page_id": "The_Catcher_in_the_Rye",
+          "sent_id": 5,
+          "score": 0.030776515151515152,
+          "nli": [
+            0.0015989522216841578,
+            0.9552056193351746,
+            0.0431954488158226
+          ],
+          "text": "The Catcher in the Rye: The novel 's protagonist Holden Caulfield has become an icon for teenage rebellion ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-118257",
+      "claim": "Jed Whedon is the son of someone born in August 1937.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 7154,
+          "page_id": "Jed_Whedon",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.001292023342102766,
+            0.0018114002887159586,
+            0.9968966245651245
+          ],
+          "text": "Jed Whedon: Jed Tucker Whedon ( born July 18 , 1974 ) is an American screenwriter and musician , and the son of screenwriter Tom Whedon , grandson of screenwriter John Whedon , and the brother of screenwriter Zack Whedon and producer/director/writer Joss Whedon ."
+        },
+        {
+          "doc": 7552,
+          "page_id": "Joss_Whedon",
+          "sent_id": 0,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.006976451724767685,
+            0.34698399901390076,
+            0.6460395455360413
+          ],
+          "text": "Joss Whedon: Joss Whedon ( [ \u02c8wi\u02d0d\u0259n ] ) ( born Joseph Hill Whedon on June 23 , 1964 ) is an American screenwriter , film and television director , film and television producer , comic book author , and composer ."
+        },
+        {
+          "doc": 202602,
+          "page_id": "Wambaugh",
+          "sent_id": 6,
+          "score": 0.028958333333333336,
+          "nli": [
+            0.003946326207369566,
+            0.9432652592658997,
+            0.052788373082876205
+          ],
+          "text": "Wambaugh: Joseph Wambaugh ( born 1937 ) , American writer"
+        },
+        {
+          "doc": 209327,
+          "page_id": "Jed_Williams",
+          "sent_id": 3,
+          "score": 0.027820121951219513,
+          "nli": [
+            0.0012574429856613278,
+            0.009391664527356625,
+            0.9893508553504944
+          ],
+          "text": "Jed Williams: Williams was born in Cardiff and educated at the Howardian Grammar School ."
+        },
+        {
+          "doc": 209326,
+          "page_id": "Jed_Williams",
+          "sent_id": 0,
+          "score": 0.024877149877149878,
+          "nli": [
+            0.001149750780314207,
+            0.016895465552806854,
+            0.98195481300354
+          ],
+          "text": "Jed Williams: John Ellis Dowell Williams , known as Jed Williams ( 12 June 1952 -- 10 November 2003 ) , was a Welsh jazz journalist and the founder and artistic director of the Brecon Jazz Festival ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-177965",
+      "claim": "Children get candy from Trick-or-Treating.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 15389,
+          "page_id": "Trick-or-treating",
+          "sent_id": 0,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.0011780840577557683,
+            0.9983230233192444,
+            0.0004988322034478188
+          ],
+          "text": "Trick-or-treating: Trick-or-treating is a Halloween custom for children in many countries ."
+        },
+        {
+          "doc": 15390,
+          "page_id": "Trick-or-treating",
+          "sent_id": 1,
+          "score": 0.03252247488101534,
+          "nli": [
+            0.9491195678710938,
+            0.04919252544641495,
+            0.0016879310132935643
+          ],
+          "text": "Trick-or-treating: Children in costumes travel from house to house asking for treats such as candy ( or , in some cultures , money ) with the phrase `` Trick or treat '' ."
+        },
+        {
+          "doc": 15402,
+          "page_id": "Trick-or-treating",
+          "sent_id": 16,
+          "score": 0.03125,
+          "nli": [
+            0.05393359437584877,
+            0.9420940279960632,
+            0.003972339443862438
+          ],
+          "text": "Trick-or-treating: ( `` can you give me my little skull ? '' )"
+        },
+        {
+          "doc": 15395,
+          "page_id": "Trick-or-treating",
+          "sent_id": 9,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.0009468641364946961,
+            0.9985835552215576,
+            0.00046964813373051584
+          ],
+          "text": "Trick-or-treating: In North America , trick-or-treating has been a Halloween tradition since the late 1920s ."
+        },
+        {
+          "doc": 15394,
+          "page_id": "Trick-or-treating",
+          "sent_id": 6,
+          "score": 0.030303030303030304,
+          "nli": [
+            0.22655370831489563,
+            0.7682947516441345,
+            0.005151513963937759
+          ],
+          "text": "Trick-or-treating: Others might simply leave treats on their porch ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-194571",
+      "claim": "Kyle Maclachlan has been nominated for two People's Choice Awards.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 106677,
+          "page_id": "People's_Choice_Award_for_Favorite_Country_Artist",
+          "sent_id": 7,
+          "score": 0.032266458495966696,
+          "nli": [
+            0.0017635391559451818,
+            0.9896989464759827,
+            0.00853752437978983
+          ],
+          "text": "People's Choice Award for Favorite Country Artist: Category : People 's Choice Awards"
+        },
+        {
+          "doc": 8532,
+          "page_id": "Lorelai_Gilmore",
+          "sent_id": 12,
+          "score": 0.030330882352941176,
+          "nli": [
+            0.004104115534573793,
+            0.03763952478766441,
+            0.9582562446594238
+          ],
+          "text": "Lorelai Gilmore: Graham received widespread critical acclaim for her performance and has been nominated for several awards , winning two Teen Choice Awards ."
+        },
+        {
+          "doc": 4918,
+          "page_id": "Fred_Savage",
+          "sent_id": 2,
+          "score": 0.028782894736842105,
+          "nli": [
+            0.0020582748111337423,
+            0.01378023624420166,
+            0.9841614961624146
+          ],
+          "text": "Fred Savage: He has earned several awards and nominations , such as People 's Choice Awards and Young Artist Awards ."
+        },
+        {
+          "doc": 6930,
+          "page_id": "Jack_Black",
+          "sent_id": 3,
+          "score": 0.0277569392348087,
+          "nli": [
+            0.00127282680477947,
+            0.018558498471975327,
+            0.9801687002182007
+          ],
+          "text": "Jack Black: He has been nominated for two Golden Globe Awards ."
+        },
+        {
+          "doc": 5072,
+          "page_id": "Freddie_Highmore",
+          "sent_id": 6,
+          "score": 0.026785714285714288,
+          "nli": [
+            0.001252126065082848,
+            0.9680014848709106,
+            0.0307463351637125
+          ],
+          "text": "Freddie Highmore: In 2017 , he won a People 's Choice Award for his performance ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-107275",
+      "claim": "University of Chicago Law School is ranked egg for \"Faculty quality based on American Academy of Arts and Sciences Membership.\"",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 15884,
+          "page_id": "University_of_Chicago_Law_School",
+          "sent_id": 6,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.13344623148441315,
+            0.01594882644712925,
+            0.8506049513816833
+          ],
+          "text": "University of Chicago Law School: Chicago is ranked second by Brian Leiter of the University of Chicago Law School on the `` Top 15 Schools From Which the Most ` Prestigious ' Law Firms Hire New Lawyers , '' and first for `` Faculty quality based on American Academy of Arts and Sciences Membership . ''"
+        },
+        {
+          "doc": 15883,
+          "page_id": "University_of_Chicago_Law_School",
+          "sent_id": 5,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.0010251157218590379,
+            0.022273970767855644,
+            0.9767009615898132
+          ],
+          "text": "University of Chicago Law School: The University of Chicago Law School was ranked third in the country by the 2015 Above The Law Rankings , which ranks law schools based on employment outcomes such as quality of jobs , federal clerkships , and alumni satisfaction ."
+        },
+        {
+          "doc": 15880,
+          "page_id": "University_of_Chicago_Law_School",
+          "sent_id": 0,
+          "score": 0.03125,
+          "nli": [
+            0.0030843818094581366,
+            0.988197386264801,
+            0.008718208409845829
+          ],
+          "text": "University of Chicago Law School: The University of Chicago Law School is the graduate school of law at the University of Chicago ."
+        },
+        {
+          "doc": 15885,
+          "page_id": "University_of_Chicago_Law_School",
+          "sent_id": 7,
+          "score": 0.03076923076923077,
+          "nli": [
+            0.009072273038327694,
+            0.3411000669002533,
+            0.6498276591300964
+          ],
+          "text": "University of Chicago Law School: It is ranked 12th in the 2016 QS World University Rankings ."
+        },
+        {
+          "doc": 15888,
+          "page_id": "University_of_Chicago_Law_School",
+          "sent_id": 12,
+          "score": 0.029437229437229435,
+          "nli": [
+            0.0020852123852819204,
+            0.06856975704431534,
+            0.9293450117111206
+          ],
+          "text": "University of Chicago Law School: The law school was ranked # 3 of all law schools nationwide by the National Law Journal in terms of sending the highest percentage of 2015 graduates to the largest 100 law firms in the US ( 52.04 % ) ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-58352",
+      "claim": "Woodrow Wilson formed the belief system Wilsonianism.",
+      "gold": "INSUFFICIENT",
+      "prediction": "SUPPORTED",
+      "evidence": [
+        {
+          "doc": 16352,
+          "page_id": "Woodrow_Wilson",
+          "sent_id": 3,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.9807828068733215,
+            0.018615519627928734,
+            0.0006016175611875951
+          ],
+          "text": "Woodrow Wilson: He also led the United States during World War I , establishing an activist foreign policy known as `` Wilsonianism . ''"
+        },
+        {
+          "doc": 16360,
+          "page_id": "Woodrow_Wilson",
+          "sent_id": 13,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.0070853759534657,
+            0.9463042616844177,
+            0.04661032184958458
+          ],
+          "text": "Woodrow Wilson: Wilson became a notable academic , arguing for the superiority of the parliamentary system ."
+        },
+        {
+          "doc": 16349,
+          "page_id": "Woodrow_Wilson",
+          "sent_id": 0,
+          "score": 0.028790389395194696,
+          "nli": [
+            0.0012406260939314961,
+            0.9856985211372375,
+            0.013060861267149448
+          ],
+          "text": "Woodrow Wilson: Thomas Woodrow Wilson ( December 28 , 1856 -- February 3 , 1924 ) was an American politician and academic who served as the 28th President of the United States from 1913 to 1921 ."
+        },
+        {
+          "doc": 16357,
+          "page_id": "Woodrow_Wilson",
+          "sent_id": 10,
+          "score": 0.027783137179239824,
+          "nli": [
+            0.002223835326731205,
+            0.7703843116760254,
+            0.22739185392856598
+          ],
+          "text": "Woodrow Wilson: His father was a leading Presbyterian in the Confederacy during the Civil War , and Wilson was always a devout Presbyterian and a proud Southerner ."
+        },
+        {
+          "doc": 16353,
+          "page_id": "Woodrow_Wilson",
+          "sent_id": 4,
+          "score": 0.027108970929195647,
+          "nli": [
+            0.005885567981749773,
+            0.974454939365387,
+            0.01965944841504097
+          ],
+          "text": "Woodrow Wilson: He was a major leader at the Paris Peace Conference in 1919 , where he championed the proposed League of Nations ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-86438",
+      "claim": "Alberto Contador was stripped of the presidency.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 511,
+          "page_id": "Alberto_Contador",
+          "sent_id": 10,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0001530200388515368,
+            0.007416245527565479,
+            0.9924308657646179
+          ],
+          "text": "Alberto Contador: Contador 's career has been marked by doping allegations ."
+        },
+        {
+          "doc": 515,
+          "page_id": "Alberto_Contador",
+          "sent_id": 15,
+          "score": 0.031544957774465976,
+          "nli": [
+            0.0001815074065234512,
+            0.0007508593262173235,
+            0.9990676045417786
+          ],
+          "text": "Alberto Contador: he was cleared by the RFEC ."
+        },
+        {
+          "doc": 517,
+          "page_id": "Alberto_Contador",
+          "sent_id": 17,
+          "score": 0.031544957774465976,
+          "nli": [
+            0.0017980894772335887,
+            0.08120910823345184,
+            0.9169927835464478
+          ],
+          "text": "Alberto Contador: He was also suspended until 5 August 2012 , and his contract with was annulled ."
+        },
+        {
+          "doc": 518,
+          "page_id": "Alberto_Contador",
+          "sent_id": 18,
+          "score": 0.031054405392392875,
+          "nli": [
+            0.00039567280327901244,
+            0.02177775278687477,
+            0.9778265953063965
+          ],
+          "text": "Alberto Contador: Upon the completion of his ban , Contador rejoined the renamed team ."
+        },
+        {
+          "doc": 516,
+          "page_id": "Alberto_Contador",
+          "sent_id": 16,
+          "score": 0.03036576949620428,
+          "nli": [
+            0.002115395851433277,
+            0.3154892921447754,
+            0.682395339012146
+          ],
+          "text": "Alberto Contador: A review by the Court of Arbitration for Sport initially set for June 2011 was later deferred several times until February 2012 , when the CAS decided that Contador be stripped of the results obtained in the 2010 Tour de France and later , which also caused him to lose his 2011 Giro d'Italia victory ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-208897",
+      "claim": "The Monster is a gospel song by an American rapper.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 15040,
+          "page_id": "The_Monster_-LRB-song-RRB-",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0009957872098311782,
+            0.9962331652641296,
+            0.0027710208669304848
+          ],
+          "text": "The Monster (song): `` The Monster '' is a song by American rapper Eminem , featuring guest vocals from Barbadian singer Rihanna , taken from Eminem 's album The Marshall Mathers LP 2 ( 2013 ) ."
+        },
+        {
+          "doc": 15043,
+          "page_id": "The_Monster_-LRB-song-RRB-",
+          "sent_id": 3,
+          "score": 0.03149801587301587,
+          "nli": [
+            0.0001404483336955309,
+            0.9965226650238037,
+            0.003336936002597213
+          ],
+          "text": "The Monster (song): `` The Monster '' was released on October 29 , 2013 , as the fourth single from the album ."
+        },
+        {
+          "doc": 15049,
+          "page_id": "The_Monster_-LRB-song-RRB-",
+          "sent_id": 13,
+          "score": 0.03125763125763126,
+          "nli": [
+            0.00019952273578383029,
+            0.9979977011680603,
+            0.001802806742489338
+          ],
+          "text": "The Monster (song): The video was well received and was nominated for several awards ."
+        },
+        {
+          "doc": 13956,
+          "page_id": "Telephone_-LRB-song-RRB-",
+          "sent_id": 0,
+          "score": 0.030621785881252923,
+          "nli": [
+            0.0001626531156944111,
+            0.00107104005292058,
+            0.998766303062439
+          ],
+          "text": "Telephone (song): `` Telephone '' is a song recorded by American singer Lady Gaga for her third EP , The Fame Monster ( 2009 ) ."
+        },
+        {
+          "doc": 15041,
+          "page_id": "The_Monster_-LRB-song-RRB-",
+          "sent_id": 1,
+          "score": 0.02946236559139785,
+          "nli": [
+            0.0007265470339916646,
+            0.9954591989517212,
+            0.003814276307821274
+          ],
+          "text": "The Monster (song): The song was written by Eminem , Jon Bellion , and Bebe Rexha , with production handled by Frequency ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-192018",
+      "claim": "Adam Lambert's album ended at number sixteen on the U.S. Billboard 200 chart.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 461,
+          "page_id": "Adam_Lambert",
+          "sent_id": 5,
+          "score": 0.032266458495966696,
+          "nli": [
+            0.0004218747199047357,
+            0.002797020599246025,
+            0.9967811107635498
+          ],
+          "text": "Adam Lambert: Later that year , he released his debut album , For Your Entertainment , which debuted at number three on the U.S. Billboard 200 ."
+        },
+        {
+          "doc": 464,
+          "page_id": "Adam_Lambert",
+          "sent_id": 10,
+          "score": 0.03225806451612903,
+          "nli": [
+            0.00018439392442815006,
+            0.0005952308420091867,
+            0.9992203712463379
+          ],
+          "text": "Adam Lambert: The album premiered at number one on the U.S. Billboard 200 , making him the first openly gay artist to top the album charts ."
+        },
+        {
+          "doc": 465,
+          "page_id": "Adam_Lambert",
+          "sent_id": 11,
+          "score": 0.03177805800756621,
+          "nli": [
+            0.0004410340334288776,
+            0.003284384496510029,
+            0.9962747097015381
+          ],
+          "text": "Adam Lambert: In 2015 , Lambert released his third album , The Original High , which debuted at number three on the U.S. Billboard 200 ."
+        },
+        {
+          "doc": 181779,
+          "page_id": "\u00c9quinoxe",
+          "sent_id": 9,
+          "score": 0.029138513513513514,
+          "nli": [
+            0.0007141207461245358,
+            0.007383400108665228,
+            0.9919025301933289
+          ],
+          "text": "\u00c9quinoxe: The album reached number 11 on the UK Album Chart and number 126 on the US Billboard 200 chart ."
+        },
+        {
+          "doc": 463,
+          "page_id": "Adam_Lambert",
+          "sent_id": 9,
+          "score": 0.028125,
+          "nli": [
+            0.00015030817303340882,
+            0.9979604482650757,
+            0.0018892546650022268
+          ],
+          "text": "Adam Lambert: In 2012 , Lambert released his second studio album , Trespassing ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-162045",
+      "claim": "Benjamin Walker (actor) is a Catholic.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 1910,
+          "page_id": "Benjamin_Walker_-LRB-actor-RRB-",
+          "sent_id": 0,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.0006413239752873778,
+            0.9262739419937134,
+            0.07308471202850342
+          ],
+          "text": "Benjamin Walker (actor): Benjamin Walker Davis ( born June 21 , 1982 ) , known professionally as Benjamin Walker , is an American actor and stand-up comedian ."
+        },
+        {
+          "doc": 1912,
+          "page_id": "Benjamin_Walker_-LRB-actor-RRB-",
+          "sent_id": 2,
+          "score": 0.03200204813108039,
+          "nli": [
+            0.0005791869480162859,
+            0.8992186188697815,
+            0.10020221024751663
+          ],
+          "text": "Benjamin Walker (actor): In 2016 , he starred as Patrick Bateman in the Broadway musical adaptation of the film American Psycho ."
+        },
+        {
+          "doc": 1911,
+          "page_id": "Benjamin_Walker_-LRB-actor-RRB-",
+          "sent_id": 1,
+          "score": 0.03057889822595705,
+          "nli": [
+            0.000788447039667517,
+            0.951474666595459,
+            0.047736842185258865
+          ],
+          "text": "Benjamin Walker (actor): He may be best known for his title role in the 2012 film Abraham Lincoln : Vampire Hunter , as well as his appearances in the films Kinsey and Flags of Our Fathers , and his critically acclaimed role as Andrew Jackson in the musical Bloody Bloody Andrew Jackson ."
+        },
+        {
+          "doc": 172161,
+          "page_id": "Walker_Percy",
+          "sent_id": 4,
+          "score": 0.02862400327131466,
+          "nli": [
+            0.02467099390923977,
+            0.7266469597816467,
+            0.24868203699588776
+          ],
+          "text": "Walker Percy: His work displays a combination of existential questioning , Southern sensibility , and deep Catholic faith ."
+        },
+        {
+          "doc": 36164,
+          "page_id": "Benjamin_Bayly",
+          "sent_id": 0,
+          "score": 0.028205128205128206,
+          "nli": [
+            0.0006000780849717557,
+            0.005721249617636204,
+            0.993678629398346
+          ],
+          "text": "Benjamin Bayly: Benjamin Bayly ( 1671 -- 1720 ) , was an English divine ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    },
+    {
+      "id": "fever-46858",
+      "claim": "Ghost stars Patrick Stewart and Kristen Stewart.",
+      "gold": "INSUFFICIENT",
+      "prediction": "CONTRADICTED",
+      "evidence": [
+        {
+          "doc": 15793,
+          "page_id": "Twilight_-LRB-2008_film-RRB-",
+          "sent_id": 1,
+          "score": 0.03278688524590164,
+          "nli": [
+            0.001139687723480165,
+            0.002417435869574547,
+            0.9964428544044495
+          ],
+          "text": "Twilight (2008 film): Directed by Catherine Hardwicke , the film stars Kristen Stewart and Robert Pattinson ."
+        },
+        {
+          "doc": 6710,
+          "page_id": "Into_the_Wild_-LRB-film-RRB-",
+          "sent_id": 2,
+          "score": 0.030158730158730156,
+          "nli": [
+            0.0009236873593181372,
+            0.0037802797742187977,
+            0.995296061038971
+          ],
+          "text": "Into the Wild (film): The film stars Emile Hirsch as McCandless , and Marcia Gay Harden and William Hurt as his parents , and features Jena Malone , Catherine Keener , Vince Vaughn , Kristen Stewart , and Hal Holbrook ."
+        },
+        {
+          "doc": 195784,
+          "page_id": "Pay_the_Ghost",
+          "sent_id": 1,
+          "score": 0.027623285131627734,
+          "nli": [
+            0.000469634891487658,
+            0.0009749871678650379,
+            0.9985553622245789
+          ],
+          "text": "Pay the Ghost: The film stars Nicolas Cage , Sarah Wayne Callies , Veronica Ferres , Lauren Beatty , Jack Fulton , and Elizabeth Jeanne le Roux ."
+        },
+        {
+          "doc": 94789,
+          "page_id": "The_Stars_and_the_Roses",
+          "sent_id": 4,
+          "score": 0.016129032258064516,
+          "nli": [
+            0.016927435994148254,
+            0.06963326036930084,
+            0.9134392738342285
+          ],
+          "text": "The Stars and the Roses: The piece is dedicated to Stucky 's wife Kristen ."
+        },
+        {
+          "doc": 80403,
+          "page_id": "Light_Sleeper",
+          "sent_id": 1,
+          "score": 0.015873015873015872,
+          "nli": [
+            0.0006319352542050183,
+            0.0028046141378581524,
+            0.9965634942054749
+          ],
+          "text": "Light Sleeper: It stars Willem Dafoe , Susan Sarandon , and Dana Delany ."
+        }
+      ],
+      "gold_context": [],
+      "category": null,
+      "review_notes": ""
+    }
+  ]
+}

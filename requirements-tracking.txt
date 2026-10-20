@@ -1,0 +1,4 @@
+# Optional local experiment logging only; does not train or register models.
+mlflow-skinny>=3,<4
+sqlalchemy>=2,<3
+alembic>=1.13,<2

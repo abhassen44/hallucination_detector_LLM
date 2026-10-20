@@ -1,0 +1,34 @@
+{
+  "method": "bm25",
+  "mode": "fixed_threshold_cache_replay",
+  "n": 1998,
+  "accuracy": 0.6211211211211212,
+  "macro_f1": 0.6058710542008796,
+  "labels": [
+    "SUPPORTED",
+    "CONTRADICTED",
+    "INSUFFICIENT"
+  ],
+  "confusion_matrix": [
+    [
+      451,
+      161,
+      54
+    ],
+    [
+      18,
+      578,
+      70
+    ],
+    [
+      71,
+      383,
+      212
+    ]
+  ],
+  "thresholds": {
+    "entail": 0.7,
+    "contra": 0.95
+  },
+  "training_performed": false
+}

@@ -18,16 +18,19 @@ import argparse
 import json
 import logging
 import re
+from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from tqdm import tqdm
 
 from src.datasets.schema import Example, load_examples, write_jsonl
-from src.generation.llm import OllamaLLM
+from src.generation.llm import OllamaLLM, ProviderUnavailableError
 from src.utils.config import PROJECT_ROOT, load_config, set_seed
 
 logger = logging.getLogger(__name__)
+
+CLAIM_SCHEMA = {"type": "array", "items": {"type": "string"}, "minItems": 0, "maxItems": 50}
 
 EXTRACTION_SYSTEM_PROMPT = """You are a precise factual claim extraction system.
 Your job is to deconstruct an answer into a list of atomic, self-contained factual claims.
@@ -46,6 +49,12 @@ def _fallback_split(text: str) -> list[str]:
     sents = re.split(r"(?<=[.!?])\s+", text.strip())
     clean = [s.strip() for s in sents if len(s.strip()) > 3]
     return clean or [text.strip()]
+
+
+@dataclass
+class ExtractionResult:
+    claims: list[str]
+    is_fallback: bool = False
 
 
 class ClaimExtractor:
@@ -73,31 +82,45 @@ class ClaimExtractor:
         Returns a list of claim strings.  Falls back to sentence-split on
         LLM failure or empty results.
         """
+        return self.extract_with_metadata(text, question, use_cache).claims
+
+    def extract_with_metadata(self, text: str, question: str | None = None,
+                              use_cache: bool = True) -> ExtractionResult:
         text = text.strip()
         if not text:
-            return []
+            return ExtractionResult([])
         prompt = self._build_prompt(text, question)
         try:
-            res = self.llm.generate_json(prompt, system=EXTRACTION_SYSTEM_PROMPT, use_cache=use_cache)
+            res = self.llm.generate_json(prompt, system=EXTRACTION_SYSTEM_PROMPT, use_cache=use_cache,
+                                         schema=CLAIM_SCHEMA)
             claims = self._parse_response(res)
-            if claims:
-                return claims
+            if claims or self._is_valid_empty(res):
+                return ExtractionResult(claims)
+        except ProviderUnavailableError:
+            raise
         except Exception as e:
             logger.debug("LLM claim extraction failed: %s", e)
         logger.debug("Falling back to sentence split for: %s", text[:80])
-        return _fallback_split(text)
+        return ExtractionResult(_fallback_split(text), is_fallback=True)
+
+    @staticmethod
+    def _is_valid_empty(res) -> bool:
+        if isinstance(res, list):
+            return not res
+        return isinstance(res, dict) and any(res.get(key) == [] for key in
+            ("claims", "facts", "statements", "propositions"))
 
     @staticmethod
     def _parse_response(res) -> list[str]:
         """Extract claim strings from various LLM response formats."""
         # Direct list: ["claim1", "claim2"]
         if isinstance(res, list):
-            return [str(c).strip() for c in res if str(c).strip()]
+            return [c.strip() for c in res if isinstance(c, str) and c.strip()]
         # Dict with "claims" key: {"claims": [...]}
         if isinstance(res, dict):
             for key in ("claims", "facts", "statements", "propositions"):
                 if key in res and isinstance(res[key], list):
-                    return [str(c).strip() for c in res[key] if str(c).strip()]
+                    return [c.strip() for c in res[key] if isinstance(c, str) and c.strip()]
         return []
 
     def extract_batch(
@@ -106,23 +129,31 @@ class ClaimExtractor:
         show_progress: bool = True,
         use_cache: bool = True,
     ) -> list[list[str]]:
-        """Batch extraction with concurrent worker threads."""
+        return [r.claims for r in self.extract_batch_results(items, show_progress, use_cache)]
+
+    def extract_batch_results(self, items, show_progress=True, use_cache=True):
+        """Preserve extraction provenance across worker threads."""
         n = len(items)
-        results: list[list[str] | None] = [None] * n
+        results: list[ExtractionResult | None] = [None] * n
 
         def _task(idx: int, t: str, q: str | None):
-            return idx, self.extract_claims(t, q, use_cache=use_cache)
+            return idx, self.extract_with_metadata(t, q, use_cache=use_cache)
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             futures = [executor.submit(_task, i, t, q) for i, (t, q) in enumerate(items)]
             it = as_completed(futures)
             if show_progress:
                 it = tqdm(it, total=n, desc="Extracting claims")
-            for f in it:
-                idx, claims = f.result()
-                results[idx] = claims
+            try:
+                for f in it:
+                    idx, claims = f.result()
+                    results[idx] = claims
+            except Exception:
+                for pending in futures:
+                    pending.cancel()
+                raise
 
-        return [r if r is not None else [] for r in results]
+        return [r if r is not None else ExtractionResult([]) for r in results]
 
 
 def process_dataset(
@@ -144,9 +175,10 @@ def process_dataset(
         print(f"[claim_extraction] Skipping {path} (not found)")
         return []
 
-    exs = load_examples(path)
-    if limit:
-        exs = exs[:limit]
+    if limit is not None and limit <= 0:
+        raise ValueError("limit must be positive")
+    all_examples = load_examples(path)
+    exs = all_examples[:limit] if limit is not None else all_examples
 
     if dataset == "fever":
         # FEVER examples are single claims already; ensure .claims is populated
@@ -158,14 +190,16 @@ def process_dataset(
         # HaluEval: decompose with LLM
         items = [(e.answer, e.question) for e in exs]
         print(f"[claim_extraction] Processing {len(items)} examples from {dataset} {split}...")
-        claims_list = extractor.extract_batch(items, show_progress=True)
-        for e, claims in zip(exs, claims_list):
-            e.claims = claims
+        results = extractor.extract_batch_results(items, show_progress=True)
+        for e, result in zip(exs, results):
+            e.claims = result.claims
+            e.meta["claim_extraction"] = {"is_fallback": result.is_fallback,
+                                          "model": extractor.llm.model}
 
     if save_in_place:
         # For HaluEval: update the split file with extracted claims
         # For FEVER: only update if claims were missing
-        write_jsonl(path, exs)
+        write_jsonl(path, all_examples)
         print(f"[claim_extraction] Updated {path} with extracted claims.")
     return exs
 

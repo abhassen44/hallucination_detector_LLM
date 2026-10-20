@@ -1,0 +1,20 @@
+{
+  "dataset": "halueval",
+  "split": "test",
+  "expected_examples": 600,
+  "extraction_model": "gemma4:31b-cloud",
+  "top_k": 5,
+  "rules": [
+    "argmax",
+    "fixed_threshold"
+  ],
+  "entail_threshold": 0.7,
+  "contra_threshold": 0.95,
+  "threshold_source": "existing Stage 3 configuration; frozen before this evaluation",
+  "answer_aggregation": "supported iff nonempty and every claim is supported",
+  "provided_context": "all supplied knowledge joined; evidence upper bound, no retrieval",
+  "retrieved_context": "FEVER Wikipedia corpus, BM25/dense/hybrid top-5 per claim",
+  "training_performed": false,
+  "threshold_tuning_performed": false,
+  "gold_label_unit": "answer only; no claim-level accuracy is computed"
+}

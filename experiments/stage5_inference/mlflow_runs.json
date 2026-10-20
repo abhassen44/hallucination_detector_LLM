@@ -1,0 +1,58 @@
+{
+  "tracking_uri": "sqlite:////Users/bhaumikkhandela/Downloads/hallucination/data/cache/mlflow.db",
+  "experiment_id": "1",
+  "source_sha256": "c69c93a0c73c6a3d925046ef17438d5af074b2a7301fe876443fdbf6c2aa7ce2",
+  "training_performed": false,
+  "runs": [
+    {
+      "condition": "bm25_extracted_claims",
+      "rule": "argmax",
+      "run_id": "87f933cd17284ce98de272404859e97a"
+    },
+    {
+      "condition": "bm25_extracted_claims",
+      "rule": "fixed_threshold",
+      "run_id": "e3eb9a3361eb4e9a8fd6abf46c3ae967"
+    },
+    {
+      "condition": "dense_extracted_claims",
+      "rule": "argmax",
+      "run_id": "c17ba93810514e24a41eb61bbfbc61d6"
+    },
+    {
+      "condition": "dense_extracted_claims",
+      "rule": "fixed_threshold",
+      "run_id": "9496a0f4cfaa46f3a1af3f7f4daaf75f"
+    },
+    {
+      "condition": "hybrid_extracted_claims",
+      "rule": "argmax",
+      "run_id": "b03c0ed632a047b68a206dff9fd19d57"
+    },
+    {
+      "condition": "hybrid_extracted_claims",
+      "rule": "fixed_threshold",
+      "run_id": "bffdfe3fbb4945bf84d5501dba0f1786"
+    },
+    {
+      "condition": "provided_extracted_claims",
+      "rule": "argmax",
+      "run_id": "0441c636c6f54723832c913add365095"
+    },
+    {
+      "condition": "provided_extracted_claims",
+      "rule": "fixed_threshold",
+      "run_id": "6730a5824148491291447e705d836069"
+    },
+    {
+      "condition": "provided_whole_answer",
+      "rule": "argmax",
+      "run_id": "2b886d04a9e7473484809c4df896ed41"
+    },
+    {
+      "condition": "provided_whole_answer",
+      "rule": "fixed_threshold",
+      "run_id": "ebbe42526bcd46b48174a7950f8ed1fd"
+    }
+  ]
+}
