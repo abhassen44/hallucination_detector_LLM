@@ -69,21 +69,21 @@ def test_pair_cache_recovers_only_an_interrupted_final_line(tmp_path):
     model = FakeNLI()
     path = tmp_path/'pairs.jsonl'
     PairCache(model,path).predict([('p','h')])
-    with path.open('a') as out:
+    with path.open('a', encoding='utf-8') as out:
         out.write('{"key": "unfinished')
     cache = PairCache(model,path)
     cache.predict([('p','h'),('new','hypothesis')])
     assert len(model.calls) == 2
     assert model.calls[-1] == [('new','hypothesis')]
     import json
-    assert len([json.loads(line) for line in path.read_text().splitlines()]) == 2
+    assert len([json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]) == 2
 
 
 def test_pair_cache_does_not_ignore_completed_corrupt_records(tmp_path):
     model = FakeNLI()
     path = tmp_path/'pairs.jsonl'
     PairCache(model,path).predict([('p','h')])
-    with path.open('a') as out:
+    with path.open('a', encoding='utf-8') as out:
         out.write('not json\n')
     original = path.read_bytes()
     import json

@@ -31,5 +31,5 @@ report={'model':llm.model,'temperature':llm.temperature,'cached_examples':len(cr
         'dataset_sha256':files,'fallback_examples':fallbacks,
         'syntax_proposals_applied':False,'training_performed':False,
         'cloud_model_revision':'not exposed; cached responses freeze this extraction run'}
-(PROJECT_ROOT/'experiments/stage4_claims/provenance.json').write_text(json.dumps(report,indent=2)+'\n')
+(PROJECT_ROOT/'experiments/stage4_claims/provenance.json').write_text(json.dumps(report,indent=2)+'\n', encoding='utf-8')
 print('Recorded extraction provenance for',len(created),'examples')

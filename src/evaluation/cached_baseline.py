@@ -66,8 +66,9 @@ def evaluate(method='hybrid', output=None):
             hit['text'] = corpus.texts[doc]
     out = Path(output) if output else PROJECT_ROOT / 'experiments/baseline_review'
     out.mkdir(parents=True, exist_ok=True)
-    (out / f'{method}_metrics.json').write_text(json.dumps(result, indent=2)+'\n')
-    (out / f'{method}_review.json').write_text(json.dumps({'categories': CATEGORIES, 'examples': sample}, indent=2)+'\n')
+    (out / f'{method}_metrics.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+    (out / f'{method}_review.json').write_text(
+        json.dumps({'categories': CATEGORIES, 'examples': sample}, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(result, indent=2))
     return result
 

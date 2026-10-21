@@ -51,7 +51,7 @@ def main():
     out = PROJECT_ROOT / 'experiments/stage4_claims'
     queue = out/'human_review.jsonl'
     if queue.exists():
-        for line in queue.read_text().splitlines():
+        for line in queue.read_text(encoding='utf-8').splitlines():
             review = json.loads(line).get('human_review', {})
             if any(v is not None and v != '' for v in review.values()):
                 raise ValueError('Refusing to overwrite completed human annotations; save a separate queue')
@@ -59,7 +59,7 @@ def main():
     summary={'flagged_examples':len(flagged),'comparison_examples':len(sample),
              'queue_size':len(flagged)+len(sample),'flag_counts_overlap':dict(counts),
              'human_annotations_completed':0,'training_performed':False}
-    (out/'review_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+    (out/'review_summary.json').write_text(json.dumps(summary,indent=2)+'\n', encoding='utf-8')
     print(json.dumps(summary,indent=2))
 
 

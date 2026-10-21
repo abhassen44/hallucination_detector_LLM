@@ -22,9 +22,9 @@ def main():
                               'syntax_proposal':propose_terminal_quote_recovery(raw) if raw else None,
                               'human_accepted':None})
     out=PROJECT_ROOT/'experiments/stage4_claims/json_recovery_proposals.json'
-    if out.exists() and any(r.get('human_accepted') is not None for r in json.loads(out.read_text())):
+    if out.exists() and any(r.get('human_accepted') is not None for r in json.loads(out.read_text(encoding='utf-8'))):
         raise ValueError('Refusing to overwrite reviewed proposals')
-    out.write_text(json.dumps(proposals,indent=2)+'\n')
+    out.write_text(json.dumps(proposals,indent=2)+'\n', encoding='utf-8')
     print('Syntax proposals:',sum(r['syntax_proposal'] is not None for r in proposals),'/',len(proposals))
 
 

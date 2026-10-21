@@ -52,7 +52,7 @@ def cached_revision(model_name):
     home = Path(os.environ.get('HF_HOME', str(Path.home()/'.cache/huggingface')))
     hub = Path(os.environ.get('HF_HUB_CACHE', str(home/'hub')))
     ref = hub/('models--'+model_name.replace('/','--'))/'refs/main'
-    return ref.read_text().strip() if ref.exists() else None
+    return ref.read_text(encoding='utf-8').strip() if ref.exists() else None
 
 
 class PairCache:
@@ -72,15 +72,15 @@ class PairCache:
                       cached_revision(model.model_name) if self.fingerprint[1] is None else None}
         manifest = self.path.with_suffix('.metadata.json')
         if manifest.exists():
-            if json.loads(manifest.read_text()) != provenance:
+            if json.loads(manifest.read_text(encoding='utf-8')) != provenance:
                 raise ValueError('Cache runtime versions differ; preserve this cache and use a separate one')
         elif self.path.exists() and self.path.stat().st_size:
             raise ValueError('Cache lacks runtime provenance; finalize the original run before reuse')
         else:
             manifest.parent.mkdir(parents=True, exist_ok=True)
-            manifest.write_text(json.dumps(provenance, indent=2)+'\n')
+            manifest.write_text(json.dumps(provenance, indent=2)+'\n', encoding='utf-8')
         if self.path.exists():
-            lines = self.path.read_text().splitlines(keepends=True)
+            lines = self.path.read_text(encoding='utf-8').splitlines(keepends=True)
             valid = []
             for i, line in enumerate(lines):
                 try:
@@ -100,7 +100,7 @@ class PairCache:
                 valid.append(row)
             else:
                 if lines and not lines[-1].endswith('\n'):
-                    with self.path.open('a') as f:
+                    with self.path.open('a', encoding='utf-8') as f:
                         f.write('\n')
 
     def key(self, premise, hypothesis):
@@ -195,9 +195,9 @@ def main():
     out = args.output
     out.mkdir(parents=True, exist_ok=True)
     protocol_path = out / 'protocol.json'
-    if protocol_path.exists() and json.loads(protocol_path.read_text()) != PROTOCOL:
+    if protocol_path.exists() and json.loads(protocol_path.read_text(encoding='utf-8')) != PROTOCOL:
         raise ValueError('Existing evaluation protocol differs; use a separate experiment directory')
-    protocol_path.write_text(json.dumps(PROTOCOL, indent=2)+'\n')
+    protocol_path.write_text(json.dumps(PROTOCOL, indent=2)+'\n', encoding='utf-8')
     dataset = PROJECT_ROOT / 'data/splits/halueval_test.jsonl'
     exs = load_examples(dataset)
     if len(exs) != PROTOCOL['expected_examples'] or any(
@@ -214,7 +214,7 @@ def main():
                'empty_claim_examples': sum(not e.claims for e in exs),
                'versions': {p: importlib.metadata.version(p) for p in ('torch','transformers','numpy')}, 'results': {}}
     if metrics_path.exists():
-        previous = json.loads(metrics_path.read_text())
+        previous = json.loads(metrics_path.read_text(encoding='utf-8'))
         if any(previous.get(k) != metrics.get(k) for k in ('protocol','dataset_sha256','nli_fingerprint','versions')):
             raise ValueError('Stored metrics have different inputs/model; preserve them as a separate run')
         metrics['results'] = previous['results']
@@ -224,7 +224,7 @@ def main():
         metrics['results']['provided_extracted_claims'] = score_rows(rows)
         write_jsonl(out / 'predictions_provided.jsonl', rows)
         metrics['timestamp'] = datetime.now(timezone.utc).isoformat()
-        metrics_path.write_text(json.dumps(metrics, indent=2)+'\n')
+        metrics_path.write_text(json.dumps(metrics, indent=2)+'\n', encoding='utf-8')
         print('Provided-context evaluation saved', flush=True)
     if args.evidence in ('retrieved','all'):
         from src.retrieval.hybrid import Retriever
@@ -233,7 +233,7 @@ def main():
             metrics['results'][f'{method}_extracted_claims'] = score_rows(rows)
             write_jsonl(out / f'predictions_{method}.jsonl', rows)
     metrics['timestamp'] = datetime.now(timezone.utc).isoformat()
-    metrics_path.write_text(json.dumps(metrics, indent=2)+'\n')
+    metrics_path.write_text(json.dumps(metrics, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(metrics, indent=2), flush=True)
 
 

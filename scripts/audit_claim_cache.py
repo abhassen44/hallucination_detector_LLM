@@ -33,5 +33,5 @@ report['all_responses_cached'] = report['cached_examples'] == report['expected_e
 report['valid_cached_examples'] = sum(s['valid_cached'] for s in report['splits'].values())
 out = PROJECT_ROOT / 'experiments/stage4_claims/cache_progress.json'
 out.parent.mkdir(parents=True, exist_ok=True)
-out.write_text(json.dumps(report, indent=2)+'\n')
+out.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
 print(json.dumps(report, indent=2))

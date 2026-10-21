@@ -18,7 +18,7 @@ def digest(path):
 
 def main():
     out=PROJECT_ROOT/'experiments/stage5_inference/metrics.json'
-    r=json.loads(out.read_text())
+    r=json.loads(out.read_text(encoding='utf-8'))
     if len(r['results'])!=5:
         raise ValueError('Evaluation is not complete')
     if digest(PROJECT_ROOT/'data/splits/halueval_test.jsonl')!=r['dataset_sha256']:
@@ -26,9 +26,9 @@ def main():
     cache_meta=PROJECT_ROOT/'data/cache/halueval_nli_pairs.metadata.json'
     cache_provenance={'versions':r['versions'], 'unresolved_snapshot':
                        cached_revision(r['nli_fingerprint'][0]) if r['nli_fingerprint'][1] is None else None}
-    if cache_meta.exists() and json.loads(cache_meta.read_text())!=cache_provenance:
+    if cache_meta.exists() and json.loads(cache_meta.read_text(encoding='utf-8'))!=cache_provenance:
         raise ValueError('Cache runtime provenance does not match this evaluation')
-    cache_meta.write_text(json.dumps(cache_provenance,indent=2)+'\n')
+    cache_meta.write_text(json.dumps(cache_provenance,indent=2)+'\n', encoding='utf-8')
     cfg=load_config()
     paths=[PROJECT_ROOT/'data/processed/fever_corpus.jsonl']
     paths.extend(sorted((PROJECT_ROOT/'data/processed/indexes').glob('*')))
@@ -42,7 +42,7 @@ def main():
         for p in snapshot.iterdir():
             if p.is_file() and (p.suffix in ('.json','.model','.bin','.safetensors')):
                 r['nli_cache_provenance']['files'][p.name] = {'sha256':digest(p),'bytes':p.stat().st_size}
-    out.write_text(json.dumps(r,indent=2)+'\n')
+    out.write_text(json.dumps(r,indent=2)+'\n', encoding='utf-8')
     print('Dataset unchanged; corpus and index fingerprints saved.')
 
 

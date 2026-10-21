@@ -57,7 +57,7 @@ def main():
             runs.append({'condition':condition,'rule':rule,'run_id':run_id})
     result={'tracking_uri':f'sqlite:///{db.as_posix()}', 'experiment_id':experiment_id,
             'source_sha256':digest,'training_performed':False,'runs':runs}
-    (out/'mlflow_runs.json').write_text(json.dumps(result,indent=2)+'\n')
+    (out/'mlflow_runs.json').write_text(json.dumps(result,indent=2)+'\n', encoding='utf-8')
     print(json.dumps(result,indent=2))
 
 

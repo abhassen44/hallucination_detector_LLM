@@ -119,9 +119,16 @@ def verify(body: VerifyRequest, detector=Depends(get_detector)):
 
 @app.get('/metrics')
 def metrics():
+    root = PROJECT_ROOT / 'experiments'
+    paths = set()
+    for pattern in ('stage*/metrics*.json', 'baseline_review/*_metrics.json'):
+        paths.update(root.glob(pattern))
     saved = {}
-    for p in sorted((PROJECT_ROOT / 'experiments').glob('stage*/metrics*.json')):
-        saved[str(p.relative_to(PROJECT_ROOT / 'experiments'))] = json.loads(p.read_text())
+    for p in sorted(paths):
+        try:
+            saved[p.relative_to(root).as_posix()] = json.loads(p.read_text(encoding='utf-8'))
+        except (OSError, json.JSONDecodeError):
+            logger.warning('Skipping unreadable metrics file: %s', p)
     return {'source': 'saved_experiment_results', 'results': saved}
 
 

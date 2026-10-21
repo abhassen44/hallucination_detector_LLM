@@ -29,7 +29,7 @@ def main():
               'smoke_probabilities': probabilities.tolist(), 'training_performed': False}
     out = PROJECT_ROOT / 'experiments' / 'inference_setup'
     out.mkdir(parents=True, exist_ok=True)
-    (out / 'readiness.json').write_text(json.dumps(report, indent=2)+'\n')
+    (out / 'readiness.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(report, indent=2), flush=True)
 
 

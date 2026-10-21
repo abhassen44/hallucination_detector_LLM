@@ -9,7 +9,7 @@ from src.utils.config import PROJECT_ROOT
 
 def main():
     out=PROJECT_ROOT/'experiments/stage5_inference'
-    report=json.loads((out/'metrics.json').read_text())
+    report=json.loads((out/'metrics.json').read_text(encoding='utf-8'))
     lines=['# Frozen-rule HaluEval inference evaluation','',
         'No training, classifier fitting, threshold search, or new LLM calls were performed.',
         'All results use the same 600 test answers and stored Gemma extractions.',
@@ -67,8 +67,8 @@ def main():
         raise ValueError('Refusing to overwrite human annotations')
     write_jsonl(queue,review)
     (out/'error_counts.json').write_text(json.dumps({'counts':counts,'review_examples':len(review),
-            'human_categories_assigned':0},indent=2)+'\n')
-    (out/'REPORT.md').write_text('\n'.join(lines)+'\n')
+            'human_categories_assigned':0},indent=2)+'\n', encoding='utf-8')
+    (out/'REPORT.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
     print('Saved report and',len(review),'unlabelled review examples')
 
 

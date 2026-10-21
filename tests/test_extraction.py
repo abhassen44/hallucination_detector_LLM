@@ -57,7 +57,7 @@ def test_interrupted_write_does_not_destroy_original(tmp_path):
         raise RuntimeError('interrupted')
     with pytest.raises(RuntimeError):
         write_jsonl(path, broken_rows())
-    assert json.loads(path.read_text()) == {'id': 'original'}
+    assert json.loads(path.read_text(encoding='utf-8')) == {'id': 'original'}
     assert not list(tmp_path.glob('*.tmp'))
 
 
