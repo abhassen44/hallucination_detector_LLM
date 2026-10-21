@@ -1,5 +1,47 @@
 # Current implementation status
 
+## v2 (2026-10-21) — calibration, selective policy, coverage flag
+
+Branch `feature/ver-2`, tags `v1.0` (`f79f0ff`) and `v2.0`. Full write-up:
+[experiments/v2/REPORT.md](../experiments/v2/REPORT.md); serving decision:
+[SERVING_DECISION_V2.md](SERVING_DECISION_V2.md).
+
+Implemented:
+
+- Taxonomy v2 (`experiments/v2/taxonomy.json`): `nli_failure` split into
+  `verifier_error` and `ambiguous_evidence`; extraction collects Pass/Fail only.
+- Label materialization (`scripts/materialize_v2_labels.py`): 37 human pilot verdicts
+  kept; 237 LLM proposals recorded as `label_source: llm_proposal`,
+  `human_reviewed: false`. These are silver labels, not human annotations.
+- Blind 40-row audit tooling (`scripts/make_v2_audit.py`, `scripts/score_v2_audit.py`).
+  The audit sheet is generated; it has not been filled by a human.
+- Temperature-scaled calibration with 2-fold val cross-fitting
+  (`src/evaluation/calibration.py`, `scripts/calibrate_v2.py`): val ECE 0.0332 → 0.0230,
+  200 train bootstrap refits for training variance.
+- Frozen class-conditional selective policy (`src/evaluation/selective.py`,
+  `scripts/selective_policy_v2.py`). The 90% overall precision target was infeasible
+  at ≥50% coverage, so the pre-registered fallback applied.
+- Strict-retrieval-failure coverage flag (`src/evaluation/coverage.py`,
+  `scripts/coverage_flag_v2.py`): val AUROC 0.774; threshold chosen by bootstrap
+  lower bound on error enrichment.
+- One registered test pass (`scripts/test_pass_v2.py`, guarded). Macro-F1 0.7020
+  (unchanged); ECE 0.0228; Brier +0.00069 (gate fails); verifiable precision 94.1%
+  at 84.6% coverage; coverage-flag test AUROC 0.734 (gate fails, flag omitted).
+- A post-pass bootstrap denominator bug in coverage CIs was corrected from saved
+  predictions; point estimates and gates were unchanged (recorded in `metrics_v2.json`).
+
+Decision: the learned detector remains offline; the fixed 0.7/0.95 rule remains the
+serving default. No serving code changed.
+
+Tests: 132 passing; frontend build passing (`scripts.reproduce --stage checks`).
+
+Open items (not blocking v2 closure):
+
+- Human 40-row audit of `experiments/v2/audit_sheet.csv`, then `scripts.score_v2_audit`.
+- P6 retrieval variant (stretch): not attempted; its test budget is unused.
+- Promotion blockers for v3: Brier-preserving calibration, NEI recognition, coverage-flag
+  stability, and human labels.
+
 ## 2026-10-21 — learned Stage 5
 
 The earlier "do not train or fit any models" constraint was lifted for Stage 5.

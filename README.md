@@ -54,8 +54,9 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
 | **4. Claim Extraction**| LLM Claim Extractor | Extraction complete; human review pending | LLM-based atomic decomposition + quality validation + fallback |
 | **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass; paired gain significant | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
-| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; blind pilot passed, full pass pending | 274 cases categorised, review tooling added |
-| **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested | Wikipedia and supplied-source modes |
+| **6. Error Analysis** | Taxonomy Analysis | v2 taxonomy; 37 human + 237 LLM-proposed (silver) labels; 40-row audit pending | 274 cases categorised, review tooling added |
+| **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested; learned detector not served | Wikipedia and supplied-source modes |
+| **v2. Calibration & Selective Policy** | Temperature scaling, selective policy, coverage flag | One test pass; Brier and flag gates failed, learned model stays offline | Test ECE 0.023; verifiable 84.6% coverage at 94.1% precision |
 
 Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).
 
@@ -77,6 +78,22 @@ neighbour-sentence premises) are reported in [RESULTS.md](docs/RESULTS.md) and a
 **not** part of the shipped path. The serving scope is recorded in
 [SERVING_DECISION.md](docs/SERVING_DECISION.md): the learned model stays offline in
 v1 and the demo continues to serve the fixed rule.
+
+## v2 — calibrated, coverage-aware verification
+
+v2 (`feature/ver-2`, tag `v2.0`) keeps the v1 verdicts frozen and adds a validity
+layer. Calibration (temperature scaling fitted on val, cross-fitted) lowers test ECE
+from 0.028 to 0.023 with macro-F1 unchanged at 0.702. A frozen class-conditional
+policy answers 84.6% of verifiable test claims at 94.1% precision, but overall
+answered precision is only 73.6% because NEI claims are often answered wrongly. A
+strict-retrieval-failure flag reaches val AUROC 0.774 but test AUROC 0.734, so it is
+not served.
+
+The pre-registered promotion gates failed: Brier rose by 0.00069, and the flag missed
+its AUROC bar. **The learned detector stays offline**; the fixed rule remains the
+default. Details: [v2 report](experiments/v2/REPORT.md) and
+[serving decision](docs/SERVING_DECISION_V2.md). The 237 non-pilot taxonomy labels
+are LLM proposals, not human annotations; a 40-row blind audit is pending.
 
 ## Frozen-rule evaluation (HaluEval)
 
