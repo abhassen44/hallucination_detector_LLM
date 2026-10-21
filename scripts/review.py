@@ -72,13 +72,15 @@ def load_suggestions(path: Path | None) -> dict[tuple, dict]:
     return {suggestion_key(row): row for row in read_jsonl(path) if row.get('valid')}
 
 
-def is_complete(row: dict) -> bool:
+def is_complete(row: dict, require_verdict: bool = False) -> bool:
     review = row.get('human_review') or {}
+    if require_verdict:
+        return review.get('pass_fail_assessment') not in (None, '')
     return any(value is not None and value != '' for value in review.values())
 
 
-def pending(rows: list[dict]) -> list[dict]:
-    return [row for row in rows if not is_complete(row)]
+def pending(rows: list[dict], require_verdict: bool = False) -> list[dict]:
+    return [row for row in rows if not is_complete(row, require_verdict)]
 
 
 def apply_review(row: dict, answers: dict) -> dict:
@@ -97,8 +99,8 @@ def save_queue(path: Path, rows: list[dict], backup: bool = True) -> None:
     write_jsonl(path, rows)
 
 
-def summarise(rows: list[dict]) -> dict:
-    completed = [row for row in rows if is_complete(row)]
+def summarise(rows: list[dict], require_verdict: bool = False) -> dict:
+    completed = [row for row in rows if is_complete(row, require_verdict)]
     categories, verdicts, booleans = Counter(), Counter(), {f: Counter() for f in BOOL_FIELDS}
     suggestion_used = 0
     for row in completed:
@@ -206,7 +208,8 @@ def review_interactively(path: Path, suggestions_path: Path | None, limit: int |
     if categories is None:
         categories = category_options(kind, taxonomy)
     booleans = boolean_options(kind, taxonomy)
-    outstanding = pending(rows)
+    require_verdict = taxonomy is not None
+    outstanding = pending(rows, require_verdict)
     reviewed = len(rows) - len(outstanding)
     queue = outstanding[:limit] if limit else outstanding
     if not queue:
@@ -280,7 +283,7 @@ def main() -> None:
         rows = review_interactively(args.queue, args.suggestions, args.limit, args.reviewer,
                                     taxonomy=taxonomy)
 
-    summary = summarise(rows)
+    summary = summarise(rows, require_verdict=taxonomy is not None)
     target = args.queue.with_name('review_progress.json')
     target.write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8')
     print('\n' + json.dumps(summary, indent=2))

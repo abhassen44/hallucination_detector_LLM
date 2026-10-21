@@ -41,6 +41,15 @@ def test_queue_round_trip_and_progress(tmp_path):
     assert summary['suggestion_used'] == 1
 
 
+def test_require_verdict_keeps_open_coding_rows_pending():
+    row = _row('a')
+    row['human_review']['open_coding'] = 'Observation without a verdict.'
+    assert is_complete(row)
+    assert not is_complete(row, require_verdict=True)
+    assert pending([row], require_verdict=True) == [row]
+    assert summarise([row], require_verdict=True)['pending'] == 1
+
+
 def test_completed_rows_are_never_part_of_the_pending_queue(tmp_path):
     path = tmp_path / 'queue.jsonl'
     write_jsonl(path, [_row('a', complete=True), _row('b')])
