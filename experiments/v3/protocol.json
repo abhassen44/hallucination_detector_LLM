@@ -1,0 +1,169 @@
+{
+  "version": "v3",
+  "created_utc": "2026-10-21T12:58:20+00:00",
+  "status": "P0 frozen; calibration bake-off next",
+  "branch": "ver-3",
+  "baseline": {
+    "v2_commit": "e7f0af5",
+    "v2_tag": "v2.0",
+    "v2_test_macro_f1": 0.7020233614802173,
+    "v2_test_ece": 0.02278725893881364,
+    "v2_test_brier_uncalibrated": 0.3965608888154419,
+    "v2_test_brier_calibrated": 0.3972521931078676,
+    "v2_verifiable_coverage": 0.8460960960960962,
+    "v2_verifiable_precision": 0.9414374445430346,
+    "v2_overall_coverage": 0.7247247247247247,
+    "v2_overall_precision": 0.7354972375690608,
+    "v2_nei_coverage": 0.481981981981982,
+    "v2_nei_precision": 0.012461059190031152
+  },
+  "splits": {
+    "fit": "train",
+    "selection": "val",
+    "report": "test",
+    "row_counts": {
+      "train": 3000,
+      "val": 999,
+      "test": 1998
+    },
+    "sha256": {
+      "fever_train.jsonl": "ef686e6f3b3a3b92fb68a22e90188963162a5b783429a3cdf111a002fb6d1848",
+      "fever_val.jsonl": "96a92c0adf159aacc5a2ec4e39a4764b8671a6e972065a02891e0414c748af1d",
+      "fever_test.jsonl": "1da0770f89cb5346cd6c8f4e325a449ce26cb9e5972f1f63ffd6d542b68a3364"
+    }
+  },
+  "inputs": {
+    "v2_test_predictions": {
+      "path": "experiments/stage5_learned/predictions_hybrid.jsonl",
+      "sha256": "3a7c613b1900f0f7d463b559a01a0b554ad026eb312e763ae90b56ea21807117"
+    },
+    "v2_metrics": {
+      "path": "experiments/v2/metrics_v2.json",
+      "sha256": "3f38f9fa76e6cadd38a10213baaaa8bfbc5b63c08d24e13a16aca19c7acff202"
+    },
+    "v2_calibration": {
+      "path": "experiments/v2/calibration.json",
+      "sha256": "a1478ed642ad15f423547a260a852d364fb2839fe77e62594883e2d9b91f73cc"
+    },
+    "v2_policy": {
+      "path": "experiments/v2/policy.json",
+      "sha256": "c2076fd148f915115ae4fe3b6e7e983b96c66756b7c97bcab40640d19fce7f0a"
+    },
+    "v2_coverage_flag": {
+      "path": "experiments/v2/coverage_flag.json",
+      "sha256": "06df1abcbfdd41e4abd2c52c4cd2c1fb41a78499b50cbeb62dbdb652abb9e5be"
+    }
+  },
+  "test_budget": {
+    "v3_test_passes": 1,
+    "v3_test_passes_used": 0,
+    "rule": "One test pass for the v3 system. Calibrator, policy, answerability threshold, and flag threshold are frozen on val first. No iteration on test; a bug-forced rerun is logged as an extra pass.",
+    "expected_output": "experiments/v3/metrics_v3.json"
+  },
+  "labels": {
+    "policy": "v3 does not use the 274 taxonomy labels for fitting or gates. They remain 37 human + 237 LLM-proposed silver labels; any human audit is optional and non-gating.",
+    "note": "The v2 audit is assistant-estimated, not human. Do not claim human-validated labels."
+  },
+  "calibration": {
+    "base_model": "v1 hybrid, frozen C=1.0, fitted on train",
+    "fit_split": "val",
+    "cross_fit_folds": 2,
+    "seed": 42,
+    "methods": [
+      "temperature",
+      "vector_scaling",
+      "isotonic_multiclass"
+    ],
+    "selection": "lowest out-of-fold Brier among methods with ECE <= 0.05",
+    "constraints": {
+      "max_ece": 0.05
+    },
+    "stop_rule": "If no calibrator has strictly lower out-of-fold Brier than uncalibrated on val, stop before the test pass and record a negative result.",
+    "report": [
+      "ece_10bin",
+      "brier",
+      "nll",
+      "reliability",
+      "per_class_ece"
+    ]
+  },
+  "answerability": {
+    "target": "gold != INSUFFICIENT",
+    "fit_split": "train",
+    "selection_split": "val",
+    "features": "30 cached serving features + 3 calibrated class probabilities",
+    "models": [
+      "class_balanced_logistic_regression",
+      "hist_gradient_boosting"
+    ],
+    "class_thresholds": {
+      "source": "frozen v2 policy",
+      "SUPPORTED": 0.5,
+      "CONTRADICTED": 0.38,
+      "INSUFFICIENT": 0.84
+    },
+    "policy": "abstain if P(answerable) < tau_a; otherwise answer argmax if its calibrated probability clears the frozen class threshold",
+    "selection": "choose tau_a on val to maximise coverage subject to all constraints; scan 0.05..0.95 step 0.01",
+    "constraints": {
+      "verifiable_precision_min": 0.94,
+      "verifiable_precision_cp_lower_min": 0.9,
+      "verifiable_coverage_min": 0.8,
+      "overall_coverage_min": 0.55,
+      "overall_precision_min": 0.75,
+      "nei_coverage_max": 0.4
+    },
+    "fallback": {
+      "trigger": "no tau_a meets all constraints on val",
+      "rule": "keep verifiable precision/coverage constraints, choose the tau_a that minimises NEI coverage, report the resulting overall precision/coverage, and do not claim an NEI improvement"
+    }
+  },
+  "coverage_flag": {
+    "target": "strict retrieval failure: no complete gold evidence set in top-5",
+    "fit_split": "train",
+    "selection_split": "val",
+    "features": "serving-available only",
+    "models": [
+      "class_balanced_logistic_regression",
+      "hist_gradient_boosting"
+    ],
+    "selection": "highest val AUROC among models",
+    "threshold": "same bootstrap lower-bound rule as v2: highest flag rate with 5th-percentile error enrichment >= 2.0, flag rate in [0.05, 0.25]",
+    "gate": {
+      "min_val_auroc": 0.75,
+      "min_error_enrichment": 2.0,
+      "max_flag_rate": 0.25
+    },
+    "fallback": "If val AUROC < 0.75, mark the flag omitted before the test pass and do not gate promotion on it."
+  },
+  "promotion_gates": {
+    "macro_f1_min": 0.697,
+    "ece_max": 0.05,
+    "brier_max": "less than or equal to uncalibrated Brier on the same test rows",
+    "verifiable_precision_min": 0.94,
+    "verifiable_precision_cp_lower_min": 0.9,
+    "verifiable_coverage_min": 0.8,
+    "overall_coverage_min": 0.55,
+    "overall_precision_min": 0.75,
+    "nei_coverage_max": 0.4,
+    "coverage_flag": "passes its test gate or is explicitly omitted",
+    "p95_added_latency_ms_max": 50,
+    "fixed_rule_remains_default": true
+  },
+  "artifacts": {
+    "protocol": "experiments/v3/protocol.json",
+    "calibration": "experiments/v3/calibration.json",
+    "answerability": "experiments/v3/answerability.json",
+    "coverage_flag": "experiments/v3/coverage_flag.json",
+    "policy": "experiments/v3/policy.json",
+    "metrics": "experiments/v3/metrics_v3.json",
+    "test_predictions": "experiments/v3/test_predictions_v3.jsonl",
+    "report": "experiments/v3/REPORT.md"
+  },
+  "notes": [
+    "v2 artifacts are read-only; all new outputs live under experiments/v3/.",
+    "The verdict path is the frozen v1 hybrid; v3 changes confidence, abstention, and the optional warning, not the argmax model.",
+    "The answerability model is the v3 addition; if it cannot improve NEI coverage on val, the fallback applies before test.",
+    "The coverage flag is optional for promotion; a failure to reach 0.75 AUROC on val removes it from the test system.",
+    "No test data is read during P1-P3."
+  ]
+}
