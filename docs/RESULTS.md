@@ -340,6 +340,18 @@ best AUROC rose only to 0.769 and the NEI floor stayed at 0.477, so v3 stopped
 before P4. **No v3 test pass was spent** and the learned detector remains offline.
 Report: `experiments/v3/REPORT.md`.
 
+## v4 - reranker and data expansion, stopped before test
+
+Reranking the top-50 hybrid candidates and refitting the logistic combiner gives
+val macro-F1 **0.69296** vs 0.67636 and INSUFFICIENT F1 **0.53559** vs 0.52073;
+top-8 is flat, so top-5 is kept. Expanding train from 3k to 6k/9k balanced claims
+improves answerability AUROC from 0.765 to 0.781/0.787 and lowers the NEI floor from
+0.483 to 0.453/0.423. Cost-sensitive tuning reaches **0.408** NEI at verifiable
+coverage 0.800 and overall precision 0.768; a joint threshold search still finds no
+feasible point (best NEI 0.417). v4 stops before the test pass. **No v4 test pass
+was spent** and the learned detector remains offline. Report:
+`experiments/v4/REPORT.md`.
+
 ## Reproduce
 
 ```sh

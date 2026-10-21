@@ -1,0 +1,145 @@
+{
+  "version": "v4-data-expansion",
+  "created_utc": "2026-10-21T15:04:16.168435+00:00",
+  "split": "val",
+  "test_evaluated": false,
+  "train_size": 6000,
+  "n_train": 6000,
+  "n_val": 999,
+  "base_model": {
+    "selected_C": 3.0,
+    "val": {
+      "n": 999,
+      "accuracy": 0.6996996996996997,
+      "macro_f1": 0.6906143983979417,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.8027027027027027,
+          "recall": 0.8918918918918919,
+          "f1": 0.844950213371266,
+          "support": 333
+        },
+        "CONTRADICTED": {
+          "precision": 0.649867374005305,
+          "recall": 0.7357357357357357,
+          "f1": 0.6901408450704225,
+          "support": 333
+        },
+        "INSUFFICIENT": {
+          "precision": 0.623015873015873,
+          "recall": 0.47147147147147145,
+          "f1": 0.5367521367521367,
+          "support": 333
+        }
+      },
+      "labels": [
+        "SUPPORTED",
+        "CONTRADICTED",
+        "INSUFFICIENT"
+      ],
+      "confusion_matrix": [
+        [
+          297,
+          14,
+          22
+        ],
+        [
+          15,
+          245,
+          73
+        ],
+        [
+          58,
+          118,
+          157
+        ]
+      ]
+    }
+  },
+  "calibration": {
+    "method": "vector_scaling_brier",
+    "final": {
+      "weights": [
+        1.0164875868541081,
+        0.9507934635460996,
+        1.086831386853095
+      ],
+      "bias": [
+        -0.008545116191939397,
+        0.04328791789341282,
+        -0.03474369654863542
+      ]
+    },
+    "brier": 0.4076118104849616,
+    "ece": 0.014358860586991882,
+    "per_class_ece": {
+      "SUPPORTED": 0.017767425282844754,
+      "CONTRADICTED": 0.021666239454980522,
+      "INSUFFICIENT": 0.03852052484881767
+    }
+  },
+  "answerability": {
+    "model": {
+      "type": "hist_gradient_boosting",
+      "params": {
+        "max_iter": 300,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0,
+        "class_weight": "balanced"
+      },
+      "val_auroc": 0.7810107404701999
+    },
+    "comparison": {
+      "logistic_best_auroc": 0.7537672807943078,
+      "hgb_auroc": 0.7810107404701999
+    },
+    "val_auroc": 0.7810107404701999,
+    "val_average_precision": 0.8734149171731095,
+    "policy": {
+      "feasible": false,
+      "best": {
+        "tau": 0.27,
+        "coverage": 0.6886886886886887,
+        "answered_precision": 0.748546511627907,
+        "n_answered": 688,
+        "verifiable_coverage": 0.8063063063063063,
+        "verifiable_precision": 0.9590316573556797,
+        "verifiable_precision_lower_95": 0.9386283009964225,
+        "nei_coverage": 0.45345345345345345,
+        "nei_precision": 0.0,
+        "nei_abstention": 0.5465465465465466,
+        "per_class": {
+          "SUPPORTED": {
+            "n": 333,
+            "coverage": 0.8858858858858859,
+            "precision": 0.9661016949152542
+          },
+          "CONTRADICTED": {
+            "n": 333,
+            "coverage": 0.7267267267267268,
+            "precision": 0.9504132231404959
+          },
+          "INSUFFICIENT": {
+            "n": 333,
+            "coverage": 0.45345345345345345,
+            "precision": 0.0
+          }
+        }
+      },
+      "n_feasible": 0
+    }
+  },
+  "baseline_v3": {
+    "answerability_auroc": 0.765405044684324,
+    "nei_floor": 0.483
+  },
+  "delta": {
+    "answerability_auroc": 0.015605695785875895,
+    "nei_floor": -0.029546546546546537
+  },
+  "notes": [
+    "Val only; no test data was read.",
+    "Extra train claims use the reranker top-5 cache."
+  ]
+}

@@ -106,6 +106,16 @@ offline.
 Details: [v3 report](experiments/v3/REPORT.md) and
 [v3 serving decision](docs/SERVING_DECISION_V3.md).
 
+## v4 — reranker + more data, still stopped
+
+A v4 attempt added a pretrained reranker and expanded training from 3,000 to 9,000
+FEVER claims. Reranking + top-5 lifted val macro-F1 to **0.6930** (vs 0.6764), and
+the larger train set improved answerability AUROC to **0.787**. Cost-sensitive tuning
+reached NEI coverage **0.408**, still above the 0.40 gate, and a joint threshold
+search found no feasible point. v4 stopped before spending its test pass; the learned
+detector remains offline. Details: [v4 report](experiments/v4/REPORT.md) and
+[v4 serving decision](docs/SERVING_DECISION_V4.md).
+
 ## Frozen-rule evaluation (HaluEval)
 
 On the same 600 HaluEval test answers, claim decomposition with supplied knowledge

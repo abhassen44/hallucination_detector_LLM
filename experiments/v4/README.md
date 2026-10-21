@@ -12,10 +12,10 @@ macro-F1.
 |---|---|---|
 | P0 | Freeze v3, branch, protocol | **Done** |
 | P1 | Reranker top-8 + refit (val) | **Done** — top-5 wins; val macro-F1 0.6930 |
-| P2 | Train 6k → 9k, refit (val) | Pending |
-| P3 | Two-stage NEI + hard negatives (val) | Pending |
-| P4 | Verifier ceiling / concat top-3 | Pending |
-| P5 | One test pass + serving decision | Pending |
+| P2 | Train 6k → 9k, refit (val) | **Done** — NEI 0.423 at 9k; still short |
+| P3 | Answerability tuning (val) | **Done** — NEI 0.408; joint search still infeasible |
+| P4 | Verifier ceiling / concat top-3 | Not run |
+| P5 | One test pass + serving decision | **Not run; test pass unused** |
 
 ## P1 result
 
@@ -30,6 +30,15 @@ Reranked hybrid, refit logistic combiner:
 Top-5 clears the keep rule: +0.0166 macro-F1 and +0.0149 INSUFFICIENT F1. The
 top-8 arm dilutes the gain, so v4 uses **reranker + top-5**. Details:
 [retrieval_stack.json](retrieval_stack.json).
+
+## Outcome
+
+6k and 9k data expansion improved answerability (AUROC 0.765 → 0.781 → 0.787), and
+cost-sensitive tuning pushed NEI coverage to **0.408**. That is still above the
+0.40 gate; a joint threshold search found no feasible point (best NEI 0.417 at
+verifiable coverage 0.809). The base val macro-F1 also fell at 9k (0.685), so the
+macro-F1 and NEI goals conflict. v4 stopped before the test pass. Full report:
+[REPORT.md](REPORT.md).
 
 ## Key discipline
 

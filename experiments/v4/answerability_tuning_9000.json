@@ -1,0 +1,1044 @@
+{
+  "version": "v4-answerability-tuning",
+  "created_utc": "2026-10-21T15:33:22.749439+00:00",
+  "split": "val",
+  "test_evaluated": false,
+  "train_size": 9000,
+  "calibration": {
+    "brier": 0.4086976229586038,
+    "ece": 0.014479308386521112
+  },
+  "results": [
+    {
+      "name": "logistic_C0.003",
+      "auroc": 0.7496415334253173,
+      "average_precision": 0.8409313322909008,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.37,
+          "coverage": 0.7007007007007007,
+          "answered_precision": 0.7414285714285714,
+          "n_answered": 700,
+          "verifiable_coverage": 0.8093093093093093,
+          "verifiable_precision": 0.9628942486085343,
+          "verifiable_precision_lower_95": 0.9432731977771419,
+          "nei_coverage": 0.48348348348348347,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5165165165165165,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7267267267267268,
+              "precision": 0.9586776859504132
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.48348348348348347,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "logistic_C0.01",
+      "auroc": 0.7519501483465447,
+      "average_precision": 0.8418331056869435,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.38,
+          "coverage": 0.6916916916916916,
+          "answered_precision": 0.743849493487699,
+          "n_answered": 691,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.47147147147147145,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5285285285285285,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7117117117117117,
+              "precision": 0.9578059071729957
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.47147147147147145,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "logistic_C0.03",
+      "auroc": 0.7532757983208433,
+      "average_precision": 0.8430394919078117,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.37,
+          "coverage": 0.6976976976976977,
+          "answered_precision": 0.7403156384505022,
+          "n_answered": 697,
+          "verifiable_coverage": 0.8048048048048048,
+          "verifiable_precision": 0.9626865671641791,
+          "verifiable_precision_lower_95": 0.9429589686049181,
+          "nei_coverage": 0.48348348348348347,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5165165165165165,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.48348348348348347,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "logistic_C0.1",
+      "auroc": 0.7538168799430061,
+      "average_precision": 0.842390697924488,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.37,
+          "coverage": 0.6986986986986987,
+          "answered_precision": 0.7406876790830945,
+          "n_answered": 698,
+          "verifiable_coverage": 0.8063063063063063,
+          "verifiable_precision": 0.962756052141527,
+          "verifiable_precision_lower_95": 0.9430640977037754,
+          "nei_coverage": 0.48348348348348347,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5165165165165165,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7207207207207207,
+              "precision": 0.9583333333333334
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.48348348348348347,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "logistic_C0.3",
+      "auroc": 0.7539115692268846,
+      "average_precision": 0.8426308975682156,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.38,
+          "coverage": 0.6916916916916916,
+          "answered_precision": 0.7424023154848046,
+          "n_answered": 691,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.4744744744744745,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5255255255255256,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7087087087087087,
+              "precision": 0.9576271186440678
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4744744744744745,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "logistic_C1.0",
+      "auroc": 0.754033312591871,
+      "average_precision": 0.8426379910053037,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.38,
+          "coverage": 0.6906906906906907,
+          "answered_precision": 0.7434782608695653,
+          "n_answered": 690,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.47147147147147145,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5285285285285285,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7087087087087087,
+              "precision": 0.9576271186440678
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.47147147147147145,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.03_7",
+      "auroc": 0.7806996185374563,
+      "average_precision": 0.8730734130304247,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.32,
+          "coverage": 0.6786786786786787,
+          "answered_precision": 0.7581120943952803,
+          "n_answered": 678,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.43243243243243246,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5675675675675675,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7147147147147147,
+              "precision": 0.957983193277311
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.43243243243243246,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.03_15",
+      "auroc": 0.788815842869897,
+      "average_precision": 0.8791584250119014,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.3,
+          "coverage": 0.6746746746746747,
+          "answered_precision": 0.7611275964391692,
+          "n_answered": 674,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.42342342342342343,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5765765765765766,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7117117117117117,
+              "precision": 0.9578059071729957
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.42342342342342343,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.03_31",
+      "auroc": 0.7886174462751039,
+      "average_precision": 0.8789743150856539,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.29,
+          "coverage": 0.6726726726726727,
+          "answered_precision": 0.7633928571428571,
+          "n_answered": 672,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.4174174174174174,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5825825825825826,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7117117117117117,
+              "precision": 0.9578059071729957
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4174174174174174,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.05_7",
+      "auroc": 0.7830713596479363,
+      "average_precision": 0.8751196002321384,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.31,
+          "coverage": 0.6806806806806807,
+          "answered_precision": 0.7558823529411764,
+          "n_answered": 680,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.43843843843843844,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5615615615615616,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7147147147147147,
+              "precision": 0.957983193277311
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.43843843843843844,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.05_15",
+      "auroc": 0.7866695524353182,
+      "average_precision": 0.8784902300009465,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.29,
+          "coverage": 0.6746746746746747,
+          "answered_precision": 0.7611275964391692,
+          "n_answered": 674,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.42342342342342343,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5765765765765766,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7117117117117117,
+              "precision": 0.9578059071729957
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.42342342342342343,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_300_0.05_31",
+      "auroc": 0.7901910919928938,
+      "average_precision": 0.8793513451493575,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.28,
+          "coverage": 0.6756756756756757,
+          "answered_precision": 0.7644444444444445,
+          "n_answered": 675,
+          "verifiable_coverage": 0.8033033033033034,
+          "verifiable_precision": 0.9644859813084112,
+          "verifiable_precision_lower_95": 0.9450945137161766,
+          "nei_coverage": 0.42042042042042044,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5795795795795796,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9695945945945946
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.42042042042042044,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.03_7",
+      "auroc": 0.7848569290010732,
+      "average_precision": 0.8777513288784953,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.31,
+          "coverage": 0.6796796796796797,
+          "answered_precision": 0.7584683357879234,
+          "n_answered": 679,
+          "verifiable_coverage": 0.8033033033033034,
+          "verifiable_precision": 0.9626168224299065,
+          "verifiable_precision_lower_95": 0.9428534506088828,
+          "nei_coverage": 0.43243243243243246,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5675675675675675,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.43243243243243246,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.03_15",
+      "auroc": 0.790231673114556,
+      "average_precision": 0.8798092558860466,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.29,
+          "coverage": 0.6746746746746747,
+          "answered_precision": 0.7640949554896143,
+          "n_answered": 674,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9644194756554307,
+          "verifiable_precision_lower_95": 0.9449927358498939,
+          "nei_coverage": 0.42042042042042044,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5795795795795796,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8858858858858859,
+              "precision": 0.9694915254237289
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.42042042042042044,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.03_31",
+      "auroc": 0.7891359828296765,
+      "average_precision": 0.8791411538061771,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.25,
+          "coverage": 0.6816816816816816,
+          "answered_precision": 0.762114537444934,
+          "n_answered": 681,
+          "verifiable_coverage": 0.8093093093093093,
+          "verifiable_precision": 0.9628942486085343,
+          "verifiable_precision_lower_95": 0.9432731977771419,
+          "nei_coverage": 0.4264264264264264,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5735735735735735,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7267267267267268,
+              "precision": 0.9586776859504132
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4264264264264264,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.05_7",
+      "auroc": 0.7860653446239032,
+      "average_precision": 0.8764707791004225,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.3,
+          "coverage": 0.6776776776776777,
+          "answered_precision": 0.757754800590842,
+          "n_answered": 677,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.43243243243243246,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5675675675675675,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8918918918918919,
+              "precision": 0.9663299663299664
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7087087087087087,
+              "precision": 0.9576271186440678
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.43243243243243246,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.05_15",
+      "auroc": 0.7870077284491699,
+      "average_precision": 0.8779952714354755,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.27,
+          "coverage": 0.6796796796796797,
+          "answered_precision": 0.759941089837997,
+          "n_answered": 679,
+          "verifiable_coverage": 0.8048048048048048,
+          "verifiable_precision": 0.9626865671641791,
+          "verifiable_precision_lower_95": 0.9429589686049181,
+          "nei_coverage": 0.4294294294294294,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5705705705705706,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7207207207207207,
+              "precision": 0.9583333333333334
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4294294294294294,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_600_0.05_31",
+      "auroc": 0.7865072279486693,
+      "average_precision": 0.877603871216603,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.25,
+          "coverage": 0.6806806806806807,
+          "answered_precision": 0.7588235294117647,
+          "n_answered": 680,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9643527204502814,
+          "verifiable_precision_lower_95": 0.9448905800004018,
+          "nei_coverage": 0.44144144144144143,
+          "nei_precision": 0.013605442176870748,
+          "nei_abstention": 0.5585585585585585,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8858858858858859,
+              "precision": 0.9694915254237289
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7147147147147147,
+              "precision": 0.957983193277311
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.44144144144144143,
+              "precision": 0.013605442176870748
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_2",
+      "auroc": 0.7939561182804425,
+      "average_precision": 0.8834652765011051,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.56,
+          "coverage": 0.6726726726726727,
+          "answered_precision": 0.7648809523809523,
+          "n_answered": 672,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9643527204502814,
+          "verifiable_precision_lower_95": 0.9448905800004018,
+          "nei_coverage": 0.4174174174174174,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5825825825825826,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8858858858858859,
+              "precision": 0.9694915254237289
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7147147147147147,
+              "precision": 0.957983193277311
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4174174174174174,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_3",
+      "auroc": 0.7943619294970646,
+      "average_precision": 0.8828282848214907,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.66,
+          "coverage": 0.6696696696696697,
+          "answered_precision": 0.7683109118086696,
+          "n_answered": 669,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9643527204502814,
+          "verifiable_precision_lower_95": 0.9448905800004018,
+          "nei_coverage": 0.4084084084084084,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5915915915915916,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8828828828828829,
+              "precision": 0.9693877551020408
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4084084084084084,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_4",
+      "auroc": 0.7915212509807104,
+      "average_precision": 0.876664949442498,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.7,
+          "coverage": 0.6696696696696697,
+          "answered_precision": 0.7683109118086696,
+          "n_answered": 669,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9643527204502814,
+          "verifiable_precision_lower_95": 0.9448905800004018,
+          "nei_coverage": 0.4084084084084084,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5915915915915916,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8828828828828829,
+              "precision": 0.9693877551020408
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4084084084084084,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_5",
+      "auroc": 0.7897086275464654,
+      "average_precision": 0.878068176849476,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.69,
+          "coverage": 0.6816816816816816,
+          "answered_precision": 0.7562408223201175,
+          "n_answered": 681,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.44144144144144143,
+          "nei_precision": 0.006802721088435374,
+          "nei_abstention": 0.5585585585585585,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7147147147147147,
+              "precision": 0.957983193277311
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.44144144144144143,
+              "precision": 0.006802721088435374
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_6",
+      "auroc": 0.7924636348059771,
+      "average_precision": 0.8787483668962027,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.72,
+          "coverage": 0.6816816816816816,
+          "answered_precision": 0.7562408223201175,
+          "n_answered": 681,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.4444444444444444,
+          "nei_precision": 0.013513513513513514,
+          "nei_abstention": 0.5555555555555556,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8888888888888888,
+              "precision": 0.9662162162162162
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7117117117117117,
+              "precision": 0.9578059071729957
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4444444444444444,
+              "precision": 0.013513513513513514
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "hgb_nei_weight_8",
+      "auroc": 0.7952952952952953,
+      "average_precision": 0.8805201546961744,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.79,
+          "coverage": 0.6786786786786787,
+          "answered_precision": 0.7610619469026548,
+          "n_answered": 678,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.43243243243243246,
+          "nei_precision": 0.013888888888888888,
+          "nei_abstention": 0.5675675675675675,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8858858858858859,
+              "precision": 0.9661016949152542
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.43243243243243246,
+              "precision": 0.013888888888888888
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    },
+    {
+      "name": "ensemble_logistic_hgb",
+      "auroc": 0.7759335912489065,
+      "average_precision": 0.8573020721597753,
+      "policy": {
+        "feasible": false,
+        "best": {
+          "tau": 0.6,
+          "coverage": 0.6816816816816816,
+          "answered_precision": 0.7562408223201175,
+          "n_answered": 681,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9644194756554307,
+          "verifiable_precision_lower_95": 0.9449927358498939,
+          "nei_coverage": 0.44144144144144143,
+          "nei_precision": 0.0,
+          "nei_abstention": 0.5585585585585585,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.8858858858858859,
+              "precision": 0.9694915254237289
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7177177177177178,
+              "precision": 0.9581589958158996
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.44144144144144143,
+              "precision": 0.0
+            }
+          }
+        },
+        "n_feasible": 0
+      }
+    }
+  ],
+  "selected": {
+    "name": "hgb_nei_weight_3",
+    "auroc": 0.7943619294970646,
+    "average_precision": 0.8828282848214907,
+    "policy": {
+      "feasible": false,
+      "best": {
+        "tau": 0.66,
+        "coverage": 0.6696696696696697,
+        "answered_precision": 0.7683109118086696,
+        "n_answered": 669,
+        "verifiable_coverage": 0.8003003003003003,
+        "verifiable_precision": 0.9643527204502814,
+        "verifiable_precision_lower_95": 0.9448905800004018,
+        "nei_coverage": 0.4084084084084084,
+        "nei_precision": 0.0,
+        "nei_abstention": 0.5915915915915916,
+        "per_class": {
+          "SUPPORTED": {
+            "n": 333,
+            "coverage": 0.8828828828828829,
+            "precision": 0.9693877551020408
+          },
+          "CONTRADICTED": {
+            "n": 333,
+            "coverage": 0.7177177177177178,
+            "precision": 0.9581589958158996
+          },
+          "INSUFFICIENT": {
+            "n": 333,
+            "coverage": 0.4084084084084084,
+            "precision": 0.0
+          }
+        }
+      },
+      "n_feasible": 0
+    }
+  },
+  "feasible": false,
+  "joint_threshold_search": {
+    "feasible": false,
+    "n_feasible": 0,
+    "best": {
+      "tau": 0.6500000000000001,
+      "thresholds": [
+        0.45,
+        0.39999999999999997,
+        0.84
+      ],
+      "coverage": 0.6786786786786787,
+      "answered_precision": 0.7684365781710915,
+      "n_answered": 678,
+      "verifiable_coverage": 0.8093093093093093,
+      "verifiable_precision": 0.9647495361781077,
+      "verifiable_precision_lower_95": 0.9454978869926411,
+      "nei_coverage": 0.4174174174174174,
+      "nei_precision": 0.007194244604316547,
+      "nei_abstention": 0.5825825825825826,
+      "per_class": {
+        "SUPPORTED": {
+          "n": 333,
+          "coverage": 0.8918918918918919,
+          "precision": 0.9764309764309764
+        },
+        "CONTRADICTED": {
+          "n": 333,
+          "coverage": 0.7267267267267268,
+          "precision": 0.9504132231404959
+        },
+        "INSUFFICIENT": {
+          "n": 333,
+          "coverage": 0.4174174174174174,
+          "precision": 0.007194244604316547
+        }
+      }
+    }
+  },
+  "notes": [
+    "Val-only tuning; no test data was read.",
+    "The primary search keeps the frozen v2 class thresholds; the joint search is a diagnostic for whether any class-threshold change could meet the gates."
+  ]
+}

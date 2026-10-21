@@ -1,5 +1,23 @@
 # Current implementation status
 
+## v4 (2026-10-21) — stopped before the test pass
+
+Branch `ver-4`, baseline `e9974c6`. Report:
+[experiments/v4/REPORT.md](../experiments/v4/REPORT.md); decision:
+[SERVING_DECISION_V4.md](SERVING_DECISION_V4.md).
+
+- P1 reranker + refit: top-5 gives val macro-F1 **0.69296** vs 0.67636 and
+  INSUFFICIENT F1 **0.53559** vs 0.52073. Top-8 was flat (0.67732), so top-5 is kept.
+- P2 data expansion: 3k → 6k → 9k balanced train claims from unused `paper_dev`.
+  Answerability AUROC **0.781 → 0.787**; NEI floor **0.453 → 0.423**.
+- P3 tuning: cost-sensitive HGB reaches AUROC **0.794**, NEI **0.408** at vcov
+  0.800 and overall precision 0.768. Joint threshold search still infeasible
+  (best NEI 0.417).
+- v4 stopped before P5. **No v4 test pass was spent**; no v4 test predictions exist.
+- The learned detector remains offline; the fixed rule stays the default.
+
+Tests: 149 passing.
+
 ## v3 (2026-10-21) — stopped before the test pass
 
 Branch `ver-3`, baseline `e7f0af5`. Report:

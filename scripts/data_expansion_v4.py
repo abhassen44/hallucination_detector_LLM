@@ -172,6 +172,20 @@ def main() -> None:
     }
     OUT.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    if policy['best'] is not None:
+        with (OUT / f'val_policy_{args.train_size}.jsonl').open('w', encoding='utf-8') as handle:
+            for index, row in enumerate(val_enriched):
+                handle.write(json.dumps({
+                    'id': row['id'], 'claim': row['claim'],
+                    'gold': LABELS[int(val_y[index])],
+                    'prediction': LABELS[int(calibrated[index].argmax())],
+                    'calibrated_probabilities': {
+                        label: float(calibrated[index, number])
+                        for number, label in enumerate(LABELS)},
+                    'p_answerable': float(p_answer[index]),
+                    'answered': bool(answerability_policy(
+                        calibrated, p_answer, policy['best']['tau'])[index]),
+                }, ensure_ascii=False) + '\n')
     print(json.dumps({
         'train_size': args.train_size,
         'val_macro_f1': val_metrics['macro_f1'],
