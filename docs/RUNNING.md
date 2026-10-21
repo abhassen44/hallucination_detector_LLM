@@ -180,6 +180,11 @@ artifacts.
 Do not pass `--suggestions` during the pilot. `--force` on `make_pilot` destroys
 existing judgments. Gate and protocol: `experiments/pilot_v1/PILOT.md`.
 
+The v1 pilot is complete (pass with a completeness deviation: κ 0.88, category
+agreement 0.80, 39/40 rows). `--allow-incomplete` scores annotated rows and bounds
+κ over every completion of the missing verdicts; use it only with that deviation
+recorded.
+
 ## Review tooling
 
 ```sh

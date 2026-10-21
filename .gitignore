@@ -42,6 +42,8 @@ mlartifacts/
 wandb/
 experiments/**/checkpoints/
 experiments/**/*.log
+experiments/**/*.bak
+experiments/**/review_progress.json
 # experiments/**/metrics_*.json are small and tracked
 
 # ---------------------------------------------------------------- Frontend

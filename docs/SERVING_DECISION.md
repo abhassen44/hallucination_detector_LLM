@@ -36,8 +36,10 @@ on Stage 5 artifacts.
 5. **Scope is FEVER-only.** HaluEval has no claim-level gold, so the learned
    detector has no claim-level HaluEval score. The demo's open-domain Wikipedia
    mode is outside its validated distribution.
-6. **The error taxonomy is not yet human-validated.** A blind 40-case pilot is
-   pending; qualitative failure labels are still LLM proposals.
+6. **The error taxonomy passed its pilot, not the full pass.** The blind 40-case
+   pilot met the gate (κ 0.88 Pass/Fail, 0.80 category agreement) with one row
+   unannotated; the full 274-row annotation is still pending, so failure-mode
+   counts remain LLM proposals.
 
 ## Alternatives considered
 
@@ -60,7 +62,8 @@ on Stage 5 artifacts.
 ## Revisit when
 
 1. The blind pilot passes and the full 274-row annotation is complete (taxonomy
-   stable enough to report failure modes).
+   stable enough to report failure modes). The pilot gate is met; the full pass is
+   still pending.
 2. A calibration study (reliability diagram, ECE, threshold-free scores) is done on
    validation data.
 3. A coverage diagnostic explains when the retriever is likely to miss evidence, so

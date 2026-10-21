@@ -240,22 +240,43 @@ These are **proposals**, not human labels; all 274 are flagged
 The review samples are enriched for failures, so these counts describe the sample,
 not the population. Verification rows cover 103 cases but only 93 unique claims: 10
 claims appear under two evidence conditions, so counts are per row and proposals are
-keyed by `(id, condition)`, never by id alone. Human judgments remain unassigned;
-`scripts/review.py` walks the queues, optionally showing the proposal, and refuses
-to re-offer completed rows.
+keyed by `(id, condition)`, never by id alone. The 40 pilot rows are annotated; the
+full 274-row pass remains unassigned. `scripts/review.py` walks the queues,
+optionally showing the proposal, and refuses to re-offer completed rows.
 
-### Blind pilot — pending human annotation
+### Blind pilot — passed with a completeness deviation
 
-Before annotating all 274 rows, two 20-case blind queues validate the taxonomy:
+Two 20-case blind queues validated the taxonomy before the full pass:
 `experiments/pilot_v1/extraction_queue.jsonl` (balanced 10 Pass / 10 Fail) and
 `verification_queue.jsonl` (stratified across proposed causes, one condition per
-claim). The gate, fixed before annotation, is Cohen's κ ≥ 0.60 on extraction
-Pass/Fail and exact category agreement ≥ 0.50 on verification errors. Failing means
-the taxonomy is revised before the full pass.
+claim). The gate was fixed before annotation: Cohen's κ ≥ 0.60 on extraction
+Pass/Fail and exact category agreement ≥ 0.50 on verification errors.
 
-The pilot is balanced by design, not a prevalence sample. Results are pending; the
-protocol and commands are in `experiments/pilot_v1/PILOT.md`, and scoring is one
-command: `python -m scripts.pilot_agreement` with both queues.
+| Check | Observed | Gate |
+|---|---:|---:|
+| Extraction Pass/Fail κ (17 labeled verdicts) | **0.881** | ≥ 0.60 |
+| Verification exact category agreement (20/20) | **0.80** (16/20) | ≥ 0.50 |
+| Verification category κ | 0.709 | — |
+
+Completeness deviation: 39/40 rows were annotated. Three extraction rows have a
+proposal but no binary verdict (`halueval-qa-9023-hallucinated`,
+`halueval-qa-1653-hallucinated`, `halueval-qa-3451-hallucinated`); the queue is
+19/20 complete. Enumerating all eight possible verdict assignments gives κ between
+**0.600 and 0.900**, so every completion clears the threshold and the decision is
+invariant to the missing judgments. The bootstrap 95% interval for the observed κ
+is wide ([0.605, 1.000]) because n is small; the point estimate and the adversarial
+worst case both meet the gate.
+
+Verification disagreements (4): `nli_failure → ambiguous_evidence` (2),
+`nli_failure → claim_extraction_failure` (1), `nli_failure → multi_hop_reasoning`
+(1). Extraction cause labels diverged on 3 of 7 Fail rows (entity confusion,
+ambiguous evidence, temporal information where the proposal said claim extraction
+failure). The gate passes, but these divergences argue for clearer category
+definitions — or restricting extraction to Pass/Fail — in the full pass.
+
+The pilot is balanced by design, not a prevalence sample. Protocol and commands are
+in `experiments/pilot_v1/PILOT.md`; the scored artifact is
+`experiments/pilot_v1/pilot_agreement.json`.
 
 ## Reproduce
 
@@ -279,6 +300,6 @@ python -m scripts.reproduce --stage all --include-heavy
   confidence in factual truth.
 - **NLI is MNLI-only.** No FEVER-tuned checkpoint is used, which avoids leakage but
   leaves in-domain performance lower than a FEVER-trained model would give.
-- **Human annotation incomplete.** The taxonomy has not yet been validated: a
-  40-case blind pilot is prepared and pending, and all 274 full-pass judgments are
-  still unassigned, so qualitative claims remain provisional.
+- **Human annotation incomplete.** The taxonomy passed a 40-case blind pilot (κ 0.88,
+  category agreement 0.80, one row unannotated), but the full 274-row pass is
+  unassigned, so population-level qualitative claims remain provisional.

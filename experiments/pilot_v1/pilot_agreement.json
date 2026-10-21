@@ -1,0 +1,141 @@
+{
+  "pilot": "v1",
+  "scored_utc": "2026-10-21T08:55:32.806567+00:00",
+  "gate": {
+    "status": "pass_with_deviation",
+    "checks": {
+      "kappa_pass_fail": {
+        "observed_labeled_rows": 0.8811188811188811,
+        "conservative_missing_verdicts": 0.6000000000000001,
+        "min": 0.6
+      },
+      "category_agreement": {
+        "observed": 0.8,
+        "min": 0.5
+      }
+    },
+    "completeness": {
+      "extraction": "19/20",
+      "verification": "20/20"
+    },
+    "decision": "annotate the remaining 274 rows",
+    "note": "kappa is extraction Pass/Fail; category agreement is verification errors (the only queue with more than one proposed category)",
+    "deviation": "gate evaluated on annotated rows; every completion of the missing verdicts is checked, and the worst case must clear the threshold",
+    "sensitivity": {
+      "unlabeled": [
+        "halueval-qa-9023-hallucinated",
+        "halueval-qa-1653-hallucinated",
+        "halueval-qa-3451-hallucinated"
+      ],
+      "min_kappa": 0.6000000000000001,
+      "max_kappa": 0.8999999999999999,
+      "all_meet_min": true,
+      "assignments": 8
+    }
+  },
+  "queues": {
+    "extraction": {
+      "queue": "experiments\\pilot_v1\\extraction_queue.jsonl",
+      "kind": "extraction",
+      "n_total": 20,
+      "n_completed": 19,
+      "n_completed_expected": 20,
+      "unmatched": [],
+      "pass_fail": {
+        "n": 17,
+        "matches": 16,
+        "agreement": 0.9411764705882353,
+        "kappa": 0.8811188811188811,
+        "confusion": {
+          "Fail -> Pass": 1
+        },
+        "disagreements": [],
+        "sensitivity": {
+          "unlabeled": [
+            "halueval-qa-9023-hallucinated",
+            "halueval-qa-1653-hallucinated",
+            "halueval-qa-3451-hallucinated"
+          ],
+          "min_kappa": 0.6000000000000001,
+          "max_kappa": 0.8999999999999999,
+          "all_meet_min": true,
+          "assignments": 8
+        }
+      },
+      "category": {
+        "n": 7,
+        "matches": 4,
+        "agreement": 0.5714285714285714,
+        "kappa": 0.0,
+        "confusion": {
+          "claim_extraction_failure -> entity_confusion": 1,
+          "claim_extraction_failure -> ambiguous_evidence": 1,
+          "claim_extraction_failure -> temporal_information": 1
+        },
+        "disagreements": [
+          "halueval-qa-698-hallucinated",
+          "halueval-qa-9230-hallucinated",
+          "halueval-qa-9203-hallucinated"
+        ]
+      },
+      "timing": {
+        "stamped": 19,
+        "active_cases": 18,
+        "minutes_total": 17.8,
+        "seconds_per_case": 59.4,
+        "excluded_breaks": 0
+      },
+      "provisional_model": "gemma4:31b-cloud",
+      "sample_note": "balanced/stratified validation sample, not a prevalence sample"
+    },
+    "verification": {
+      "queue": "experiments\\pilot_v1\\verification_queue.jsonl",
+      "kind": "verification",
+      "n_total": 20,
+      "n_completed": 20,
+      "n_completed_expected": 20,
+      "unmatched": [],
+      "pass_fail": {
+        "n": 0,
+        "matches": 0,
+        "agreement": null,
+        "kappa": null,
+        "confusion": {},
+        "disagreements": [],
+        "sensitivity": {
+          "unlabeled": [],
+          "min_kappa": null,
+          "max_kappa": null,
+          "all_meet_min": null,
+          "assignments": 0
+        }
+      },
+      "category": {
+        "n": 20,
+        "matches": 16,
+        "agreement": 0.8,
+        "kappa": 0.7090909090909091,
+        "confusion": {
+          "nli_failure -> ambiguous_evidence": 2,
+          "nli_failure -> claim_extraction_failure": 1,
+          "nli_failure -> multi_hop_reasoning": 1
+        },
+        "disagreements": [
+          "halueval-qa-2497-right",
+          "halueval-qa-4468-right",
+          "halueval-qa-955-hallucinated",
+          "halueval-qa-8287-hallucinated"
+        ]
+      },
+      "timing": {
+        "stamped": 20,
+        "active_cases": 19,
+        "minutes_total": 8.6,
+        "seconds_per_case": 27.1,
+        "excluded_breaks": 0
+      },
+      "provisional_model": "gemma4:31b-cloud",
+      "sample_note": "balanced/stratified validation sample, not a prevalence sample"
+    }
+  }
+}

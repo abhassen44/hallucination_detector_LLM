@@ -54,7 +54,7 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
 | **4. Claim Extraction**| LLM Claim Extractor | Extraction complete; human review pending | LLM-based atomic decomposition + quality validation + fallback |
 | **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass; paired gain significant | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
-| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; blind 40-case pilot prepared | 274 cases categorised, review tooling added |
+| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; blind pilot passed, full pass pending | 274 cases categorised, review tooling added |
 | **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested | Wikipedia and supplied-source modes |
 
 Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).

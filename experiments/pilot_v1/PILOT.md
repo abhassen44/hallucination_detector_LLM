@@ -53,3 +53,21 @@ excluded), and the gate verdict.
 Rebuilding the queues with `--force` destroys judgments. Proposals are keyed by
 `(id, condition)`; verification rows repeat ids across evidence conditions, so
 never key them by id alone.
+
+## Result (v1)
+
+| Check | Observed | Gate |
+|---|---:|---:|
+| Extraction Pass/Fail κ, 17 labeled verdicts | 0.881 | ≥ 0.60 |
+| Verification category agreement, 20/20 | 0.80 | ≥ 0.50 |
+| Verification category κ | 0.709 | — |
+
+**Verdict: pass with a completeness deviation.** 39/40 rows were annotated; three
+extraction rows have a proposal but no binary verdict. All eight possible
+completions of those verdicts give κ between 0.600 and 0.900, so the decision is
+invariant to the missing judgments. Scores: `pilot_agreement.json`.
+
+Observed disagreements: four verification rows, all proposed `nli_failure` (two
+ambiguous evidence, one claim-extraction failure, one multi-hop). Extraction cause
+labels diverged on 3/7 Fail rows. The gate passes; category definitions should be
+tightened before the full pass.

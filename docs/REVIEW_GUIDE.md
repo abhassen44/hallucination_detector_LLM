@@ -6,10 +6,10 @@ covering every split and both answer labels. The three malformed-response
 fallbacks appear first and include the original raw response. No human quality
 judgments have been assigned automatically.
 
-Start with the blind pilot in `experiments/pilot_v1/` before annotating the full
-queue below. It is 20 extraction + 20 verification cases, and the taxonomy gate is
-declared in `experiments/pilot_v1/PILOT.md`. Do not open
-`experiments/stage6_errors/` until both pilot queues are finished.
+The blind pilot in `experiments/pilot_v1/` is complete and passed (κ 0.88 Pass/Fail,
+0.80 category agreement, one row unannotated; see
+`experiments/pilot_v1/PILOT.md`). The full queue below is the next task, and
+proposals may be shown now.
 
 For the full pass, work through the queue in order. Read the question, answer and
 extracted claims. Write a short observable description in `human_review.open_coding`,

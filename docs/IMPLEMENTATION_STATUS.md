@@ -34,15 +34,18 @@ Implemented:
   buckets against the frozen Stage 2 oracle (oracle verdicts cached per claim).
 - Blind pilot tooling (`scripts/make_pilot.py`, `scripts/pilot_agreement.py`):
   balanced 20-case extraction and stratified 20-case verification queues, plus
-  Cohen's κ / category-agreement scoring and a pre-declared gate.
+  Cohen's κ / category-agreement scoring, a pre-declared gate, and a sensitivity
+  bound over missing verdicts. The pilot passed: κ 0.881 (17 labeled verdicts),
+  category agreement 0.80 (20/20), with all possible completions of the three
+  unlabeled verdicts keeping κ ≥ 0.60.
 - Windows text-IO hardening: all `read_text`/`write_text`/text `open` calls now
   declare UTF-8, with a regression test.
 - `/metrics` now serves every saved metrics file, including `baseline_review`.
 - `scripts/resolve_recovery.py` recorded decisions on the three JSON syntax repairs;
   `scripts/reproduce.py` provides one entry point per stage.
-- The suite now has **82 passing tests** (was 37), including portability, feature,
-  review, Stage 5 artifact, significance, decomposition, pilot-sampling, and
-  error-analysis schema checks.
+- The suite now has **84 passing tests** (was 37), including portability, feature,
+  review, Stage 5 artifact, significance, decomposition, pilot-sampling,
+  incomplete-pilot sensitivity, and error-analysis schema checks.
 
 Results (FEVER test, 1,998 claims):
 
@@ -69,11 +72,11 @@ Validation and limitations:
 
 - Protocol inputs are hashed; a test asserts the committed retrieval caches still
   match the hashes recorded at fit time.
-- Human judgments remain unassigned. The Stage 6 categories are **LLM proposals**,
-  not human labels, and the review sample is enriched for failures, so it cannot
-  estimate population error rates. The blind 40-case pilot is prepared and pending;
-  its gate is κ ≥ 0.60 (extraction Pass/Fail) and category agreement ≥ 0.50
-  (verification).
+- Human judgments remain unassigned outside the pilot. The Stage 6 categories are
+  **LLM proposals**, not human labels, and the review sample is enriched for
+  failures, so it cannot estimate population error rates. The blind pilot passed
+  (κ 0.88, category agreement 0.80) with 39/40 rows annotated; the full 274-row
+  pass is still pending.
 - HaluEval has no claim-level gold, so the learned combiner is scored on FEVER only.
 - The learned model is linear and single-seed. The paired tests quantify test-set
   sampling noise only; they do not cover training variance.

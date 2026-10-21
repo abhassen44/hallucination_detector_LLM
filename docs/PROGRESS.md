@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection — Progress Report
 
-> 2026-10-21 update: Stage 5 is now a fitted logistic combiner on FEVER (train -> val selection -> one test pass). Stage 6 categories are provisional LLM proposals. Paired McNemar/bootstrap tests and a verifiable-subset error decomposition are in [RESULTS.md](RESULTS.md); a blind 40-case taxonomy pilot is prepared and pending. See [current implementation status](IMPLEMENTATION_STATUS.md).
+> 2026-10-21 update: Stage 5 is now a fitted logistic combiner on FEVER (train -> val selection -> one test pass). Stage 6 categories are provisional LLM proposals. Paired McNemar/bootstrap tests and a verifiable-subset error decomposition are in [RESULTS.md](RESULTS.md); the blind 40-case taxonomy pilot passed (κ 0.88, category agreement 0.80, one row unannotated), so the full 274-row pass is the next scope. See [current implementation status](IMPLEMENTATION_STATUS.md).
 
 _Last updated: 2026-10-21 - Stages 0-7 implemented; canonical numbers in [RESULTS.md](RESULTS.md)_
 
@@ -325,11 +325,12 @@ python -m src.evaluation.claim_extraction_eval --split all   # Stage 4  (~depend
 
 ## 10. Remaining Work
 
-1. **Human annotation.** A blind 40-case pilot validates the taxonomy first
-   (`experiments/pilot_v1/PILOT.md`; gate κ ≥ 0.60 Pass/Fail and ≥ 0.50 category
-   agreement). Only then should `scripts/review.py` walk the 171 extraction and 103
-   verification rows (93 unique claims; keyed by `(id, condition)`), optionally
-   showing the provisional Gemma proposal.
+1. **Human annotation.** The blind 40-case pilot passed (`experiments/pilot_v1/`;
+   κ 0.88 Pass/Fail, 0.80 category agreement, one row unannotated; completeness
+   deviation and sensitivity documented). Next: annotate the remaining 171
+   extraction and 103 verification rows (93 unique claims; keyed by
+   `(id, condition)`), optionally showing the provisional Gemma proposal. Tighten
+   category definitions first — pilot cause labels diverged on extraction rows.
 2. **Apply the accepted JSON repairs in a separate version.** Three HaluEval
    fallbacks were repaired in `json_recovery_proposals.json`; applying them
    changes the dataset hash and requires regenerating the frozen-rule predictions.

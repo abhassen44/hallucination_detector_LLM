@@ -60,7 +60,7 @@ def test_prepare_strips_meta_and_clears_review():
     assert row['human_review']['pass_fail_assessment'] == 'Pass'  # source untouched
 
 
-def test_generated_queues_are_blind_if_present():
+def test_generated_queues_have_no_proposal_leakage():
     root = Path(__file__).resolve().parents[1] / 'experiments/pilot_v1'
     for name in ('extraction_queue.jsonl', 'verification_queue.jsonl'):
         path = root / name
@@ -69,9 +69,11 @@ def test_generated_queues_are_blind_if_present():
         for line in path.read_text(encoding='utf-8').splitlines():
             row = json.loads(line)
             for leaked in ('rationale', 'verdict', 'confidence', 'provisional_llm_assisted',
-                           'review_meta', 'suggestion'):
+                           'suggestion'):
                 assert leaked not in row
-            assert all(value in (None, '') for value in row['human_review'].values())
+            if 'review_meta' in row:
+                # The pilot is annotated; review metadata is expected, proposals are not.
+                assert {'reviewer', 'reviewed_utc'} <= set(row['review_meta'])
 
 
 def test_suggestion_key_separates_repeated_ids():
@@ -154,6 +156,43 @@ def test_timing_excludes_long_breaks():
     assert result['active_cases'] == 1
     assert result['seconds_per_case'] == 60.0
     assert result['excluded_breaks'] == 1
+
+
+def test_score_reports_kappa_sensitivity_for_missing_verdicts(tmp_path):
+    queue = tmp_path / 'extraction_queue.jsonl'
+    provisional = tmp_path / 'provisional_extraction.jsonl'
+    rows = [_row(1, None, 'claim_extraction_failure'), _row(2, 'Pass', None),
+            _row(3, 'Fail', None), _row(4, 'Pass', None)]
+    proposals = [_proposal(1, 'Pass', 'claim_extraction_failure'), _proposal(2, 'Pass'),
+                 _proposal(3, 'Fail'), _proposal(4, 'Fail')]
+    queue.write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
+    provisional.write_text(''.join(json.dumps(p) + '\n' for p in proposals), encoding='utf-8')
+
+    result = score(queue, provisional)
+    sensitivity = result['pass_fail']['sensitivity']
+    assert result['n_completed'] == 4
+    assert sensitivity['unlabeled'] == ['x1']
+    assert sensitivity['assignments'] == 2
+    assert sensitivity['min_kappa'] <= sensitivity['max_kappa']
+    assert sensitivity['all_meet_min'] is False
+
+
+def test_gate_allow_incomplete_requires_worst_case():
+    extraction = {'n_completed': 19, 'n_total': 20,
+                  'pass_fail': {'kappa': 0.88,
+                                'sensitivity': {'min_kappa': 0.60, 'max_kappa': 0.90,
+                                                'all_meet_min': True, 'unlabeled': ['x']}}}
+    verification = {'n_completed': 20, 'n_total': 20,
+                    'category': {'agreement': 0.80}}
+    assert gate(extraction, verification)['status'] == 'incomplete'
+
+    verdict = gate(extraction, verification, allow_incomplete=True)
+    assert verdict['status'] == 'pass_with_deviation'
+    assert verdict['checks']['kappa_pass_fail']['conservative_missing_verdicts'] == 0.60
+    assert verdict['sensitivity']['min_kappa'] == 0.60
+
+    extraction['pass_fail']['sensitivity']['min_kappa'] = 0.55
+    assert gate(extraction, verification, allow_incomplete=True)['status'] == 'fail'
 
 
 def test_gate_pass_fail_and_incomplete():
