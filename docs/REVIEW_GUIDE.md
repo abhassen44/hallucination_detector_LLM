@@ -6,10 +6,15 @@ covering every split and both answer labels. The three malformed-response
 fallbacks appear first and include the original raw response. No human quality
 judgments have been assigned automatically.
 
-Start with the first 30–50 examples. Read the question, answer and extracted
-claims. Write a short observable description in `human_review.open_coding`, then
-set `pass_fail_assessment` to `Pass` or `Fail`. Leave categories empty during the
-first pass; derive them from the observations rather than guessing root causes.
+Start with the blind pilot in `experiments/pilot_v1/` before annotating the full
+queue below. It is 20 extraction + 20 verification cases, and the taxonomy gate is
+declared in `experiments/pilot_v1/PILOT.md`. Do not open
+`experiments/stage6_errors/` until both pilot queues are finished.
+
+For the full pass, work through the queue in order. Read the question, answer and
+extracted claims. Write a short observable description in `human_review.open_coding`,
+then set `pass_fail_assessment` to `Pass` or `Fail`. Leave categories empty during
+the first pass; derive them from the observations rather than guessing root causes.
 
 ## Use the review tool
 
@@ -68,9 +73,12 @@ reason in `fidelity_check`. They are still **not applied** to the splits: applyi
 them would change three HaluEval examples and require regenerating the committed
 frozen-rule predictions, which belongs in a separate version.
 
-`experiments/stage5_inference/error_review.jsonl` contains a separate 103-example
+`experiments/stage5_inference/error_review.jsonl` contains a separate 103-row
 verification failure sample, balanced where possible across false positives and
-false negatives within each evidence condition. Its empty review fields follow
-the same workflow. This is a different review task from extraction quality.
-`experiments/stage6_errors/provisional_verification.jsonl` holds Gemma's proposal
-for each of these cases; review them with the same `--suggestions` flag.
+false negatives within each evidence condition. The rows cover 93 unique claims:
+10 claims repeat under a second evidence condition, so counts are per row and
+suggestions are keyed by `(id, condition)`. Its empty review fields follow the same
+workflow. This is a different review task from extraction quality.
+`experiments/stage6_errors/provisional_verification.jsonl` holds Gemma's proposed
+category (not a verdict) for each of these rows; review them with the same
+`--suggestions` flag only after the blind pilot is complete.

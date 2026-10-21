@@ -14,8 +14,9 @@ Test evaluated: True (2026-10-21T06:35:04.895155+00:00).
 | dense | 0.701 | 0.694 | 0.708 | 0.701 | [0.681, 0.721] | 0.612 | +0.090 |
 | hybrid | 0.684 | 0.676 | 0.708 | 0.702 | [0.682, 0.721] | 0.633 | +0.069 |
 
-The confidence interval is a 2,000-resample bootstrap over test claims,
-not a significance test against the fixed rule.
+The confidence interval is a 2,000-resample bootstrap over test claims.
+Paired McNemar and paired-bootstrap tests against the fixed rule are reported
+below.
 
 ## Per-class F1 on test
 
@@ -30,6 +31,40 @@ not a significance test against the fixed rule.
 | hybrid | SUPPORTED | 0.816 | 0.892 | 0.852 | 0.786 |
 | hybrid | CONTRADICTED | 0.653 | 0.716 | 0.683 | 0.674 |
 | hybrid | INSUFFICIENT | 0.638 | 0.517 | 0.571 | 0.438 |
+
+## Paired significance (post-hoc)
+
+Committed test predictions only: no refit, no threshold change, no second
+test pass. The fixed rule is replayed deterministically and checked against
+the committed Stage 3 metrics before testing.
+
+| Retrieval | Delta macro-F1 | 95% CI | b / c | McNemar p | exact p |
+|---|---:|---:|---:|---:|---:|
+| bm25 | +0.0762 | [+0.0571, +0.0957] | 279 / 149 | 4.5e-10 | 3.3e-10 |
+| dense | +0.0899 | [+0.0698, +0.1098] | 283 / 143 | 1.6e-11 | 1.1e-11 |
+| hybrid | +0.0692 | [+0.0501, +0.0892] | 254 / 142 | 2.4e-08 | 2e-08 |
+
+Every interval excludes zero. Bootstrap p-values bottom out at
+1/10,001; the exact McNemar p is the sharper statement.
+
+
+## Where the error lives (1,324 verifiable claims)
+
+Every system restricted to the Stage 2 oracle subset. "Introduced" means a
+confident error where the oracle is right; selective accuracy is measured on
+the self-selected answered subset, with the oracle computed on the same rows.
+
+| System | Coverage | Acc answered | Oracle answered | Errors | Abstain / oracle right | Abstain / oracle wrong | Confident / oracle wrong | Confident / oracle right |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| fixed_rule | 0.931 | 0.882 | 0.952 | 236 | 75 | 16 | 42 | 103 |
+| learned | 0.856 | 0.943 | 0.953 | 256 | 169 | 22 | 44 | 21 |
+
+The learned combiner trades coverage for precision: it abstains on more
+claims but introduces far fewer confident errors. Most residual error is
+abstention on claims the oracle answers correctly, i.e. evidence coverage.
+All methods are in `decomposition.json`; interpretation is in
+`docs/RESULTS.md`.
+
 
 ## Feature ablation (test macro-F1)
 

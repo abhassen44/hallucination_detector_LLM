@@ -30,10 +30,15 @@ def load_queue(path: Path) -> list[dict]:
     return list(read_jsonl(path))
 
 
-def load_suggestions(path: Path | None) -> dict[str, dict]:
+def suggestion_key(row_or_proposal: dict):
+    """Verification rows repeat ids across evidence conditions, so key on both."""
+    return row_or_proposal['id'], row_or_proposal.get('condition')
+
+
+def load_suggestions(path: Path | None) -> dict[tuple, dict]:
     if not path or not Path(path).exists():
         return {}
-    return {row['id']: row for row in read_jsonl(path) if row.get('valid')}
+    return {suggestion_key(row): row for row in read_jsonl(path) if row.get('valid')}
 
 
 def is_complete(row: dict) -> bool:
@@ -175,7 +180,7 @@ def review_interactively(path: Path, suggestions_path: Path | None, limit: int |
     print(f'{len(queue)} of {len(rows)} rows pending; {reviewed} already reviewed. '
           'Ctrl+C saves and exits.')
     for position, row in enumerate(queue, 1):
-        suggestion = suggestions.get(row['id'])
+        suggestion = suggestions.get(suggestion_key(row))
         _show(row, suggestion, position, len(queue))
         answers: dict = {}
         try:

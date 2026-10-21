@@ -148,6 +148,38 @@ On some CUDA driver combinations the cross-encoder raises
 time, `--methods hybrid`) to finish deterministically; results merge into the same
 JSON file. The study is a one-off analysis, so CPU speed is acceptable.
 
+## Post-hoc evidence (no new test pass)
+
+```sh
+.venv/bin/python -m src.evaluation.significance
+.venv/bin/python -m src.evaluation.decomposition
+```
+
+`significance` replays the fixed rule from the retrieval cache, checks it against the
+committed Stage 3 accuracy/macro-F1, then runs McNemar and a 10,000-draw paired
+bootstrap on the committed per-claim predictions. `decomposition` restricts every
+system to the 1,324 verifiable test claims and caches frozen Stage 2 NLI-concat
+verdicts (`experiments/stage5_learned/oracle_predictions_test.jsonl`) so errors can
+be split into abstention and confident-error buckets. Neither script fits anything,
+changes a threshold, or evaluates a new system. Both write JSON next to the Stage 5
+artifacts.
+
+## Blind taxonomy pilot
+
+```sh
+.venv/bin/python -m scripts.make_pilot          # only if the queues need rebuilding
+.venv/bin/python -m scripts.review \
+  --queue experiments/pilot_v1/extraction_queue.jsonl --reviewer <name>
+.venv/bin/python -m scripts.review \
+  --queue experiments/pilot_v1/verification_queue.jsonl --reviewer <name>
+.venv/bin/python -m scripts.pilot_agreement \
+  --queue experiments/pilot_v1/extraction_queue.jsonl \
+  --queue experiments/pilot_v1/verification_queue.jsonl
+```
+
+Do not pass `--suggestions` during the pilot. `--force` on `make_pilot` destroys
+existing judgments. Gate and protocol: `experiments/pilot_v1/PILOT.md`.
+
 ## Review tooling
 
 ```sh
@@ -164,7 +196,9 @@ JSON file. The study is a one-off analysis, so CPU speed is acceptable.
 ```
 
 The queue is backed up before the first write, completed rows are never offered
-again, and `review_progress.json` records counts. See `docs/REVIEW_GUIDE.md`.
+again, and `review_progress.json` records counts. Suggestions are keyed by
+`(id, condition)` because verification rows repeat claims across evidence conditions.
+See `docs/REVIEW_GUIDE.md`.
 
 Every stage is also available from one entry point:
 

@@ -1,0 +1,177 @@
+{
+  "analysis": "post_hoc_paired_significance",
+  "created_utc": "2026-10-21T07:58:44.780606+00:00",
+  "refit": false,
+  "thresholds_changed": false,
+  "new_system_evaluated": false,
+  "source_predictions": "experiments/stage5_learned/predictions_*.jsonl",
+  "fixed_rule_replay": {
+    "entail": 0.7,
+    "contra": 0.95,
+    "reproduced": "experiments\\stage3_retrieval\\metrics_DeBERTa-v3-base-mnli.json"
+  },
+  "stage5_protocol_test_evaluated_utc": "2026-10-21T06:35:04.895155+00:00",
+  "mcnemar": "chi-square with continuity correction; exact binomial reported too",
+  "bootstrap": "paired resampling of claims, candidate and reference share indices",
+  "methods": {
+    "bm25": {
+      "n": 1998,
+      "fixed_rule": {
+        "accuracy": 0.6211211211211212,
+        "macro_f1": 0.6058710542008796,
+        "binary_f1": 0.8910394265232975
+      },
+      "learned": {
+        "accuracy": 0.6861861861861862,
+        "macro_f1": 0.6820510212774096,
+        "binary_f1": 0.9153963414634146
+      },
+      "changed_predictions": 472,
+      "per_class_f1_delta": {
+        "SUPPORTED": 0.090265,
+        "CONTRADICTED": 0.013351,
+        "INSUFFICIENT": 0.124923
+      },
+      "mcnemar_3way": {
+        "favouring_candidate": 279,
+        "favouring_reference": 149,
+        "discordant": 428,
+        "chi2_continuity": 38.88084112149533,
+        "p_chi2": 4.5048020466649723e-10,
+        "p_exact_binomial": 3.320549953822815e-10
+      },
+      "paired_macro_f1_delta": {
+        "observed": 0.07617996707652996,
+        "mean": 0.07629053356435223,
+        "lower_95": 0.057059906241558114,
+        "upper_95": 0.09572315613695294,
+        "p_two_sided": 9.999000099990002e-05,
+        "n_resamples": 10000,
+        "seed": 42
+      },
+      "mcnemar_binary": {
+        "favouring_candidate": 124,
+        "favouring_reference": 42,
+        "discordant": 166,
+        "chi2_continuity": 39.524096385542165,
+        "p_chi2": 3.240362569648112e-10,
+        "p_exact_binomial": 1.359691364342196e-10
+      },
+      "paired_binary_f1_delta": {
+        "observed": 0.024356914940117158,
+        "mean": 0.024403083757306952,
+        "lower_95": 0.01556682865981429,
+        "upper_95": 0.03347654930246637,
+        "p_two_sided": 9.999000099990002e-05,
+        "n_resamples": 10000,
+        "seed": 42
+      }
+    },
+    "dense": {
+      "n": 1998,
+      "fixed_rule": {
+        "accuracy": 0.6381381381381381,
+        "macro_f1": 0.6116050497219278,
+        "binary_f1": 0.9002201027146002
+      },
+      "learned": {
+        "accuracy": 0.7082082082082082,
+        "macro_f1": 0.7014703999627384,
+        "binary_f1": 0.9137997680711248
+      },
+      "changed_predictions": 470,
+      "per_class_f1_delta": {
+        "SUPPORTED": 0.055905,
+        "CONTRADICTED": 0.027544,
+        "INSUFFICIENT": 0.186147
+      },
+      "mcnemar_3way": {
+        "favouring_candidate": 283,
+        "favouring_reference": 143,
+        "discordant": 426,
+        "chi2_continuity": 45.35446009389671,
+        "p_chi2": 1.6441316815975776e-11,
+        "p_exact_binomial": 1.0802854708294416e-11
+      },
+      "paired_macro_f1_delta": {
+        "observed": 0.08986535024081066,
+        "mean": 0.08983131752743043,
+        "lower_95": 0.0697515322610861,
+        "upper_95": 0.10977803256112029,
+        "p_two_sided": 9.999000099990002e-05,
+        "n_resamples": 10000,
+        "seed": 42
+      },
+      "mcnemar_binary": {
+        "favouring_candidate": 97,
+        "favouring_reference": 48,
+        "discordant": 145,
+        "chi2_continuity": 15.889655172413793,
+        "p_chi2": 6.71447230421593e-05,
+        "p_exact_binomial": 5.777411800528588e-05
+      },
+      "paired_binary_f1_delta": {
+        "observed": 0.013579665356524662,
+        "mean": 0.013613264859112122,
+        "lower_95": 0.005049139418549215,
+        "upper_95": 0.02215613357565354,
+        "p_two_sided": 0.0018,
+        "n_resamples": 10000,
+        "seed": 42
+      }
+    },
+    "hybrid": {
+      "n": 1998,
+      "fixed_rule": {
+        "accuracy": 0.6521521521521522,
+        "macro_f1": 0.6328201025982089,
+        "binary_f1": 0.9011713030746705
+      },
+      "learned": {
+        "accuracy": 0.7082082082082082,
+        "macro_f1": 0.7020233614802173,
+        "binary_f1": 0.9208301306687163
+      },
+      "changed_predictions": 422,
+      "per_class_f1_delta": {
+        "SUPPORTED": 0.065831,
+        "CONTRADICTED": 0.008645,
+        "INSUFFICIENT": 0.133133
+      },
+      "mcnemar_3way": {
+        "favouring_candidate": 254,
+        "favouring_reference": 142,
+        "discordant": 396,
+        "chi2_continuity": 31.113636363636363,
+        "p_chi2": 2.4335576909713026e-08,
+        "p_exact_binomial": 1.972995154880321e-08
+      },
+      "paired_macro_f1_delta": {
+        "observed": 0.0692032588820084,
+        "mean": 0.06938812622047807,
+        "lower_95": 0.050146360350369956,
+        "upper_95": 0.0891761195947703,
+        "p_two_sided": 9.999000099990002e-05,
+        "n_resamples": 10000,
+        "seed": 42
+      },
+      "mcnemar_binary": {
+        "favouring_candidate": 99,
+        "favouring_reference": 35,
+        "discordant": 134,
+        "chi2_continuity": 29.619402985074625,
+        "p_chi2": 5.2576008623453455e-08,
+        "p_exact_binomial": 2.8898922372571294e-08
+      },
+      "paired_binary_f1_delta": {
+        "observed": 0.019658827594045802,
+        "mean": 0.019699831988760692,
+        "lower_95": 0.011400332279734924,
+        "upper_95": 0.027960522881937306,
+        "p_two_sided": 9.999000099990002e-05,
+        "n_resamples": 10000,
+        "seed": 42
+      }
+    }
+  }
+}

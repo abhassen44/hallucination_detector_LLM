@@ -21,16 +21,28 @@ Implemented:
 - Val-only improvement studies (`src/evaluation/val_studies.py`): pretrained
   cross-encoder reranking and neighbour-sentence premises. Test is untouched.
 - Review tooling (`scripts/review.py`) with atomic write-back, backup, completed-row
-  protection, and optional display of provisional LLM suggestions.
+  protection, and optional display of provisional LLM suggestions. Suggestions and
+  reviews are keyed by `(id, condition)`: verification rows repeat claims across
+  evidence conditions (103 rows, 93 unique claims).
 - Gemma-assisted provisional error analysis (`scripts/analyze_errors.py`) over all
   274 prepared review cases; human fields are not modified.
+- Paired significance (`src/evaluation/significance.py`): McNemar on per-claim
+  correctness plus a 10,000-draw paired bootstrap of the macro-F1 difference, with
+  the fixed rule replayed deterministically and checked against Stage 3.
+- Error decomposition (`src/evaluation/decomposition.py`): all systems restricted to
+  the 1,324 verifiable claims, splitting errors into abstention and confident-error
+  buckets against the frozen Stage 2 oracle (oracle verdicts cached per claim).
+- Blind pilot tooling (`scripts/make_pilot.py`, `scripts/pilot_agreement.py`):
+  balanced 20-case extraction and stratified 20-case verification queues, plus
+  Cohen's κ / category-agreement scoring and a pre-declared gate.
 - Windows text-IO hardening: all `read_text`/`write_text`/text `open` calls now
   declare UTF-8, with a regression test.
 - `/metrics` now serves every saved metrics file, including `baseline_review`.
 - `scripts/resolve_recovery.py` recorded decisions on the three JSON syntax repairs;
   `scripts/reproduce.py` provides one entry point per stage.
-- The suite now has **57 passing tests** (was 37), including portability, feature,
-  review, Stage 5 artifact, and error-analysis schema checks.
+- The suite now has **82 passing tests** (was 37), including portability, feature,
+  review, Stage 5 artifact, significance, decomposition, pilot-sampling, and
+  error-analysis schema checks.
 
 Results (FEVER test, 1,998 claims):
 
@@ -38,6 +50,13 @@ Results (FEVER test, 1,998 claims):
   the frozen 0.7/0.95 rule. See [RESULTS.md](RESULTS.md).
 - Ablation: dropping the NLI group costs ~0.15 macro-F1; dropping similarity or
   retrieval-score features barely changes the score.
+- Paired tests: Δ macro-F1 +0.0762 / +0.0899 / +0.0692 (BM25 / dense / hybrid), all
+  with 95% CIs above zero; McNemar p = 4.5e-10 / 1.6e-11 / 2.4e-08. Post-hoc on
+  committed predictions, no refit or second test pass.
+- Decomposition on the 1,324 verifiable claims: the learned hybrid answers 85.6% at
+  0.943 accuracy (oracle on the same answered claims: 0.953). Two thirds of its
+  errors are abstentions on claims the oracle answers correctly; confident errors
+  fall from 145 (fixed rule) to 65, of which 44 are shared oracle errors.
 
 Val-only studies (999 val claims, no test pass):
 
@@ -52,10 +71,12 @@ Validation and limitations:
   match the hashes recorded at fit time.
 - Human judgments remain unassigned. The Stage 6 categories are **LLM proposals**,
   not human labels, and the review sample is enriched for failures, so it cannot
-  estimate population error rates.
+  estimate population error rates. The blind 40-case pilot is prepared and pending;
+  its gate is κ ≥ 0.60 (extraction Pass/Fail) and category agreement ≥ 0.50
+  (verification).
 - HaluEval has no claim-level gold, so the learned combiner is scored on FEVER only.
-- The learned model is linear and single-seed; the reported interval is a bootstrap
-  over test claims, not a significance test against the fixed rule.
+- The learned model is linear and single-seed. The paired tests quantify test-set
+  sampling noise only; they do not cover training variance.
 - Probabilities are uncalibrated.
 - The three accepted JSON repairs are **not** applied to the dataset; applying them
   would change three HaluEval examples and require regenerating the frozen-rule
@@ -91,8 +112,9 @@ Validation and limitations at that milestone:
   73.3% accuracy (argmax) and 72.0% (the app's fixed rule) with supplied context,
   versus 58.7% and 57.7% whole-answer baselines. Wikipedia retrieval is only 50.5%.
 - Ten inference-only comparisons are logged in local MLflow; zero models registered.
-- Review artifacts contain 171 extraction cases, 103 verification errors, and three
-  syntax-only recovery proposals.
+- Review artifacts contain 171 extraction cases, 103 verification rows (93 unique
+  claims, repeated across evidence conditions), and three syntax-only recovery
+  proposals.
 - Browser rendering, missing-model handling, and Gemma-backed detection verified.
 
 See RUNNING.md for setup and commands.

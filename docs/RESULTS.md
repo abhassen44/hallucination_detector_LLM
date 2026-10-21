@@ -88,6 +88,61 @@ The largest gain is INSUFFICIENT (+0.133), the class the fixed rule almost never
 predicted. Contradiction improves only marginally, which is consistent with the
 retrieval-bound nature of that error.
 
+### Paired significance (post-hoc)
+
+The learned-vs-fixed comparison is paired on the same 1,998 test claims. Δ is the
+difference in 3-way macro-F1, resampled with 10,000 paired bootstrap draws. McNemar
+uses per-claim correctness; `b`/`c` are (learned right, fixed wrong) and (learned
+wrong, fixed right).
+
+| Retrieval | Δ macro-F1 | 95% CI | b / c | McNemar χ² p | exact p |
+|---|---:|---|---:|---:|---:|
+| BM25 | +0.0762 | [0.0571, 0.0957] | 279 / 149 | 4.5e-10 | 3.3e-10 |
+| Dense | +0.0899 | [0.0698, 0.1098] | 283 / 143 | 1.6e-11 | 1.1e-11 |
+| Hybrid | +0.0692 | [0.0501, 0.0892] | 254 / 142 | 2.4e-08 | 2.0e-08 |
+
+Every interval excludes zero, and the discordant pairs favour the learned combiner
+by 1.7–2.0 to 1. This is a post-hoc test of committed predictions: no refit, no
+threshold change, and no new system was evaluated. Fixed-rule labels are a
+deterministic replay that reproduces the committed Stage 3 accuracy and macro-F1.
+Bootstrap p-values bottom out at 1/10,001; the exact McNemar p is the sharper
+statement. Artifact: `experiments/stage5_learned/significance.json`.
+
+### Where the error lives — 1,324 verifiable claims
+
+The 0.702 headline is measured on all 1,998 claims, including 674 NEI claims with
+no gold evidence. Restricting every system to the Stage 2 oracle's 1,324 verifiable
+claims separates *coverage* from *verdict quality*. Buckets are exhaustive and
+mutually exclusive; “introduced” means a confident error where the oracle is right.
+
+| System | Coverage | Acc when answered | Oracle acc, same claims | Errors | Abstain, oracle right | Abstain, oracle wrong | Confident, oracle wrong | Confident, oracle right |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Hybrid fixed | 0.931 | 0.882 | 0.952 | 236 | 75 | 16 | 42 | 103 |
+| Hybrid learned | 0.856 | 0.943 | 0.953 | 256 | 169 | 22 | 44 | 21 |
+
+The same pattern holds for BM25 and dense (`decomposition.json`): when the learned
+combiner commits, it is within one point of the oracle on the same answered claims
+(0.941–0.943 vs 0.950–0.953). The decision rule is not the main bottleneck.
+
+- The learned combiner trades coverage for precision: hybrid abstentions rise
+  91 → 191, while confident errors introduced by retrieved evidence fall 103 → 21.
+- 169 of its 256 errors (66%) are abstentions on claims the oracle answers
+  correctly — evidence the retriever did not surface, not a wrong verdict.
+- Of 65 confident errors, 44 are also oracle errors; only 21 are introduced.
+- Net incremental error against the oracle is 169 + 21 − 9 = 181.
+
+Confident errors are jointly retrieval and verifier errors, so the buckets bound
+rather than isolate blame. Selective accuracy is measured on a self-selected
+subset; the oracle column is computed on exactly the same answered claims. Oracle
+verdicts are a cached reproduction of the frozen Stage 2 NLI-concat, checked
+cell-for-cell against the committed 2×2 confusion matrix; no model was refitted or
+re-selected.
+
+Serving consequence: the learned combiner stays offline in v1 because its
+probabilities are uncalibrated and it abstains on 27.0% of test claims. The demo
+continues to serve the fixed rule; see
+[SERVING_DECISION.md](SERVING_DECISION.md).
+
 ### Ablations (test macro-F1)
 
 Each ablation re-selects `C` on val before its single test pass.
@@ -183,8 +238,24 @@ These are **proposals**, not human labels; all 274 are flagged
 | numerical_reasoning | 1 |
 
 The review samples are enriched for failures, so these counts describe the sample,
-not the population. Human judgments remain unassigned; `scripts/review.py` walks the
-queues, optionally showing the proposal, and refuses to re-offer completed rows.
+not the population. Verification rows cover 103 cases but only 93 unique claims: 10
+claims appear under two evidence conditions, so counts are per row and proposals are
+keyed by `(id, condition)`, never by id alone. Human judgments remain unassigned;
+`scripts/review.py` walks the queues, optionally showing the proposal, and refuses
+to re-offer completed rows.
+
+### Blind pilot — pending human annotation
+
+Before annotating all 274 rows, two 20-case blind queues validate the taxonomy:
+`experiments/pilot_v1/extraction_queue.jsonl` (balanced 10 Pass / 10 Fail) and
+`verification_queue.jsonl` (stratified across proposed causes, one condition per
+claim). The gate, fixed before annotation, is Cohen's κ ≥ 0.60 on extraction
+Pass/Fail and exact category agreement ≥ 0.50 on verification errors. Failing means
+the taxonomy is revised before the full pass.
+
+The pilot is balanced by design, not a prevalence sample. Results are pending; the
+protocol and commands are in `experiments/pilot_v1/PILOT.md`, and scoring is one
+command: `python -m scripts.pilot_agreement` with both queues.
 
 ## Reproduce
 
@@ -192,6 +263,8 @@ queues, optionally showing the proposal, and refuses to re-offer completed rows.
 python -m scripts.reproduce --stage checks
 python -m src.evaluation.fit_detector --method all
 python -m scripts.summarize_stage5
+python -m src.evaluation.significance
+python -m src.evaluation.decomposition
 python -m scripts.reproduce --stage all --include-heavy
 ```
 
@@ -206,5 +279,6 @@ python -m scripts.reproduce --stage all --include-heavy
   confidence in factual truth.
 - **NLI is MNLI-only.** No FEVER-tuned checkpoint is used, which avoids leakage but
   leaves in-domain performance lower than a FEVER-trained model would give.
-- **Human annotation incomplete.** Every qualitative claim here is either computed
-  or explicitly provisional.
+- **Human annotation incomplete.** The taxonomy has not yet been validated: a
+  40-case blind pilot is prepared and pending, and all 274 full-pass judgments are
+  still unassigned, so qualitative claims remain provisional.

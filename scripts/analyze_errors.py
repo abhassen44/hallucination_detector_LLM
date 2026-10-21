@@ -133,16 +133,19 @@ def _validate_verification(payload) -> dict | None:
 
 
 def _propose(llm, row, queue, validate, build_prompt):
+    condition = row.get('condition')
     try:
         payload = llm.generate_json(build_prompt(row), system=SYSTEM)
     except ProviderUnavailableError:
         raise
     except Exception as exc:  # parse failure -> reviewer decides without a suggestion
-        return {'id': row['id'], 'queue': queue, 'provisional_llm_assisted': True,
-                'model': llm.model, 'valid': False, 'error': f'{type(exc).__name__}: {exc}'[:200]}
+        return {'id': row['id'], 'condition': condition, 'queue': queue,
+                'provisional_llm_assisted': True, 'model': llm.model, 'valid': False,
+                'error': f'{type(exc).__name__}: {exc}'[:200]}
     proposal = validate(payload)
-    record = {'id': row['id'], 'queue': queue, 'provisional_llm_assisted': True,
-              'model': llm.model, 'valid': proposal is not None}
+    record = {'id': row['id'], 'condition': condition, 'queue': queue,
+              'provisional_llm_assisted': True, 'model': llm.model,
+              'valid': proposal is not None}
     if proposal is None:
         record['error'] = 'Model replied outside the allowed schema'
         record['raw_response'] = _clip(json.dumps(payload, ensure_ascii=False), 600)

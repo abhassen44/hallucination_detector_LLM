@@ -1,0 +1,69 @@
+{
+  "pilot": "v1",
+  "blind": true,
+  "created_utc": "2026-10-21T08:03:36.598832+00:00",
+  "seed": 42,
+  "cases_per_queue": 20,
+  "sampling_note": "balanced/stratified validation sample, not a prevalence sample",
+  "extraction": {
+    "frame": {
+      "Fail": 22,
+      "Pass": 149
+    },
+    "target": {
+      "Pass": 10,
+      "Fail": 10
+    },
+    "achieved": {
+      "Fail": 10,
+      "Pass": 10
+    },
+    "source": "experiments\\stage4_claims\\human_review.jsonl",
+    "proposals": "experiments\\stage6_errors\\provisional_extraction.jsonl",
+    "review_fields": [
+      "open_coding",
+      "pass_fail_assessment",
+      "category"
+    ]
+  },
+  "verification": {
+    "frame_rows": 103,
+    "frame_unique_ids": 93,
+    "conditions_frame": {
+      "provided_extracted_claims": 40,
+      "bm25_extracted_claims": 21,
+      "dense_extracted_claims": 21,
+      "hybrid_extracted_claims": 21
+    },
+    "allocation": {
+      "retrieval_failure": 10,
+      "nli_failure": 7,
+      "multi_hop_reasoning": 1,
+      "entity_confusion": 1,
+      "numerical_reasoning": 1
+    },
+    "achieved": {
+      "nli_failure": 7,
+      "retrieval_failure": 10,
+      "numerical_reasoning": 1,
+      "entity_confusion": 1,
+      "multi_hop_reasoning": 1
+    },
+    "source": "experiments\\stage5_inference\\error_review.jsonl",
+    "proposals": "experiments\\stage6_errors\\provisional_verification.jsonl",
+    "review_fields": [
+      "open_coding",
+      "pass_fail_assessment",
+      "category"
+    ]
+  },
+  "gate": {
+    "cohen_kappa_pass_fail_min": 0.6,
+    "category_agreement_min": 0.5,
+    "if_failed": "revise taxonomy before annotating all 274"
+  },
+  "files": {
+    "extraction": "experiments\\pilot_v1\\extraction_queue.jsonl",
+    "verification": "experiments\\pilot_v1\\verification_queue.jsonl"
+  }
+}

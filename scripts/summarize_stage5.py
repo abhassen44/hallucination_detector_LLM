@@ -51,8 +51,9 @@ def main() -> None:
           f"{result['fixed_rule']['test']['macro_f1']:.3f}",
           f"{result['test']['macro_f1'] - result['fixed_rule']['test']['macro_f1']:+.3f}"]
          for method, result in model.items()])
-    lines += ['', 'The confidence interval is a 2,000-resample bootstrap over test claims,',
-              'not a significance test against the fixed rule.', '',
+    lines += ['', 'The confidence interval is a 2,000-resample bootstrap over test claims.',
+              'Paired McNemar and paired-bootstrap tests against the fixed rule are reported',
+              'below.', '',
               '## Per-class F1 on test', '']
     rows = []
     for method, result in model.items():
@@ -63,6 +64,51 @@ def main() -> None:
                          f"{learned['recall']:.3f}", f"{learned['f1']:.3f}",
                          f"{fixed['f1']:.3f}"])
     lines += _table(['Retrieval', 'Label', 'P', 'R', 'F1', 'Fixed-rule F1'], rows)
+
+    significance = _load('significance.json')
+    if significance:
+        lines += ['', '## Paired significance (post-hoc)', '',
+                  'Committed test predictions only: no refit, no threshold change, no second',
+                  'test pass. The fixed rule is replayed deterministically and checked against',
+                  'the committed Stage 3 metrics before testing.', '']
+        rows = []
+        for method, result in significance['methods'].items():
+            delta = result['paired_macro_f1_delta']
+            mcnemar = result['mcnemar_3way']
+            rows.append([method, f"{delta['observed']:+.4f}",
+                         f"[{delta['lower_95']:+.4f}, {delta['upper_95']:+.4f}]",
+                         f"{mcnemar['favouring_candidate']} / {mcnemar['favouring_reference']}",
+                         f"{mcnemar['p_chi2']:.2g}", f"{mcnemar['p_exact_binomial']:.2g}"])
+        lines += _table(['Retrieval', 'Delta macro-F1', '95% CI', 'b / c', 'McNemar p',
+                         'exact p'], rows)
+        lines += ['', 'Every interval excludes zero. Bootstrap p-values bottom out at',
+                  '1/10,001; the exact McNemar p is the sharper statement.', '']
+
+    decomposition = _load('decomposition.json')
+    if decomposition and decomposition['methods'].get('hybrid'):
+        lines += ['', '## Where the error lives (1,324 verifiable claims)', '',
+                  'Every system restricted to the Stage 2 oracle subset. "Introduced" means a',
+                  'confident error where the oracle is right; selective accuracy is measured on',
+                  'the self-selected answered subset, with the oracle computed on the same rows.', '']
+        rows = []
+        for system, result in decomposition['methods']['hybrid'].items():
+            buckets = result['error_buckets']
+            rows.append([system, f"{result['coverage']:.3f}",
+                         f"{result['selective_accuracy']:.3f}",
+                         f"{result['oracle_accuracy_answered']:.3f}",
+                         result['pipeline_error'],
+                         buckets['abstained_oracle_correct'],
+                         buckets['abstained_oracle_wrong'],
+                         buckets['confident_oracle_wrong'],
+                         buckets['confident_oracle_correct']])
+        lines += _table(['System', 'Coverage', 'Acc answered', 'Oracle answered', 'Errors',
+                         'Abstain / oracle right', 'Abstain / oracle wrong',
+                         'Confident / oracle wrong', 'Confident / oracle right'], rows)
+        lines += ['', 'The learned combiner trades coverage for precision: it abstains on more',
+                  'claims but introduces far fewer confident errors. Most residual error is',
+                  'abstention on claims the oracle answers correctly, i.e. evidence coverage.',
+                  'All methods are in `decomposition.json`; interpretation is in',
+                  '`docs/RESULTS.md`.', '']
 
     if ablations:
         lines += ['', '## Feature ablation (test macro-F1)', '',

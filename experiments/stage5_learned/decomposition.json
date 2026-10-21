@@ -1,0 +1,177 @@
+{
+  "analysis": "verifiable_subset_error_decomposition",
+  "created_utc": "2026-10-21T08:08:50.057252+00:00",
+  "subset": "FEVER test claims with gold evidence (Stage 2 oracle subset)",
+  "n": 1324,
+  "sample_note": "balanced/stratified evaluation set; not a prevalence sample",
+  "oracle": {
+    "model": "NLI-concat",
+    "accuracy": 0.9433534743202417,
+    "confusion_matrix": [
+      [
+        623,
+        38
+      ],
+      [
+        37,
+        626
+      ]
+    ],
+    "committed_metrics": "experiments\\stage2_oracle\\metrics_DeBERTa-v3-base-mnli.json"
+  },
+  "fixed_rule": {
+    "entail": 0.7,
+    "contra": 0.95
+  },
+  "methods": {
+    "bm25": {
+      "fixed_rule": {
+        "n": 1324,
+        "answered": 1203,
+        "abstained": 121,
+        "coverage": 0.9086102719033232,
+        "accuracy": 0.775679758308157,
+        "pipeline_accuracy_answered": 0.8536990856192851,
+        "selective_accuracy": 0.8536990856192851,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9517871986699917,
+        "oracle_error": 75,
+        "pipeline_error": 297,
+        "error_buckets": {
+          "abstained_oracle_correct": 104,
+          "abstained_oracle_wrong": 17,
+          "confident_oracle_correct": 138,
+          "confident_oracle_wrong": 38,
+          "pipeline_wins_over_oracle": 20
+        },
+        "error_buckets_sum": 297,
+        "net_incremental_error_vs_oracle": 222,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      },
+      "learned": {
+        "n": 1324,
+        "answered": 1090,
+        "abstained": 234,
+        "coverage": 0.823262839879154,
+        "accuracy": 0.775679758308157,
+        "pipeline_accuracy_answered": 0.9422018348623853,
+        "selective_accuracy": 0.9422018348623853,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9522935779816514,
+        "oracle_error": 75,
+        "pipeline_error": 297,
+        "error_buckets": {
+          "abstained_oracle_correct": 211,
+          "abstained_oracle_wrong": 23,
+          "confident_oracle_correct": 22,
+          "confident_oracle_wrong": 41,
+          "pipeline_wins_over_oracle": 11
+        },
+        "error_buckets_sum": 297,
+        "net_incremental_error_vs_oracle": 222,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      }
+    },
+    "dense": {
+      "fixed_rule": {
+        "n": 1324,
+        "answered": 1245,
+        "abstained": 79,
+        "coverage": 0.9403323262839879,
+        "accuracy": 0.8255287009063444,
+        "pipeline_accuracy_answered": 0.8779116465863454,
+        "selective_accuracy": 0.8779116465863454,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9526104417670682,
+        "oracle_error": 75,
+        "pipeline_error": 231,
+        "error_buckets": {
+          "abstained_oracle_correct": 63,
+          "abstained_oracle_wrong": 16,
+          "confident_oracle_correct": 108,
+          "confident_oracle_wrong": 44,
+          "pipeline_wins_over_oracle": 15
+        },
+        "error_buckets_sum": 231,
+        "net_incremental_error_vs_oracle": 156,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      },
+      "learned": {
+        "n": 1324,
+        "answered": 1136,
+        "abstained": 188,
+        "coverage": 0.8580060422960725,
+        "accuracy": 0.8074018126888217,
+        "pipeline_accuracy_answered": 0.9410211267605634,
+        "selective_accuracy": 0.9410211267605634,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9498239436619719,
+        "oracle_error": 75,
+        "pipeline_error": 255,
+        "error_buckets": {
+          "abstained_oracle_correct": 170,
+          "abstained_oracle_wrong": 18,
+          "confident_oracle_correct": 19,
+          "confident_oracle_wrong": 48,
+          "pipeline_wins_over_oracle": 9
+        },
+        "error_buckets_sum": 255,
+        "net_incremental_error_vs_oracle": 180,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      }
+    },
+    "hybrid": {
+      "fixed_rule": {
+        "n": 1324,
+        "answered": 1233,
+        "abstained": 91,
+        "coverage": 0.9312688821752266,
+        "accuracy": 0.8217522658610272,
+        "pipeline_accuracy_answered": 0.8824006488240065,
+        "selective_accuracy": 0.8824006488240065,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9521492295214923,
+        "oracle_error": 75,
+        "pipeline_error": 236,
+        "error_buckets": {
+          "abstained_oracle_correct": 75,
+          "abstained_oracle_wrong": 16,
+          "confident_oracle_correct": 103,
+          "confident_oracle_wrong": 42,
+          "pipeline_wins_over_oracle": 17
+        },
+        "error_buckets_sum": 236,
+        "net_incremental_error_vs_oracle": 161,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      },
+      "learned": {
+        "n": 1324,
+        "answered": 1133,
+        "abstained": 191,
+        "coverage": 0.8557401812688822,
+        "accuracy": 0.8066465256797583,
+        "pipeline_accuracy_answered": 0.942630185348632,
+        "selective_accuracy": 0.942630185348632,
+        "oracle_accuracy": 0.9433534743202416,
+        "oracle_accuracy_answered": 0.9532215357458076,
+        "oracle_error": 75,
+        "pipeline_error": 256,
+        "error_buckets": {
+          "abstained_oracle_correct": 169,
+          "abstained_oracle_wrong": 22,
+          "confident_oracle_correct": 21,
+          "confident_oracle_wrong": 44,
+          "pipeline_wins_over_oracle": 9
+        },
+        "error_buckets_sum": 256,
+        "net_incremental_error_vs_oracle": 181,
+        "accounting": "pipeline_error = four error buckets; net incremental error = abstained_oracle_correct + confident_oracle_correct - pipeline_wins"
+      }
+    }
+  },
+  "caveats": [
+    "abstention buckets include claims where retrieval did not surface the gold evidence",
+    "confident errors are jointly retrieval and verifier errors; the buckets bound, not isolate, blame",
+    "selective accuracy is computed on the self-selected answered subset; compare it with oracle_accuracy_answered on the same subset, not with the oracle overall"
+  ]
+}

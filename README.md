@@ -53,8 +53,8 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **2. Oracle NLI** | Gold-evidence Verification | ✅ Done | FEVER 2-way: **94.3% Acc / 0.943 F1**; HaluEval: 70.8% Acc |
 | **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
 | **4. Claim Extraction**| LLM Claim Extractor | Extraction complete; human review pending | LLM-based atomic decomposition + quality validation + fallback |
-| **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
-| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; human labels pending | 274 cases categorised, review tooling added |
+| **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass; paired gain significant | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
+| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; blind 40-case pilot prepared | 274 cases categorised, review tooling added |
 | **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested | Wikipedia and supplied-source modes |
 
 Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).
@@ -68,9 +68,15 @@ subset are selected on 999 val claims, and the test split (1,998 claims) is eval
 once. Test macro-F1 is **0.702** with hybrid retrieval, **0.701** with dense, and
 **0.682** with BM25 — against **0.633**, **0.612**, and **0.606** for the frozen
 0.7/0.95 rule. NLI signals dominate the ablation; similarity and retrieval-score
-features add little once NLI is present. Two val-only studies (pretrained
-cross-encoder reranking, neighbour-sentence premises) are reported in
-[RESULTS.md](docs/RESULTS.md) and are **not** part of the shipped path.
+features add little once NLI is present. The gain is statistically paired: McNemar
+p ≤ 2.4e-8 and every 95% bootstrap interval for Δ macro-F1 excludes zero. On the
+1,324 verifiable test claims, two thirds of hybrid errors are abstentions on claims
+the oracle answers correctly — the remaining loss is evidence coverage, not the
+decision rule. Two val-only studies (pretrained cross-encoder reranking,
+neighbour-sentence premises) are reported in [RESULTS.md](docs/RESULTS.md) and are
+**not** part of the shipped path. The serving scope is recorded in
+[SERVING_DECISION.md](docs/SERVING_DECISION.md): the learned model stays offline in
+v1 and the demo continues to serve the fixed rule.
 
 ## Frozen-rule evaluation (HaluEval)
 
@@ -85,8 +91,9 @@ FEVER, where claim-level gold labels exist. See the
 and the always-hallucinated reference.
 
 The UI now accepts optional source text; without it, the existing Wikipedia search
-runs. [Human review instructions](docs/REVIEW_GUIDE.md) cover the extraction flags,
-verification failure sample, and three unapplied JSON recovery proposals.
+runs. [Human review instructions](docs/REVIEW_GUIDE.md) cover the blind pilot, the
+extraction flags, the verification failure sample, and three unapplied JSON recovery
+proposals.
 
 ## 🚀 Quickstart & Setup
 
