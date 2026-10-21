@@ -217,6 +217,11 @@ def review_interactively(path: Path, suggestions_path: Path | None, limit: int |
         shutil.copy2(path, path.with_name(path.name + '.bak'))
     print(f'{len(queue)} of {len(rows)} rows pending; {reviewed} already reviewed. '
           'Ctrl+C saves and exits.')
+    definitions = (taxonomy or {}).get('verification', {}).get('definitions', {})
+    if kind == 'verification' and definitions:
+        print('\nCategory definitions:')
+        for name in categories:
+            print(f'  {name}: {definitions.get(name, "")}')
     for position, row in enumerate(queue, 1):
         suggestion = suggestions.get(suggestion_key(row))
         _show(row, suggestion, position, len(queue))

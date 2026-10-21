@@ -28,9 +28,10 @@ category and the four diagnostic Booleans are not collected.
 ```
 
 Suggestions are visible for the full pass; pressing Enter accepts the displayed
-value and records `suggestion_used`, while typing overrides it. After the pass,
-20% of rows are re-annotated blind (no suggestions) to measure intra-annotator
-agreement.
+value and records `suggestion_used`, while typing overrides it. Verification
+proposals suggest only a category, not a verdict: type `p` or `f` on every
+verification row. After the pass, 20% of rows are re-annotated blind (no
+suggestions) to measure intra-annotator agreement.
 
 ## v1 extraction queue
 
