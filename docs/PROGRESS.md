@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection — Progress Report
 
-> 2026-10-21 update: Stage 5 is now a fitted logistic combiner on FEVER (train -> val selection -> one test pass). Stage 6 categories are provisional LLM proposals. Paired McNemar/bootstrap tests and a verifiable-subset error decomposition are in [RESULTS.md](RESULTS.md); the blind 40-case taxonomy pilot passed (κ 0.88, category agreement 0.80, one row unannotated), so the full 274-row pass is the next scope. See [current implementation status](IMPLEMENTATION_STATUS.md).
+> 2026-10-21 update: Stage 5 is a fitted logistic combiner on FEVER (train -> val selection -> one test pass). v2 completed a calibration/selective-policy/coverage-flag study and used the one registered test pass. Test ECE improved to 0.023 and the policy answers 84.6% of verifiable claims at 94.1% precision, but Brier worsened slightly and the coverage flag missed its AUROC gate, so the learned detector **stays offline**. The 237-row human pass was replaced by LLM-proposed silver labels; only the 37 pilot rows are human. See `experiments/v2/REPORT.md` and [RESULTS.md](RESULTS.md).
 
 _Last updated: 2026-10-21 - Stages 0-7 implemented; canonical numbers in [RESULTS.md](RESULTS.md)_
 
@@ -25,7 +25,7 @@ flowchart LR
 | 3 | Retrieval + end-to-end 3-way FEVER | ✅ Done |
 | 4 | Claim extraction with LLM (HaluEval) | ✅ Done |
 | 5 | Hybrid detector + Experiments 1-6 + ablation | Done (learned Stage 5) |
-| 6 | Error analysis | Provisional: LLM first pass, human review pending |
+| 6 | Error analysis | v2 taxonomy + 274 labels (37 human, 237 silver); 40-row audit pending |
 | 7 | FastAPI backend + React frontend | Done |
 
 ---

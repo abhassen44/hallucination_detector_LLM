@@ -2,7 +2,7 @@
   "version": "v2",
   "created_utc": "2026-10-21T09:14:44+00:00",
   "amended_utc": "2026-10-21T09:22:52+00:00",
-  "status": "P1 labels materialized; P2 calibration next",
+  "status": "P4 complete; no promotion (Brier gate failed, coverage-flag AUROC failed)",
   "amendments": [
     "Extraction collects Pass/Fail only in v2: cause categories and the four diagnostic Booleans are not prompted. The 17 seeded pilot causes remain legacy metadata.",
     "The three seeded verification rows labelled nli_failure under v1 were mapped to verifier_error (evidence was present and clear in all three); the mapping is recorded in queue_seed.json.",
@@ -105,8 +105,11 @@
   },
   "test_budget": {
     "calibrated_system_passes": 1,
+    "calibrated_system_passes_used": 1,
     "retrieval_variant_passes": 1,
-    "rule": "Thresholds and policy are frozen on val before each pass; no iteration on test. Log every pass, including reruns forced by bugs."
+    "retrieval_variant_passes_used": 0,
+    "rule": "Thresholds and policy are frozen on val before each pass; no iteration on test. Log every pass, including reruns forced by bugs.",
+    "result": "experiments/v2/metrics_v2.json"
   },
   "calibration": {
     "method": "temperature scaling",

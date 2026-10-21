@@ -1,0 +1,604 @@
+{
+  "version": "v2-selective-policy",
+  "created_utc": "2026-10-21T11:46:11.667530+00:00",
+  "policy": {
+    "type": "class_conditional_threshold",
+    "rule": "answer argmax if calibrated p[argmax] >= threshold[argmax], else abstain",
+    "thresholds": {
+      "SUPPORTED": 0.5,
+      "CONTRADICTED": 0.38,
+      "INSUFFICIENT": 0.84
+    }
+  },
+  "calibration": {
+    "temperature": 1.1220127364908732,
+    "source": "experiments/v2/calibration.json"
+  },
+  "selection": {
+    "split": "val",
+    "mode": "fallback_verifiable_only",
+    "feasible_both_at_min_coverage": false,
+    "constraints": {
+      "min_overall_precision": 0.9,
+      "min_verifiable_precision": 0.94,
+      "min_coverage": 0.5,
+      "verifiable_precision_uses": "clopper-pearson 95% lower bound"
+    },
+    "search_grid": {
+      "start": 0.3,
+      "stop": 0.95,
+      "step": 0.01
+    }
+  },
+  "val_metrics": {
+    "coverage": 0.7197197197197197,
+    "answered_precision": 0.7315716272600834,
+    "n_answered": 719,
+    "verifiable_coverage": 0.8168168168168168,
+    "verifiable_precision": 0.9613970588235294,
+    "verifiable_precision_lower_95": 0.9415947842206639,
+    "nei_coverage": 0.5255255255255256,
+    "nei_precision": 0.017142857142857144,
+    "nei_abstention": 0.4744744744744745,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 333,
+        "coverage": 0.9009009009009009,
+        "precision": 0.9633333333333334
+      },
+      "CONTRADICTED": {
+        "n": 333,
+        "coverage": 0.7327327327327328,
+        "precision": 0.9590163934426229
+      },
+      "INSUFFICIENT": {
+        "n": 333,
+        "coverage": 0.5255255255255256,
+        "precision": 0.017142857142857144
+      }
+    }
+  },
+  "risk_coverage": [
+    {
+      "threshold": 0.3,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.31,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.32,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.33,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.34,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.35,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.36,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.37,
+      "coverage": 1.0,
+      "answered_precision": 0.6836836836836837,
+      "verifiable_coverage": 1.0,
+      "verifiable_precision": 0.7897897897897898,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.38,
+      "coverage": 0.998998998998999,
+      "answered_precision": 0.6843687374749499,
+      "verifiable_coverage": 0.9984984984984985,
+      "verifiable_precision": 0.7909774436090226,
+      "nei_coverage": 1.0
+    },
+    {
+      "threshold": 0.39,
+      "coverage": 0.996996996996997,
+      "answered_precision": 0.6857429718875502,
+      "verifiable_coverage": 0.996996996996997,
+      "verifiable_precision": 0.7921686746987951,
+      "nei_coverage": 0.996996996996997
+    },
+    {
+      "threshold": 0.4,
+      "coverage": 0.992992992992993,
+      "answered_precision": 0.6875,
+      "verifiable_coverage": 0.990990990990991,
+      "verifiable_precision": 0.7954545454545454,
+      "nei_coverage": 0.996996996996997
+    },
+    {
+      "threshold": 0.41,
+      "coverage": 0.98998998998999,
+      "answered_precision": 0.6885743174924166,
+      "verifiable_coverage": 0.9864864864864865,
+      "verifiable_precision": 0.7975646879756468,
+      "nei_coverage": 0.996996996996997
+    },
+    {
+      "threshold": 0.42,
+      "coverage": 0.988988988988989,
+      "answered_precision": 0.6882591093117408,
+      "verifiable_coverage": 0.984984984984985,
+      "verifiable_precision": 0.7972560975609756,
+      "nei_coverage": 0.996996996996997
+    },
+    {
+      "threshold": 0.43,
+      "coverage": 0.987987987987988,
+      "answered_precision": 0.6889564336372846,
+      "verifiable_coverage": 0.9834834834834835,
+      "verifiable_precision": 0.7984732824427481,
+      "nei_coverage": 0.996996996996997
+    },
+    {
+      "threshold": 0.44,
+      "coverage": 0.985985985985986,
+      "answered_precision": 0.6893401015228426,
+      "verifiable_coverage": 0.9819819819819819,
+      "verifiable_precision": 0.7996941896024465,
+      "nei_coverage": 0.993993993993994
+    },
+    {
+      "threshold": 0.45,
+      "coverage": 0.983983983983984,
+      "answered_precision": 0.6897253306205493,
+      "verifiable_coverage": 0.978978978978979,
+      "verifiable_precision": 0.8006134969325154,
+      "nei_coverage": 0.993993993993994
+    },
+    {
+      "threshold": 0.46,
+      "coverage": 0.978978978978979,
+      "answered_precision": 0.6901840490797546,
+      "verifiable_coverage": 0.975975975975976,
+      "verifiable_precision": 0.803076923076923,
+      "nei_coverage": 0.984984984984985
+    },
+    {
+      "threshold": 0.47,
+      "coverage": 0.973973973973974,
+      "answered_precision": 0.6916752312435765,
+      "verifiable_coverage": 0.972972972972973,
+      "verifiable_precision": 0.8040123456790124,
+      "nei_coverage": 0.975975975975976
+    },
+    {
+      "threshold": 0.48,
+      "coverage": 0.9569569569569569,
+      "answered_precision": 0.6976987447698745,
+      "verifiable_coverage": 0.963963963963964,
+      "verifiable_precision": 0.8037383177570093,
+      "nei_coverage": 0.9429429429429429
+    },
+    {
+      "threshold": 0.49,
+      "coverage": 0.938938938938939,
+      "answered_precision": 0.6993603411513859,
+      "verifiable_coverage": 0.954954954954955,
+      "verifiable_precision": 0.8050314465408805,
+      "nei_coverage": 0.9069069069069069
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9129129129129129,
+      "answered_precision": 0.706140350877193,
+      "verifiable_coverage": 0.924924924924925,
+      "verifiable_precision": 0.8165584415584416,
+      "nei_coverage": 0.8888888888888888
+    },
+    {
+      "threshold": 0.51,
+      "coverage": 0.8808808808808809,
+      "answered_precision": 0.7125,
+      "verifiable_coverage": 0.8918918918918919,
+      "verifiable_precision": 0.8282828282828283,
+      "nei_coverage": 0.8588588588588588
+    },
+    {
+      "threshold": 0.52,
+      "coverage": 0.8468468468468469,
+      "answered_precision": 0.7198581560283688,
+      "verifiable_coverage": 0.8753753753753754,
+      "verifiable_precision": 0.8336192109777015,
+      "nei_coverage": 0.7897897897897898
+    },
+    {
+      "threshold": 0.53,
+      "coverage": 0.8128128128128128,
+      "answered_precision": 0.7302955665024631,
+      "verifiable_coverage": 0.8453453453453453,
+      "verifiable_precision": 0.8507992895204263,
+      "nei_coverage": 0.7477477477477478
+    },
+    {
+      "threshold": 0.54,
+      "coverage": 0.7907907907907908,
+      "answered_precision": 0.739240506329114,
+      "verifiable_coverage": 0.8273273273273273,
+      "verifiable_precision": 0.8602540834845736,
+      "nei_coverage": 0.7177177177177178
+    },
+    {
+      "threshold": 0.55,
+      "coverage": 0.7637637637637638,
+      "answered_precision": 0.7522935779816514,
+      "verifiable_coverage": 0.8003003003003003,
+      "verifiable_precision": 0.8761726078799249,
+      "nei_coverage": 0.6906906906906907
+    },
+    {
+      "threshold": 0.56,
+      "coverage": 0.7417417417417418,
+      "answered_precision": 0.7584345479082322,
+      "verifiable_coverage": 0.7777777777777778,
+      "verifiable_precision": 0.8841698841698842,
+      "nei_coverage": 0.6696696696696697
+    },
+    {
+      "threshold": 0.57,
+      "coverage": 0.7137137137137137,
+      "answered_precision": 0.761570827489481,
+      "verifiable_coverage": 0.7522522522522522,
+      "verifiable_precision": 0.8922155688622755,
+      "nei_coverage": 0.6366366366366366
+    },
+    {
+      "threshold": 0.58,
+      "coverage": 0.7037037037037037,
+      "answered_precision": 0.7624466571834992,
+      "verifiable_coverage": 0.7417417417417418,
+      "verifiable_precision": 0.8947368421052632,
+      "nei_coverage": 0.6276276276276276
+    },
+    {
+      "threshold": 0.59,
+      "coverage": 0.6766766766766766,
+      "answered_precision": 0.7662721893491125,
+      "verifiable_coverage": 0.7282282282282282,
+      "verifiable_precision": 0.8989690721649485,
+      "nei_coverage": 0.5735735735735735
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.6536536536536537,
+      "answered_precision": 0.7733537519142419,
+      "verifiable_coverage": 0.7117117117117117,
+      "verifiable_precision": 0.9050632911392406,
+      "nei_coverage": 0.5375375375375375
+    },
+    {
+      "threshold": 0.61,
+      "coverage": 0.6316316316316316,
+      "answered_precision": 0.7765451664025357,
+      "verifiable_coverage": 0.6966966966966966,
+      "verifiable_precision": 0.9073275862068966,
+      "nei_coverage": 0.5015015015015015
+    },
+    {
+      "threshold": 0.62,
+      "coverage": 0.6146146146146146,
+      "answered_precision": 0.7817589576547231,
+      "verifiable_coverage": 0.6801801801801802,
+      "verifiable_precision": 0.9161147902869757,
+      "nei_coverage": 0.48348348348348347
+    },
+    {
+      "threshold": 0.63,
+      "coverage": 0.6026026026026026,
+      "answered_precision": 0.7840531561461794,
+      "verifiable_coverage": 0.6696696696696697,
+      "verifiable_precision": 0.9170403587443946,
+      "nei_coverage": 0.46846846846846846
+    },
+    {
+      "threshold": 0.64,
+      "coverage": 0.5795795795795796,
+      "answered_precision": 0.7875647668393783,
+      "verifiable_coverage": 0.6531531531531531,
+      "verifiable_precision": 0.9149425287356322,
+      "nei_coverage": 0.43243243243243246
+    },
+    {
+      "threshold": 0.65,
+      "coverage": 0.5605605605605606,
+      "answered_precision": 0.7928571428571428,
+      "verifiable_coverage": 0.6351351351351351,
+      "verifiable_precision": 0.9219858156028369,
+      "nei_coverage": 0.4114114114114114
+    },
+    {
+      "threshold": 0.66,
+      "coverage": 0.5455455455455456,
+      "answered_precision": 0.7944954128440367,
+      "verifiable_coverage": 0.6246246246246246,
+      "verifiable_precision": 0.9230769230769231,
+      "nei_coverage": 0.38738738738738737
+    },
+    {
+      "threshold": 0.67,
+      "coverage": 0.5295295295295295,
+      "answered_precision": 0.7977315689981096,
+      "verifiable_coverage": 0.6066066066066066,
+      "verifiable_precision": 0.9257425742574258,
+      "nei_coverage": 0.37537537537537535
+    },
+    {
+      "threshold": 0.68,
+      "coverage": 0.5145145145145145,
+      "answered_precision": 0.8035019455252919,
+      "verifiable_coverage": 0.5945945945945946,
+      "verifiable_precision": 0.9318181818181818,
+      "nei_coverage": 0.35435435435435436
+    },
+    {
+      "threshold": 0.69,
+      "coverage": 0.4944944944944945,
+      "answered_precision": 0.8076923076923077,
+      "verifiable_coverage": 0.575075075075075,
+      "verifiable_precision": 0.9347258485639687,
+      "nei_coverage": 0.3333333333333333
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.4724724724724725,
+      "answered_precision": 0.815677966101695,
+      "verifiable_coverage": 0.5540540540540541,
+      "verifiable_precision": 0.9349593495934959,
+      "nei_coverage": 0.30930930930930933
+    },
+    {
+      "threshold": 0.71,
+      "coverage": 0.44744744744744747,
+      "answered_precision": 0.8299776286353467,
+      "verifiable_coverage": 0.5315315315315315,
+      "verifiable_precision": 0.9491525423728814,
+      "nei_coverage": 0.27927927927927926
+    },
+    {
+      "threshold": 0.72,
+      "coverage": 0.42742742742742745,
+      "answered_precision": 0.8407494145199064,
+      "verifiable_coverage": 0.5105105105105106,
+      "verifiable_precision": 0.9529411764705882,
+      "nei_coverage": 0.26126126126126126
+    },
+    {
+      "threshold": 0.73,
+      "coverage": 0.4124124124124124,
+      "answered_precision": 0.8470873786407767,
+      "verifiable_coverage": 0.5015015015015015,
+      "verifiable_precision": 0.9520958083832335,
+      "nei_coverage": 0.23423423423423423
+    },
+    {
+      "threshold": 0.74,
+      "coverage": 0.3943943943943944,
+      "answered_precision": 0.8553299492385786,
+      "verifiable_coverage": 0.4864864864864865,
+      "verifiable_precision": 0.9537037037037037,
+      "nei_coverage": 0.21021021021021022
+    },
+    {
+      "threshold": 0.75,
+      "coverage": 0.3783783783783784,
+      "answered_precision": 0.8571428571428571,
+      "verifiable_coverage": 0.46846846846846846,
+      "verifiable_precision": 0.9551282051282052,
+      "nei_coverage": 0.1981981981981982
+    },
+    {
+      "threshold": 0.76,
+      "coverage": 0.35435435435435436,
+      "answered_precision": 0.8615819209039548,
+      "verifiable_coverage": 0.43843843843843844,
+      "verifiable_precision": 0.958904109589041,
+      "nei_coverage": 0.18618618618618618
+    },
+    {
+      "threshold": 0.77,
+      "coverage": 0.3383383383383383,
+      "answered_precision": 0.8698224852071006,
+      "verifiable_coverage": 0.4219219219219219,
+      "verifiable_precision": 0.9608540925266904,
+      "nei_coverage": 0.17117117117117117
+    },
+    {
+      "threshold": 0.78,
+      "coverage": 0.3133133133133133,
+      "answered_precision": 0.8753993610223643,
+      "verifiable_coverage": 0.3993993993993994,
+      "verifiable_precision": 0.9661654135338346,
+      "nei_coverage": 0.14114114114114115
+    },
+    {
+      "threshold": 0.79,
+      "coverage": 0.2902902902902903,
+      "answered_precision": 0.8758620689655172,
+      "verifiable_coverage": 0.3768768768768769,
+      "verifiable_precision": 0.9641434262948207,
+      "nei_coverage": 0.11711711711711711
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.25925925925925924,
+      "answered_precision": 0.8803088803088803,
+      "verifiable_coverage": 0.33783783783783783,
+      "verifiable_precision": 0.9644444444444444,
+      "nei_coverage": 0.1021021021021021
+    },
+    {
+      "threshold": 0.81,
+      "coverage": 0.23123123123123124,
+      "answered_precision": 0.8874458874458875,
+      "verifiable_coverage": 0.3063063063063063,
+      "verifiable_precision": 0.9656862745098039,
+      "nei_coverage": 0.08108108108108109
+    },
+    {
+      "threshold": 0.82,
+      "coverage": 0.2032032032032032,
+      "answered_precision": 0.8817733990147784,
+      "verifiable_coverage": 0.26576576576576577,
+      "verifiable_precision": 0.9717514124293786,
+      "nei_coverage": 0.07807807807807808
+    },
+    {
+      "threshold": 0.83,
+      "coverage": 0.17717717717717718,
+      "answered_precision": 0.8813559322033898,
+      "verifiable_coverage": 0.23573573573573572,
+      "verifiable_precision": 0.9745222929936306,
+      "nei_coverage": 0.06006006006006006
+    },
+    {
+      "threshold": 0.84,
+      "coverage": 0.16316316316316315,
+      "answered_precision": 0.8773006134969326,
+      "verifiable_coverage": 0.2147147147147147,
+      "verifiable_precision": 0.9790209790209791,
+      "nei_coverage": 0.06006006006006006
+    },
+    {
+      "threshold": 0.85,
+      "coverage": 0.14814814814814814,
+      "answered_precision": 0.8716216216216216,
+      "verifiable_coverage": 0.19369369369369369,
+      "verifiable_precision": 0.9844961240310077,
+      "nei_coverage": 0.057057057057057055
+    },
+    {
+      "threshold": 0.86,
+      "coverage": 0.11811811811811812,
+      "answered_precision": 0.8728813559322034,
+      "verifiable_coverage": 0.15315315315315314,
+      "verifiable_precision": 0.9901960784313726,
+      "nei_coverage": 0.04804804804804805
+    },
+    {
+      "threshold": 0.87,
+      "coverage": 0.0980980980980981,
+      "answered_precision": 0.8775510204081632,
+      "verifiable_coverage": 0.12762762762762764,
+      "verifiable_precision": 0.9882352941176471,
+      "nei_coverage": 0.03903903903903904
+    },
+    {
+      "threshold": 0.88,
+      "coverage": 0.08208208208208208,
+      "answered_precision": 0.8780487804878049,
+      "verifiable_coverage": 0.10810810810810811,
+      "verifiable_precision": 0.9861111111111112,
+      "nei_coverage": 0.03003003003003003
+    },
+    {
+      "threshold": 0.89,
+      "coverage": 0.06706706706706707,
+      "answered_precision": 0.8805970149253731,
+      "verifiable_coverage": 0.08858858858858859,
+      "verifiable_precision": 0.9830508474576272,
+      "nei_coverage": 0.024024024024024024
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.057057057057057055,
+      "answered_precision": 0.8596491228070176,
+      "verifiable_coverage": 0.07507507507507508,
+      "verifiable_precision": 0.98,
+      "nei_coverage": 0.021021021021021023
+    },
+    {
+      "threshold": 0.91,
+      "coverage": 0.04904904904904905,
+      "answered_precision": 0.8775510204081632,
+      "verifiable_coverage": 0.06456456456456457,
+      "verifiable_precision": 1.0,
+      "nei_coverage": 0.018018018018018018
+    },
+    {
+      "threshold": 0.92,
+      "coverage": 0.042042042042042045,
+      "answered_precision": 0.8809523809523809,
+      "verifiable_coverage": 0.05555555555555555,
+      "verifiable_precision": 1.0,
+      "nei_coverage": 0.015015015015015015
+    },
+    {
+      "threshold": 0.93,
+      "coverage": 0.03303303303303303,
+      "answered_precision": 0.9090909090909091,
+      "verifiable_coverage": 0.04504504504504504,
+      "verifiable_precision": 1.0,
+      "nei_coverage": 0.009009009009009009
+    },
+    {
+      "threshold": 0.94,
+      "coverage": 0.02902902902902903,
+      "answered_precision": 0.896551724137931,
+      "verifiable_coverage": 0.03903903903903904,
+      "verifiable_precision": 1.0,
+      "nei_coverage": 0.009009009009009009
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.023023023023023025,
+      "answered_precision": 0.8695652173913043,
+      "verifiable_coverage": 0.03003003003003003,
+      "verifiable_precision": 1.0,
+      "nei_coverage": 0.009009009009009009
+    }
+  ],
+  "test_gate": {
+    "verifiable_precision_min": 0.94,
+    "verifiable_precision_lower_95_min": 0.9,
+    "coverage_min": 0.5,
+    "verifiable_coverage_min": 0.75,
+    "answered_precision_min": 0.7,
+    "note": "The overall 90% precision target was infeasible at >=50% coverage on val; the fallback selects max coverage subject to the verifiable target. Test must meet these frozen minimums, not reproduce val exactly."
+  },
+  "notes": [
+    "No test data was read; thresholds are frozen for the single P4 pass.",
+    "The selected thresholds maximise coverage on val under the fallback; class-specific thresholds are not a per-class precision guarantee.",
+    "NEI coverage is reported separately: a confident wrong verdict on an NEI claim is still an error even when the verifiable subset looks strong."
+  ]
+}

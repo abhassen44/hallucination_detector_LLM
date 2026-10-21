@@ -1,0 +1,244 @@
+{
+  "version": "v2-calibration",
+  "created_utc": "2026-10-21T10:48:20.644127+00:00",
+  "method": "hybrid",
+  "base_model": {
+    "fit_split": "train",
+    "selection_split": "val (v1 selected C, frozen here)",
+    "C": 1.0,
+    "seed": 42,
+    "n_train": 3000,
+    "n_val": 999,
+    "val_macro_f1": 0.6763644683287465,
+    "v1_val_macro_f1": 0.6763644683287465,
+    "train_ids_sha256": "ef686e6f3b3a3b92fb68a22e90188963162a5b783429a3cdf111a002fb6d1848",
+    "val_ids_sha256": "96a92c0adf159aacc5a2ec4e39a4764b8671a6e972065a02891e0414c748af1d"
+  },
+  "calibrator": {
+    "method": "temperature scaling",
+    "cross_fit_folds": 2,
+    "fold_temperatures": [
+      1.1352724946985868,
+      1.108031012943568
+    ],
+    "final_temperature": 1.1220127364908732,
+    "fit_split": "val",
+    "note": "Reported metrics are out-of-fold; the full-val temperature is for serving."
+  },
+  "uncalibrated": {
+    "n": 999,
+    "accuracy": 0.6836836836836837,
+    "nll": 0.7085827953142414,
+    "brier": 0.4230311832023042,
+    "ece_10bin": 0.033171917413261344,
+    "mean_confidence": 0.7089738192019218,
+    "macro_f1": 0.6763644683287465
+  },
+  "calibrated_oof": {
+    "n": 999,
+    "accuracy": 0.6836836836836837,
+    "nll": 0.7057153813086853,
+    "brier": 0.42209865323710144,
+    "ece_10bin": 0.023005731059993994,
+    "mean_confidence": 0.6847867690255106,
+    "macro_f1": 0.6763644683287465
+  },
+  "per_class_ece": {
+    "uncalibrated": {
+      "SUPPORTED": 0.023317170912993866,
+      "CONTRADICTED": 0.03242077231166491,
+      "INSUFFICIENT": 0.04362338842092505
+    },
+    "calibrated_oof": {
+      "SUPPORTED": 0.0387277338206273,
+      "CONTRADICTED": 0.030653490015535627,
+      "INSUFFICIENT": 0.026945248774650692
+    }
+  },
+  "reliability": {
+    "uncalibrated": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "n": 3,
+        "mean_confidence": 0.38583550664593375,
+        "accuracy": 0.0
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "n": 62,
+        "mean_confidence": 0.4737524990145695,
+        "accuracy": 0.46774193548387094
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6000000000000001,
+        "n": 235,
+        "mean_confidence": 0.5463229715086724,
+        "accuracy": 0.5148936170212766
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "n": 174,
+        "mean_confidence": 0.6477402995019027,
+        "accuracy": 0.6494252873563219
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "n": 183,
+        "mean_confidence": 0.7507979297772039,
+        "accuracy": 0.6775956284153005
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "n": 243,
+        "mean_confidence": 0.8492026248152459,
+        "accuracy": 0.8641975308641975
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "n": 99,
+        "mean_confidence": 0.9382799447139036,
+        "accuracy": 0.8686868686868687
+      }
+    ],
+    "calibrated_oof": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "n": 7,
+        "mean_confidence": 0.39004049373597366,
+        "accuracy": 0.14285714285714285
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "n": 80,
+        "mean_confidence": 0.47669367585726674,
+        "accuracy": 0.475
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6000000000000001,
+        "n": 259,
+        "mean_confidence": 0.5451396996811794,
+        "accuracy": 0.5366795366795367
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "n": 181,
+        "mean_confidence": 0.65036747848353,
+        "accuracy": 0.6629834254143646
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "n": 213,
+        "mean_confidence": 0.7531611189504949,
+        "accuracy": 0.7370892018779343
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "n": 202,
+        "mean_confidence": 0.8432827468230527,
+        "accuracy": 0.8861386138613861
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "n": 57,
+        "mean_confidence": 0.939685538843782,
+        "accuracy": 0.8596491228070176
+      }
+    ]
+  },
+  "gate": {
+    "min_relative_ece_reduction": 0.25,
+    "relative_ece_reduction": 0.30646966307721335,
+    "brier_not_worse": true,
+    "passed": true
+  },
+  "bootstrap_refits": {
+    "n_resamples": 200,
+    "resample": "train rows, with replacement",
+    "evaluated_on": "val",
+    "macro_f1": {
+      "mean": 0.6720840505645032,
+      "std": 0.005706362921690196,
+      "lower_95": 0.6608960602869028,
+      "upper_95": 0.683672686692996
+    },
+    "accuracy": {
+      "mean": 0.6788338338338338,
+      "std": 0.005127840591629722,
+      "lower_95": 0.6696446446446447,
+      "upper_95": 0.6897147147147147
+    },
+    "ece_10bin": {
+      "mean": 0.03823447589342062,
+      "std": 0.007514246368731373,
+      "lower_95": 0.023194203938956975,
+      "upper_95": 0.053140569306738515
+    },
+    "brier": {
+      "mean": 0.42795547040118864,
+      "std": 0.002874519676625521,
+      "lower_95": 0.4226448905206262,
+      "upper_95": 0.43345275035611475
+    }
+  },
+  "notes": [
+    "No test data was read; the test split is untouched.",
+    "C was selected on val in v1, so val is not fully pristine for calibration. The calibrator is one-dimensional and cross-fitted; report the caveat.",
+    "Bootstrap refits vary training rows only; they do not vary the val sample."
+  ]
+}

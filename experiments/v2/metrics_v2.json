@@ -1,0 +1,178 @@
+{
+  "version": "v2-test-pass",
+  "created_utc": "2026-10-21T11:47:19.005104+00:00",
+  "test_pass": 1,
+  "inputs": {
+    "predictions": {
+      "path": "experiments\\stage5_learned\\predictions_hybrid.jsonl",
+      "sha256": "3a7c613b1900f0f7d463b559a01a0b554ad026eb312e763ae90b56ea21807117"
+    },
+    "policy": {
+      "path": "experiments\\v2\\policy.json",
+      "sha256": "c2076fd148f915115ae4fe3b6e7e983b96c66756b7c97bcab40640d19fce7f0a"
+    },
+    "calibration": {
+      "path": "experiments\\v2\\calibration.json",
+      "sha256": "a1478ed642ad15f423547a260a852d364fb2839fe77e62594883e2d9b91f73cc"
+    },
+    "coverage_flag": {
+      "path": "experiments\\v2\\coverage_flag.json",
+      "sha256": "06df1abcbfdd41e4abd2c52c4cd2c1fb41a78499b50cbeb62dbdb652abb9e5be"
+    },
+    "test_split": {
+      "path": "data\\splits\\fever_test.jsonl",
+      "sha256": "1da0770f89cb5346cd6c8f4e325a449ce26cb9e5972f1f63ffd6d542b68a3364"
+    }
+  },
+  "system": {
+    "temperature": 1.1220127364908732,
+    "thresholds": {
+      "SUPPORTED": 0.5,
+      "CONTRADICTED": 0.38,
+      "INSUFFICIENT": 0.84
+    },
+    "coverage_flag_threshold": 0.5743767319078739
+  },
+  "overall": {
+    "n": 1998,
+    "uncalibrated": {
+      "accuracy": 0.7082082082082082,
+      "macro_f1": 0.7020233614802173,
+      "ece_10bin": 0.027999416172683436,
+      "brier": 0.3965608888154419,
+      "nll": 0.6780027032091398
+    },
+    "calibrated": {
+      "accuracy": 0.7082082082082082,
+      "macro_f1": 0.7020233614802173,
+      "ece_10bin": 0.02278725893881364,
+      "brier": 0.3972521931078676,
+      "nll": 0.677458335948659,
+      "macro_f1_bootstrap": {
+        "mean": 0.7020244419733094,
+        "lower_95": 0.6821344184321442,
+        "upper_95": 0.7213119192467239,
+        "n_resamples": 2000
+      }
+    }
+  },
+  "selective": {
+    "coverage": 0.7247247247247247,
+    "answered_precision": 0.7354972375690608,
+    "n_answered": 1448,
+    "verifiable_coverage": 0.8460960960960962,
+    "verifiable_precision": 0.9414374445430346,
+    "verifiable_precision_lower_95": 0.9260934021268149,
+    "nei_coverage": 0.481981981981982,
+    "nei_precision": 0.012461059190031152,
+    "nei_abstention": 0.5180180180180181,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 666,
+        "coverage": 0.9234234234234234,
+        "precision": 0.9495934959349593
+      },
+      "CONTRADICTED": {
+        "n": 666,
+        "coverage": 0.7687687687687688,
+        "precision": 0.931640625
+      },
+      "INSUFFICIENT": {
+        "n": 666,
+        "coverage": 0.481981981981982,
+        "precision": 0.012461059190031152
+      }
+    },
+    "bootstrap": {
+      "answered_precision": {
+        "mean": 0.7353774568192327,
+        "lower_95": 0.7133184035368124,
+        "upper_95": 0.7577918756387776,
+        "n_resamples": 2000
+      },
+      "verifiable_precision": {
+        "mean": 0.9412944305252908,
+        "lower_95": 0.9269802835685562,
+        "upper_95": 0.9547869173521347,
+        "n_resamples": 2000
+      },
+      "coverage": {
+        "mean": 0.7247342342342342,
+        "lower_95": 0.7047047047047047,
+        "upper_95": 0.7437437437437437,
+        "n_resamples": 2000
+      },
+      "verifiable_coverage": {
+        "mean": 0.8462842729584201,
+        "lower_95": 0.8272950422684043,
+        "upper_95": 0.8647073873409014,
+        "n_resamples": 2000
+      }
+    }
+  },
+  "coverage_flag": {
+    "metrics": {
+      "n": 1332,
+      "n_flagged": 203,
+      "flag_rate": 0.1524024024024024,
+      "failure_rate": 0.11411411411411411,
+      "flagged_failure_rate": 0.2955665024630542,
+      "base_error_rate": 0.19594594594594594,
+      "flagged_error_rate": 0.5221674876847291,
+      "error_enrichment": 2.6648547647358587,
+      "base_false_abstention_rate": 0.1463963963963964,
+      "flagged_false_abstention_rate": 0.4975369458128079,
+      "false_abstention_enrichment": 3.398560060629026,
+      "auroc": 0.7337421944692238,
+      "average_precision": 0.3338335308611593
+    },
+    "gate": {
+      "min_auroc": 0.75,
+      "min_error_enrichment": 2.0,
+      "max_flag_rate": 0.25,
+      "passed": false,
+      "consequence": "omit the flag from serving; report it as a diagnostic"
+    }
+  },
+  "gates": {
+    "macro_f1": {
+      "min": 0.697,
+      "value": 0.7020233614802173,
+      "passed": true
+    },
+    "calibration": {
+      "max_ece": 0.05,
+      "ece": 0.02278725893881364,
+      "brier_not_worse": false,
+      "passed": false
+    },
+    "selective_policy": {
+      "verifiable_precision_min": 0.94,
+      "verifiable_precision_lower_95_min": 0.9,
+      "coverage_min": 0.5,
+      "verifiable_coverage_min": 0.75,
+      "answered_precision_min": 0.7,
+      "passed": true
+    },
+    "coverage_flag": {
+      "min_auroc": 0.75,
+      "min_error_enrichment": 2.0,
+      "max_flag_rate": 0.25,
+      "passed": false,
+      "consequence": "omit the flag from serving; report it as a diagnostic"
+    },
+    "promotion": false
+  },
+  "notes": [
+    "Macro-F1 uses the classifier verdicts; abstention is a serving layer and does not rewrite the verdict path, so the frozen model cannot regress it.",
+    "The coverage flag is optional for promotion; if its gate fails it is omitted.",
+    "Thresholds and temperature were frozen before this pass; no test-driven tuning."
+  ],
+  "post_pass_corrections": [
+    {
+      "created_utc": "2026-10-21T11:48:16.979763+00:00",
+      "field": "selective.bootstrap.coverage and verifiable_coverage",
+      "reason": "Corrected the bootstrap denominators: coverage now resamples the full row set, verifiable coverage resamples verifiable rows only. Recomputed from saved test_predictions_v2.jsonl; point estimates and gates are unchanged. No new test evaluation."
+    }
+  ]
+}

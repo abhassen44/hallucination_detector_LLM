@@ -10,11 +10,23 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 |---|---|---|
 | P0 | Freeze v1, scaffold, protocol, seed pilot judgments | **Done** |
 | P1 | Taxonomy v2, proposals, 274/274 labels, optional human audit | **Done** — 37 human + 237 LLM-proposed labels; audit optional |
-| P2 | Calibration + training variance (val only) | Pending |
-| P3 | Selective policy + coverage flag (val only) | Pending |
-| P4 | One test pass for the calibrated system | Pending |
-| P5 | Serving decision / feature flag | Pending |
-| P6 | Retrieval variant (stretch, one test pass) | Pending |
+| P2 | Calibration + training variance (val only) | **Done** — ECE gate pass |
+| P3 | Selective policy + coverage flag (val only) | **Done** — policy frozen; flag passes val |
+| P4 | One test pass for the calibrated system | **Done** — Brier and flag AUROC fail |
+| P5 | Serving decision / feature flag | **Done** — no promotion |
+| P6 | Retrieval variant (stretch, one test pass) | Not attempted — serving is blocked by calibration, not macro-F1 |
+
+## Outcome
+
+Test macro-F1 is unchanged at **0.7020**. Calibration cuts ECE to **0.0228** but
+raises Brier from 0.39656 to 0.39725, failing the pre-registered “no worse” gate.
+The selective policy answers **84.6%** of verifiable claims at **94.1%** precision
+and 72.5% of all claims at 73.6%; the coverage flag misses its test AUROC gate
+(0.734 vs 0.75) and is omitted. **The learned model stays offline**; the fixed rule
+stays the default.
+
+Full write-up: [REPORT.md](REPORT.md). Serving decision:
+[../docs/SERVING_DECISION_V2.md](../docs/SERVING_DECISION_V2.md).
 
 ## P0 result
 

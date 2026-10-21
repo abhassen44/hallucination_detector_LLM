@@ -278,6 +278,45 @@ The pilot is balanced by design, not a prevalence sample. Protocol and commands 
 in `experiments/pilot_v1/PILOT.md`; the scored artifact is
 `experiments/pilot_v1/pilot_agreement.json`.
 
+## v2 - calibration, selective policy, coverage flag
+
+v2 froze the v1 verdict path and added a validity/serving layer. The full report is
+in `experiments/v2/REPORT.md`; the serving decision is
+[SERVING_DECISION_V2.md](SERVING_DECISION_V2.md).
+
+**Labels.** The 237-row human pass was replaced by materialized LLM proposals at
+the user's direction: 37 rows keep their human pilot verdict, 237 are silver labels
+(`human_reviewed: false`). Pilot noise: extraction κ 0.881 (n=17), verification
+category agreement 0.75 (n=20). Taxonomy v2 splits `nli_failure` into
+`verifier_error` and keeps `ambiguous_evidence` distinct. A 40-row blind audit is
+generated but not completed.
+
+**Calibration (val, out-of-fold).** Temperature 1.122 with 2-fold cross-fitting:
+ECE 0.03317 → 0.02301 (30.6% relative reduction), Brier 0.42303 → 0.42210, NLL
+0.70858 → 0.70572. Two hundred bootstrap refits on train: val macro-F1
+0.6721 ± 0.0057, 95% [0.6609, 0.6837].
+
+**Selective policy (val).** Class-conditional thresholds, selected under the
+fallback because 90% overall precision was infeasible at ≥50% coverage:
+SUPPORTED 0.50, CONTRADICTED 0.38, INSUFFICIENT 0.84. Val coverage 0.7197,
+answered precision 0.7316, verifiable coverage 0.8168 and precision 0.9614
+(CP lower 0.9416). NEI coverage 0.5255 at 0.0171 precision.
+
+**Coverage flag (val).** Predicts strict retrieval failure; AUROC 0.774, flag rate
+0.191, error enrichment 2.40× (bootstrap lower 2.09), false-abstention enrichment
+2.78×.
+
+**Single test pass.** Macro-F1 0.70202 (unchanged), ECE 0.02279, Brier 0.39725 vs
+0.39656 uncalibrated. The policy answered 84.61% of verifiable claims at 94.14%
+precision (CP lower 92.61%), 72.47% of all claims at 73.55% precision, and 48.20%
+of NEI claims at 1.25% precision. The coverage flag reached AUROC 0.734 (gate 0.75)
+but enriched errors 2.66× and false abstentions 3.40×; it is omitted from serving.
+
+**Decision.** No promotion: the Brier “no worse” gate failed by 0.00069 (paired 95%
+CI [-0.00079, 0.00219], so not distinguishable from zero, but the gate was
+pre-registered as a point comparison), and the flag missed its AUROC gate. The
+learned detector remains offline; the fixed rule stays the default.
+
 ## Reproduce
 
 ```sh
@@ -293,13 +332,18 @@ python -m scripts.reproduce --stage all --include-heavy
 
 - **Corpus coverage dominates open-domain behaviour.** The 247,848-sentence
   FEVER-derived corpus is the main reason the HaluEval Wikipedia rows sit at chance.
-- **Single-seed model.** The bootstrap interval covers test sampling noise, not
-  training variance.
+- **Single-seed point estimate.** v2 adds 200 bootstrap refits on train (val
+  macro-F1 0.6721 ± 0.0057), but the reported model is still one seed; the test
+  interval covers sampling noise, not the full training distribution.
 - **Linear combiner.** Interactions are only captured through explicit features.
-- **Uncalibrated probabilities.** Reported probabilities are model outputs, not
-  confidence in factual truth.
+- **Calibration is not served.** Temperature scaling lowers ECE but slightly worsens
+  Brier on test; the learned path remains offline, so raw probabilities are not
+  presented as calibrated confidence.
 - **NLI is MNLI-only.** No FEVER-tuned checkpoint is used, which avoids leakage but
   leaves in-domain performance lower than a FEVER-trained model would give.
-- **Human annotation incomplete.** The taxonomy passed a 40-case blind pilot (κ 0.88,
-  category agreement 0.80, one row unannotated), but the full 274-row pass is
-  unassigned, so population-level qualitative claims remain provisional.
+- **NEI remains unsolved.** The v2 policy abstains on 51.8% of NEI test claims, but
+  the 48.2% it still answers are wrong 98.8% of the time; overall answered precision
+  is 73.6%, not 90%.
+- **Labels are mostly silver.** Only 37 of 274 taxonomy labels are human; the other
+  237 are LLM proposals, and the 40-row blind audit is pending. Population-level
+  failure-mode counts remain provisional.

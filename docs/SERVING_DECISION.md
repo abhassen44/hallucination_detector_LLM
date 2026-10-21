@@ -72,3 +72,16 @@ on Stage 5 artifacts.
    distribution and requires a refit plus a new single test pass.
 
 Promotion to serving requires all four, not just a higher offline macro-F1.
+
+## v2 update (2026-10-21)
+
+The v2 calibration study is complete and the learned detector **still stays
+offline**. Test ECE improved (0.0280 → 0.0228) and the frozen selective policy
+answers 84.6% of verifiable claims at 94.1% precision, but Brier worsened by
+0.00069, failing the pre-registered “no worse” gate. The coverage flag also missed
+its test AUROC gate (0.734 vs 0.75) and is not served. See
+[SERVING_DECISION_V2.md](SERVING_DECISION_V2.md) for the full gate table.
+
+Revision to point 6 above: v2 did not complete a 274-row human pass. It materialized
+237 LLM proposals as **silver labels** and kept only the 37 pilot judgments as human
+labels; a 40-row human audit is pending. Failure-mode counts remain provisional.
