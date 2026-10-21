@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-21T09:14:34.416859+00:00",
+  "created_utc": "2026-10-21T09:22:43.868798+00:00",
   "key": "(id, condition)",
   "queues": {
     "extraction": {
@@ -12,6 +12,7 @@
       "n_pilot_rows": 20,
       "n_seeded": 17,
       "n_skipped": 3,
+      "n_migrated": 0,
       "seeded": [
         {
           "id": "halueval-qa-698-hallucinated",
@@ -138,7 +139,8 @@
           "had_open_coding": false,
           "had_category": false
         }
-      ]
+      ],
+      "migrated": []
     },
     "verification": {
       "source": "experiments\\stage5_inference\\error_review.jsonl",
@@ -150,6 +152,7 @@
       "n_pilot_rows": 20,
       "n_seeded": 20,
       "n_skipped": 0,
+      "n_migrated": 3,
       "seeded": [
         {
           "id": "halueval-qa-2497-right",
@@ -161,7 +164,7 @@
           "id": "halueval-qa-1201-right",
           "condition": "provided_extracted_claims",
           "verdict": "Fail",
-          "category": "nli_failure"
+          "category": "verifier_error"
         },
         {
           "id": "halueval-qa-4468-right",
@@ -185,7 +188,7 @@
           "id": "halueval-qa-9318-hallucinated",
           "condition": "provided_extracted_claims",
           "verdict": "Fail",
-          "category": "nli_failure"
+          "category": "verifier_error"
         },
         {
           "id": "halueval-qa-2667-hallucinated",
@@ -251,7 +254,7 @@
           "id": "halueval-qa-9495-right",
           "condition": "hybrid_extracted_claims",
           "verdict": "Fail",
-          "category": "nli_failure"
+          "category": "verifier_error"
         },
         {
           "id": "halueval-qa-2921-right",
@@ -272,7 +275,27 @@
           "category": "retrieval_failure"
         }
       ],
-      "skipped": []
+      "skipped": [],
+      "migrated": [
+        {
+          "id": "halueval-qa-1201-right",
+          "condition": "provided_extracted_claims",
+          "from": "nli_failure",
+          "to": "verifier_error"
+        },
+        {
+          "id": "halueval-qa-9318-hallucinated",
+          "condition": "provided_extracted_claims",
+          "from": "nli_failure",
+          "to": "verifier_error"
+        },
+        {
+          "id": "halueval-qa-9495-right",
+          "condition": "hybrid_extracted_claims",
+          "from": "nli_failure",
+          "to": "verifier_error"
+        }
+      ]
     }
   },
   "outputs": {
@@ -282,7 +305,7 @@
     },
     "experiments\\v2\\queues\\verification.jsonl": {
       "n_rows": 103,
-      "sha256": "e298e701501d97d3d17ff5c4f9dcd64a20860aed47bc9cb564a009bbcc1ef20c"
+      "sha256": "d61d171beab1c010dd05af61a73523e2026af13ff4342738d67a3bdb8a3c3db5"
     }
   }
 }

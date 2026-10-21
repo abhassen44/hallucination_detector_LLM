@@ -44,17 +44,24 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def seed_queue(rows: list[dict], pilot_rows: list[dict]) -> tuple[list[dict], dict]:
-    """Copy pilot verdicts into ``rows`` in place and report what happened."""
+def seed_queue(rows: list[dict], pilot_rows: list[dict],
+               category_map: dict[str, str] | None = None) -> tuple[list[dict], dict]:
+    """Copy pilot verdicts into ``rows`` in place and report what happened.
+
+    ``category_map`` translates categories that taxonomy v2 renamed. Applying it
+    at seed time keeps the queue consistent; the mapping is recorded in the
+    manifest rather than hidden in the queue.
+    """
     index = {review_key(row): row for row in rows}
     seeded: list[dict] = []
     skipped: list[dict] = []
+    migrated: list[dict] = []
     for pilot in pilot_rows:
         key = review_key(pilot)
         if key not in index:
             raise KeyError(f'pilot row {key} is not in the full queue')
         target = index[key]
-        review = pilot.get('human_review') or {}
+        review = dict(pilot.get('human_review') or {})
         verdict = review.get('pass_fail_assessment')
         if not verdict:
             skipped.append({
@@ -68,11 +75,16 @@ def seed_queue(rows: list[dict], pilot_rows: list[dict]) -> tuple[list[dict], di
         existing = current.get('pass_fail_assessment')
         if existing not in (None, '', verdict):
             raise ValueError(f'conflicting verdict for {key}: {existing!r} vs {verdict!r}')
+        legacy = review.get('category')
+        if category_map and legacy in category_map:
+            review['category'] = category_map[legacy]
+            migrated.append({'id': key[0], 'condition': key[1], 'from': legacy,
+                             'to': review['category']})
         target['human_review'] = {**current, **review}
         target['review_meta'] = dict(pilot.get('review_meta') or {})
         seeded.append({'id': key[0], 'condition': key[1], 'verdict': verdict,
                        'category': review.get('category')})
-    return rows, {'seeded': seeded, 'skipped': skipped}
+    return rows, {'seeded': seeded, 'skipped': skipped, 'migrated': migrated}
 
 
 def main() -> None:
@@ -93,7 +105,8 @@ def main() -> None:
     for kind in ('extraction', 'verification'):
         rows = list(read_jsonl(SOURCES[kind]))
         pilot_rows = list(read_jsonl(PILOT[kind]))
-        rows, result = seed_queue(rows, pilot_rows)
+        category_map = {'nli_failure': 'verifier_error'} if kind == 'verification' else None
+        rows, result = seed_queue(rows, pilot_rows, category_map=category_map)
         output = OUTPUT_DIR / f'{kind}.jsonl'
         write_jsonl(output, rows)
         keys = [review_key(row) for row in rows]
@@ -110,8 +123,10 @@ def main() -> None:
             'n_pilot_rows': len(pilot_rows),
             'n_seeded': len(result['seeded']),
             'n_skipped': len(result['skipped']),
+            'n_migrated': len(result['migrated']),
             'seeded': result['seeded'],
             'skipped': result['skipped'],
+            'migrated': result['migrated'],
         }
         report['outputs'][str(output.relative_to(PROJECT_ROOT))] = {
             'n_rows': len(rows), 'sha256': sha256(output),
@@ -120,7 +135,7 @@ def main() -> None:
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({kind: {field: value for field, value in queue.items()
-                             if field not in ('seeded', 'skipped')}
+                             if field not in ('seeded', 'skipped', 'migrated')}
                       for kind, queue in report['queues'].items()}, indent=2))
     print(f'Saved -> {MANIFEST.relative_to(PROJECT_ROOT)}')
 

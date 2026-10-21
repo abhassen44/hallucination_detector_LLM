@@ -1,0 +1,46 @@
+{
+  "version": "v2",
+  "created_utc": "2026-10-21T09:16:39+00:00",
+  "verification": {
+    "categories": [
+      "retrieval_failure",
+      "claim_extraction_failure",
+      "verifier_error",
+      "ambiguous_evidence",
+      "numerical_reasoning",
+      "temporal_information",
+      "entity_confusion",
+      "multi_hop_reasoning"
+    ],
+    "definitions": {
+      "retrieval_failure": "The inputs shown to the verifier omit evidence needed to settle the claim: the retrieved passages are silent or truncated, or the supporting passage was not retrieved. Do not use when the needed span is present.",
+      "claim_extraction_failure": "The claim text misrepresents the answer: it adds content, drops a constraint, shifts the subject, or leaks the question. The verifier is judging the wrong proposition.",
+      "verifier_error": "The needed evidence span is present in the inputs with a clear entailment or contradiction, but the NLI probabilities or claim aggregation produced the wrong verdict.",
+      "ambiguous_evidence": "No span in the inputs clearly entails or contradicts the claim. The evidence is silent, partial, or internally conflicting, so the shown evidence cannot settle the claim.",
+      "numerical_reasoning": "The error hinges on a count, arithmetic, unit conversion, or numeric comparison (not a simple year/date mismatch).",
+      "temporal_information": "The error hinges on tense, event order, or a date/year mismatch.",
+      "entity_confusion": "The error confuses two entities, aliases, or people with similar names.",
+      "multi_hop_reasoning": "Settling the claim requires combining two or more separate evidence spans or facts."
+    },
+    "precedence": [
+      "If the claim text is not a faithful proposition from the answer, use claim_extraction_failure.",
+      "Else if the needed evidence is absent or truncated, use retrieval_failure.",
+      "Else if a clear span is present, use the most specific matching category, or verifier_error when none fits.",
+      "Else use ambiguous_evidence."
+    ],
+    "single_label": true
+  },
+  "extraction": {
+    "verdicts": [
+      "Pass",
+      "Fail"
+    ],
+    "category_enabled": false,
+    "booleans_enabled": false,
+    "definitions": {
+      "Pass": "Every extracted claim faithfully states a proposition from the answer. No content is added from the question, the evidence, or world knowledge; no material claim is dropped; each claim is self-contained enough to verify.",
+      "Fail": "At least one extracted claim adds or changes content, drops a material claim, leaks a constraint from the question, or is too fragmentary to verify."
+    },
+    "note": "v2 collects Pass/Fail only; the four diagnostic Booleans are also retired for this pass. The 17 seeded pilot rows keep their v1 cause categories as legacy metadata; causes are not extended, not gated, and not reported as a v2 distribution."
+  }
+}

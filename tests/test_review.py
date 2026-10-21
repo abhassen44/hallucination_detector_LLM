@@ -2,8 +2,9 @@ import json
 
 import pytest
 
-from scripts.review import (apply_review, is_complete, load_queue, pending, save_queue,
-                            summarise)
+from scripts.review import (BOOL_FIELDS, CATEGORIES, apply_review, boolean_options, category_options,
+                            is_complete, load_queue, pending, queue_kind, review_interactively,
+                            save_queue, summarise)
 from src.datasets.schema import write_jsonl
 
 
@@ -51,6 +52,68 @@ def test_completed_rows_are_never_part_of_the_pending_queue(tmp_path):
 def test_unknown_review_field_is_rejected():
     with pytest.raises(KeyError):
         apply_review(_row('a'), {'invented_field': 'x'})
+
+
+TAXONOMY = {
+    'verification': {'categories': ['retrieval_failure', 'verifier_error']},
+    'extraction': {'category_enabled': False, 'booleans_enabled': False},
+}
+
+
+def test_queue_kind_uses_the_condition_field():
+    assert queue_kind([{'id': 'a'}, {'id': 'b'}]) == 'extraction'
+    assert queue_kind([{'id': 'a'}, {'id': 'b', 'condition': 'bm25'}]) == 'verification'
+
+
+def test_category_options_read_the_verification_taxonomy():
+    assert category_options('verification', TAXONOMY) == ['retrieval_failure', 'verifier_error']
+
+
+def test_category_options_disable_extraction_causes():
+    assert category_options('extraction', TAXONOMY) == []
+
+
+def test_category_options_fall_back_to_v1_categories():
+    assert category_options('extraction', None) == CATEGORIES
+    assert category_options('verification', {}) == CATEGORIES
+
+
+def test_boolean_options_retire_extraction_diagnostics_only():
+    assert boolean_options('extraction', TAXONOMY) == []
+    assert boolean_options('verification', TAXONOMY) == list(BOOL_FIELDS)
+    assert boolean_options('extraction', None) == list(BOOL_FIELDS)
+
+
+def test_extraction_under_taxonomy_asks_only_for_verdict(tmp_path, monkeypatch):
+    path = tmp_path / 'queue.jsonl'
+    row = {'id': 'x', 'human_review': {'open_coding': '', 'pass_fail_assessment': None,
+                                       'category': None, 'fidelity': None}}
+    write_jsonl(path, [row])
+    answers = iter(['', 'p'])
+    monkeypatch.setattr('builtins.input', lambda *args: next(answers))
+    monkeypatch.setattr('scripts.review._show', lambda *args: None)
+
+    rows = review_interactively(path, None, None, 'test', taxonomy=TAXONOMY)
+
+    assert rows[0]['human_review']['pass_fail_assessment'] == 'Pass'
+    assert rows[0]['human_review']['category'] is None
+    assert rows[0]['human_review']['fidelity'] is None
+
+
+def test_verification_under_taxonomy_asks_for_a_category(tmp_path, monkeypatch):
+    path = tmp_path / 'queue.jsonl'
+    row = {'id': 'x', 'condition': 'bm25', 'human_review': {'open_coding': '',
+                                                            'pass_fail_assessment': None,
+                                                            'category': None}}
+    write_jsonl(path, [row])
+    answers = iter(['', 'f', '2'])
+    monkeypatch.setattr('builtins.input', lambda *args: next(answers))
+    monkeypatch.setattr('scripts.review._show', lambda *args: None)
+
+    rows = review_interactively(path, None, None, 'test', taxonomy=TAXONOMY)
+
+    assert rows[0]['human_review']['pass_fail_assessment'] == 'Fail'
+    assert rows[0]['human_review']['category'] == 'verifier_error'
 
 
 def test_saving_is_atomic_and_preserves_other_data(tmp_path):

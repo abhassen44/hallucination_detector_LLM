@@ -7,7 +7,8 @@ it explicitly, typing overrides it, and the choice is recorded in ``review_meta`
 
     python -m scripts.review --queue experiments/stage4_claims/human_review.jsonl \
         --suggestions experiments/stage6_errors/provisional_extraction.jsonl
-    python -m scripts.review --summary
+    python -m scripts.review --queue experiments/v2/queues/verification.jsonl \
+        --taxonomy experiments/v2/taxonomy.json --summary
 """
 from __future__ import annotations
 
@@ -33,6 +34,36 @@ def load_queue(path: Path) -> list[dict]:
 def suggestion_key(row_or_proposal: dict):
     """Verification rows repeat ids across evidence conditions, so key on both."""
     return row_or_proposal['id'], row_or_proposal.get('condition')
+
+
+def load_taxonomy(path: Path | None) -> dict | None:
+    if not path:
+        return None
+    return json.loads(Path(path).read_text(encoding='utf-8'))
+
+
+def queue_kind(rows: list[dict]) -> str:
+    """Verification rows carry a condition; extraction rows do not."""
+    return 'verification' if any('condition' in row for row in rows) else 'extraction'
+
+
+def category_options(kind: str, taxonomy: dict | None) -> list[str]:
+    """Categories to offer, or an empty list when the kind does not collect them."""
+    if not taxonomy:
+        return list(CATEGORIES)
+    if kind == 'verification':
+        return list(taxonomy.get('verification', {}).get('categories') or CATEGORIES)
+    if not taxonomy.get('extraction', {}).get('category_enabled', True):
+        return []
+    return list(taxonomy.get('extraction', {}).get('categories') or CATEGORIES)
+
+
+def boolean_options(kind: str, taxonomy: dict | None) -> list[str]:
+    """Diagnostic extraction Booleans, unless the taxonomy retires them."""
+    if (taxonomy and kind == 'extraction'
+            and not taxonomy.get('extraction', {}).get('booleans_enabled', True)):
+        return []
+    return list(BOOL_FIELDS)
 
 
 def load_suggestions(path: Path | None) -> dict[tuple, dict]:
@@ -112,11 +143,13 @@ def _ask_verdict(suggestion: dict | None) -> str | None:
         print('  Enter "p", "f", or press Enter to skip.')
 
 
-def _ask_category(suggestion: dict | None) -> str | None:
+def _ask_category(suggestion: dict | None, categories: list[str]) -> str | None:
     print('  Categories:')
-    for number, category in enumerate(CATEGORIES, 1):
+    for number, category in enumerate(categories, 1):
         print(f'    {number:2d}. {category}')
     default = suggestion.get('category') if suggestion else None
+    if default not in categories:
+        default = None
     while True:
         value = _prompt('Category [number/name/s=skip]', default)
         if value is None:
@@ -124,9 +157,9 @@ def _ask_category(suggestion: dict | None) -> str | None:
         lowered = value.lower()
         if lowered in ('s', 'skip', 'none'):
             return None
-        if lowered.isdigit() and 1 <= int(lowered) <= len(CATEGORIES):
-            return CATEGORIES[int(lowered) - 1]
-        if lowered in CATEGORIES:
+        if lowered.isdigit() and 1 <= int(lowered) <= len(categories):
+            return categories[int(lowered) - 1]
+        if lowered in categories:
             return lowered
         print('  Unknown category.')
 
@@ -165,9 +198,14 @@ def _show(row: dict, suggestion: dict | None, position: int, total: int) -> None
 
 
 def review_interactively(path: Path, suggestions_path: Path | None, limit: int | None,
-                         reviewer: str | None) -> list[dict]:
+                         reviewer: str | None, taxonomy: dict | None = None,
+                         categories: list[str] | None = None) -> list[dict]:
     rows = load_queue(path)
     suggestions = load_suggestions(suggestions_path)
+    kind = queue_kind(rows)
+    if categories is None:
+        categories = category_options(kind, taxonomy)
+    booleans = boolean_options(kind, taxonomy)
     outstanding = pending(rows)
     reviewed = len(rows) - len(outstanding)
     queue = outstanding[:limit] if limit else outstanding
@@ -188,11 +226,11 @@ def review_interactively(path: Path, suggestions_path: Path | None, limit: int |
             verdict = _ask_verdict(suggestion)
             if verdict is not None:
                 answers['pass_fail_assessment'] = verdict
-            if 'category' in (row.get('human_review') or {}):
-                category = _ask_category(suggestion)
+            if categories and 'category' in (row.get('human_review') or {}):
+                category = _ask_category(suggestion, categories)
                 if category is not None:
                     answers['category'] = category
-            for field in BOOL_FIELDS:
+            for field in booleans:
                 if field in (row.get('human_review') or {}):
                     value = _ask_boolean(field)
                     if value is not None:
@@ -224,13 +262,18 @@ def main() -> None:
     parser.add_argument('--suggestions', type=Path, default=None)
     parser.add_argument('--limit', type=int, default=None)
     parser.add_argument('--reviewer', default=None)
+    parser.add_argument('--taxonomy', type=Path, default=None,
+                        help='JSON taxonomy; controls verification categories and whether '
+                             'extraction collects causes.')
     parser.add_argument('--summary', action='store_true',
                         help='Print progress and write review_progress.json without prompting.')
     args = parser.parse_args()
 
     rows = load_queue(args.queue)
+    taxonomy = load_taxonomy(args.taxonomy)
     if not args.summary:
-        rows = review_interactively(args.queue, args.suggestions, args.limit, args.reviewer)
+        rows = review_interactively(args.queue, args.suggestions, args.limit, args.reviewer,
+                                    taxonomy=taxonomy)
 
     summary = summarise(rows)
     target = args.queue.with_name('review_progress.json')

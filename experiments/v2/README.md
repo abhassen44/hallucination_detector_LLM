@@ -9,7 +9,7 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 | Phase | Scope | Status |
 |---|---|---|
 | P0 | Freeze v1, scaffold, protocol, seed pilot judgments | **Done** |
-| P1 | Taxonomy v2, proposals, 274/274 labels, 20% blind re-annotation | Next |
+| P1 | Taxonomy v2, proposals, 274/274 labels, 20% blind re-annotation | Proposals done; annotation pending |
 | P2 | Calibration + training variance (val only) | Pending |
 | P3 | Selective policy + coverage flag (val only) | Pending |
 | P4 | One test pass for the calibrated system | Pending |
@@ -25,6 +25,20 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
   extraction, 20 verification); 3 extraction rows remain pending (two have partial
   notes, one is untouched). They are listed in [queue_seed.json](queue_seed.json).
 - Seed rows are keyed by `(id, condition)`; the pilot copies are never modified.
+
+## P1 state
+
+- [taxonomy.json](taxonomy.json) locks the v2 categories. Verification renames the
+  v1 `nli_failure` catch-all to `verifier_error` and keeps `ambiguous_evidence`
+  distinct. Extraction collects **Pass/Fail only** (no causes, no diagnostic
+  Booleans) for this pass.
+- [proposals/verification.jsonl](proposals/verification.jsonl) was regenerated under
+  taxonomy v2 (103/103 usable). Extraction proposals are copied from the frozen v1
+  file because the Pass/Fail task is unchanged.
+- Three seeded pilot rows used the v1 `nli_failure` label; all three had clear
+  evidence and wrong NLI verdicts, so they were mapped to `verifier_error`. The
+  mapping is listed in [queue_seed.json](queue_seed.json).
+- Pending annotation: **154 extraction rows**, **83 verification rows**.
 
 ## Layout
 
@@ -55,11 +69,13 @@ $env:PYTHONPATH="$PWD"
 .\.venv\Scripts\python.exe -m scripts.review `
   --queue experiments/v2/queues/extraction.jsonl `
   --suggestions experiments/v2/proposals/extraction.jsonl `
+  --taxonomy experiments/v2/taxonomy.json `
   --reviewer Abhas
 
 .\.venv\Scripts\python.exe -m scripts.review `
   --queue experiments/v2/queues/verification.jsonl `
   --suggestions experiments/v2/proposals/verification.jsonl `
+  --taxonomy experiments/v2/taxonomy.json `
   --reviewer Abhas
 
 # Rebuild the seeded queues from scratch (overwrites the manifest)

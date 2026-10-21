@@ -1,5 +1,39 @@
 # Review the extraction outputs
 
+## v2 full pass (current)
+
+The v2 queues are seeded copies of the v1 full queues, so the 37 completed pilot
+verdicts are already present:
+
+- `experiments/v2/queues/extraction.jsonl` — 171 rows, 17 seeded, **154 pending**
+- `experiments/v2/queues/verification.jsonl` — 103 rows, 20 seeded, **83 pending**
+
+Taxonomy v2 is in `experiments/v2/taxonomy.json`. Verification drops the v1
+`nli_failure` catch-all: use `verifier_error` when the needed evidence span is
+present and clear but the verdict was wrong, and `ambiguous_evidence` when the
+shown evidence cannot settle the claim. The full definitions and precedence rules
+are in the taxonomy file. Extraction is **Pass/Fail only** for this pass: the
+category and the four diagnostic Booleans are not collected.
+
+```sh
+.venv/bin/python -m scripts.review \
+  --queue experiments/v2/queues/extraction.jsonl \
+  --suggestions experiments/v2/proposals/extraction.jsonl \
+  --taxonomy experiments/v2/taxonomy.json --reviewer Abhas
+
+.venv/bin/python -m scripts.review \
+  --queue experiments/v2/queues/verification.jsonl \
+  --suggestions experiments/v2/proposals/verification.jsonl \
+  --taxonomy experiments/v2/taxonomy.json --reviewer Abhas
+```
+
+Suggestions are visible for the full pass; pressing Enter accepts the displayed
+value and records `suggestion_used`, while typing overrides it. After the pass,
+20% of rows are re-annotated blind (no suggestions) to measure intra-annotator
+agreement.
+
+## v1 extraction queue
+
 The queue is `experiments/stage4_claims/human_review.jsonl`. It contains all 121
 heuristically flagged examples plus 50 seeded comparison examples without flags,
 covering every split and both answer labels. The three malformed-response

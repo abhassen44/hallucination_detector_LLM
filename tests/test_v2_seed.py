@@ -59,6 +59,24 @@ def test_seed_skips_rows_without_a_verdict_and_records_why():
                                   'had_open_coding': True, 'had_category': True}]
 
 
+def test_seed_translates_a_renamed_legacy_category():
+    pilot = [_row('x', 'bm25', 'Fail', 'nli_failure')]
+
+    rows, result = seed_queue([_row('x', 'bm25')], pilot,
+                              category_map={'nli_failure': 'verifier_error'})
+
+    assert rows[0]['human_review']['category'] == 'verifier_error'
+    assert result['migrated'] == [{'id': 'x', 'condition': 'bm25', 'from': 'nli_failure',
+                                   'to': 'verifier_error'}]
+
+
+def test_seed_keeps_categories_without_a_mapping():
+    rows, result = seed_queue([_row('x', 'bm25')],
+                              [_row('x', 'bm25', 'Fail', 'ambiguous_evidence')])
+    assert rows[0]['human_review']['category'] == 'ambiguous_evidence'
+    assert result['migrated'] == []
+
+
 def test_seed_rejects_a_conflicting_verdict():
     row = _row('x', verdict='Pass')
     with pytest.raises(ValueError, match='conflicting verdict'):
