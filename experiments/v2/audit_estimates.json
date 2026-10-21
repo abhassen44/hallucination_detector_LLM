@@ -1,0 +1,369 @@
+{
+  "created_utc": "2026-10-21T12:31:45.788619+00:00",
+  "auditor": "assistant_estimate",
+  "human": false,
+  "warning": "These are AI-estimated audit labels, not human verdicts. They do not support a human-audited claim.",
+  "n": 40,
+  "records": [
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-1216-right",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Faithful expansion of 'Swain and Graham'; the question supplies the dam relation.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-1461-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Claims restate the answer's two assertions; no added content.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-1472-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Both ownership claims are explicit in the answer.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-1653-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Refusal with no factual claim; empty extraction is faithful.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-233-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Meta-statement; there is no claim to extract.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-2465-right",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Short answer expanded faithfully with the question relation.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-2558-right",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Answer 'plant' supports both entity claims.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-2722-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Claim restates the answer; an evasive answer is still extracted faithfully.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-3451-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Meta-statement; there is no claim to extract.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-3921-hallucinated",
+      "verdict": "Fail",
+      "category": null,
+      "note": "Changes 'founded' to 'published'; the predicate is not in the answer.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-4-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Short answer expanded with the question's solubility relation; minimal resolution.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-4056-right",
+      "verdict": "Fail",
+      "category": null,
+      "note": "Third claim imports the question's 'establishes...rogues gallery' relation; the pilot marked this shape Fail.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-4132-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Both birth years are explicit in the answer.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-4217-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Claims restate the answer's descriptors.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-7475-right",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Entity answer expanded with the question relation.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-9023-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Echoed question with no assertion; empty extraction is faithful.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-9085-hallucinated",
+      "verdict": "Fail",
+      "category": null,
+      "note": "Adds 'than acting in film', a comparison absent from the answer.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-9215-hallucinated",
+      "verdict": "Pass",
+      "category": null,
+      "note": "All three claims are explicit in the answer.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-9627-right",
+      "verdict": "Pass",
+      "category": null,
+      "note": "Claims restate nominations/wins; 'created' is the question relation.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "extraction",
+      "key": "halueval-qa-9798-hallucinated",
+      "verdict": "Fail",
+      "category": null,
+      "note": "First claim imports Thomas Maier from the question; the answer only names Kering.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-1287-right::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "verifier_error",
+      "note": "Co-reference: evidence names the co-hosts; NLI returns neutral.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-1909-hallucinated::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "ambiguous_evidence",
+      "note": "No 'small dog' for Toy Trawler; the evidence is partial.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-1990-hallucinated::dense_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Bob Dole is absent; the retrieved snippets are irrelevant.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-2023-right::dense_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "The base/island relation is not retrieved.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-2358-right::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Skazi is absent; the band snippets are irrelevant.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-3153-hallucinated::hybrid_extracted_claims",
+      "verdict": "Fail",
+      "category": "ambiguous_evidence",
+      "note": "Vague 'disappointing season'; the evidence implies but does not state it, and the answer omits the score.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-3211-right::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Suede/Hard-Fi formation evidence is absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-3286-right::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "verifier_error",
+      "note": "Evidence clearly shows only Gagosian is an art dealer; the contradiction is wrong.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-3340-right::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "verifier_error",
+      "note": "Evidence gives the K.R. pen name for the husband; the contradiction is wrong.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-3486-right::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Ghana Club 100 is absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-4605-right::dense_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Jodie Prenger is absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-5114-right::hybrid_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "My Santa and the birth year are absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-517-right::hybrid_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Hansberry/Gulland birth dates are absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-5557-right::hybrid_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Carnforth is absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-6814-hallucinated::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": null,
+      "note": "Claims are supported; HaluEval marks the answer wrong for omitting 'Sweatin' to the Oldies'. Outside the claim taxonomy.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-7591-hallucinated::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Aspasius is absent from all retrieved snippets.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-8136-right::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "Kato Vermio/KATO distractors; Kato Khandwala is absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-8136-right::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "claim_extraction_failure",
+      "note": "The claim is only the fragment 'Kato Khandwala'; extraction failed.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-9021-hallucinated::provided_extracted_claims",
+      "verdict": "Fail",
+      "category": "ambiguous_evidence",
+      "note": "Antecedent 'The team' is ambiguous across Yankees/Giants/Dodgers.",
+      "auditor": "assistant_estimate",
+      "human": false
+    },
+    {
+      "queue": "verification",
+      "key": "halueval-qa-9735-right::bm25_extracted_claims",
+      "verdict": "Fail",
+      "category": "retrieval_failure",
+      "note": "The Suspect and Won Shin-yun are absent.",
+      "auditor": "assistant_estimate",
+      "human": false
+    }
+  ]
+}

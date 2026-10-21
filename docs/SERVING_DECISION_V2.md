@@ -57,8 +57,8 @@ and a candidate for a v3 study with more training data or a better target.
 2. The coverage flag reaches ≥0.75 AUROC on a held-out pass with a stable flag rate.
 3. There is a serving policy that improves NEI recognition, not just verifiable
    precision. Today 48.2% of NEI claims still receive confident wrong answers.
-4. The 40-row label audit is completed, or the full human pass is run, so taxonomy
-   claims are not based on silver labels.
+4. A **human** 40-row audit is completed (the current sheet is assistant-estimated),
+   or the full human pass is run, so taxonomy claims are not based on silver labels.
 
 All four are required for a future promotion; a higher offline macro-F1 alone is
 not sufficient.

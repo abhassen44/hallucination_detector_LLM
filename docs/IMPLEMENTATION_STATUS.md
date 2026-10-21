@@ -14,7 +14,9 @@ Implemented:
   kept; 237 LLM proposals recorded as `label_source: llm_proposal`,
   `human_reviewed: false`. These are silver labels, not human annotations.
 - Blind 40-row audit tooling (`scripts/make_v2_audit.py`, `scripts/score_v2_audit.py`).
-  The audit sheet is generated; it has not been filled by a human.
+  The sheet was filled by an **assistant estimate**, not a human: proposal agreement
+  is extraction 60.0% (κ 0.20) and verification categories 57.9% (19 scored). It is a
+  sensitivity check, not human validation.
 - Temperature-scaled calibration with 2-fold val cross-fitting
   (`src/evaluation/calibration.py`, `scripts/calibrate_v2.py`): val ECE 0.0332 → 0.0230,
   200 train bootstrap refits for training variance.
@@ -40,7 +42,8 @@ Tests: 132 passing; frontend build passing (`scripts.reproduce --stage checks`).
 
 Open items (not blocking v2 closure):
 
-- Human 40-row audit of `experiments/v2/audit_sheet.csv`, then `scripts.score_v2_audit`.
+- A **human** 40-row audit of `experiments/v2/audit_sheet.csv` is still missing; the
+  current sheet is assistant-estimated and cannot support a human-audited claim.
 - P6 retrieval variant (stretch): val-only weighted-RRF study done; best +0.0016
   macro-F1, not promoted; the retrieval test pass is unused.
 - Promotion blockers for v3: Brier-preserving calibration, NEI recognition, coverage-flag

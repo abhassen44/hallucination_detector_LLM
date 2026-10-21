@@ -9,7 +9,7 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 | Phase | Scope | Status |
 |---|---|---|
 | P0 | Freeze v1, scaffold, protocol, seed pilot judgments | **Done** |
-| P1 | Taxonomy v2, proposals, 274/274 labels, optional human audit | **Done** — 37 human + 237 LLM-proposed labels; audit optional |
+| P1 | Taxonomy v2, proposals, 274/274 labels, optional human audit | **Done** — 37 human + 237 silver; audit is assistant-estimated, not human |
 | P2 | Calibration + training variance (val only) | **Done** — ECE gate pass |
 | P3 | Selective policy + coverage flag (val only) | **Done** — policy frozen; flag passes val |
 | P4 | One test pass for the calibrated system | **Done** — Brier and flag AUROC fail |
@@ -65,9 +65,12 @@ R@5 (0.9129 vs 0.8964) but no macro-F1 gain. The retrieval-variant test pass was
   [label_manifest.json](label_manifest.json).
 - Measured label noise on the pilot: extraction κ **0.881** (17 rows), verification
   category agreement **0.75** (20 rows; the v1 figure 0.80 used the old categories).
-- [audit_sheet.csv](audit_sheet.csv) is a blind 40-row stratified audit, disjoint
-  from the pilot. Completing it upgrades the claim to “LLM-proposed labels,
-  human-audited on a 40-row sample.” It is **not** a substitute for the full pass.
+- [audit_sheet.csv](audit_sheet.csv) was filled by an **assistant estimate**, not a
+  human (`auditor: assistant_estimate`, `human: false`). Against the proposals:
+  extraction agreement **60.0%** (κ **0.20**), verification category agreement
+  **57.9%** (19 scored; `6814` is outside the claim taxonomy). This **does not**
+  support a human-audited claim; it shows the LLM proposals are not a substitute
+  for human labels. See [audit_results.json](audit_results.json).
 - [HALUEVAL_ERROR_REVIEW.md](HALUEVAL_ERROR_REVIEW.md) is a separate qualitative
   review of 15 HaluEval errors: 11 retrieval, 2 ambiguous, 1 verifier, and 1
   answer-level omission outside the claim taxonomy. It is not part of the 274
@@ -85,9 +88,10 @@ experiments/v2/
   proposals/                 # taxonomy-v2 LLM proposals (P1)
   labels_llm_proposed_*.jsonl # 274 materialized labels (37 human, 237 silver)
   label_manifest.json        # label policy, counts, pilot agreement
-  audit_sheet.csv            # optional blind 40-row human audit
+  audit_sheet.csv            # 40-row audit, filled by assistant estimate
   audit_manifest.json        # audit sample keys and hidden proposals
-  audit_results.json         # scorer output, if the audit is completed
+  audit_estimates.json       # the estimates with auditor/human provenance
+  audit_results.json         # agreement with the proposals
   HALUEVAL_ERROR_REVIEW.md   # qualitative review of 15 HaluEval errors
   halueval_error_review.json # the same review, structured
   calibration.json           # P2
@@ -106,7 +110,7 @@ $env:PYTHONPATH="$PWD"
 # Rebuild the 274 labels from the queues + proposals
 .\.venv\Scripts\python.exe -m scripts.materialize_v2_labels --force
 
-# Build the blind 40-row audit, then score it after filling the CSV
+# Rebuild the 40-row sheet, then score the filled CSV (currently AI-estimated)
 .\.venv\Scripts\python.exe -m scripts.make_v2_audit --force
 .\.venv\Scripts\python.exe -m scripts.score_v2_audit
 
@@ -125,5 +129,6 @@ verdicts into the label artifacts.
 - One test pass for the calibrated system, one for the retrieval variant.
 - No dataset mutation; v2 labels live only under `experiments/v2/`.
 - The fixed rule stays the serving default unless every promotion gate passes.
-- **Label integrity:** 237 of the 274 labels are LLM proposals. Reports must not
-  call them human annotations; quote the pilot noise estimate and the audit status.
+- **Label integrity:** 237 of the 274 labels are LLM proposals, and the 40-row audit
+  is assistant-estimated, not human. Reports must not call either human annotations;
+  quote the pilot noise estimate and the audit agreement.

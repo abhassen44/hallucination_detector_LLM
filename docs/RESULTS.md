@@ -288,8 +288,10 @@ in `experiments/v2/REPORT.md`; the serving decision is
 the user's direction: 37 rows keep their human pilot verdict, 237 are silver labels
 (`human_reviewed: false`). Pilot noise: extraction κ 0.881 (n=17), verification
 category agreement 0.75 (n=20). Taxonomy v2 splits `nli_failure` into
-`verifier_error` and keeps `ambiguous_evidence` distinct. A 40-row blind audit is
-generated but not completed. A separate qualitative review of 15 HaluEval errors
+`verifier_error` and keeps `ambiguous_evidence` distinct. The 40-row audit was filled
+by an assistant estimate, not a human; agreement with the proposals is low
+(extraction 60.0%, κ 0.20; verification categories 57.9%), so the labels remain
+silver and not human-validated. A separate qualitative review of 15 HaluEval errors
 maps to 11 retrieval failures, 2 ambiguous-evidence cases, 1 verifier error, and 1
 answer-level omission outside the claim taxonomy; it is not part of the 274 labels
 and changes no metric (`experiments/v2/HALUEVAL_ERROR_REVIEW.md`).

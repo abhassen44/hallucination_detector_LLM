@@ -26,9 +26,13 @@ annotations:
 - Pilot label noise: extraction κ **0.881** (17 rows); verification category
   agreement **0.75** (20 rows). The v1 figure of 0.80 used the old categories;
   splitting `nli_failure` accounts for the change.
-- A blind **40-row audit sheet** is generated but not yet completed. Without it,
-  the claim is “LLM-proposed labels with pilot-estimated noise,” not
-  “human-validated.”
+- The **40-row audit** was filled by an **assistant estimate**, not a human
+  (`auditor: assistant_estimate`, `human: false`). Agreement with the proposals is
+  low: extraction **60.0%** (κ **0.20**), verification categories **57.9%** (19
+  scored; `6814` is outside the taxonomy). This is a sensitivity check, not human
+  validation; it argues that the LLM proposals should not replace human labels.
+  The category counts below are therefore one model's proposals, not a validated
+  distribution.
 
 Taxonomy v2 keeps eight verification categories, replacing `nli_failure` with
 `verifier_error`. Extraction is Pass/Fail only for this pass.
@@ -180,7 +184,8 @@ an explicit label-integrity caveat.
 ## Limitations
 
 - **Silver labels.** Only 37 of 274 taxonomy labels are human. The 40-row audit is
-  pending, so failure-mode counts are LLM-proposed with pilot-estimated noise.
+  assistant-estimated, and its low agreement (κ 0.20 extraction; 57.9% verification
+  categories) means failure-mode counts are not human-validated.
 - **Val was reused.** C was selected on val in v1; calibration, policy, and flag
   were also selected on val. Each step is cross-fitted or frozen, but selection
   optimism remains.

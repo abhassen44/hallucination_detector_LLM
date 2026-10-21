@@ -1,0 +1,117 @@
+{
+  "created_utc": "2026-10-21T12:31:46.055117+00:00",
+  "sheet": "experiments\\v2\\audit_sheet.csv",
+  "n_sheet_rows": 40,
+  "n_unscored": 1,
+  "unscored": [
+    {
+      "queue": "verification",
+      "key": "halueval-qa-6814-hallucinated::provided_extracted_claims",
+      "reason": "no valid category"
+    }
+  ],
+  "extraction_verdict": {
+    "n": 20,
+    "agreement": 0.6,
+    "disagreements": [
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Pass",
+        "audit": "Fail"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      },
+      {
+        "proposal": "Fail",
+        "audit": "Pass"
+      }
+    ],
+    "confusion": {
+      "Fail -> Pass": 7,
+      "Pass -> Fail": 1
+    },
+    "kappa": 0.19999999999999996
+  },
+  "verification_category": {
+    "n": 19,
+    "agreement": 0.5789473684210527,
+    "disagreements": [
+      {
+        "proposal": "multi_hop_reasoning",
+        "audit": "verifier_error"
+      },
+      {
+        "proposal": "verifier_error",
+        "audit": "ambiguous_evidence"
+      },
+      {
+        "proposal": "claim_extraction_failure",
+        "audit": "ambiguous_evidence"
+      },
+      {
+        "proposal": "entity_confusion",
+        "audit": "verifier_error"
+      },
+      {
+        "proposal": "multi_hop_reasoning",
+        "audit": "retrieval_failure"
+      },
+      {
+        "proposal": "claim_extraction_failure",
+        "audit": "retrieval_failure"
+      },
+      {
+        "proposal": "ambiguous_evidence",
+        "audit": "claim_extraction_failure"
+      },
+      {
+        "proposal": "retrieval_failure",
+        "audit": "ambiguous_evidence"
+      }
+    ],
+    "confusion": {
+      "multi_hop_reasoning -> verifier_error": 1,
+      "verifier_error -> ambiguous_evidence": 1,
+      "claim_extraction_failure -> ambiguous_evidence": 1,
+      "entity_confusion -> verifier_error": 1,
+      "multi_hop_reasoning -> retrieval_failure": 1,
+      "claim_extraction_failure -> retrieval_failure": 1,
+      "ambiguous_evidence -> claim_extraction_failure": 1,
+      "retrieval_failure -> ambiguous_evidence": 1
+    }
+  },
+  "note": "This audits LLM-proposed labels; it does not turn them into human labels. Report the audited agreement alongside the pilot agreement.",
+  "auditor": "assistant_estimate",
+  "human": false,
+  "warning": "These are AI-estimated audit labels, not human verdicts. They do not support a human-audited claim.",
+  "estimates": "experiments/v2/audit_estimates.json",
+  "unscored_reason": "halueval-qa-6814-hallucinated is outside the claim-level taxonomy: its claims are supported and HaluEval marks the answer wrong for an omission.",
+  "summary": {
+    "extraction_agreement": 0.6,
+    "extraction_kappa": 0.19999999999999996,
+    "verification_category_agreement": 0.5789473684210527,
+    "n_scored": 39,
+    "n_unscored": 1
+  }
+}
