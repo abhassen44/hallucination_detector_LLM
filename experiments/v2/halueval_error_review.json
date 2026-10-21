@@ -1,0 +1,152 @@
+[
+  {
+    "id": "halueval-qa-1287-right",
+    "condition": "provided_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Precision / Reference Miss: evidence confirms Kendall and Kylie Jenner hosted and star in KUWTK, but the model returned [E,N,C=0.00,1.00,0.00] (neutral/unentailed), missing co-reference links.",
+    "v2_category": "verifier_error",
+    "claim_level": true,
+    "mapping_note": "The evidence sentence is present; the NLI failed to resolve the singular 'She' against the plural co-hosts. This is a verifier/aggregation failure, not missing retrieval."
+  },
+  {
+    "id": "halueval-qa-1909-hallucinated",
+    "condition": "provided_extracted_claims",
+    "gold": "hallucinated",
+    "predicted": "supported",
+    "user_root_cause": "False Positive / Extrapolation: PBGV and Toy Trawler Spaniel are small dogs, but the question asks about animal type/species (dog). The model over-confidently treated the partial descriptive alignment as fully supported [0.96,0.04,0.00].",
+    "v2_category": "ambiguous_evidence",
+    "claim_level": true,
+    "mapping_note": "The context says PBGV is a breed of dog and Toy Trawler is an extinct spaniel; it never says 'small dog'. The evidence is partial, so this is ambiguous evidence rather than a clear verifier contradiction."
+  },
+  {
+    "id": "halueval-qa-1990-hallucinated",
+    "condition": "dense_extracted_claims",
+    "gold": "hallucinated",
+    "predicted": "supported",
+    "user_root_cause": "Entity Mismatch: Bob Dole was Ford's 1976 running mate and ran for president in 1996. The model verified the negative claim using irrelevant snippets about Mike Padden and G.H.W. Bush.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The needed Bob Dole passage is absent from the top-5; the retrieved snippets do not settle the claim."
+  },
+  {
+    "id": "halueval-qa-2023-right",
+    "condition": "dense_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability (C ≈ 0.95-1.00).",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved passages do not contain the needed Marine Corps Base Hawaii / Birdshit Island relation."
+  },
+  {
+    "id": "halueval-qa-3211-right",
+    "condition": "bm25_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, e.g. Hard Working Americans for Hard-Fi.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved candidates contain Hard-Fi/Hard Working Americans and Wi-Fi distractors; the needed Suede formation date is absent."
+  },
+  {
+    "id": "halueval-qa-3486-right",
+    "condition": "bm25_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "No top-5 passage defines the Ghana Club 100; the retrieved list/shopping-mall snippets are irrelevant."
+  },
+  {
+    "id": "halueval-qa-4605-right",
+    "condition": "dense_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved snippets discuss other English actresses (Mel B, Misha Timmins, Emma Watson) but not Jodie Prenger."
+  },
+  {
+    "id": "halueval-qa-5114-right",
+    "condition": "hybrid_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "No top-5 passage identifies the male star of My Santa or his birth year."
+  },
+  {
+    "id": "halueval-qa-517-right",
+    "condition": "hybrid_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved snippets mention other Lorraines/Vivians (Lorraine Warren, Vivian King) but not the Hansberry/Gulland birth dates."
+  },
+  {
+    "id": "halueval-qa-5557-right",
+    "condition": "hybrid_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The top-5 passages discuss other railway stations; Carnforth is absent."
+  },
+  {
+    "id": "halueval-qa-8136-right",
+    "condition": "bm25_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, e.g. Kato Vermio town for Kato Khandwala.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "This is the BM25 condition. The provided-context condition is a separate extraction failure: the claim is only the fragment 'Kato Khandwala' and NLI is neutral."
+  },
+  {
+    "id": "halueval-qa-9735-right",
+    "condition": "bm25_extracted_claims",
+    "gold": "supported",
+    "predicted": "hallucinated",
+    "user_root_cause": "Retrieval Failure (BM25 / Dense / Hybrid): the retriever returned irrelevant or distractor snippets, forcing the verifier to assign high contradiction/unsupported probability.",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved passages discuss other films/directors; The Suspect and Won Shin-yun are absent."
+  },
+  {
+    "id": "halueval-qa-6814-hallucinated",
+    "condition": "provided_extracted_claims",
+    "gold": "hallucinated",
+    "predicted": "supported",
+    "user_root_cause": "Superficial Entity Overlap (grouped with 7591 and 9021 in the user's table).",
+    "v2_category": null,
+    "claim_level": false,
+    "mapping_note": "The provided context actually supports both claims: it lists Richard Simmons among the film's stars and identifies Milton Teagle 'Richard' Simmons as the fitness guru. The HaluEval answer is hallucinated because it does not answer the question ('Sweatin' to the Oldies'), not because a claim is false. This is an answer-level completeness failure, outside the claim-level taxonomy."
+  },
+  {
+    "id": "halueval-qa-7591-hallucinated",
+    "condition": "bm25_extracted_claims",
+    "gold": "hallucinated",
+    "predicted": "supported",
+    "user_root_cause": "Superficial Entity Overlap (grouped with 6814 and 9021 in the user's table).",
+    "v2_category": "retrieval_failure",
+    "claim_level": true,
+    "mapping_note": "The retrieved snippets mention Christian/medieval literature but never Aspasius; the subject of the claim is absent. This is better explained by retrieval failure than by entity overlap."
+  },
+  {
+    "id": "halueval-qa-9021-hallucinated",
+    "condition": "provided_extracted_claims",
+    "gold": "hallucinated",
+    "predicted": "supported",
+    "user_root_cause": "Superficial Entity Overlap: the Brooklyn Dodgers were named for trolley-dodging, not the Yankees. However, because both 'New York Yankees' and 'trolley streetcar network' appeared in the reference text, the NLI model marked the claim supported [0.99,0.01,0.00].",
+    "v2_category": "ambiguous_evidence",
+    "claim_level": true,
+    "mapping_note": "The sentence 'The team's name derived...' follows a list of three teams (Yankees, Giants, Dodgers); the antecedent is ambiguous. Entity confusion is plausible, but the evidence does not explicitly resolve the team, so ambiguous_evidence is the conservative label."
+  }
+]

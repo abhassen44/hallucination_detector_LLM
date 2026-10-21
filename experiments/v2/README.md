@@ -68,6 +68,10 @@ R@5 (0.9129 vs 0.8964) but no macro-F1 gain. The retrieval-variant test pass was
 - [audit_sheet.csv](audit_sheet.csv) is a blind 40-row stratified audit, disjoint
   from the pilot. Completing it upgrades the claim to “LLM-proposed labels,
   human-audited on a 40-row sample.” It is **not** a substitute for the full pass.
+- [HALUEVAL_ERROR_REVIEW.md](HALUEVAL_ERROR_REVIEW.md) is a separate qualitative
+  review of 15 HaluEval errors: 11 retrieval, 2 ambiguous, 1 verifier, and 1
+  answer-level omission outside the claim taxonomy. It is not part of the 274
+  labels and does not change any metric.
 
 ## Layout
 
@@ -84,6 +88,8 @@ experiments/v2/
   audit_sheet.csv            # optional blind 40-row human audit
   audit_manifest.json        # audit sample keys and hidden proposals
   audit_results.json         # scorer output, if the audit is completed
+  HALUEVAL_ERROR_REVIEW.md   # qualitative review of 15 HaluEval errors
+  halueval_error_review.json # the same review, structured
   calibration.json           # P2
   risk_coverage.json         # P3
   coverage_flag.json         # P3

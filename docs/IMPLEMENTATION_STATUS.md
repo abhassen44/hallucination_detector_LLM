@@ -29,6 +29,9 @@ Implemented:
   at 84.6% coverage; coverage-flag test AUROC 0.734 (gate fails, flag omitted).
 - A post-pass bootstrap denominator bug in coverage CIs was corrected from saved
   predictions; point estimates and gates were unchanged (recorded in `metrics_v2.json`).
+- Qualitative HaluEval review of 15 user-supplied error cases
+  (`experiments/v2/HALUEVAL_ERROR_REVIEW.md`): 11 retrieval, 2 ambiguous, 1 verifier,
+  and 1 answer-level omission, outside the 274-label taxonomy.
 
 Decision: the learned detector remains offline; the fixed 0.7/0.95 rule remains the
 serving default. No serving code changed.

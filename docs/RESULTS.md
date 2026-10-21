@@ -289,7 +289,10 @@ the user's direction: 37 rows keep their human pilot verdict, 237 are silver lab
 (`human_reviewed: false`). Pilot noise: extraction κ 0.881 (n=17), verification
 category agreement 0.75 (n=20). Taxonomy v2 splits `nli_failure` into
 `verifier_error` and keeps `ambiguous_evidence` distinct. A 40-row blind audit is
-generated but not completed.
+generated but not completed. A separate qualitative review of 15 HaluEval errors
+maps to 11 retrieval failures, 2 ambiguous-evidence cases, 1 verifier error, and 1
+answer-level omission outside the claim taxonomy; it is not part of the 274 labels
+and changes no metric (`experiments/v2/HALUEVAL_ERROR_REVIEW.md`).
 
 **Calibration (val, out-of-fold).** Temperature 1.122 with 2-fold cross-fitting:
 ECE 0.03317 → 0.02301 (30.6% relative reduction), Brier 0.42303 → 0.42210, NLL

@@ -37,6 +37,15 @@ Label distribution: extraction 150 Pass / 21 Fail. Verification (all Fail by
 queue construction): retrieval 65, verifier_error 18, multi-hop 7, extraction 5,
 entity 4, ambiguous 3, numerical 1.
 
+### Qualitative HaluEval review (not taxonomy labels)
+
+A separate user-supplied review of 15 HaluEval errors maps to **11 retrieval
+failures, 2 ambiguous-evidence cases, 1 verifier error, and 1 answer-level
+incompleteness** outside the claim taxonomy. The last case (`6814`) has claims that
+the context supports; HaluEval marks the answer wrong because it omits the requested
+"line of videos". These notes do not change the 274-row labels or any test metric.
+See [HALUEVAL_ERROR_REVIEW.md](HALUEVAL_ERROR_REVIEW.md).
+
 ## Calibration (P2, val only)
 
 Base model: v1 hybrid, frozen C = 1.0, fitted on train. Val macro-F1 reproduces v1
