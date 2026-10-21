@@ -95,6 +95,15 @@ default. Details: [v2 report](experiments/v2/REPORT.md) and
 [serving decision](docs/SERVING_DECISION_V2.md). The 237 non-pilot taxonomy labels
 are LLM proposals, not human annotations; a 40-row blind audit is pending.
 
+## v3 — stopped before the test pass
+
+A v3 attempt targeted the v2 promotion blockers. Brier-targeted vector scaling
+improved val Brier (0.42303 → 0.42161), but the answerability model could not
+reduce NEI coverage below 0.483 without breaking the verifiable-coverage gate, so
+v3 stopped before spending its test pass. The learned detector remains offline.
+Details: [v3 report](experiments/v3/REPORT.md) and
+[v3 serving decision](docs/SERVING_DECISION_V3.md).
+
 ## Frozen-rule evaluation (HaluEval)
 
 On the same 600 HaluEval test answers, claim decomposition with supplied knowledge

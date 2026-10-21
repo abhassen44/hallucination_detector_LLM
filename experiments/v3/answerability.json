@@ -1,0 +1,141 @@
+{
+  "version": "v3-answerability",
+  "created_utc": "2026-10-21T13:03:02.424424+00:00",
+  "target": "gold != INSUFFICIENT",
+  "model": {
+    "type": "hist_gradient_boosting",
+    "params": {
+      "max_iter": 300,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0,
+      "class_weight": "balanced"
+    },
+    "val_auroc": 0.765405044684324
+  },
+  "model_comparison": {
+    "logistic_best_auroc": 0.7408895381868355,
+    "hgb_auroc": 0.765405044684324
+  },
+  "features": "30 cached features + 3 base-model class probabilities",
+  "training": {
+    "fit_split": "train",
+    "selection_split": "val",
+    "train_n": 3000,
+    "val_n": 999,
+    "train_oof_probabilities": true,
+    "class_counts": {
+      "answerable": 2000,
+      "nei": 1000
+    }
+  },
+  "val_metrics": {
+    "auroc": 0.765405044684324,
+    "average_precision": 0.8633472485237638,
+    "brier": 0.19307264691468143
+  },
+  "class_thresholds": {
+    "SUPPORTED": 0.5,
+    "CONTRADICTED": 0.38,
+    "INSUFFICIENT": 0.84
+  },
+  "selection": {
+    "mode": "fallback_verifiable_only",
+    "fallback_triggered": true,
+    "constraints": {
+      "verifiable_precision_min": 0.94,
+      "verifiable_precision_cp_lower_min": 0.9,
+      "verifiable_coverage_min": 0.8,
+      "overall_coverage_min": 0.55,
+      "overall_precision_min": 0.75,
+      "nei_coverage_max": 0.4
+    },
+    "tau_answerable": 0.21
+  },
+  "val_policy": {
+    "tau": 0.21,
+    "coverage": 0.6946946946946947,
+    "answered_precision": 0.7406340057636888,
+    "n_answered": 694,
+    "verifiable_coverage": 0.8003003003003003,
+    "verifiable_precision": 0.9624765478424016,
+    "verifiable_precision_lower_95": 0.942641239262689,
+    "nei_coverage": 0.48348348348348347,
+    "nei_precision": 0.006211180124223602,
+    "nei_abstention": 0.5165165165165165,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 333,
+        "coverage": 0.9009009009009009,
+        "precision": 0.9633333333333334
+      },
+      "CONTRADICTED": {
+        "n": 333,
+        "coverage": 0.6996996996996997,
+        "precision": 0.9613733905579399
+      },
+      "INSUFFICIENT": {
+        "n": 333,
+        "coverage": 0.48348348348348347,
+        "precision": 0.006211180124223602
+      }
+    }
+  },
+  "v2_policy_baseline": {
+    "coverage": 0.7167167167167167,
+    "answered_precision": 0.7276536312849162,
+    "n_answered": 716,
+    "verifiable_coverage": 0.8108108108108109,
+    "verifiable_precision": 0.9611111111111111,
+    "verifiable_precision_lower_95": 0.9411666674526205,
+    "nei_coverage": 0.5285285285285285,
+    "nei_precision": 0.011363636363636364,
+    "nei_abstention": 0.47147147147147145,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 333,
+        "coverage": 0.9039039039039038,
+        "precision": 0.9601328903654485
+      },
+      "CONTRADICTED": {
+        "n": 333,
+        "coverage": 0.7177177177177178,
+        "precision": 0.9623430962343096
+      },
+      "INSUFFICIENT": {
+        "n": 333,
+        "coverage": 0.5285285285285285,
+        "precision": 0.011363636363636364
+      }
+    }
+  },
+  "delta": {
+    "nei_coverage": -0.04504504504504503,
+    "verifiable_coverage": -0.010510510510510551,
+    "verifiable_precision": 0.0013654367312904148,
+    "overall_precision": 0.012980374478772538
+  },
+  "notes": [
+    "No test data was read.",
+    "The class thresholds are the frozen v2 policy; only the answerability threshold is selected.",
+    "If fallback_triggered is true, the NEI improvement is not claimed; see the protocol."
+  ],
+  "feasibility": {
+    "all_constraints_feasible": false,
+    "joint_class_threshold_search": {
+      "grid": "tau 0.05-0.80 step 0.05; SUPPORTED 0.50-0.95 step 0.05; CONTRADICTED 0.40-0.95 step 0.05; INSUFFICIENT fixed 0.84",
+      "n_feasible": 0,
+      "best_nei_under_verifiable": 0.483,
+      "best_point": {
+        "tau": 0.2,
+        "supported_threshold": 0.5,
+        "contradicted_threshold": 0.4,
+        "coverage": 0.695,
+        "answered_precision": 0.742,
+        "verifiable_coverage": 0.8,
+        "verifiable_precision": 0.964,
+        "nei_coverage": 0.483
+      }
+    }
+  }
+}

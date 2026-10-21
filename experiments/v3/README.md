@@ -11,11 +11,20 @@ confident NEI answers, and coverage-flag instability.
 | Phase | Scope | Status |
 |---|---|---|
 | P0 | Freeze v2, branch, protocol | **Done** |
-| P1 | Calibration bake-off (val only) | Next |
-| P2 | Answerability / NEI model (val only) | Pending |
-| P3 | Coverage-flag stability (val only) | Pending |
-| P4 | Single test pass | Pending |
-| P5 | Serving decision / feature flag | Pending |
+| P1 | Calibration bake-off (val only) | **Done** — vector scaling (Brier) selected |
+| P2 | Answerability / NEI model (val only) | **Done — stopped: NEI target infeasible** |
+| P3 | Coverage-flag stability (val only) | Not run |
+| P4 | Single test pass | **Not run; test pass unused** |
+| P5 | Serving decision / feature flag | Learned stays offline |
+
+## Outcome
+
+P1 selected **vector scaling fitted on Brier**: val Brier **0.42161** vs raw
+**0.42303**, ECE 0.0255. P2’s answerability model reached val AUROC **0.765**, but
+the best policy under the verifiable constraints still leaves **NEI coverage 0.483**
+(gate 0.40) and **overall precision 0.741** (gate 0.75). A joint threshold search
+found zero feasible points, so v3 stopped before P4. **No test pass was spent; the
+learned model stays offline.** Details: [REPORT.md](REPORT.md).
 
 ## Hard gates (one test pass)
 
@@ -41,12 +50,11 @@ confident NEI answers, and coverage-flag instability.
 ```text
 experiments/v3/
   protocol.json
-  calibration.json        # P1 bake-off
-  answerability.json      # P2
-  coverage_flag.json      # P3
-  policy.json             # frozen before P4
-  metrics_v3.json         # P4
-  test_predictions_v3.jsonl
+  calibration.json            # P1 bake-off
+  answerability.json          # P2 model + feasibility
+  policy.json                 # fallback policy, not promoted
+  val_predictions_v3.jsonl    # calibration output
+  val_policy_v3.jsonl         # answerability policy output
   REPORT.md
 ```
 

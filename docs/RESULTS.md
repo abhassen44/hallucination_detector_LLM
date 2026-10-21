@@ -328,6 +328,16 @@ CI [-0.00079, 0.00219], so not distinguishable from zero, but the gate was
 pre-registered as a point comparison), and the flag missed its AUROC gate. The
 learned detector remains offline; the fixed rule stays the default.
 
+## v3 - stopped before the test pass
+
+v3 targeted the v2 promotion blockers: Brier, NEI, and coverage-flag stability.
+P1 selected vector scaling fitted on Brier (val Brier 0.42161 vs 0.42303; ECE
+0.0255). P2's answerability model reached val AUROC 0.765, but the best policy
+under the verifiable constraints left NEI coverage at 0.483 (target 0.40) and
+overall precision at 0.741 (target 0.75). A joint threshold search found no
+feasible point, so v3 stopped before P4. **No v3 test pass was spent** and the
+learned detector remains offline. Report: `experiments/v3/REPORT.md`.
+
 ## Reproduce
 
 ```sh

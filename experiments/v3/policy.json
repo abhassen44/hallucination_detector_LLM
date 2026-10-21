@@ -1,0 +1,98 @@
+{
+  "version": "v3-policy",
+  "created_utc": "2026-10-21T13:03:02.424424+00:00",
+  "policy": {
+    "type": "answerability_gate + class_conditional_thresholds",
+    "rule": "abstain if P(answerable) < tau; otherwise answer argmax if calibrated p[argmax] >= threshold[argmax]",
+    "answerability_threshold": 0.21,
+    "class_thresholds": {
+      "SUPPORTED": 0.5,
+      "CONTRADICTED": 0.38,
+      "INSUFFICIENT": 0.84
+    }
+  },
+  "selection": {
+    "mode": "fallback_verifiable_only",
+    "fallback_triggered": true,
+    "constraints": {
+      "verifiable_precision_min": 0.94,
+      "verifiable_precision_cp_lower_min": 0.9,
+      "verifiable_coverage_min": 0.8,
+      "overall_coverage_min": 0.55,
+      "overall_precision_min": 0.75,
+      "nei_coverage_max": 0.4
+    },
+    "tau_answerable": 0.21
+  },
+  "val_metrics": {
+    "tau": 0.21,
+    "coverage": 0.6946946946946947,
+    "answered_precision": 0.7406340057636888,
+    "n_answered": 694,
+    "verifiable_coverage": 0.8003003003003003,
+    "verifiable_precision": 0.9624765478424016,
+    "verifiable_precision_lower_95": 0.942641239262689,
+    "nei_coverage": 0.48348348348348347,
+    "nei_precision": 0.006211180124223602,
+    "nei_abstention": 0.5165165165165165,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 333,
+        "coverage": 0.9009009009009009,
+        "precision": 0.9633333333333334
+      },
+      "CONTRADICTED": {
+        "n": 333,
+        "coverage": 0.6996996996996997,
+        "precision": 0.9613733905579399
+      },
+      "INSUFFICIENT": {
+        "n": 333,
+        "coverage": 0.48348348348348347,
+        "precision": 0.006211180124223602
+      }
+    }
+  },
+  "v2_policy_baseline": {
+    "coverage": 0.7167167167167167,
+    "answered_precision": 0.7276536312849162,
+    "n_answered": 716,
+    "verifiable_coverage": 0.8108108108108109,
+    "verifiable_precision": 0.9611111111111111,
+    "verifiable_precision_lower_95": 0.9411666674526205,
+    "nei_coverage": 0.5285285285285285,
+    "nei_precision": 0.011363636363636364,
+    "nei_abstention": 0.47147147147147145,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 333,
+        "coverage": 0.9039039039039038,
+        "precision": 0.9601328903654485
+      },
+      "CONTRADICTED": {
+        "n": 333,
+        "coverage": 0.7177177177177178,
+        "precision": 0.9623430962343096
+      },
+      "INSUFFICIENT": {
+        "n": 333,
+        "coverage": 0.5285285285285285,
+        "precision": 0.011363636363636364
+      }
+    }
+  },
+  "calibration": {
+    "source": "experiments/v3/calibration.json",
+    "method": "vector_scaling_brier"
+  },
+  "test_gate": {
+    "verifiable_precision_min": 0.94,
+    "verifiable_precision_cp_lower_min": 0.9,
+    "verifiable_coverage_min": 0.8,
+    "overall_coverage_min": 0.55,
+    "overall_precision_min": 0.75,
+    "nei_coverage_max": 0.4
+  },
+  "status": "fallback_not_promoted",
+  "stop_reason": "P2 all-constraints infeasible on val; v3 stopped before P4; test pass unused."
+}

@@ -21,13 +21,13 @@ def clopper_pearson_lower(successes: int, n: int, alpha: float = 0.05) -> float:
     return float(beta.ppf(alpha / 2, successes, n - successes + 1))
 
 
-def policy_metrics(y_true: np.ndarray, probabilities: np.ndarray,
-                   thresholds: np.ndarray) -> dict:
+def metrics_for_answered(y_true: np.ndarray, probabilities: np.ndarray,
+                         answered: np.ndarray) -> dict:
+    """Selective metrics for an arbitrary boolean answered mask."""
     y_true = np.asarray(y_true, dtype=np.int64)
     probabilities = np.asarray(probabilities, dtype=np.float64)
     predicted = probabilities.argmax(axis=1)
-    confidence = probabilities[np.arange(len(y_true)), predicted]
-    answered = confidence >= np.asarray(thresholds)[predicted]
+    answered = np.asarray(answered, dtype=bool)
 
     def rate(mask: np.ndarray) -> float | None:
         return float(mask.mean()) if mask.size else None
@@ -68,6 +68,17 @@ def policy_metrics(y_true: np.ndarray, probabilities: np.ndarray,
                            if nei.any() else None),
         'per_class': per_class,
     }
+
+
+def policy_metrics(y_true: np.ndarray, probabilities: np.ndarray,
+                   thresholds: np.ndarray) -> dict:
+    """Class-conditional threshold policy, expressed as an answered mask."""
+    y_true = np.asarray(y_true, dtype=np.int64)
+    probabilities = np.asarray(probabilities, dtype=np.float64)
+    predicted = probabilities.argmax(axis=1)
+    confidence = probabilities[np.arange(len(y_true)), predicted]
+    answered = confidence >= np.asarray(thresholds)[predicted]
+    return metrics_for_answered(y_true, probabilities, answered)
 
 
 def select_policy(y_true: np.ndarray, probabilities: np.ndarray,

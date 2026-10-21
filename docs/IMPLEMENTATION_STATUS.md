@@ -1,5 +1,24 @@
 # Current implementation status
 
+## v3 (2026-10-21) — stopped before the test pass
+
+Branch `ver-3`, baseline `e7f0af5`. Report:
+[experiments/v3/REPORT.md](../experiments/v3/REPORT.md); decision:
+[SERVING_DECISION_V3.md](SERVING_DECISION_V3.md).
+
+- P1 calibration bake-off: temperature, vector scaling, and isotonic, each with
+  NLL- and Brier-fitted variants. Vector scaling fitted on Brier was selected:
+  val Brier **0.42161** vs raw **0.42303**, ECE **0.0255**.
+- P2 answerability: histogram gradient boosting reached val AUROC **0.765**.
+  The best policy under the verifiable constraints still leaves NEI coverage
+  **0.483** (gate 0.40) and overall precision **0.741** (gate 0.75).
+- A joint tau + class-threshold search found **zero** feasible points; the NEI
+  floor under the verifiable constraints is 0.483.
+- v3 stopped before P4. **No v3 test pass was spent**; no v3 test predictions exist.
+- The learned detector remains offline; the fixed rule stays the default.
+
+Tests: 146 passing.
+
 ## v2 (2026-10-21) — calibration, selective policy, coverage flag
 
 Branch `feature/ver-2`, tags `v1.0` (`f79f0ff`) and `v2.0`. Full write-up:

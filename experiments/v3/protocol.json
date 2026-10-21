@@ -1,7 +1,7 @@
 {
   "version": "v3",
   "created_utc": "2026-10-21T12:58:20+00:00",
-  "status": "P0 frozen; calibration bake-off next",
+  "status": "P2 closed: NEI target infeasible on val; no test pass spent",
   "branch": "ver-3",
   "baseline": {
     "v2_commit": "e7f0af5",
@@ -91,7 +91,7 @@
     "target": "gold != INSUFFICIENT",
     "fit_split": "train",
     "selection_split": "val",
-    "features": "30 cached serving features + 3 calibrated class probabilities",
+    "features": "30 cached features + 3 out-of-fold base-model class probabilities (not calibrated probabilities, to avoid val-calibration leakage)",
     "models": [
       "class_balanced_logistic_regression",
       "hist_gradient_boosting"
@@ -115,6 +115,10 @@
     "fallback": {
       "trigger": "no tau_a meets all constraints on val",
       "rule": "keep verifiable precision/coverage constraints, choose the tau_a that minimises NEI coverage, report the resulting overall precision/coverage, and do not claim an NEI improvement"
+    },
+    "result": {
+      "status": "stopped_before_test",
+      "reason": "No tau_a (nor joint class-threshold change) meets all constraints on val. Best NEI coverage under the verifiable constraints is 0.483; the pre-registered maximum is 0.40."
     }
   },
   "coverage_flag": {
@@ -165,5 +169,8 @@
     "The answerability model is the v3 addition; if it cannot improve NEI coverage on val, the fallback applies before test.",
     "The coverage flag is optional for promotion; a failure to reach 0.75 AUROC on val removes it from the test system.",
     "No test data is read during P1-P3."
+  ],
+  "amendments": [
+    "Answerability features use out-of-fold base-model probabilities for train and full-train probabilities for val, rather than calibrated probabilities, to keep the answerability fit independent of the val-fitted calibrator."
   ]
 }
