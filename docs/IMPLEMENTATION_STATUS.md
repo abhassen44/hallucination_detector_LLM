@@ -38,7 +38,8 @@ Tests: 132 passing; frontend build passing (`scripts.reproduce --stage checks`).
 Open items (not blocking v2 closure):
 
 - Human 40-row audit of `experiments/v2/audit_sheet.csv`, then `scripts.score_v2_audit`.
-- P6 retrieval variant (stretch): not attempted; its test budget is unused.
+- P6 retrieval variant (stretch): val-only weighted-RRF study done; best +0.0016
+  macro-F1, not promoted; the retrieval test pass is unused.
 - Promotion blockers for v3: Brier-preserving calibration, NEI recognition, coverage-flag
   stability, and human labels.
 

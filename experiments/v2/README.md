@@ -14,7 +14,7 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 | P3 | Selective policy + coverage flag (val only) | **Done** — policy frozen; flag passes val |
 | P4 | One test pass for the calibrated system | **Done** — Brier and flag AUROC fail |
 | P5 | Serving decision / feature flag | **Done** — no promotion |
-| P6 | Retrieval variant (stretch, one test pass) | Not attempted — serving is blocked by calibration, not macro-F1 |
+| P6 | Retrieval variant (stretch, one test pass) | Val-only weighted-RRF study done; best +0.0016 macro-F1, not promoted; test pass unused |
 
 ## Outcome
 
@@ -27,6 +27,15 @@ stays the default.
 
 Full write-up: [REPORT.md](REPORT.md). Serving decision:
 [../docs/SERVING_DECISION_V2.md](../docs/SERVING_DECISION_V2.md).
+
+### P6 feasibility (val only)
+
+`scripts/val_study_weighted_rrf.py` tunes the BM25/dense RRF weight on val. The
+best point is BM25 weight 0.25: val macro-F1 **0.67798** vs the v1 hybrid
+**0.67636** (+0.0016, not material). Dense-only reaches 0.6761 with a higher strict
+R@5 (0.9129 vs 0.8964) but no macro-F1 gain. The retrieval-variant test pass was
+**not spent**; no variant is promoted. Results:
+[val_study_weighted_rrf.json](val_study_weighted_rrf.json).
 
 ## P0 result
 

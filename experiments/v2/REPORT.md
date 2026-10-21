@@ -134,6 +134,25 @@ One test pass was used. A bootstrap denominator bug in coverage CIs was correcte
 after the pass from the saved per-row predictions; point estimates and gates were
 unaffected. No model or threshold was changed.
 
+## Retrieval feasibility (P6, val only)
+
+Weighted RRF was tuned on val by re-fusing the cached BM25/dense top-50 lists. The
+weight grid was `w_bm25 ∈ {0, 0.25, 0.5, 0.75, 1.0}`; NLI was computed only for
+fused top-5 hits missing cached scores. At `w=0.5` the study reproduces the v1
+hybrid exactly (val macro-F1 0.67636), which validates the implementation.
+
+| BM25 weight | Val macro-F1 | Fixed-rule val macro-F1 | Strict R@5 |
+|---:|---:|---:|---:|
+| 0.00 (dense only) | 0.6761 | 0.5805 | 0.9129 |
+| 0.25 | **0.6780** | 0.5843 | 0.9009 |
+| 0.50 (v1 hybrid) | 0.6764 | 0.5849 | 0.8964 |
+| 0.75 | 0.6756 | 0.5686 | 0.8754 |
+| 1.00 (BM25 only) | 0.6554 | 0.5656 | 0.8378 |
+
+The best point is **+0.0016** macro-F1 over v1, which is not a material gain and was
+not tested. The retrieval-variant test pass remains unused. A retrieval change would
+not fix the Brier or NEI blockers anyway.
+
 ## Decision (P5)
 
 The learned detector **remains offline**. The fixed rule stays the serving default.

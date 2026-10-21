@@ -312,6 +312,12 @@ precision (CP lower 92.61%), 72.47% of all claims at 73.55% precision, and 48.20
 of NEI claims at 1.25% precision. The coverage flag reached AUROC 0.734 (gate 0.75)
 but enriched errors 2.66× and false abstentions 3.40×; it is omitted from serving.
 
+**Retrieval stretch (val only).** Weighted RRF was tuned on val by re-fusing the
+cached BM25/dense lists. Best BM25 weight 0.25 gave val macro-F1 0.67798 vs 0.67636
+for the v1 hybrid (+0.0016, not material); dense-only reached 0.6761 with higher
+strict R@5 (0.9129 vs 0.8964). The retrieval-variant test pass was not spent and no
+variant is promoted.
+
 **Decision.** No promotion: the Brier “no worse” gate failed by 0.00069 (paired 95%
 CI [-0.00079, 0.00219], so not distinguishable from zero, but the gate was
 pre-registered as a point comparison), and the flag missed its AUROC gate. The
