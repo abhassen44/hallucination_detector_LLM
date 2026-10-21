@@ -1,0 +1,146 @@
+{
+  "version": "v2",
+  "created_utc": "2026-10-21T09:14:44+00:00",
+  "status": "P0 scaffolded; taxonomy v2 and proposals are P1",
+  "branch": "feature/ver-2",
+  "baseline": {
+    "tag": "v1.0",
+    "commit": "f79f0ff",
+    "summary": "v1 pilot verdict committed; v1 artifacts frozen",
+    "test_macro_f1": 0.7020233614802173,
+    "test_macro_f1_source": "experiments/stage5_learned/metrics.json",
+    "predictions": "experiments/stage5_learned/predictions_hybrid.jsonl",
+    "predictions_sha256": "3a7c613b1900f0f7d463b559a01a0b554ad026eb312e763ae90b56ea21807117"
+  },
+  "splits": {
+    "fit": "train",
+    "selection": "val",
+    "report": "test",
+    "row_counts": {
+      "train": 3000,
+      "val": 999,
+      "test": 1998
+    },
+    "sha256": {
+      "fever_train.jsonl": "ef686e6f3b3a3b92fb68a22e90188963162a5b783429a3cdf111a002fb6d1848",
+      "fever_val.jsonl": "96a92c0adf159aacc5a2ec4e39a4764b8671a6e972065a02891e0414c748af1d",
+      "fever_test.jsonl": "1da0770f89cb5346cd6c8f4e325a449ce26cb9e5972f1f63ffd6d542b68a3364"
+    }
+  },
+  "human_review": {
+    "extraction_queue": {
+      "path": "experiments/v2/queues/extraction.jsonl",
+      "n_rows": 171,
+      "sha256": "9b1df616673c598ebe6c5c477fa5a0e35e361dd4eb77b678ac039474473822f7"
+    },
+    "verification_queue": {
+      "path": "experiments/v2/queues/verification.jsonl",
+      "n_rows": 103,
+      "sha256": "e298e701501d97d3d17ff5c4f9dcd64a20860aed47bc9cb564a009bbcc1ef20c"
+    },
+    "n_rows_total": 274,
+    "key": "(id, condition)",
+    "pilot_seeded_verdicts": 37,
+    "pilot_pending_verdicts": 3,
+    "seed_manifest": "experiments/v2/queue_seed.json",
+    "min_completion": "274/274 Pass/Fail verdicts",
+    "reannotation_fraction": 0.2,
+    "reannotation_min_kappa": 0.6,
+    "reannotation_note": "Intra-annotator agreement after a washout; if kappa < 0.6, collapse unstable categories and mark fine-grained counts exploratory. Does not block P2-P4."
+  },
+  "taxonomy_v2": {
+    "verification_categories": [
+      "retrieval_failure",
+      "claim_extraction_failure",
+      "verifier_error",
+      "ambiguous_evidence",
+      "numerical_reasoning",
+      "temporal_information",
+      "entity_confusion",
+      "multi_hop_reasoning"
+    ],
+    "verification_changes": [
+      "nli_failure renamed to verifier_error",
+      "ambiguous_evidence retained as a first-class category",
+      "retrieval_failure and claim_extraction_failure remain distinguishable"
+    ],
+    "extraction_primary": "Pass/Fail",
+    "extraction_causes": "secondary and exploratory; not gated",
+    "note": "Category counts are descriptive; only Pass/Fail gates the human-label check."
+  },
+  "test_budget": {
+    "calibrated_system_passes": 1,
+    "retrieval_variant_passes": 1,
+    "rule": "Thresholds and policy are frozen on val before each pass; no iteration on test. Log every pass, including reruns forced by bugs."
+  },
+  "calibration": {
+    "method": "temperature scaling",
+    "fit_split": "val",
+    "cross_fit_folds": 2,
+    "metrics": [
+      "ece_10bin",
+      "brier",
+      "reliability_diagram",
+      "per_class_ece"
+    ],
+    "min_relative_ece_reduction": 0.25,
+    "max_ece": 0.05,
+    "fallback": "If calibration misses the val gate, ship raw scores labelled uncalibrated and skip the confidence UI."
+  },
+  "selective_policy": {
+    "selection_split": "val",
+    "objective": "maximize answered coverage",
+    "constraints": {
+      "answered_precision_overall_min": 0.9,
+      "answered_precision_verifiable_min": 0.94
+    },
+    "fallback": {
+      "trigger": "no operating point meets both constraints at coverage >= 0.50",
+      "rule": "choose the max-coverage point meeting the verifiable target and pre-register the overall precision it yields"
+    },
+    "freeze_before": "the single test pass",
+    "report_nei_coverage_separately": true,
+    "report_risk_coverage": true
+  },
+  "coverage_flag": {
+    "target": "strict retrieval failure: at least one claim lacks its full gold evidence set in top-5",
+    "fit_split": "train",
+    "selection_split": "val",
+    "features": "serving-available only; no gold evidence or labels",
+    "min_val_auroc": 0.75,
+    "max_flag_rate": 0.25,
+    "min_error_enrichment": 2.0,
+    "fallback": "If the gate misses, omit the flag from serving and report it as a diagnostic only."
+  },
+  "promotion_gates": {
+    "macro_f1_min": 0.697,
+    "macro_f1_note": "non-inferiority vs v1 0.702; the default v2 verdict path is unchanged",
+    "ece_max": 0.05,
+    "brier": "no worse than uncalibrated on test",
+    "frozen_policy_met_on_test": true,
+    "coverage_flag": "meets its utility gate or is omitted",
+    "p95_added_latency_ms_max": 50,
+    "fixed_rule_remains_default": true
+  },
+  "artifacts": {
+    "queues": "experiments/v2/queues/",
+    "proposals": "experiments/v2/proposals/",
+    "human_labels": [
+      "experiments/v2/human_labels_extraction.jsonl",
+      "experiments/v2/human_labels_verification.jsonl"
+    ],
+    "agreement": "experiments/v2/agreement.json",
+    "calibration": "experiments/v2/calibration.json",
+    "risk_coverage": "experiments/v2/risk_coverage.json",
+    "coverage_flag": "experiments/v2/coverage_flag.json",
+    "policy": "experiments/v2/policy.json",
+    "metrics": "experiments/v2/metrics_v2.json",
+    "report": "experiments/v2/REPORT.md"
+  },
+  "notes": [
+    "v1 artifacts are read-only; v2 writes only under experiments/v2/ and docs/.",
+    "The 40 pilot rows overlap the full queues; 37 had Pass/Fail verdicts and are seeded. Three extraction rows remain pending (two with partial notes, one untouched).",
+    "Overall answered precision is dominated by NEI claims in v1 (322 NEI claims answered, all wrong); NEI coverage is reported separately rather than folded into one selective-risk number.",
+    "The retrieval variant is a stretch, triggered only if the calibrated system misses a promotion gate and time remains."
+  ]
+}

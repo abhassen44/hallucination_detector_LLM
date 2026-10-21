@@ -1,0 +1,288 @@
+{
+  "created_utc": "2026-10-21T09:14:34.416859+00:00",
+  "key": "(id, condition)",
+  "queues": {
+    "extraction": {
+      "source": "experiments\\stage4_claims\\human_review.jsonl",
+      "pilot": "experiments\\pilot_v1\\extraction_queue.jsonl",
+      "source_sha256": "403eb845dd41004310ea711951f982928f796b2898b05cbf3af7c56f7c6259c6",
+      "pilot_sha256": "2641ebaaf890681e5ac6b6688ea7811882912b6a03fb4cb4710f64d3ae415abd",
+      "n_rows": 171,
+      "n_unique_keys": 171,
+      "n_pilot_rows": 20,
+      "n_seeded": 17,
+      "n_skipped": 3,
+      "seeded": [
+        {
+          "id": "halueval-qa-698-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "entity_confusion"
+        },
+        {
+          "id": "halueval-qa-388-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-7982-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "claim_extraction_failure"
+        },
+        {
+          "id": "halueval-qa-2113-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "claim_extraction_failure"
+        },
+        {
+          "id": "halueval-qa-2319-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-2424-hallucinated",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-3212-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-3542-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "claim_extraction_failure"
+        },
+        {
+          "id": "halueval-qa-4056-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-4922-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-5407-hallucinated",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-6585-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-9230-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "ambiguous_evidence"
+        },
+        {
+          "id": "halueval-qa-9965-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-2022-hallucinated",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-40-right",
+          "condition": null,
+          "verdict": "Pass",
+          "category": null
+        },
+        {
+          "id": "halueval-qa-9203-hallucinated",
+          "condition": null,
+          "verdict": "Fail",
+          "category": "temporal_information"
+        }
+      ],
+      "skipped": [
+        {
+          "id": "halueval-qa-9023-hallucinated",
+          "condition": null,
+          "reason": "no Pass/Fail verdict",
+          "had_open_coding": true,
+          "had_category": true
+        },
+        {
+          "id": "halueval-qa-1653-hallucinated",
+          "condition": null,
+          "reason": "no Pass/Fail verdict",
+          "had_open_coding": true,
+          "had_category": false
+        },
+        {
+          "id": "halueval-qa-3451-hallucinated",
+          "condition": null,
+          "reason": "no Pass/Fail verdict",
+          "had_open_coding": false,
+          "had_category": false
+        }
+      ]
+    },
+    "verification": {
+      "source": "experiments\\stage5_inference\\error_review.jsonl",
+      "pilot": "experiments\\pilot_v1\\verification_queue.jsonl",
+      "source_sha256": "7d5581d9d586949501076878d4a49d0b6fea7e92d91c121d423a52b9d77c192a",
+      "pilot_sha256": "e933c4cc4334883452f035467b7834d36ca6893396c640fadc8ab62a9985df45",
+      "n_rows": 103,
+      "n_unique_keys": 103,
+      "n_pilot_rows": 20,
+      "n_seeded": 20,
+      "n_skipped": 0,
+      "seeded": [
+        {
+          "id": "halueval-qa-2497-right",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "claim_extraction_failure"
+        },
+        {
+          "id": "halueval-qa-1201-right",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "nli_failure"
+        },
+        {
+          "id": "halueval-qa-4468-right",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "multi_hop_reasoning"
+        },
+        {
+          "id": "halueval-qa-955-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "ambiguous_evidence"
+        },
+        {
+          "id": "halueval-qa-8287-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "ambiguous_evidence"
+        },
+        {
+          "id": "halueval-qa-9318-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "nli_failure"
+        },
+        {
+          "id": "halueval-qa-2667-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-9709-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "numerical_reasoning"
+        },
+        {
+          "id": "halueval-qa-9104-hallucinated",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "entity_confusion"
+        },
+        {
+          "id": "halueval-qa-513-right",
+          "condition": "bm25_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-6816-right",
+          "condition": "bm25_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-4429-right",
+          "condition": "dense_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-6296-right",
+          "condition": "dense_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-9978-right",
+          "condition": "dense_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-7982-right",
+          "condition": "provided_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-7626-right",
+          "condition": "hybrid_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-9495-right",
+          "condition": "hybrid_extracted_claims",
+          "verdict": "Fail",
+          "category": "nli_failure"
+        },
+        {
+          "id": "halueval-qa-2921-right",
+          "condition": "hybrid_extracted_claims",
+          "verdict": "Fail",
+          "category": "multi_hop_reasoning"
+        },
+        {
+          "id": "halueval-qa-2544-right",
+          "condition": "hybrid_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        },
+        {
+          "id": "halueval-qa-308-right",
+          "condition": "hybrid_extracted_claims",
+          "verdict": "Fail",
+          "category": "retrieval_failure"
+        }
+      ],
+      "skipped": []
+    }
+  },
+  "outputs": {
+    "experiments\\v2\\queues\\extraction.jsonl": {
+      "n_rows": 171,
+      "sha256": "9b1df616673c598ebe6c5c477fa5a0e35e361dd4eb77b678ac039474473822f7"
+    },
+    "experiments\\v2\\queues\\verification.jsonl": {
+      "n_rows": 103,
+      "sha256": "e298e701501d97d3d17ff5c4f9dcd64a20860aed47bc9cb564a009bbcc1ef20c"
+    }
+  }
+}
