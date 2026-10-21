@@ -1,0 +1,131 @@
+{
+  "version": "v4",
+  "created_utc": "2026-10-21T14:10:00+00:00",
+  "status": "P1 complete: reranker top-5 selected; P2 data expansion next",
+  "branch": "ver-4",
+  "baseline": {
+    "v3_commit": "e9974c6",
+    "v2_commit": "e7f0af5",
+    "v1_hybrid_val_macro_f1": 0.6763644683287465,
+    "v1_hybrid_val_insufficient_f1": 0.5207296849087893,
+    "v1_hybrid_test_macro_f1": 0.7020233614802173,
+    "v2_test_brier_raw": 0.3965608888154419,
+    "v2_test_ece": 0.02278725893881364,
+    "v3_stop_reason": "NEI floor 0.477 vs gate 0.40; no test pass spent"
+  },
+  "splits": {
+    "fit": "train",
+    "selection": "val",
+    "report": "test",
+    "row_counts": {
+      "train": 3000,
+      "val": 999,
+      "test": 1998
+    },
+    "sha256": {
+      "fever_train.jsonl": "ef686e6f3b3a3b92fb68a22e90188963162a5b783429a3cdf111a002fb6d1848",
+      "fever_val.jsonl": "96a92c0adf159aacc5a2ec4e39a4764b8671a6e972065a02891e0414c748af1d",
+      "fever_test.jsonl": "1da0770f89cb5346cd6c8f4e325a449ce26cb9e5972f1f63ffd6d542b68a3364"
+    },
+    "expansion": {
+      "source": "data/raw/fever/paper_dev.jsonl",
+      "available": 9999,
+      "used": 3999,
+      "unused": 6000,
+      "val_is_frozen": true,
+      "target_train_sizes": [
+        3000,
+        6000,
+        9000
+      ]
+    }
+  },
+  "test_budget": {
+    "v4_test_passes": 1,
+    "v4_test_passes_used": 0,
+    "rule": "One final pass for the combined v4 system. No component gets a separate test pass. All components are selected on val. No test-driven tuning."
+  },
+  "retrieval_stack": {
+    "candidate": "top-50 hybrid -> bge-reranker-base -> compare top-5 vs top-8; top-5 selected",
+    "query_generation": "optional; two queries per claim, only if the reranker leaves a large retrieval-failure bucket",
+    "keep_rule": {
+      "val_macro_f1_min": 0.68136,
+      "insufficient_f1_max_drop": 0.01,
+      "note": "Compare against v1 hybrid val 0.67636 and INSUFFICIENT F1 0.52073."
+    },
+    "fallback": "If the stack misses the keep rule on val, keep v1 retrieval and do not rebuild the expanded caches.",
+    "result": {
+      "selected_k": 5,
+      "val_macro_f1": 0.6929588357660689,
+      "v1_val_macro_f1": 0.6763644683287465,
+      "insufficient_f1": 0.535593220338983,
+      "v1_insufficient_f1": 0.5207296849087893,
+      "top8_macro_f1": 0.6773168556654413,
+      "top8_insufficient_f1": 0.5158069883527454,
+      "keep_rule_passed": true
+    }
+  },
+  "data_expansion": {
+    "stages": [
+      6000,
+      9000
+    ],
+    "balance": "per-class balance; val stays fixed",
+    "features": "rebuild retrieval + NLI for new train claims only",
+    "gate": {
+      "answerability_auroc_min": 0.8,
+      "nei_coverage_max": 0.4
+    },
+    "fallback": "If 6k plateaus above NEI 0.45, stop the expansion and report."
+  },
+  "nei_stage": {
+    "stage_1": "answerable vs INSUFFICIENT",
+    "stage_2": "SUPPORTED vs CONTRADICTED on verifiable claims",
+    "hard_negatives": "delete or swap gold evidence in training rows only",
+    "gate": {
+      "nei_coverage_max": 0.4,
+      "overall_precision_min": 0.75,
+      "verifiable_precision_min": 0.94,
+      "verifiable_coverage_min": 0.8
+    }
+  },
+  "verifier_study": {
+    "oracle_models": [
+      "MoritzLaurer/DeBERTa-v3-large-mnli",
+      "MiniCheck Flan-T5"
+    ],
+    "concat_premise": "top-3 evidence concatenated as a second NLI input",
+    "keep_rule": "val macro-F1 improves and INSUFFICIENT F1 does not regress"
+  },
+  "promotion_gates": {
+    "macro_f1_min": 0.697,
+    "ece_max": 0.05,
+    "brier_max": "less than or equal to uncalibrated on the same test rows",
+    "verifiable_precision_min": 0.94,
+    "verifiable_precision_cp_lower_min": 0.9,
+    "verifiable_coverage_min": 0.8,
+    "overall_coverage_min": 0.55,
+    "overall_precision_min": 0.75,
+    "nei_coverage_max": 0.4,
+    "coverage_flag": "passes or is explicitly omitted",
+    "p95_added_latency_ms_max": 50,
+    "fixed_rule_remains_default": true
+  },
+  "artifacts": {
+    "protocol": "experiments/v4/protocol.json",
+    "retrieval_stack": "experiments/v4/retrieval_stack.json",
+    "data_expansion": "experiments/v4/data_expansion.json",
+    "nei_stage": "experiments/v4/nei_stage.json",
+    "verifier_study": "experiments/v4/verifier_study.json",
+    "metrics": "experiments/v4/metrics_v4.json",
+    "test_predictions": "experiments/v4/test_predictions_v4.jsonl",
+    "report": "experiments/v4/REPORT.md"
+  },
+  "notes": [
+    "P1 retrieval runs first because it changes the feature caches; data expansion is built once on the chosen retrieval.",
+    "The reranker is a macro-F1 move; its hybrid val study slightly lowered INSUFFICIENT F1, so it is not assumed to fix NEI.",
+    "v4 uses the existing FEVER dataset and paper_dev; no new dataset is introduced.",
+    "HaluEval corpus/aggregator work is deferred and not part of the v4 test pass.",
+    "Test data is read only in the final P5 pass."
+  ]
+}
