@@ -5,9 +5,11 @@ import json
 import logging
 import threading
 from functools import lru_cache
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
@@ -17,7 +19,8 @@ from src.utils.config import PROJECT_ROOT
 logger = logging.getLogger(__name__)
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=12000)]
 Method = Literal['bm25', 'dense', 'hybrid']
-app = FastAPI(title='Claim-Level Hallucination Detector', version='0.2.0')
+app = FastAPI(title='Claim-Level Hallucination Detector', version='0.3.0')
+app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 _model_lock = threading.Lock()
 _inference_lock = threading.Lock()
 
@@ -92,7 +95,8 @@ def run_inference(call):
 @app.get('/health')
 def health():
     return {'status': 'ok', 'models_loaded': bool(_detector.cache_info().currsize),
-            'mode': 'inference_only', 'detector': 'threshold_baseline'}
+            'mode': 'inference_only', 'detector': 'threshold_baseline',
+            'version': '0.3.0'}
 
 
 @app.post('/claims')
@@ -121,7 +125,8 @@ def verify(body: VerifyRequest, detector=Depends(get_detector)):
 def metrics():
     root = PROJECT_ROOT / 'experiments'
     paths = set()
-    for pattern in ('stage*/metrics*.json', 'baseline_review/*_metrics.json'):
+    for pattern in ('stage*/metrics*.json', 'baseline_review/*_metrics.json',
+                    'ablation_study/*.json', 'v2/metrics_v2.json'):
         paths.update(root.glob(pattern))
     saved = {}
     for p in sorted(paths):
@@ -130,6 +135,34 @@ def metrics():
         except (OSError, json.JSONDecodeError):
             logger.warning('Skipping unreadable metrics file: %s', p)
     return {'source': 'saved_experiment_results', 'results': saved}
+
+
+@app.get('/metrics/summary')
+def metrics_summary():
+    """Lightweight summary of key metrics for the dashboard."""
+    stage5 = PROJECT_ROOT / 'experiments' / 'stage5_learned' / 'metrics.json'
+    ablations = PROJECT_ROOT / 'experiments' / 'stage5_learned' / 'metrics_ablations.json'
+    decomp = PROJECT_ROOT / 'experiments' / 'stage5_learned' / 'decomposition.json'
+    significance = PROJECT_ROOT / 'experiments' / 'stage5_learned' / 'significance.json'
+
+    summary = {'stage5': {}, 'ablations': {}, 'decomposition': {}, 'significance': {}}
+    for key, path in [('stage5', stage5), ('ablations', ablations),
+                       ('decomposition', decomp), ('significance', significance)]:
+        if path.exists():
+            try:
+                summary[key] = json.loads(path.read_text(encoding='utf-8'))
+            except (OSError, json.JSONDecodeError):
+                pass
+    return summary
+
+
+@app.get('/charts')
+def charts():
+    """Serve the results dashboard if generated."""
+    chart_path = PROJECT_ROOT / 'experiments' / 'charts' / 'results_dashboard.html'
+    if chart_path.exists():
+        return FileResponse(chart_path, media_type='text/html')
+    raise HTTPException(404, 'Charts not generated. Run: python -m scripts.generate_charts')
 
 
 # Serve the built React UI from the same origin. API routes remain available without it.
