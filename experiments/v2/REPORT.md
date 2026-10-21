@@ -1,6 +1,6 @@
 # v2 report — calibrated, coverage-aware claim verification
 
-Status: complete through P5. **No serving promotion.**
+Status: complete through P6 (P6 is a val-only feasibility study). **No serving promotion.**
 Baseline: `v1.0` = `f79f0ff`. Branch: `feature/ver-2`.
 
 ## TL;DR
