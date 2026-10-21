@@ -1,7 +1,8 @@
 # Run the inference application
 
-No training, classifier fitting, or threshold optimization is required to serve
-this baseline. The learned multi-signal detector remains deferred.
+Serving the API requires no training. The Stage 5 combiner is already fitted and
+committed; the API serves the fixed-rule baseline by default. Refitting is an
+offline experiment stage described below.
 
 ## Environment
 
@@ -87,7 +88,7 @@ Endpoints:
 - `POST /retrieve`: `{ "claim": "...", "method": "hybrid", "top_k": 5 }`.
 - `POST /verify`: `{ "claim": "...", "evidence": ["..."] }`.
 - `POST /detect`: `{ "question": "...", "answer": "...", "method": "hybrid" }`.
-- `GET /metrics`: saved Stage 2–5 experiment results, not live performance.
+- `GET /metrics`: saved Stage 2–6 experiment results, not live performance.
 
 Input is limited to 12,000 characters per text, 20 evidence passages, and 50
 extracted claims per answer. The API serializes inference to bound model memory.
@@ -115,7 +116,62 @@ claim is supported, and INSUFFICIENT otherwise. No claims yields INSUFFICIENT.
 This heuristic aggregation has now been evaluated on 600 HaluEval test answers;
 see the frozen-rule report below. No new thresholds were selected.
 The API exposes NLI signals rather than calibrated confidence in factual truth.
-Similarity and learned signal combination remain future work.
+
+## Learned detector (Stage 5)
+
+Stage 5 is fitted offline; the API does **not** load it.
+
+```sh
+.venv/bin/python -m src.evaluation.fit_detector --method all
+.venv/bin/python -m scripts.summarize_stage5
+```
+
+This writes features from the committed retrieval caches, selects `C` and feature
+groups on val, evaluates test once, and writes
+`experiments/stage5_learned/{metrics.json,metrics_ablations.json,REPORT.md}` plus
+per-claim predictions. `protocol.json` records the cache hashes, the fit/selection/
+report split, and whether test was evaluated. A second run refuses to re-evaluate
+test unless you pass `--allow-test-rerun`, which marks the result exploratory.
+
+## Val-only improvement studies
+
+```sh
+.venv/bin/python -m src.evaluation.val_studies --study all
+```
+
+Reranks cached candidates with the pretrained `BAAI/bge-reranker-base` and rebuilds
+NLI premises with neighbouring sentences, on the **val split only**. No test pass,
+no fitting, no threshold search. Results go to `experiments/stage5_learned/`.
+
+On some CUDA driver combinations the cross-encoder raises
+`CUDA error: an illegal memory access`. Pass `--device cpu` (and one method at a
+time, `--methods hybrid`) to finish deterministically; results merge into the same
+JSON file. The study is a one-off analysis, so CPU speed is acceptable.
+
+## Review tooling
+
+```sh
+# Gemma first pass (proposals only; human fields untouched)
+.venv/bin/python -m scripts.analyze_errors --queue all
+
+# Interactive human review, optionally showing the proposals
+.venv/bin/python -m scripts.review \
+  --queue experiments/stage4_claims/human_review.jsonl \
+  --suggestions experiments/stage6_errors/provisional_extraction.jsonl
+
+# Progress without prompting
+.venv/bin/python -m scripts.review --summary
+```
+
+The queue is backed up before the first write, completed rows are never offered
+again, and `review_progress.json` records counts. See `docs/REVIEW_GUIDE.md`.
+
+Every stage is also available from one entry point:
+
+```sh
+.venv/bin/python -m scripts.reproduce --stage checks
+.venv/bin/python -m scripts.reproduce --stage all --include-heavy
+```
 
 If a content-generation/parsing error occurs, extraction falls back to sentence
 splitting. Authentication failures and persistent rate limits instead stop the
@@ -177,12 +233,17 @@ lightweight app/test and inference requirements.
 ## Remaining work
 
 1. Human review: 171 extraction cases (121 flagged plus 50 comparisons) and 103
-   verification error samples are prepared. See `docs/REVIEW_GUIDE.md`.
-2. Three syntax-only recovery proposals are saved separately; none were applied
-   to test inputs or used to inflate benchmark scores. Human acceptance is blank.
-3. Once training is authorized: fit the learned multi-signal detector on training
-   data, choose settings on validation, and evaluate the full-model ablations.
-   HaluEval labels are answer-level, not claim-level gold.
+   verification error samples are prepared and pre-annotated by Gemma as
+   *proposals*. Use `scripts/review.py`; the fields stay null until a human decides.
+2. Three syntax-only recovery proposals were reviewed and accepted but **not applied**.
+   Applying them changes three HaluEval examples, so it belongs in a separate version
+   with regenerated frozen-rule predictions.
+3. Cross-encoder reranking and neighbour-sentence premises were evaluated on val only.
+   Promoting either requires recomputing train/test features and refitting Stage 5.
+4. The retrieval corpus remains FEVER-derived; open-domain coverage is the main limit
+   on the HaluEval Wikipedia numbers.
 
-No model training was performed. The original dataset labels, questions, answers,
-contexts, group IDs, and row counts were verified unchanged during extraction.
+Stage 5 training is limited to the FEVER train split. HaluEval labels are answer-level,
+not claim-level gold, so no claim-level HaluEval score is reported anywhere. The
+original dataset labels, questions, answers, contexts, group IDs, and row counts were
+verified unchanged during extraction.

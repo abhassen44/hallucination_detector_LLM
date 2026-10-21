@@ -1,8 +1,8 @@
 # Claim-Level Hallucination Detection — Progress Report
 
-> 2026-10-20 update: see [current implementation status](IMPLEMENTATION_STATUS.md). Stage 4 code is present, but the committed HaluEval splits still require extraction and validation. API/UI code has been added; model training remains deferred.
+> 2026-10-21 update: Stage 5 is now a fitted logistic combiner on FEVER (train -> val selection -> one test pass). Stage 6 categories are provisional LLM proposals. See [current implementation status](IMPLEMENTATION_STATUS.md) and [RESULTS.md](RESULTS.md).
 
-_Last updated: 2026-10-04 · Covers Stages 0–4 of [plan.md](../plan.md)_
+_Last updated: 2026-10-21 - Stages 0-7 implemented; canonical numbers in [RESULTS.md](RESULTS.md)_
 
 ## 1. Project Goal
 
@@ -24,9 +24,9 @@ flowchart LR
 | 2 | Oracle-evidence verification (upper bound) | ✅ Done |
 | 3 | Retrieval + end-to-end 3-way FEVER | ✅ Done |
 | 4 | Claim extraction with LLM (HaluEval) | ✅ Done |
-| 5 | Hybrid detector + Experiments 1–6 + ablation | ⏳ Next |
-| 6 | Error analysis | ⏳ |
-| 7 | FastAPI backend + React frontend | ⏳ |
+| 5 | Hybrid detector + Experiments 1-6 + ablation | Done (learned Stage 5) |
+| 6 | Error analysis | Provisional: LLM first pass, human review pending |
+| 7 | FastAPI backend + React frontend | Done |
 
 ---
 
@@ -323,11 +323,20 @@ python -m src.evaluation.claim_extraction_eval --split all   # Stage 4  (~depend
 > [!NOTE]
 > PowerShell may report exit code 1 because HuggingFace/tqdm write to stderr. Check that the script prints `Saved →` at the end.
 
-## 10. Next Steps
+## 10. Remaining Work
 
-1. **Stage 5** — Hybrid detector: logistic regression on NLI probs, similarity, retrieval scores and evidence agreement; Experiments 1–6; ablation (incl. weighted RRF, dense-only, NLI-large); MLflow logging.
-2. **Stage 6** — Error analysis using the 8 categories from the plan.
-3. **Stage 7** — FastAPI (`/detect`, `/claims`, `/retrieve`, `/verify`, `/metrics`), then React UI.
+1. **Human annotation.** `scripts/review.py` walks the 171 extraction and 103
+   verification cases, optionally showing the provisional Gemma proposal. The
+   queues are unchanged until a human accepts or corrects each suggestion.
+2. **Apply the accepted JSON repairs in a separate version.** Three HaluEval
+   fallbacks were repaired in `json_recovery_proposals.json`; applying them
+   changes the dataset hash and requires regenerating the frozen-rule predictions.
+3. **Val-only improvements are decided.** Cross-encoder reranking improves the
+   fixed rule on val (+0.023 to +0.035 macro-F1) but remains below the learned
+   combiner; neighbour-sentence premises hurt. Neither is promoted in v1, and
+   promoting one would require recomputing train/test features and refitting.
+4. **Open-domain coverage.** The FEVER-derived corpus is the main limit on the
+   HaluEval Wikipedia numbers, not the verifier alone.
 
-**Open question:** project deadline — decides whether the React UI and extra datasets (TRUE / FELM / QAGS) stay in scope.
-
+**Open question:** deadline, which decides whether a larger corpus or an extra
+dataset (TRUE / FELM / QAGS) stays in scope.

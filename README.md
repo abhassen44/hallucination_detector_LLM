@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection System
 
-**Current local implementation:** see [implementation status](docs/IMPLEMENTATION_STATUS.md) and [application setup](docs/RUNNING.md). Inference API and React UI are now implemented; learned detector training is deferred. Gemma cloud inference and pretrained retrieval/NLI are verified. All 4,000 HaluEval examples are processed, producing 6,462 claims with three flagged fallbacks. Human quality review remains pending. Frozen-rule evaluation and local MLflow tracking are complete; see [the inference report](experiments/stage5_inference/REPORT.md).
+**Current local implementation:** see [implementation status](docs/IMPLEMENTATION_STATUS.md) and [application setup](docs/RUNNING.md). The inference API and React UI are implemented. Gemma cloud inference and pretrained retrieval/NLI are verified. All 4,000 HaluEval examples are processed, producing 6,462 claims with three flagged fallbacks. A learned Stage 5 claim-level detector is now fitted on FEVER (train → val selection → one test pass); canonical numbers are in [RESULTS.md](docs/RESULTS.md).
 
 A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 
@@ -53,23 +53,36 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **2. Oracle NLI** | Gold-evidence Verification | ✅ Done | FEVER 2-way: **94.3% Acc / 0.943 F1**; HaluEval: 70.8% Acc |
 | **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
 | **4. Claim Extraction**| LLM Claim Extractor | Extraction complete; human review pending | LLM-based atomic decomposition + quality validation + fallback |
-| **5. Detector** | Hybrid Multi-signal Classifier | Inference baselines evaluated; fitting deferred | Ten fixed-rule comparisons logged in local MLflow |
-| **6. Error Analysis** | Taxonomy Analysis | Review queues ready; human labels pending | Extraction and verification samples prepared |
+| **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
+| **6. Error Analysis** | Taxonomy Analysis | Provisional LLM first pass; human labels pending | 274 cases categorised, review tooling added |
 | **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested | Wikipedia and supplied-source modes |
 
-Detailed tables and ablation comparisons are documented in [docs/PROGRESS.md](docs/PROGRESS.md).
+Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).
 
 ---
 
-## Inference-only evaluation
+## Learned detector (Stage 5)
+
+The claim-level combiner is fitted on 3,000 FEVER train claims, its `C` and feature
+subset are selected on 999 val claims, and the test split (1,998 claims) is evaluated
+once. Test macro-F1 is **0.702** with hybrid retrieval, **0.701** with dense, and
+**0.682** with BM25 — against **0.633**, **0.612**, and **0.606** for the frozen
+0.7/0.95 rule. NLI signals dominate the ablation; similarity and retrieval-score
+features add little once NLI is present. Two val-only studies (pretrained
+cross-encoder reranking, neighbour-sentence premises) are reported in
+[RESULTS.md](docs/RESULTS.md) and are **not** part of the shipped path.
+
+## Frozen-rule evaluation (HaluEval)
 
 On the same 600 HaluEval test answers, claim decomposition with supplied knowledge
 scores **73.3% accuracy with argmax**, versus **58.7% for whole-answer argmax**.
 With the application's fixed rule, supplied-source accuracy is **72.0%**.
 Wikipedia retrieval accuracy is only **50.5%** on this set: the limited corpus and
-verification pipeline remain weak outside their FEVER setup. No fitting or new
-threshold selection was performed. See the [full report](experiments/stage5_inference/REPORT.md)
-for all ten comparisons and the always-hallucinated reference.
+verification pipeline remain weak outside their FEVER setup. This section reports
+no fitting and no threshold selection; the learned detector above is scored only on
+FEVER, where claim-level gold labels exist. See the
+[frozen-rule report](experiments/stage5_inference/REPORT.md) for all ten comparisons
+and the always-hallucinated reference.
 
 The UI now accepts optional source text; without it, the existing Wikipedia search
 runs. [Human review instructions](docs/REVIEW_GUIDE.md) cover the extraction flags,

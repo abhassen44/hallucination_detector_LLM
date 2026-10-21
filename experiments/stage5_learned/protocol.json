@@ -1,0 +1,120 @@
+{
+  "version": "stage5-learned-v1",
+  "created_utc": "2026-10-21T06:32:58.456546+00:00",
+  "fit_split": "train",
+  "selection_split": "val",
+  "report_split": "test",
+  "labels": [
+    "SUPPORTED",
+    "CONTRADICTED",
+    "INSUFFICIENT"
+  ],
+  "methods": [
+    "bm25",
+    "dense",
+    "hybrid"
+  ],
+  "feature_groups": {
+    "nli": [
+      "nli_e_max",
+      "nli_c_max",
+      "nli_n_max",
+      "nli_e_mean",
+      "nli_c_mean",
+      "nli_e_top2",
+      "nli_c_top2",
+      "nli_margin_max",
+      "nli_e_count_70",
+      "nli_c_count_95",
+      "nli_n_count_50",
+      "nli_e_rank",
+      "nli_c_rank",
+      "nli_agg_c",
+      "nli_agg_n"
+    ],
+    "retrieval": [
+      "ret_top1_score",
+      "ret_top2_margin",
+      "ret_mean_score",
+      "ret_score_std",
+      "ret_distinct_pages",
+      "ret_top1_entail_agree",
+      "ret_cross_page_conflict",
+      "ret_top1_page_share"
+    ],
+    "similarity": [
+      "sim_top1",
+      "sim_mean",
+      "sim_max"
+    ],
+    "claim": [
+      "claim_words",
+      "claim_has_digit",
+      "claim_has_year",
+      "claim_has_negation"
+    ]
+  },
+  "feature_names": [
+    "nli_e_max",
+    "nli_c_max",
+    "nli_n_max",
+    "nli_e_mean",
+    "nli_c_mean",
+    "nli_e_top2",
+    "nli_c_top2",
+    "nli_margin_max",
+    "nli_e_count_70",
+    "nli_c_count_95",
+    "nli_n_count_50",
+    "nli_e_rank",
+    "nli_c_rank",
+    "nli_agg_c",
+    "nli_agg_n",
+    "ret_top1_score",
+    "ret_top2_margin",
+    "ret_mean_score",
+    "ret_score_std",
+    "ret_distinct_pages",
+    "ret_top1_entail_agree",
+    "ret_cross_page_conflict",
+    "ret_top1_page_share",
+    "sim_top1",
+    "sim_mean",
+    "sim_max",
+    "claim_words",
+    "claim_has_digit",
+    "claim_has_year",
+    "claim_has_negation"
+  ],
+  "c_grid": [
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0,
+    3.0
+  ],
+  "seed": 42,
+  "model": "StandardScaler + multinomial LogisticRegression",
+  "similarity_model": "BAAI/bge-small-en-v1.5",
+  "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli",
+  "fixed_rule": {
+    "entail_threshold": 0.7,
+    "contra_threshold": 0.95
+  },
+  "retrieval_top_k": 5,
+  "cache_sha256": {
+    "train": "05b6039ca1efea17206c2d9477b828575ed9dd03a1906fc048268557a37e0c3d",
+    "val": "596413ecd1af5508213ea562c4d34173fef5ba460b4662f0a78c4f435789bdd2",
+    "test": "4a916dc67fb2c2845b3e362ef5cb4169c8b9fdd069e05acbdbb4f034a9cc5462"
+  },
+  "row_counts": {
+    "train": 3000,
+    "val": 999,
+    "test": 1998
+  },
+  "training_performed": true,
+  "test_evaluated": true,
+  "test_evaluated_utc": "2026-10-21T06:35:04.895155+00:00"
+}

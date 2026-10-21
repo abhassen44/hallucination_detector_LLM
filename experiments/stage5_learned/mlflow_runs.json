@@ -1,0 +1,102 @@
+{
+  "experiment_id": "1",
+  "source_sha256": "3d19b82b21a1d3201774c42a8e9008782b904a76743a4b77ebca69668fb0ec4a",
+  "runs": [
+    {
+      "variant": "bm25/learned",
+      "run_id": "d272443d5f5541baad45ea4b51577eef"
+    },
+    {
+      "variant": "bm25/ablation_no_nli",
+      "run_id": "3d741454b249433a9f06412f39d565af"
+    },
+    {
+      "variant": "bm25/ablation_no_retrieval",
+      "run_id": "e0027de1931147e8ad76e62c9e2cedce"
+    },
+    {
+      "variant": "bm25/ablation_no_similarity",
+      "run_id": "92b0fc10f0c746bd856708a937bf144b"
+    },
+    {
+      "variant": "bm25/ablation_no_claim_features",
+      "run_id": "b555dec8d5c94314b7d21fdacb79eb93"
+    },
+    {
+      "variant": "bm25/ablation_nli_only",
+      "run_id": "0196cf04d75d4f80875d8496f533c0ec"
+    },
+    {
+      "variant": "bm25/ablation_retrieval_only",
+      "run_id": "f9ffece4400d4469a72adfc392b7a412"
+    },
+    {
+      "variant": "bm25/ablation_similarity_only",
+      "run_id": "1a8f21ca9f01404284cd63e382458efc"
+    },
+    {
+      "variant": "dense/learned",
+      "run_id": "b55ed42022164f7eaf6ef92418c98251"
+    },
+    {
+      "variant": "dense/ablation_no_nli",
+      "run_id": "f0bc33440f89488b957cd51817a962d0"
+    },
+    {
+      "variant": "dense/ablation_no_retrieval",
+      "run_id": "ea24bbd965424ec397fc70c5dfb348dc"
+    },
+    {
+      "variant": "dense/ablation_no_similarity",
+      "run_id": "b043c5d1ea5d4c249a9a81a840ceaa76"
+    },
+    {
+      "variant": "dense/ablation_no_claim_features",
+      "run_id": "d878b342e59f43abb2e098f399670ccf"
+    },
+    {
+      "variant": "dense/ablation_nli_only",
+      "run_id": "475e95d8e6ca41d7b7166f09cd5982f4"
+    },
+    {
+      "variant": "dense/ablation_retrieval_only",
+      "run_id": "8f30d194528049b7a602d5d52d71f186"
+    },
+    {
+      "variant": "dense/ablation_similarity_only",
+      "run_id": "35f0a089c6de42cfaf91c03748e8be36"
+    },
+    {
+      "variant": "hybrid/learned",
+      "run_id": "6ac35af16c3d4f708a42dc08415cdc60"
+    },
+    {
+      "variant": "hybrid/ablation_no_nli",
+      "run_id": "42453b2790ff4bdea833ed263a178ead"
+    },
+    {
+      "variant": "hybrid/ablation_no_retrieval",
+      "run_id": "a7d4771174d2458cb7b7b400a2b81118"
+    },
+    {
+      "variant": "hybrid/ablation_no_similarity",
+      "run_id": "d562fb16906e4609822ed28932bc7810"
+    },
+    {
+      "variant": "hybrid/ablation_no_claim_features",
+      "run_id": "c583753c49554703a4a7a7a4ee5cfed7"
+    },
+    {
+      "variant": "hybrid/ablation_nli_only",
+      "run_id": "48bd24139c7e441495bbb6bc3e392a5c"
+    },
+    {
+      "variant": "hybrid/ablation_retrieval_only",
+      "run_id": "ab13761c3bbc4d0d979b57bddf573afd"
+    },
+    {
+      "variant": "hybrid/ablation_similarity_only",
+      "run_id": "b6c4f3e925ad4fee9061ac6528e0a472"
+    }
+  ]
+}
