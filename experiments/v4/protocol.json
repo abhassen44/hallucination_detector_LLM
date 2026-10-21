@@ -1,7 +1,7 @@
 {
   "version": "v4",
   "created_utc": "2026-10-21T14:10:00+00:00",
-  "status": "P1 complete: reranker top-5 selected; P2 data expansion next",
+  "status": "Closed: P1/P2/P3 complete; NEI gate missed; v4 test pass unused; learned model offline",
   "branch": "ver-4",
   "baseline": {
     "v3_commit": "e9974c6",
@@ -127,5 +127,10 @@
     "v4 uses the existing FEVER dataset and paper_dev; no new dataset is introduced.",
     "HaluEval corpus/aggregator work is deferred and not part of the v4 test pass.",
     "Test data is read only in the final P5 pass."
-  ]
+  ],
+  "closure": {
+    "closed_utc": "2026-10-21T15:30:00+00:00",
+    "reason": "Pre-registered NEI gate (<=0.40) not reachable on val; best tuned point 0.408. No test pass spent.",
+    "serving": "learned detector remains offline; fixed 0.7/0.95 rule remains default"
+  }
 }

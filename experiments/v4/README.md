@@ -1,5 +1,10 @@
 # v4 — retrieval stack, more data, NEI stage
 
+**Closed.** v4 stopped before the test pass: the best val NEI coverage was 0.408
+against the 0.40 gate, and the test pass remains unused. The learned detector stays
+offline. See [REPORT.md](REPORT.md) and
+[../docs/SERVING_DECISION_V4.md](../docs/SERVING_DECISION_V4.md).
+
 Baseline: v3 stopped at `e9974c6` (branch `ver-3`). Branch: `ver-4`.
 Protocol: [protocol.json](protocol.json). Plan: `C:\Users\Abhas\.opencode\plan\v4-plan.md`.
 
