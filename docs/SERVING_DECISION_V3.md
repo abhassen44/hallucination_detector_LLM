@@ -13,6 +13,7 @@ Full report: [experiments/v3/REPORT.md](../experiments/v3/REPORT.md).
 |---|---|---|
 | P1 calibration | Vector scaling fitted on Brier: val **0.42161** vs raw **0.42303**; ECE 0.0255 | Real val improvement, not enough alone |
 | P2 answerability | Val AUROC **0.765**; best policy leaves NEI coverage **0.483** and overall precision **0.741** | Fails NEI ≤0.40 and overall ≥0.75 |
+| v3.1 diagnostic | Added uncertainty + coverage-flag score; best AUROC **0.769**, NEI floor **0.477** | Still infeasible |
 | Joint threshold search | **0** feasible points; NEI floor 0.483 under verifiable constraints | No policy can meet the gates |
 | P4 test | **Not run** | v3 test pass remains unused |
 

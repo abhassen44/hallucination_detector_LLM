@@ -57,21 +57,39 @@ point of verifiable coverage and still missing overall precision. A joint search
 over `tau` and SUPPORTED/CONTRADICTED thresholds (INSUFFICIENT fixed) found **zero**
 feasible points. Under the verifiable constraints, the NEI floor is 0.483.
 
+## v3.1 diagnostic — expanded features (val only)
+
+Before writing a new protocol, I added candidate serving features and re-ran the
+answerability model:
+
+| Feature set | Features | Val AUROC | Best NEI at verifiable gates | Feasible? |
+|---|---:|---:|---:|---|
+| Base (30 + raw probs) | 33 | 0.7654 | 0.483 | No |
+| + uncertainty (entropy, margin, NEI mass) | 38 | **0.7690** | 0.483 | No |
+| + coverage-flag score | 34 | 0.7653 | 0.477 | No |
+| + uncertainty + coverage | 39 | 0.7643 | 0.480 | No |
+| + interactions | 41 | 0.7666 | 0.480 | No |
+
+The best NEI floor is **0.477**, still far from the 0.40 gate. The coverage score
+adds only ~0.006 NEI reduction. The extra features do not make the gate reachable.
+
 ## Decision
 
 v3 **stops before P4**. The pre-registered NEI and overall-precision gates are not
-reachable on val, so spending the single test pass would only confirm a known
-failure. No v3 test predictions exist and no serving change was made.
+reachable on val, even with the expanded feature sets, so spending the single test
+pass would only confirm a known failure. No v3 test predictions exist and no serving
+change was made.
 
 The learned detector remains offline; the fixed 0.7/0.95 rule stays the default.
 This is a negative result for answerability, not a failure of the calibration work.
 
 ## What would change it
 
-1. **A stronger NEI signal.** The current features cannot separate NEI from
-   verifiable claims well enough. Candidates: per-claim evidence-coverage features,
-   a dedicated retrieval-failure classifier, or a model trained with a harder
-   NEI objective.
+1. **A stronger NEI signal.** The summary features, including the coverage score
+   and uncertainty, cannot separate NEI from verifiable claims well enough (AUROC
+   stays 0.769; NEI floor 0.477). Remaining candidates: claim-level evidence-coverage
+   labels, a retrieval-failure classifier trained with claim-level labels, or more
+   NEI training examples.
 2. **Relaxed targets with a pre-registered rationale.** For example NEI ≤0.48 and
    overall precision ≥0.74. That would pass on val, but it is a weaker claim; it
    should be a deliberate v3.1 protocol, not a post-hoc slide.
@@ -83,6 +101,7 @@ This is a negative result for answerability, not a failure of the calibration wo
 - `experiments/v3/protocol.json` — amended with the stop reason and feature choice
 - `experiments/v3/calibration.json` — bake-off
 - `experiments/v3/answerability.json` — model, policy search, feasibility
+- `experiments/v3/answerability_diagnostic.json` — v3.1 expanded-feature diagnostic
 - `experiments/v3/policy.json` — fallback policy, marked `fallback_not_promoted`
 - `experiments/v3/val_predictions_v3.jsonl` — calibration output
 - `experiments/v3/val_policy_v3.jsonl` — per-row answerability policy output

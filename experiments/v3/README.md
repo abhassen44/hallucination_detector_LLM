@@ -13,6 +13,7 @@ confident NEI answers, and coverage-flag instability.
 | P0 | Freeze v2, branch, protocol | **Done** |
 | P1 | Calibration bake-off (val only) | **Done** — vector scaling (Brier) selected |
 | P2 | Answerability / NEI model (val only) | **Done — stopped: NEI target infeasible** |
+| v3.1 | Expanded-feature diagnostic (val only) | **Done — still infeasible** |
 | P3 | Coverage-flag stability (val only) | Not run |
 | P4 | Single test pass | **Not run; test pass unused** |
 | P5 | Serving decision / feature flag | Learned stays offline |
@@ -23,8 +24,10 @@ P1 selected **vector scaling fitted on Brier**: val Brier **0.42161** vs raw
 **0.42303**, ECE 0.0255. P2’s answerability model reached val AUROC **0.765**, but
 the best policy under the verifiable constraints still leaves **NEI coverage 0.483**
 (gate 0.40) and **overall precision 0.741** (gate 0.75). A joint threshold search
-found zero feasible points, so v3 stopped before P4. **No test pass was spent; the
-learned model stays offline.** Details: [REPORT.md](REPORT.md).
+found zero feasible points. The v3.1 diagnostic added uncertainty and coverage-flag
+features; the best AUROC rose only to **0.769**, and the NEI floor was still
+**0.477**. v3 stopped before P4. **No test pass was spent; the learned model stays
+offline.** Details: [REPORT.md](REPORT.md).
 
 ## Hard gates (one test pass)
 

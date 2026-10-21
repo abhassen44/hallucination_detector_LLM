@@ -1,0 +1,358 @@
+{
+  "version": "v3.1-answerability-diagnostic",
+  "created_utc": "2026-10-21T13:22:46.851644+00:00",
+  "split": "val",
+  "test_evaluated": false,
+  "test_pass_spent": false,
+  "coverage_feature": {
+    "model": "logistic on strict retrieval failure",
+    "C": 0.01,
+    "train_oof": true
+  },
+  "variants": {
+    "base": {
+      "model": {
+        "type": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 300,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0,
+          "class_weight": "balanced"
+        },
+        "val_auroc": 0.765405044684324
+      },
+      "model_comparison": {
+        "logistic_best_auroc": 0.7408895381868355,
+        "hgb_auroc": 0.765405044684324
+      },
+      "val_metrics": {
+        "auroc": 0.765405044684324,
+        "average_precision": 0.8633472485237638
+      },
+      "policy": {
+        "feasible": false,
+        "n_feasible": 0,
+        "best_feasible": null,
+        "best_nei_under_verifiable": {
+          "tau": 0.21,
+          "coverage": 0.6946946946946947,
+          "answered_precision": 0.7406340057636888,
+          "n_answered": 694,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.48348348348348347,
+          "nei_precision": 0.006211180124223602,
+          "nei_abstention": 0.5165165165165165,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.9009009009009009,
+              "precision": 0.9633333333333334
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.6996996996996997,
+              "precision": 0.9613733905579399
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.48348348348348347,
+              "precision": 0.006211180124223602
+            }
+          }
+        }
+      },
+      "n_features": 33
+    },
+    "base_uncertainty": {
+      "model": {
+        "type": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 300,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0,
+          "class_weight": "balanced"
+        },
+        "val_auroc": 0.769007746485224
+      },
+      "model_comparison": {
+        "logistic_best_auroc": 0.7439286132979828,
+        "hgb_auroc": 0.769007746485224
+      },
+      "val_metrics": {
+        "auroc": 0.769007746485224,
+        "average_precision": 0.8646003344915199
+      },
+      "policy": {
+        "feasible": false,
+        "n_feasible": 0,
+        "best_feasible": null,
+        "best_nei_under_verifiable": {
+          "tau": 0.23,
+          "coverage": 0.6956956956956957,
+          "answered_precision": 0.7410071942446043,
+          "n_answered": 695,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9625468164794008,
+          "verifiable_precision_lower_95": 0.9427475415540341,
+          "nei_coverage": 0.48348348348348347,
+          "nei_precision": 0.006211180124223602,
+          "nei_abstention": 0.5165165165165165,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.9009009009009009,
+              "precision": 0.9633333333333334
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.7027027027027027,
+              "precision": 0.9615384615384616
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.48348348348348347,
+              "precision": 0.006211180124223602
+            }
+          }
+        }
+      },
+      "n_features": 38
+    },
+    "base_coverage": {
+      "model": {
+        "type": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 300,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0,
+          "class_weight": "balanced"
+        },
+        "val_auroc": 0.7652517382247112
+      },
+      "model_comparison": {
+        "logistic_best_auroc": 0.7405378351324297,
+        "hgb_auroc": 0.7652517382247112
+      },
+      "val_metrics": {
+        "auroc": 0.7652517382247112,
+        "average_precision": 0.8638893933181455
+      },
+      "policy": {
+        "feasible": false,
+        "n_feasible": 0,
+        "best_feasible": null,
+        "best_nei_under_verifiable": {
+          "tau": 0.22,
+          "coverage": 0.6926926926926927,
+          "answered_precision": 0.7427745664739884,
+          "n_answered": 692,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9624765478424016,
+          "verifiable_precision_lower_95": 0.942641239262689,
+          "nei_coverage": 0.4774774774774775,
+          "nei_precision": 0.006289308176100629,
+          "nei_abstention": 0.5225225225225225,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.9009009009009009,
+              "precision": 0.9633333333333334
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.6996996996996997,
+              "precision": 0.9613733905579399
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4774774774774775,
+              "precision": 0.006289308176100629
+            }
+          }
+        }
+      },
+      "n_features": 34
+    },
+    "base_uncertainty_coverage": {
+      "model": {
+        "type": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 300,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0,
+          "class_weight": "balanced"
+        },
+        "val_auroc": 0.7643183724264806
+      },
+      "model_comparison": {
+        "logistic_best_auroc": 0.7438925411898385,
+        "hgb_auroc": 0.7643183724264806
+      },
+      "val_metrics": {
+        "auroc": 0.7643183724264806,
+        "average_precision": 0.862474713541602
+      },
+      "policy": {
+        "feasible": false,
+        "n_feasible": 0,
+        "best_feasible": null,
+        "best_nei_under_verifiable": {
+          "tau": 0.24,
+          "coverage": 0.6936936936936937,
+          "answered_precision": 0.7402597402597403,
+          "n_answered": 693,
+          "verifiable_coverage": 0.8003003003003003,
+          "verifiable_precision": 0.9606003752345216,
+          "verifiable_precision_lower_95": 0.94040216672115,
+          "nei_coverage": 0.4804804804804805,
+          "nei_precision": 0.00625,
+          "nei_abstention": 0.5195195195195195,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.9039039039039038,
+              "precision": 0.9601328903654485
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.6966966966966966,
+              "precision": 0.9612068965517241
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4804804804804805,
+              "precision": 0.00625
+            }
+          }
+        }
+      },
+      "n_features": 39
+    },
+    "full_interactions": {
+      "model": {
+        "type": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 300,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0,
+          "class_weight": "balanced"
+        },
+        "val_auroc": 0.7666179693206722
+      },
+      "model_comparison": {
+        "logistic_best_auroc": 0.7440819197575954,
+        "hgb_auroc": 0.7666179693206722
+      },
+      "val_metrics": {
+        "auroc": 0.7666179693206722,
+        "average_precision": 0.8643596563336089
+      },
+      "policy": {
+        "feasible": false,
+        "n_feasible": 0,
+        "best_feasible": null,
+        "best_nei_under_verifiable": {
+          "tau": 0.23,
+          "coverage": 0.6946946946946947,
+          "answered_precision": 0.7406340057636888,
+          "n_answered": 694,
+          "verifiable_coverage": 0.8018018018018018,
+          "verifiable_precision": 0.9606741573033708,
+          "verifiable_precision_lower_95": 0.9405125951165025,
+          "nei_coverage": 0.4804804804804805,
+          "nei_precision": 0.00625,
+          "nei_abstention": 0.5195195195195195,
+          "per_class": {
+            "SUPPORTED": {
+              "n": 333,
+              "coverage": 0.9039039039039038,
+              "precision": 0.9601328903654485
+            },
+            "CONTRADICTED": {
+              "n": 333,
+              "coverage": 0.6996996996996997,
+              "precision": 0.9613733905579399
+            },
+            "INSUFFICIENT": {
+              "n": 333,
+              "coverage": 0.4804804804804805,
+              "precision": 0.00625
+            }
+          }
+        }
+      },
+      "n_features": 41
+    }
+  },
+  "feasible_variants": [],
+  "best_by_auroc": "base_uncertainty",
+  "best": {
+    "model": {
+      "type": "hist_gradient_boosting",
+      "params": {
+        "max_iter": 300,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0,
+        "class_weight": "balanced"
+      },
+      "val_auroc": 0.769007746485224
+    },
+    "model_comparison": {
+      "logistic_best_auroc": 0.7439286132979828,
+      "hgb_auroc": 0.769007746485224
+    },
+    "val_metrics": {
+      "auroc": 0.769007746485224,
+      "average_precision": 0.8646003344915199
+    },
+    "policy": {
+      "feasible": false,
+      "n_feasible": 0,
+      "best_feasible": null,
+      "best_nei_under_verifiable": {
+        "tau": 0.23,
+        "coverage": 0.6956956956956957,
+        "answered_precision": 0.7410071942446043,
+        "n_answered": 695,
+        "verifiable_coverage": 0.8018018018018018,
+        "verifiable_precision": 0.9625468164794008,
+        "verifiable_precision_lower_95": 0.9427475415540341,
+        "nei_coverage": 0.48348348348348347,
+        "nei_precision": 0.006211180124223602,
+        "nei_abstention": 0.5165165165165165,
+        "per_class": {
+          "SUPPORTED": {
+            "n": 333,
+            "coverage": 0.9009009009009009,
+            "precision": 0.9633333333333334
+          },
+          "CONTRADICTED": {
+            "n": 333,
+            "coverage": 0.7027027027027027,
+            "precision": 0.9615384615384616
+          },
+          "INSUFFICIENT": {
+            "n": 333,
+            "coverage": 0.48348348348348347,
+            "precision": 0.006211180124223602
+          }
+        }
+      }
+    },
+    "n_features": 38
+  },
+  "conclusion": "NEI gate still unreachable on val",
+  "notes": [
+    "Val-only diagnostic. No test data was read and no test pass was spent.",
+    "The coverage score is cross-fitted on train and fitted on full train for val.",
+    "The class thresholds are the frozen v2 values; only the answerability gate is searched."
+  ]
+}

@@ -99,8 +99,10 @@ are LLM proposals, not human annotations; a 40-row blind audit is pending.
 
 A v3 attempt targeted the v2 promotion blockers. Brier-targeted vector scaling
 improved val Brier (0.42303 → 0.42161), but the answerability model could not
-reduce NEI coverage below 0.483 without breaking the verifiable-coverage gate, so
-v3 stopped before spending its test pass. The learned detector remains offline.
+reduce NEI coverage below 0.483 without breaking the verifiable-coverage gate. An
+expanded-feature diagnostic raised AUROC only to 0.769 and left the NEI floor at
+0.477, so v3 stopped before spending its test pass. The learned detector remains
+offline.
 Details: [v3 report](experiments/v3/REPORT.md) and
 [v3 serving decision](docs/SERVING_DECISION_V3.md).
 

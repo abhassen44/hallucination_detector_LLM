@@ -14,6 +14,8 @@ Branch `ver-3`, baseline `e7f0af5`. Report:
   **0.483** (gate 0.40) and overall precision **0.741** (gate 0.75).
 - A joint tau + class-threshold search found **zero** feasible points; the NEI
   floor under the verifiable constraints is 0.483.
+- v3.1 diagnostic added uncertainty and coverage-flag features: best AUROC **0.769**,
+  NEI floor **0.477**; still infeasible. No test pass was spent.
 - v3 stopped before P4. **No v3 test pass was spent**; no v3 test predictions exist.
 - The learned detector remains offline; the fixed rule stays the default.
 

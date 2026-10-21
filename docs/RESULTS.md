@@ -335,8 +335,10 @@ P1 selected vector scaling fitted on Brier (val Brier 0.42161 vs 0.42303; ECE
 0.0255). P2's answerability model reached val AUROC 0.765, but the best policy
 under the verifiable constraints left NEI coverage at 0.483 (target 0.40) and
 overall precision at 0.741 (target 0.75). A joint threshold search found no
-feasible point, so v3 stopped before P4. **No v3 test pass was spent** and the
-learned detector remains offline. Report: `experiments/v3/REPORT.md`.
+feasible point. A v3.1 diagnostic added uncertainty and coverage-flag features; the
+best AUROC rose only to 0.769 and the NEI floor stayed at 0.477, so v3 stopped
+before P4. **No v3 test pass was spent** and the learned detector remains offline.
+Report: `experiments/v3/REPORT.md`.
 
 ## Reproduce
 
