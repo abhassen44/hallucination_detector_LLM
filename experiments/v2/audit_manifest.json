@@ -1,0 +1,226 @@
+{
+  "created_utc": "2026-10-21T10:42:38.417140+00:00",
+  "seed": 42,
+  "design": "20 extraction (10 Pass / 10 Fail proposals) + 20 verification (stratified by proposal category); human-labeled pilot rows excluded",
+  "queues": {
+    "extraction": [
+      {
+        "key": "halueval-qa-1216-right",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-1461-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-1472-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-1653-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-233-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-2465-right",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-2558-right",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-2722-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-3451-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-3921-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-4-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-4056-right",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-4132-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-4217-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-7475-right",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-9023-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-9085-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-9215-hallucinated",
+        "proposal_verdict": "Pass",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-9627-right",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      },
+      {
+        "key": "halueval-qa-9798-hallucinated",
+        "proposal_verdict": "Fail",
+        "proposal_category": null
+      }
+    ],
+    "verification": [
+      {
+        "key": "halueval-qa-1287-right::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "multi_hop_reasoning"
+      },
+      {
+        "key": "halueval-qa-1909-hallucinated::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "verifier_error"
+      },
+      {
+        "key": "halueval-qa-1990-hallucinated::dense_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-2023-right::dense_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-2358-right::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-3153-hallucinated::hybrid_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "claim_extraction_failure"
+      },
+      {
+        "key": "halueval-qa-3211-right::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-3286-right::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "verifier_error"
+      },
+      {
+        "key": "halueval-qa-3340-right::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "entity_confusion"
+      },
+      {
+        "key": "halueval-qa-3486-right::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-4605-right::dense_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-5114-right::hybrid_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "multi_hop_reasoning"
+      },
+      {
+        "key": "halueval-qa-517-right::hybrid_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-5557-right::hybrid_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-6814-hallucinated::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "entity_confusion"
+      },
+      {
+        "key": "halueval-qa-7591-hallucinated::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "claim_extraction_failure"
+      },
+      {
+        "key": "halueval-qa-8136-right::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-8136-right::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "ambiguous_evidence"
+      },
+      {
+        "key": "halueval-qa-9021-hallucinated::provided_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      },
+      {
+        "key": "halueval-qa-9735-right::bm25_extracted_claims",
+        "proposal_verdict": "Fail",
+        "proposal_category": "retrieval_failure"
+      }
+    ]
+  },
+  "sheet": {
+    "path": "experiments\\v2\\audit_sheet.csv",
+    "n_rows": 40,
+    "sha256": "5776480f3bcde190a38411aacd6d4879e2351250bba51e7a5333793b84d616d0"
+  },
+  "inputs": {
+    "extraction": {
+      "queue_sha256": "9b1df616673c598ebe6c5c477fa5a0e35e361dd4eb77b678ac039474473822f7",
+      "labels_sha256": "17c24053da0d9f8aa5a746bd37babd774444b3ac358b0a869f04a85ca8661c14"
+    },
+    "verification": {
+      "queue_sha256": "d61d171beab1c010dd05af61a73523e2026af13ff4342738d67a3bdb8a3c3db5",
+      "labels_sha256": "947be4e829e85ccffb39e2d1bee7a5f3872d04efe442c3b3c0f944576da20708"
+    }
+  }
+}

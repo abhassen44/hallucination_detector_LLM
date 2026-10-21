@@ -8,6 +8,13 @@ verdicts are already present:
 - `experiments/v2/queues/extraction.jsonl` — 171 rows, 17 seeded, **154 pending**
 - `experiments/v2/queues/verification.jsonl` — 103 rows, 20 seeded, **83 pending**
 
+The commands below describe the **optional full human pass**. The current label
+artifacts use the LLM proposals for the 237 non-pilot rows; rerun
+`scripts.materialize_v2_labels --force` after any human pass to promote the new
+verdicts. For the lighter-weight option, fill `experiments/v2/audit_sheet.csv`
+(40 blind rows, 10–15 minutes) and score it with `scripts.score_v2_audit`; that
+supports a “human-audited sample” claim, not a full human-label claim.
+
 Taxonomy v2 is in `experiments/v2/taxonomy.json`. Verification drops the v1
 `nli_failure` catch-all: use `verifier_error` when the needed evidence span is
 present and clear but the verdict was wrong, and `ambiguous_evidence` when the

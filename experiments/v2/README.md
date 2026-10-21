@@ -9,7 +9,7 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 | Phase | Scope | Status |
 |---|---|---|
 | P0 | Freeze v1, scaffold, protocol, seed pilot judgments | **Done** |
-| P1 | Taxonomy v2, proposals, 274/274 labels, 20% blind re-annotation | Proposals done; annotation pending |
+| P1 | Taxonomy v2, proposals, 274/274 labels, optional human audit | **Done** — 37 human + 237 LLM-proposed labels; audit optional |
 | P2 | Calibration + training variance (val only) | Pending |
 | P3 | Selective policy + coverage flag (val only) | Pending |
 | P4 | One test pass for the calibrated system | Pending |
@@ -38,7 +38,15 @@ protocol is [protocol.json](protocol.json); the v1 baseline is tag `v1.0`
 - Three seeded pilot rows used the v1 `nli_failure` label; all three had clear
   evidence and wrong NLI verdicts, so they were mapped to `verifier_error`. The
   mapping is listed in [queue_seed.json](queue_seed.json).
-- Pending annotation: **154 extraction rows**, **83 verification rows**.
+- **Labels are materialized, not human-annotated beyond the pilot.** 37 rows keep
+  their human pilot judgment (`label_source: human_queue`); 237 take the LLM
+  proposal (`label_source: llm_proposal`, `human_reviewed: false`). See
+  [label_manifest.json](label_manifest.json).
+- Measured label noise on the pilot: extraction κ **0.881** (17 rows), verification
+  category agreement **0.75** (20 rows; the v1 figure 0.80 used the old categories).
+- [audit_sheet.csv](audit_sheet.csv) is a blind 40-row stratified audit, disjoint
+  from the pilot. Completing it upgrades the claim to “LLM-proposed labels,
+  human-audited on a 40-row sample.” It is **not** a substitute for the full pass.
 
 ## Layout
 
@@ -50,8 +58,11 @@ experiments/v2/
     extraction.jsonl         # 171 rows, 17 seeded verdicts
     verification.jsonl       # 103 rows, 20 seeded verdicts
   proposals/                 # taxonomy-v2 LLM proposals (P1)
-  human_labels_*.jsonl       # filled in P1
-  agreement.json             # P1 re-annotation agreement
+  labels_llm_proposed_*.jsonl # 274 materialized labels (37 human, 237 silver)
+  label_manifest.json        # label policy, counts, pilot agreement
+  audit_sheet.csv            # optional blind 40-row human audit
+  audit_manifest.json        # audit sample keys and hidden proposals
+  audit_results.json         # scorer output, if the audit is completed
   calibration.json           # P2
   risk_coverage.json         # P3
   coverage_flag.json         # P3
@@ -65,24 +76,20 @@ experiments/v2/
 ```powershell
 $env:PYTHONPATH="$PWD"
 
-# Resume the full annotation pass (writes review_progress.json beside the queue)
-.\.venv\Scripts\python.exe -m scripts.review `
-  --queue experiments/v2/queues/extraction.jsonl `
-  --suggestions experiments/v2/proposals/extraction.jsonl `
-  --taxonomy experiments/v2/taxonomy.json `
-  --reviewer Abhas
+# Rebuild the 274 labels from the queues + proposals
+.\.venv\Scripts\python.exe -m scripts.materialize_v2_labels --force
 
-.\.venv\Scripts\python.exe -m scripts.review `
-  --queue experiments/v2/queues/verification.jsonl `
-  --suggestions experiments/v2/proposals/verification.jsonl `
-  --taxonomy experiments/v2/taxonomy.json `
-  --reviewer Abhas
+# Build the blind 40-row audit, then score it after filling the CSV
+.\.venv\Scripts\python.exe -m scripts.make_v2_audit --force
+.\.venv\Scripts\python.exe -m scripts.score_v2_audit
 
-# Rebuild the seeded queues from scratch (overwrites the manifest)
-.\.venv\Scripts\python.exe -m scripts.seed_v2_queues --force
+# Optional: replace silver labels with a full human pass
+# See docs/REVIEW_GUIDE.md for the extraction and verification commands.
 ```
 
-`review.py` does not overwrite completed fields, so seeded rows are skipped.
+`review.py` does not overwrite completed fields, so seeded rows are skipped. If a
+human pass is run, rerun `materialize_v2_labels --force` to promote the new human
+verdicts into the label artifacts.
 `.bak`, `review_progress.json`, and `*.log` files are gitignored.
 
 ## Guardrails
@@ -91,3 +98,5 @@ $env:PYTHONPATH="$PWD"
 - One test pass for the calibrated system, one for the retrieval variant.
 - No dataset mutation; v2 labels live only under `experiments/v2/`.
 - The fixed rule stays the serving default unless every promotion gate passes.
+- **Label integrity:** 237 of the 274 labels are LLM proposals. Reports must not
+  call them human annotations; quote the pilot noise estimate and the audit status.

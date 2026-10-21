@@ -2,10 +2,12 @@
   "version": "v2",
   "created_utc": "2026-10-21T09:14:44+00:00",
   "amended_utc": "2026-10-21T09:22:52+00:00",
-  "status": "P1 taxonomy and proposals done; annotation in progress",
+  "status": "P1 labels materialized; P2 calibration next",
   "amendments": [
     "Extraction collects Pass/Fail only in v2: cause categories and the four diagnostic Booleans are not prompted. The 17 seeded pilot causes remain legacy metadata.",
-    "The three seeded verification rows labelled nli_failure under v1 were mapped to verifier_error (evidence was present and clear in all three); the mapping is recorded in queue_seed.json."
+    "The three seeded verification rows labelled nli_failure under v1 were mapped to verifier_error (evidence was present and clear in all three); the mapping is recorded in queue_seed.json.",
+    "The 237-row human pass was replaced by materialized LLM proposals at the user's direction. Only the 37 seeded pilot rows are human labels. The resulting claim is 'LLM-proposed labels with pilot-estimated noise', upgraded to 'human-audited on a 40-row sample' only if the optional audit is completed.",
+    "Labelling is no longer a gate for P2-P4: calibration and coverage use FEVER val/test probabilities and the frozen detector, not these taxonomy labels."
   ],
   "branch": "feature/ver-2",
   "baseline": {
@@ -48,10 +50,35 @@
     "pilot_seeded_verdicts": 37,
     "pilot_pending_verdicts": 3,
     "seed_manifest": "experiments/v2/queue_seed.json",
-    "min_completion": "274/274 Pass/Fail verdicts",
-    "reannotation_fraction": 0.2,
-    "reannotation_min_kappa": 0.6,
-    "reannotation_note": "Intra-annotator agreement after a washout; if kappa < 0.6, collapse unstable categories and mark fine-grained counts exploratory. Does not block P2-P4."
+    "label_policy": "Use the seeded human verdict when present; otherwise materialize the LLM proposal. LLM rows are silver labels, never labelled human.",
+    "label_artifacts": {
+      "extraction": {
+        "path": "experiments/v2/labels_llm_proposed_extraction.jsonl",
+        "sha256": "17c24053da0d9f8aa5a746bd37babd774444b3ac358b0a869f04a85ca8661c14"
+      },
+      "verification": {
+        "path": "experiments/v2/labels_llm_proposed_verification.jsonl",
+        "sha256": "947be4e829e85ccffb39e2d1bee7a5f3872d04efe442c3b3c0f944576da20708"
+      },
+      "manifest": "experiments/v2/label_manifest.json"
+    },
+    "label_noise_pilot": {
+      "extraction_n": 17,
+      "extraction_agreement": 0.9411764705882353,
+      "extraction_kappa": 0.8811188811188811,
+      "verification_category_n": 20,
+      "verification_category_agreement": 0.75,
+      "note": "Pilot is a validation sample, not a prevalence sample. v2 category agreement is 0.75 after splitting nli_failure; the v1 report's 0.80 used the old categories."
+    },
+    "human_audit": {
+      "status": "optional; sheet generated",
+      "design": "40 rows, disjoint from the 37 human pilot rows: 10 Pass / 10 Fail extraction proposals + 20 verification rows stratified by proposal category",
+      "sheet": "experiments/v2/audit_sheet.csv",
+      "manifest": "experiments/v2/audit_manifest.json",
+      "scorer": "scripts/score_v2_audit.py",
+      "claim_if_completed": "LLM-proposed labels, human-audited on a 40-row stratified sample",
+      "claim_if_skipped": "LLM-proposed labels with pilot-estimated label noise"
+    }
   },
   "taxonomy_v2": {
     "path": "experiments/v2/taxonomy.json",
@@ -141,11 +168,13 @@
       "path": "experiments/v2/proposals/extraction.jsonl",
       "sha256": "60a63897c52a7d030bfa745856acba3ea59ff15455cd49b57ebafeb8604a6cb0"
     },
-    "human_labels": [
-      "experiments/v2/human_labels_extraction.jsonl",
-      "experiments/v2/human_labels_verification.jsonl"
+    "labels": [
+      "experiments/v2/labels_llm_proposed_extraction.jsonl",
+      "experiments/v2/labels_llm_proposed_verification.jsonl"
     ],
-    "agreement": "experiments/v2/agreement.json",
+    "label_manifest": "experiments/v2/label_manifest.json",
+    "audit_sheet": "experiments/v2/audit_sheet.csv",
+    "audit_results": "experiments/v2/audit_results.json",
     "calibration": "experiments/v2/calibration.json",
     "risk_coverage": "experiments/v2/risk_coverage.json",
     "coverage_flag": "experiments/v2/coverage_flag.json",
@@ -155,7 +184,8 @@
   },
   "notes": [
     "v1 artifacts are read-only; v2 writes only under experiments/v2/ and docs/.",
-    "The 40 pilot rows overlap the full queues; 37 had Pass/Fail verdicts and are seeded. Three extraction rows remain pending (two with partial notes, one untouched).",
+    "The 40 pilot rows overlap the full queues; 37 had Pass/Fail verdicts and stay human labels. The other 237 rows are LLM-proposed silver labels; three of those are the pilot rows that lacked a verdict.",
+    "Do not describe the 237 materialized rows as human annotations. Report the 37-row pilot noise estimate and, if available, the 40-row audit.",
     "Overall answered precision is dominated by NEI claims in v1 (322 NEI claims answered, all wrong); NEI coverage is reported separately rather than folded into one selective-risk number.",
     "The retrieval variant is a stretch, triggered only if the calibrated system misses a promotion gate and time remains."
   ]

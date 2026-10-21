@@ -1,0 +1,89 @@
+{
+  "created_utc": "2026-10-21T10:42:09.051347+00:00",
+  "policy": "human_queue rows are the seeded pilot; llm_proposal rows take the proposal verdict/category and are not human-validated",
+  "queues": {
+    "extraction": {
+      "n_rows": 171,
+      "n_labels": 171,
+      "n_human": 17,
+      "n_llm": 154,
+      "verdicts": {
+        "Pass": 150,
+        "Fail": 21
+      },
+      "categories": {},
+      "pilot_agreement": {
+        "n": 17,
+        "agreement": 0.9411764705882353,
+        "confusion": {
+          "Fail -> Pass": 1
+        },
+        "kappa": 0.8811188811188811
+      }
+    },
+    "verification": {
+      "n_rows": 103,
+      "n_labels": 103,
+      "n_human": 20,
+      "n_llm": 83,
+      "verdicts": {
+        "Fail": 103
+      },
+      "categories": {
+        "retrieval_failure": 65,
+        "verifier_error": 18,
+        "multi_hop_reasoning": 7,
+        "claim_extraction_failure": 5,
+        "entity_confusion": 4,
+        "ambiguous_evidence": 3,
+        "numerical_reasoning": 1
+      },
+      "pilot_agreement": {
+        "n": 20,
+        "agreement": 0.75,
+        "confusion": {
+          "retrieval_failure -> claim_extraction_failure": 1,
+          "retrieval_failure -> multi_hop_reasoning": 2,
+          "claim_extraction_failure -> ambiguous_evidence": 1,
+          "retrieval_failure -> ambiguous_evidence": 1
+        }
+      }
+    }
+  },
+  "outputs": {
+    "experiments\\v2\\labels_llm_proposed_extraction.jsonl": {
+      "sha256": "17c24053da0d9f8aa5a746bd37babd774444b3ac358b0a869f04a85ca8661c14",
+      "n_rows": 171
+    },
+    "experiments\\v2\\labels_llm_proposed_verification.jsonl": {
+      "sha256": "947be4e829e85ccffb39e2d1bee7a5f3872d04efe442c3b3c0f944576da20708",
+      "n_rows": 103
+    }
+  },
+  "inputs": {
+    "queues": {
+      "extraction": {
+        "path": "experiments\\v2\\queues\\extraction.jsonl",
+        "sha256": "9b1df616673c598ebe6c5c477fa5a0e35e361dd4eb77b678ac039474473822f7"
+      },
+      "verification": {
+        "path": "experiments\\v2\\queues\\verification.jsonl",
+        "sha256": "d61d171beab1c010dd05af61a73523e2026af13ff4342738d67a3bdb8a3c3db5"
+      }
+    },
+    "proposals": {
+      "extraction": {
+        "path": "experiments\\v2\\proposals\\extraction.jsonl",
+        "sha256": "60a63897c52a7d030bfa745856acba3ea59ff15455cd49b57ebafeb8604a6cb0"
+      },
+      "verification": {
+        "path": "experiments\\v2\\proposals\\verification.jsonl",
+        "sha256": "6c7b35ea6b42221df46c04204b91180cd8a29c69b719007035c3b9367f061499"
+      }
+    },
+    "taxonomy": {
+      "path": "experiments\\v2\\taxonomy.json",
+      "sha256": "3d93073bc5faa4af861a935549c2e70bb68635674cc11c9f9ff8f41ce7018515"
+    }
+  }
+}
