@@ -13,6 +13,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
 python -m pytest -q
+npm test --prefix frontend
 ```
 
 The lightweight requirements support API startup and offline tests. For actual
@@ -78,12 +79,20 @@ npm run build --prefix frontend
 
 Open http://127.0.0.1:8000 for the interface and `/docs` for the API explorer.
 Build the frontend before starting the API so its assets are mounted. For frontend
-development, run `npm run dev --prefix frontend`; Vite proxies requests to port 8000.
+development, run `npm run dev --prefix frontend`; Vite proxies API routes to port 8000.
+
+The API allows the local Vite origins (`127.0.0.1`/`localhost` on ports 5173 and
+4173) by default. Set `API_ALLOWED_ORIGINS` to a comma-separated allowlist for a
+different client; set it to `*` only for an explicitly open local demo. Every API
+response carries an `X-Request-ID` and `X-Content-Type-Options: nosniff`; sensitive
+endpoints use `Cache-Control: no-store`. The UI cancels a request after 240 seconds
+and exposes a cancel button while inference is running.
 
 Endpoints:
 
-- `GET /health`: process health and whether detector models have loaded; not proof
-  that Ollama or all model dependencies are ready.
+- `GET /health`: process health, version, whether detector models have loaded, and
+  whether the frontend build exists; not proof that Ollama or all model dependencies
+  are ready.
 - `POST /claims`: `{ "answer": "...", "question": "..." }`.
 - `POST /retrieve`: `{ "claim": "...", "method": "hybrid", "top_k": 5 }`.
 - `POST /verify`: `{ "claim": "...", "evidence": ["..."] }`.

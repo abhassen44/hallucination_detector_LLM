@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import threading
+import uuid
 from functools import lru_cache
 from pathlib import Path
 from typing import Annotated, Literal
@@ -17,12 +19,55 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 from src.utils.config import PROJECT_ROOT
 
 logger = logging.getLogger(__name__)
+APP_VERSION = '0.3.1'
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=12000)]
 Method = Literal['bm25', 'dense', 'hybrid']
-app = FastAPI(title='Claim-Level Hallucination Detector', version='0.3.0')
-app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
+_UI = PROJECT_ROOT / 'frontend' / 'dist'
+_UI_INDEX = _UI / 'index.html'
+_DEFAULT_ALLOWED_ORIGINS = (
+    'http://127.0.0.1:5173',
+    'http://localhost:5173',
+    'http://127.0.0.1:4173',
+    'http://localhost:4173',
+)
+
+
+def _allowed_origins() -> list[str]:
+    raw = os.getenv('API_ALLOWED_ORIGINS', ','.join(_DEFAULT_ALLOWED_ORIGINS))
+    if raw.strip() == '*':
+        return ['*']
+    return [origin.strip() for origin in raw.split(',') if origin.strip()]
+
+
+app = FastAPI(title='Claim-Level Hallucination Detector', version=APP_VERSION)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_allowed_origins(),
+    allow_methods=['GET', 'POST', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Accept', 'X-Request-ID'],
+    expose_headers=['X-Request-ID'],
+)
 _model_lock = threading.Lock()
 _inference_lock = threading.Lock()
+
+
+@app.middleware('http')
+async def operational_headers(request, call_next):
+    """Attach tracing and safe cache headers without touching inference state."""
+    incoming = request.headers.get('X-Request-ID', '').strip()
+    request_id = incoming if 0 < len(incoming) <= 128 else uuid.uuid4().hex
+    response = await call_next(request)
+    response.headers['X-Request-ID'] = request_id
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    path = request.url.path
+    if path in ('/', '/charts'):
+        response.headers['Cache-Control'] = 'no-cache'
+    elif path.startswith('/assets/'):
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+    elif path in ('/health', '/claims', '/detect', '/retrieve', '/verify') \
+            or path.startswith('/metrics'):
+        response.headers['Cache-Control'] = 'no-store'
+    return response
 
 
 class RequestModel(BaseModel):
@@ -96,7 +141,8 @@ def run_inference(call):
 def health():
     return {'status': 'ok', 'models_loaded': bool(_detector.cache_info().currsize),
             'mode': 'inference_only', 'detector': 'threshold_baseline',
-            'version': '0.3.0'}
+            'version': APP_VERSION,
+            'ui_built': _UI_INDEX.is_file() and (_UI / 'assets').is_dir()}
 
 
 @app.post('/claims')
@@ -132,7 +178,7 @@ def metrics():
     for p in sorted(paths):
         try:
             saved[p.relative_to(root).as_posix()] = json.loads(p.read_text(encoding='utf-8'))
-        except (OSError, json.JSONDecodeError):
+        except (OSError, UnicodeError, json.JSONDecodeError):
             logger.warning('Skipping unreadable metrics file: %s', p)
     return {'source': 'saved_experiment_results', 'results': saved}
 
@@ -151,7 +197,7 @@ def metrics_summary():
         if path.exists():
             try:
                 summary[key] = json.loads(path.read_text(encoding='utf-8'))
-            except (OSError, json.JSONDecodeError):
+            except (OSError, UnicodeError, json.JSONDecodeError):
                 pass
     return summary
 
@@ -166,10 +212,12 @@ def charts():
 
 
 # Serve the built React UI from the same origin. API routes remain available without it.
-_ui = PROJECT_ROOT / 'frontend' / 'dist'
-if _ui.is_dir():
-    app.mount('/assets', StaticFiles(directory=_ui / 'assets'), name='assets')
+if (_UI / 'assets').is_dir():
+    app.mount('/assets', StaticFiles(directory=_UI / 'assets'), name='assets')
 
-    @app.get('/', include_in_schema=False)
-    def home():
-        return FileResponse(_ui / 'index.html')
+
+@app.get('/', include_in_schema=False)
+def home():
+    if _UI_INDEX.is_file() and (_UI / 'assets').is_dir():
+        return FileResponse(_UI_INDEX, media_type='text/html')
+    raise HTTPException(503, 'Frontend build not found. Run: npm run build --prefix frontend')

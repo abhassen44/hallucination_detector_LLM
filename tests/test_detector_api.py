@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from src.api.main import app, get_detector, get_extractor
 from src.generation.claim_extraction import ExtractionResult
+from src.utils.config import PROJECT_ROOT
 from src.verification.detector import Detector, aggregate_probabilities, decide
 
 
@@ -59,6 +60,66 @@ def test_api_endpoints(client):
     served = client.get('/metrics').json()['results']
     assert any(key.startswith('baseline_review/') for key in served)
     assert all(key.startswith(('stage', 'baseline_review', 'ablation_study/', 'v2/')) for key in served)
+
+
+def test_health_reports_operational_fields(client):
+    body = client.get('/health').json()
+    assert body['status'] == 'ok'
+    assert body['mode'] == 'inference_only'
+    assert body['version'] == '0.3.1'
+    assert 'models_loaded' in body
+    assert 'ui_built' in body
+
+
+def test_operational_headers_and_request_ids(client):
+    response = client.get('/health', headers={'X-Request-ID': 'stable-test'})
+    assert response.headers['x-request-id'] == 'stable-test'
+    assert response.headers['x-content-type-options'] == 'nosniff'
+    assert response.headers['cache-control'] == 'no-store'
+
+    generated = client.get('/health').headers['x-request-id']
+    assert generated and len(generated) <= 128
+    oversized = client.get('/health', headers={'X-Request-ID': 'x' * 200})
+    assert oversized.headers['x-request-id'] != 'x' * 200
+
+
+def test_cors_allows_the_local_frontend_only(client):
+    preflight = client.options('/detect', headers={
+        'Origin': 'http://localhost:5173',
+        'Access-Control-Request-Method': 'POST',
+        'Access-Control-Request-Headers': 'content-type',
+    })
+    assert preflight.status_code == 200
+    assert preflight.headers['access-control-allow-origin'] == 'http://localhost:5173'
+
+    blocked = client.options('/detect', headers={
+        'Origin': 'https://example.invalid',
+        'Access-Control-Request-Method': 'POST',
+    })
+    assert blocked.status_code in (200, 400)
+    assert 'access-control-allow-origin' not in blocked.headers
+
+
+def test_metrics_summary_has_stable_shape(client):
+    body = client.get('/metrics/summary').json()
+    assert set(body) == {'stage5', 'ablations', 'decomposition', 'significance'}
+
+
+def test_root_serves_ui_or_actionable_error(client):
+    response = client.get('/')
+    dist = PROJECT_ROOT / 'frontend' / 'dist'
+    built = (dist / 'index.html').is_file() and (dist / 'assets').is_dir()
+    if built:
+        assert response.status_code == 200
+        assert 'text/html' in response.headers['content-type']
+        assert response.headers['cache-control'] == 'no-cache'
+    else:
+        assert response.status_code == 503
+        assert 'npm run build --prefix frontend' in response.text
+
+
+def test_api_rejects_oversized_text(client):
+    assert client.post('/detect', json={'answer': 'x' * 12001}).status_code == 422
 
 
 @pytest.mark.parametrize('payload', [{'answer': '   '}, {'answer': 'a', 'method': 'invalid'},

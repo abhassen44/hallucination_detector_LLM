@@ -22,11 +22,18 @@ Active branch: `ver-5`, based on the v4.0 research history. Plan and outcome:
   reduces NEI false answers but does not solve NEI.
 - The learned verifier remains offline and the fixed rule remains served. No v5
   serving promotion is claimed.
+- Hardened the FastAPI app (0.3.1): local-by-default CORS allowlist with
+  `API_ALLOWED_ORIGINS`, request ids, `nosniff` and cache headers, safe metrics
+  parsing, an actionable `/` fallback when the UI is not built, and `ui_built` in
+  `/health`.
+- Hardened the React client: 240-second timeout and cancel, unmount abort, safe
+  error/JSON handling, response normalization, character counts, and Vite proxies
+  for every app API route. Added seven Node API tests.
 - The first test invocation failed during JSON serialization before writing any
   metric or prediction; the identical frozen pipeline was rerun after a
   serializer-only fix. The report records both attempts.
 
-Tests: 156 passing; frontend build passing.
+Tests: 162 Python tests passing, 7 frontend tests passing; frontend build passing.
 
 ## v4 (2026-10-21) — stopped before the test pass
 
