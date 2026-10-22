@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection System
 
-**Current local implementation:** see [implementation status](docs/IMPLEMENTATION_STATUS.md) and [application setup](docs/RUNNING.md). The inference API and React UI are implemented. Gemma cloud inference and pretrained retrieval/NLI are verified. All 4,000 HaluEval examples are processed, producing 6,462 claims with three flagged fallbacks. A learned Stage 5 claim-level detector is now fitted on FEVER (train → val selection → one test pass); canonical numbers are in [RESULTS.md](docs/RESULTS.md).
+**Current branch:** `ver-5`, based on the v4.0 research line. The v5 plan is in [docs/PLAN_V5.md](docs/PLAN_V5.md); it targets NEI/evidence-sufficiency and broader retrieval evaluation. The v4 learned model remains offline: its best results are validation-only and did not clear the NEI gate. The updated inference API, React UI, ablation report, and results dashboard are integrated; see [implementation status](docs/IMPLEMENTATION_STATUS.md), [application setup](docs/RUNNING.md), and canonical [results](docs/RESULTS.md). No v5 model result or serving promotion is claimed.
 
 A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 

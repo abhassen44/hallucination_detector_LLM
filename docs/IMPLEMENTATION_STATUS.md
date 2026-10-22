@@ -1,5 +1,19 @@
 # Current implementation status
 
+## v5 — plan and application integration (2026-10-22)
+
+Active branch: `ver-5`, based on the v4.0 research history. The plan is in
+[`PLAN_V5.md`](PLAN_V5.md). The current work integrates the API, React UI, ablation
+report generator, and results dashboard from `main` while retaining v3/v4 artifacts.
+
+- API version is 0.3.0 and includes `/metrics/summary` and `/charts` in addition to
+  the existing detection and saved-metrics endpoints.
+- `scripts/run_ablation_study.py` summarizes committed Stage 5 ablations;
+  `scripts/generate_charts.py` builds the static results dashboard.
+- The learned verifier is still offline and the fixed rule remains served.
+- No v5 fitting, threshold selection, test evaluation, or model promotion has been
+  performed. v5 research work remains planned.
+
 ## v4 (2026-10-21) — stopped before the test pass
 
 Branch `ver-4`, baseline `e9974c6`. Report:

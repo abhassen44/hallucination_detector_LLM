@@ -58,7 +58,7 @@ def test_api_endpoints(client):
     assert client.get('/metrics').json()['results']
     served = client.get('/metrics').json()['results']
     assert any(key.startswith('baseline_review/') for key in served)
-    assert all(key.startswith(('stage', 'baseline_review')) for key in served)
+    assert all(key.startswith(('stage', 'baseline_review', 'ablation_study/', 'v2/')) for key in served)
 
 
 @pytest.mark.parametrize('payload', [{'answer': '   '}, {'answer': 'a', 'method': 'invalid'},

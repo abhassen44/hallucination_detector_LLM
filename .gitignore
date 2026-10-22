@@ -45,6 +45,9 @@ experiments/**/*.log
 experiments/**/*.bak
 experiments/**/review_progress.json
 # experiments/**/metrics_*.json are small and tracked
+# Generated reports/charts are reproducible from committed metrics.
+experiments/ablation_study/
+experiments/charts/
 
 # ---------------------------------------------------------------- Frontend
 node_modules/

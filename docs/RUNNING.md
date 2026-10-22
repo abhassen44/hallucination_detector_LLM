@@ -89,6 +89,14 @@ Endpoints:
 - `POST /verify`: `{ "claim": "...", "evidence": ["..."] }`.
 - `POST /detect`: `{ "question": "...", "answer": "...", "method": "hybrid" }`.
 - `GET /metrics`: saved Stage 2–6 experiment results, not live performance.
+- `GET /metrics/summary`: compact Stage 5 metrics, ablations, decomposition, and
+  significance data for the dashboard.
+- `GET /charts`: serves `experiments/charts/results_dashboard.html` after it is
+  generated with `python -m scripts.generate_charts`.
+
+Generate the static component-ablation report with
+`python -m scripts.run_ablation_study`; it reads the committed Stage 5 ablation
+metrics and writes `experiments/ablation_study/ablation_report.json`.
 
 Input is limited to 12,000 characters per text, 20 evidence passages, and 50
 extracted claims per answer. The API serializes inference to bound model memory.

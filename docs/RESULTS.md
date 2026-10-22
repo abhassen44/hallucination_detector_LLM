@@ -5,7 +5,16 @@ decision rule, and whether any fitting was involved. Historical reports are kept
 unchanged: [Stage 2/3](PROGRESS.md), [frozen-rule HaluEval](../experiments/stage5_inference/REPORT.md),
 [Stage 5 learned](../experiments/stage5_learned/REPORT.md), [provisional errors](../experiments/stage6_errors/SUMMARY.md).
 
-Last updated: 2026-10-21.
+Last updated: 2026-10-22.
+
+## v5 status — no new model result
+
+The active `ver-5` branch retains the v4 research artifacts and integrates the
+updated application and reporting work from `main`. The v5 research plan is in
+[`PLAN_V5.md`](PLAN_V5.md). No v5 fitting, threshold selection, or test evaluation
+has been run. Therefore, the v4 validation candidate and v1/v2 test results below
+remain the latest model results; they must not be compared as though they share a
+split.
 
 ## Protocol discipline
 
