@@ -4,12 +4,12 @@ These assert the *shipped* claims, not a fresh fit: the learned combiner must be
 the frozen rule, the protocol must record a single test evaluation, and the
 recorded cache fingerprints must match the committed retrieval caches.
 """
-import hashlib
 import json
 
 import pytest
 
 from src.utils.config import PROJECT_ROOT
+from src.utils.provenance import matches_text_sha256
 
 OUT = PROJECT_ROOT / 'experiments/stage5_learned'
 METRICS = OUT / 'metrics.json'
@@ -47,7 +47,7 @@ def test_protocol_cache_hashes_still_match():
     protocol = _load(METRICS)['protocol']
     for split, expected in protocol['cache_sha256'].items():
         path = PROJECT_ROOT / 'data/processed/retrieval' / f'fever_{split}.jsonl'
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected
+        assert matches_text_sha256(path, expected)
 
 
 @pytest.mark.skipif(not ABLATIONS.exists(), reason='Stage 5 artifacts not generated')

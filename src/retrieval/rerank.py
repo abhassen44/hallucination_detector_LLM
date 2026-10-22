@@ -6,13 +6,36 @@ improvement study, not by the default inference path.
 from __future__ import annotations
 
 import numpy as np
+from pathlib import Path
 
 DEFAULT_MODEL = 'BAAI/bge-reranker-base'
 
 
+class RerankerUnavailable(RuntimeError):
+    pass
+
+
+def reranker_available(model_name: str = DEFAULT_MODEL) -> bool:
+    """Local readiness only: health checks must never start a download."""
+    try:
+        from huggingface_hub import try_to_load_from_cache
+
+        def cached(name):
+            found = try_to_load_from_cache(model_name, name)
+            return isinstance(found, str) and Path(found).is_file()
+
+        return (cached('config.json') and
+                (cached('model.safetensors') or cached('pytorch_model.bin')) and
+                (cached('tokenizer.json') or cached('sentencepiece.bpe.model')))
+    except (ImportError, OSError, ValueError):
+        return False
+
+
 class Reranker:
     def __init__(self, model_name: str = DEFAULT_MODEL, batch_size: int = 64,
-                 max_length: int = 512, device: str = 'auto'):
+                 max_length: int = 512, device: str = 'auto', local_files_only: bool = False):
+        if local_files_only and not reranker_available(model_name):
+            raise RerankerUnavailable('Optional reranker weights are not installed. See docs/RUNNING.md.')
         import torch
         from sentence_transformers import CrossEncoder
 
@@ -22,7 +45,8 @@ class Reranker:
         if device == 'auto':
             device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.device = device
-        self.model = CrossEncoder(model_name, max_length=max_length, device=self.device)
+        self.model = CrossEncoder(model_name, max_length=max_length, device=self.device,
+                                  local_files_only=local_files_only)
 
     def score(self, claim: str, texts: list[str], show_progress: bool = False) -> np.ndarray:
         if not texts:

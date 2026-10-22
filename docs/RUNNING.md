@@ -286,3 +286,51 @@ Stage 5 training is limited to the FEVER train split. HaluEval labels are answer
 not claim-level gold, so no claim-level HaluEval score is reported anywhere. The
 original dataset labels, questions, answers, contexts, group IDs, and row counts were
 verified unchanged during extraction.
+# Experimental inference improvements
+
+The original all-passages threshold baseline remains the default. The
+**Evidence to use** dropdown offers **First retrieved passage · experimental**;
+on cached FEVER validation it reduces distractor-driven errors, but it can also
+discard evidence needed for multi-sentence claims. These are validation-only
+findings, not a new test score. Supplied-source checks keep all supplied text.
+See `experiments/improvements/REPORT.md` for the results and tradeoffs.
+
+API clients can pass `evidence_policy: "top1"` to `/detect` or `/verify`.
+`/detect` additionally supports `top3` and `same_page` for retrieved evidence;
+`same_page` requires page provenance and cannot be used with plain supplied text.
+Every claim retains its verdict and now includes a separate `decision.status`:
+`answer` or `abstain`, plus review reasons. Abstention is not another factual
+label. Missing evidence alone does not establish that an answer is false.
+
+Optional pretrained reranking is off by default. To install its weights once,
+from the repository root on macOS/Linux:
+
+```sh
+HF_HUB_DISABLE_XET=1 .venv/bin/python -c "from src.retrieval.rerank import Reranker; Reranker()"
+```
+
+This downloads a pretrained model and does not train or fit anything. Refresh the
+app after setup. `/health` reports `reranker_available`, and the checkbox remains
+disabled until weights and tokenizer are present. The server loads only local
+weights: an unavailable optional reranker returns 503 with a setup explanation.
+Set `rerank: true` on `/detect` or `/retrieve` to use it; supplied-source requests
+bypass search and reranking. The reranking/focused-selection combination is
+experimental and has not been evaluated on a new held-out set.
+
+## Optional second evidence verifier
+
+Enable **Double-check contradictions**, or add `grounded_review: true` to `/detect`
+or `/verify`. This uses the configured `gemma4:31b-cloud` model for extra inference
+on contradictions and conflicting evidence; it does not train or fit a model.
+It is off by default and adds cloud requests and latency.
+
+The second model sees only the claim and passages. It must provide exact evidence
+quotes to confirm a factual verdict. Disagreement or invalid output causes an
+INSUFFICIENT verdict and operational abstention. The original verdict remains in
+`baseline_label`, with the separate `grounded_review` explanation and citations.
+Uncontested supported verdicts are not all double-checked by this policy.
+
+On the 999 reused FEVER validation claims, hybrid first-passage macro-F1 improved
+0.6919 → 0.7192 and accepted accuracy 74.12% → 82.92%. This is not a new test score
+or a 90% reliability guarantee. See `experiments/grounded_pilot_999/REPORT.md` for
+regressions, quote failures, latency limitations, and replay commands.

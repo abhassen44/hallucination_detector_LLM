@@ -1,0 +1,463 @@
+{
+  "scope": "exploratory validation diagnostics",
+  "training_performed": false,
+  "inference_performed": false,
+  "test_evaluated": false,
+  "methods": {
+    "bm25": {
+      "counts": {
+        "correct": 664,
+        "unchanged_correctness": 724,
+        "errors": 335,
+        "verifiable_errors_with_complete_gold_in_pool": 127,
+        "lost": 101,
+        "verifiable_errors_with_correct_single_sentence_verdict_in_lower_hits": 106,
+        "gained": 174,
+        "correct_factual_verdict_rejected_for_pool_conflict": 105
+      },
+      "confusion_counts": {
+        "CONTRADICTED->CONTRADICTED": 228,
+        "CONTRADICTED->INSUFFICIENT": 97,
+        "CONTRADICTED->SUPPORTED": 8,
+        "INSUFFICIENT->CONTRADICTED": 101,
+        "INSUFFICIENT->INSUFFICIENT": 188,
+        "INSUFFICIENT->SUPPORTED": 44,
+        "SUPPORTED->CONTRADICTED": 11,
+        "SUPPORTED->INSUFFICIENT": 74,
+        "SUPPORTED->SUPPORTED": 248
+      },
+      "gold_evidence_shape": {
+        "multi_sentence_gold_required/n": 68,
+        "multi_sentence_gold_required/errors": 38,
+        "single_sentence_gold_available/n": 598,
+        "single_sentence_gold_available/errors": 152
+      }
+    },
+    "dense": {
+      "counts": {
+        "correct": 697,
+        "unchanged_correctness": 746,
+        "errors": 302,
+        "verifiable_errors_with_complete_gold_in_pool": 129,
+        "correct_factual_verdict_rejected_for_pool_conflict": 94,
+        "gained": 166,
+        "lost": 87,
+        "verifiable_errors_with_correct_single_sentence_verdict_in_lower_hits": 95
+      },
+      "confusion_counts": {
+        "CONTRADICTED->CONTRADICTED": 240,
+        "CONTRADICTED->INSUFFICIENT": 82,
+        "CONTRADICTED->SUPPORTED": 11,
+        "INSUFFICIENT->CONTRADICTED": 104,
+        "INSUFFICIENT->INSUFFICIENT": 187,
+        "INSUFFICIENT->SUPPORTED": 42,
+        "SUPPORTED->CONTRADICTED": 8,
+        "SUPPORTED->INSUFFICIENT": 55,
+        "SUPPORTED->SUPPORTED": 270
+      },
+      "gold_evidence_shape": {
+        "multi_sentence_gold_required/n": 68,
+        "multi_sentence_gold_required/errors": 33,
+        "single_sentence_gold_available/n": 598,
+        "single_sentence_gold_available/errors": 123
+      }
+    },
+    "hybrid": {
+      "counts": {
+        "correct": 690,
+        "unchanged_correctness": 745,
+        "errors": 309,
+        "verifiable_errors_with_complete_gold_in_pool": 128,
+        "lost": 87,
+        "verifiable_errors_with_correct_single_sentence_verdict_in_lower_hits": 92,
+        "gained": 167,
+        "correct_factual_verdict_rejected_for_pool_conflict": 104
+      },
+      "confusion_counts": {
+        "CONTRADICTED->CONTRADICTED": 241,
+        "CONTRADICTED->INSUFFICIENT": 84,
+        "CONTRADICTED->SUPPORTED": 8,
+        "INSUFFICIENT->CONTRADICTED": 100,
+        "INSUFFICIENT->INSUFFICIENT": 188,
+        "INSUFFICIENT->SUPPORTED": 45,
+        "SUPPORTED->CONTRADICTED": 8,
+        "SUPPORTED->INSUFFICIENT": 64,
+        "SUPPORTED->SUPPORTED": 261
+      },
+      "gold_evidence_shape": {
+        "multi_sentence_gold_required/n": 68,
+        "multi_sentence_gold_required/errors": 34,
+        "single_sentence_gold_available/n": 598,
+        "single_sentence_gold_available/errors": 130
+      }
+    }
+  },
+  "consensus_acceptance": {
+    "hybrid_only": {
+      "schema": "accepted-verdict-reliability-v1",
+      "n": 999,
+      "n_accepted": 537,
+      "n_abstained": 462,
+      "acceptance_rate": 0.5375375375375375,
+      "accepted_accuracy": 0.7411545623836127,
+      "per_predicted_class": {
+        "SUPPORTED": {
+          "accepted": 200,
+          "correct": 165,
+          "precision": 0.825
+        },
+        "CONTRADICTED": {
+          "accepted": 337,
+          "correct": 233,
+          "precision": 0.6913946587537092
+        },
+        "INSUFFICIENT": {
+          "accepted": 0,
+          "correct": 0,
+          "precision": null
+        }
+      },
+      "per_gold_class": {
+        "SUPPORTED": {
+          "n": 333,
+          "accepted": 170,
+          "acceptance_rate": 0.5105105105105106,
+          "accepted_accuracy": 0.9705882352941176,
+          "correct_rejected": 96
+        },
+        "CONTRADICTED": {
+          "n": 333,
+          "accepted": 236,
+          "acceptance_rate": 0.7087087087087087,
+          "accepted_accuracy": 0.9872881355932204,
+          "correct_rejected": 8
+        },
+        "INSUFFICIENT": {
+          "n": 333,
+          "accepted": 131,
+          "acceptance_rate": 0.3933933933933934,
+          "accepted_accuracy": 0.0,
+          "correct_rejected": 188
+        }
+      },
+      "nei_false_assertions": 131,
+      "nei_false_assertion_rate": 0.3933933933933934,
+      "nei_share_of_accepted_errors": 0.9424460431654677
+    },
+    "dense_hybrid": {
+      "schema": "accepted-verdict-reliability-v1",
+      "n": 999,
+      "n_accepted": 480,
+      "n_abstained": 519,
+      "acceptance_rate": 0.4804804804804805,
+      "accepted_accuracy": 0.7583333333333333,
+      "per_predicted_class": {
+        "SUPPORTED": {
+          "accepted": 174,
+          "correct": 145,
+          "precision": 0.8333333333333334
+        },
+        "CONTRADICTED": {
+          "accepted": 306,
+          "correct": 219,
+          "precision": 0.7156862745098039
+        },
+        "INSUFFICIENT": {
+          "accepted": 0,
+          "correct": 0,
+          "precision": null
+        }
+      },
+      "per_gold_class": {
+        "SUPPORTED": {
+          "n": 333,
+          "accepted": 149,
+          "acceptance_rate": 0.44744744744744747,
+          "accepted_accuracy": 0.9731543624161074,
+          "correct_rejected": 116
+        },
+        "CONTRADICTED": {
+          "n": 333,
+          "accepted": 222,
+          "acceptance_rate": 0.6666666666666666,
+          "accepted_accuracy": 0.9864864864864865,
+          "correct_rejected": 22
+        },
+        "INSUFFICIENT": {
+          "n": 333,
+          "accepted": 109,
+          "acceptance_rate": 0.32732732732732733,
+          "accepted_accuracy": 0.0,
+          "correct_rejected": 188
+        }
+      },
+      "nei_false_assertions": 109,
+      "nei_false_assertion_rate": 0.32732732732732733,
+      "nei_share_of_accepted_errors": 0.9396551724137931
+    },
+    "all_three": {
+      "schema": "accepted-verdict-reliability-v1",
+      "n": 999,
+      "n_accepted": 415,
+      "n_abstained": 584,
+      "acceptance_rate": 0.41541541541541543,
+      "accepted_accuracy": 0.7710843373493976,
+      "per_predicted_class": {
+        "SUPPORTED": {
+          "accepted": 135,
+          "correct": 118,
+          "precision": 0.8740740740740741
+        },
+        "CONTRADICTED": {
+          "accepted": 280,
+          "correct": 202,
+          "precision": 0.7214285714285714
+        },
+        "INSUFFICIENT": {
+          "accepted": 0,
+          "correct": 0,
+          "precision": null
+        }
+      },
+      "per_gold_class": {
+        "SUPPORTED": {
+          "n": 333,
+          "accepted": 121,
+          "acceptance_rate": 0.3633633633633634,
+          "accepted_accuracy": 0.9752066115702479,
+          "correct_rejected": 143
+        },
+        "CONTRADICTED": {
+          "n": 333,
+          "accepted": 204,
+          "acceptance_rate": 0.6126126126126126,
+          "accepted_accuracy": 0.9901960784313726,
+          "correct_rejected": 39
+        },
+        "INSUFFICIENT": {
+          "n": 333,
+          "accepted": 90,
+          "acceptance_rate": 0.2702702702702703,
+          "accepted_accuracy": 0.0,
+          "correct_rejected": 188
+        }
+      },
+      "nei_false_assertions": 90,
+      "nei_false_assertion_rate": 0.2702702702702703,
+      "nei_share_of_accepted_errors": 0.9473684210526315
+    }
+  },
+  "neutral_fallback": {
+    "top3": {
+      "classification": {
+        "n": 999,
+        "accuracy": 0.6826826826826827,
+        "macro_f1": 0.6632494977029577,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.8197674418604651,
+            "recall": 0.8468468468468469,
+            "f1": 0.8330871491875923,
+            "support": 333
+          },
+          "CONTRADICTED": {
+            "precision": 0.6072961373390557,
+            "recall": 0.8498498498498499,
+            "f1": 0.7083854818523154,
+            "support": 333
+          },
+          "INSUFFICIENT": {
+            "precision": 0.6190476190476191,
+            "recall": 0.35135135135135137,
+            "f1": 0.4482758620689655,
+            "support": 333
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            282,
+            18,
+            33
+          ],
+          [
+            11,
+            283,
+            39
+          ],
+          [
+            51,
+            165,
+            117
+          ]
+        ]
+      },
+      "reliability": {
+        "schema": "accepted-verdict-reliability-v1",
+        "n": 999,
+        "n_accepted": 675,
+        "n_abstained": 324,
+        "acceptance_rate": 0.6756756756756757,
+        "accepted_accuracy": 0.68,
+        "per_predicted_class": {
+          "SUPPORTED": {
+            "accepted": 225,
+            "correct": 184,
+            "precision": 0.8177777777777778
+          },
+          "CONTRADICTED": {
+            "accepted": 450,
+            "correct": 275,
+            "precision": 0.6111111111111112
+          },
+          "INSUFFICIENT": {
+            "accepted": 0,
+            "correct": 0,
+            "precision": null
+          }
+        },
+        "per_gold_class": {
+          "SUPPORTED": {
+            "n": 333,
+            "accepted": 198,
+            "acceptance_rate": 0.5945945945945946,
+            "accepted_accuracy": 0.9292929292929293,
+            "correct_rejected": 98
+          },
+          "CONTRADICTED": {
+            "n": 333,
+            "accepted": 280,
+            "acceptance_rate": 0.8408408408408409,
+            "accepted_accuracy": 0.9821428571428571,
+            "correct_rejected": 8
+          },
+          "INSUFFICIENT": {
+            "n": 333,
+            "accepted": 197,
+            "acceptance_rate": 0.5915915915915916,
+            "accepted_accuracy": 0.0,
+            "correct_rejected": 117
+          }
+        },
+        "nei_false_assertions": 197,
+        "nei_false_assertion_rate": 0.5915915915915916,
+        "nei_share_of_accepted_errors": 0.9120370370370371
+      }
+    },
+    "same_page": {
+      "classification": {
+        "n": 999,
+        "accuracy": 0.6876876876876877,
+        "macro_f1": 0.6704927081062121,
+        "per_class": {
+          "SUPPORTED": {
+            "precision": 0.8279883381924198,
+            "recall": 0.8528528528528528,
+            "f1": 0.8402366863905325,
+            "support": 333
+          },
+          "CONTRADICTED": {
+            "precision": 0.611353711790393,
+            "recall": 0.8408408408408409,
+            "f1": 0.7079646017699115,
+            "support": 333
+          },
+          "INSUFFICIENT": {
+            "precision": 0.6212121212121212,
+            "recall": 0.36936936936936937,
+            "f1": 0.4632768361581921,
+            "support": 333
+          }
+        },
+        "labels": [
+          "SUPPORTED",
+          "CONTRADICTED",
+          "INSUFFICIENT"
+        ],
+        "confusion_matrix": [
+          [
+            284,
+            18,
+            31
+          ],
+          [
+            9,
+            280,
+            44
+          ],
+          [
+            50,
+            160,
+            123
+          ]
+        ]
+      },
+      "reliability": {
+        "schema": "accepted-verdict-reliability-v1",
+        "n": 999,
+        "n_accepted": 667,
+        "n_abstained": 332,
+        "acceptance_rate": 0.6676676676676677,
+        "accepted_accuracy": 0.6851574212893553,
+        "per_predicted_class": {
+          "SUPPORTED": {
+            "accepted": 225,
+            "correct": 186,
+            "precision": 0.8266666666666667
+          },
+          "CONTRADICTED": {
+            "accepted": 442,
+            "correct": 271,
+            "precision": 0.6131221719457014
+          },
+          "INSUFFICIENT": {
+            "accepted": 0,
+            "correct": 0,
+            "precision": null
+          }
+        },
+        "per_gold_class": {
+          "SUPPORTED": {
+            "n": 333,
+            "accepted": 200,
+            "acceptance_rate": 0.6006006006006006,
+            "accepted_accuracy": 0.93,
+            "correct_rejected": 98
+          },
+          "CONTRADICTED": {
+            "n": 333,
+            "accepted": 275,
+            "acceptance_rate": 0.8258258258258259,
+            "accepted_accuracy": 0.9854545454545455,
+            "correct_rejected": 9
+          },
+          "INSUFFICIENT": {
+            "n": 333,
+            "accepted": 192,
+            "acceptance_rate": 0.5765765765765766,
+            "accepted_accuracy": 0.0,
+            "correct_rejected": 123
+          }
+        },
+        "nei_false_assertions": 192,
+        "nei_false_assertion_rate": 0.5765765765765766,
+        "nei_share_of_accepted_errors": 0.9142857142857143
+      }
+    }
+  },
+  "caveats": [
+    "Gold-based recovery counts are oracle diagnostics, not implementable policies or gains.",
+    "Consensus shares one NLI verifier and corpus; agreement need not mean correctness.",
+    "Validation is repeatedly reused; no serving change or test generalization claim."
+  ],
+  "input_sha256": {
+    "experiments/improvements/validation_predictions.jsonl": "b79641b57c6cdd600fb9f551d2bbd18e1b50c5f6ad98f81db67f8802f89544b5",
+    "data/processed/retrieval/fever_val.jsonl": "2f490213441f252b24564ca6041ce8b8f524792a0ad0c6a12a5d7d4a8a456a6b",
+    "data/splits/fever_val.jsonl": "511117f3bcfce398098d4164c39c1d7be01bc6cda8c00efcfa3208fecb0920ed",
+    "experiments/improvements/metrics_evidence_policies.json": "3d88626676a380d5e97fa15cf99e74d9f2bb7ccfdd51995375d2dde7d4e8d92d"
+  }
+}

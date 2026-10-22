@@ -1,0 +1,115 @@
+{
+  "scope": "diagnostic recount of frozen v2 outputs; not a new evaluation",
+  "training_performed": false,
+  "inference_performed": false,
+  "threshold_selection_performed": false,
+  "input_sha256": {
+    "experiments/v2/policy.json": "35ed2a835e6feaa730ad05632c50311de61524a35377e2b1cdaa382f8578cf38",
+    "experiments/v2/val_predictions_v2.jsonl": "364efd0de6136e51cadfd5065a4c2ad3516a7d1cc1436400df8c16fac63d99df",
+    "experiments/v2/test_predictions_v2.jsonl": "f292e818af82430a271adf94f67543589a5d7c2403891d598561c4795db605e1"
+  },
+  "results": {
+    "val": {
+      "schema": "accepted-verdict-reliability-v1",
+      "n": 999,
+      "n_accepted": 719,
+      "n_abstained": 280,
+      "acceptance_rate": 0.7197197197197197,
+      "accepted_accuracy": 0.7315716272600834,
+      "per_predicted_class": {
+        "SUPPORTED": {
+          "accepted": 352,
+          "correct": 289,
+          "precision": 0.8210227272727273
+        },
+        "CONTRADICTED": {
+          "accepted": 364,
+          "correct": 234,
+          "precision": 0.6428571428571429
+        },
+        "INSUFFICIENT": {
+          "accepted": 3,
+          "correct": 3,
+          "precision": 1.0
+        }
+      },
+      "per_gold_class": {
+        "SUPPORTED": {
+          "n": 333,
+          "accepted": 300,
+          "acceptance_rate": 0.9009009009009009,
+          "accepted_accuracy": 0.9633333333333334,
+          "correct_rejected": 3
+        },
+        "CONTRADICTED": {
+          "n": 333,
+          "accepted": 244,
+          "acceptance_rate": 0.7327327327327328,
+          "accepted_accuracy": 0.9590163934426229,
+          "correct_rejected": 0
+        },
+        "INSUFFICIENT": {
+          "n": 333,
+          "accepted": 175,
+          "acceptance_rate": 0.5255255255255256,
+          "accepted_accuracy": 0.017142857142857144,
+          "correct_rejected": 154
+        }
+      },
+      "nei_false_assertions": 172,
+      "nei_false_assertion_rate": 0.5165165165165165,
+      "nei_share_of_accepted_errors": 0.8911917098445595
+    },
+    "test": {
+      "schema": "accepted-verdict-reliability-v1",
+      "n": 1998,
+      "n_accepted": 1448,
+      "n_abstained": 550,
+      "acceptance_rate": 0.7247247247247247,
+      "accepted_accuracy": 0.7354972375690608,
+      "per_predicted_class": {
+        "SUPPORTED": {
+          "accepted": 711,
+          "correct": 584,
+          "precision": 0.8213783403656821
+        },
+        "CONTRADICTED": {
+          "accepted": 731,
+          "correct": 477,
+          "precision": 0.652530779753762
+        },
+        "INSUFFICIENT": {
+          "accepted": 6,
+          "correct": 4,
+          "precision": 0.6666666666666666
+        }
+      },
+      "per_gold_class": {
+        "SUPPORTED": {
+          "n": 666,
+          "accepted": 615,
+          "acceptance_rate": 0.9234234234234234,
+          "accepted_accuracy": 0.9495934959349593,
+          "correct_rejected": 10
+        },
+        "CONTRADICTED": {
+          "n": 666,
+          "accepted": 512,
+          "acceptance_rate": 0.7687687687687688,
+          "accepted_accuracy": 0.931640625,
+          "correct_rejected": 0
+        },
+        "INSUFFICIENT": {
+          "n": 666,
+          "accepted": 321,
+          "acceptance_rate": 0.481981981981982,
+          "accepted_accuracy": 0.012461059190031152,
+          "correct_rejected": 340
+        }
+      },
+      "nei_false_assertions": 317,
+      "nei_false_assertion_rate": 0.47597597597597596,
+      "nei_share_of_accepted_errors": 0.8276762402088773
+    }
+  }
+}

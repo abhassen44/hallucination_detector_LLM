@@ -58,7 +58,7 @@ def test_api_endpoints(client):
     assert client.get('/metrics').json()['results']
     served = client.get('/metrics').json()['results']
     assert any(key.startswith('baseline_review/') for key in served)
-    assert all(key.startswith(('stage', 'baseline_review')) for key in served)
+    assert all(key.startswith(('stage', 'baseline_review', 'improvements', 'grounded_pilot_')) for key in served)
 
 
 @pytest.mark.parametrize('payload', [{'answer': '   '}, {'answer': 'a', 'method': 'invalid'},
@@ -79,6 +79,7 @@ def test_conflicting_evidence_is_visible_without_changing_baseline(detector):
     result = detector.verify('claim', [{'text': 'support'}, {'text': 'unrelated passage'}])
     assert result['evidence_conflict'] is True
     assert result['label'] == 'CONTRADICTED'
+    assert result['decision']['status'] == 'abstain'
     assert result['evidence'][0]['nli']['entailment'] == .989
 
 
@@ -110,3 +111,73 @@ def test_source_verification_never_initializes_a_wikipedia_retriever(detector):
     result = source_only.detect(None,'answer',evidence=['evidence'])
     assert result['label'] == 'SUPPORTED'
     assert source_only._retriever is None
+
+
+def test_focused_evidence_keeps_distractor_visible_and_conflict_unaccepted(detector):
+    detector.nli.predict.return_value = np.array([[.99, .009, .001], [.001, .001, .998]])
+    result = detector.verify('claim', [{'text': 'support'}, {'text': 'distractor'}], 'top1')
+    assert result['label'] == 'SUPPORTED'
+    assert result['decision']['status'] == 'abstain'
+    assert result['evidence'][0]['used_for_verdict'] is True
+    assert result['evidence'][1]['used_for_verdict'] is False
+
+
+def test_no_evidence_is_operational_abstention(detector):
+    result = detector.verify('claim', [])
+    assert result['label'] == 'INSUFFICIENT'
+    assert result['decision']['reasons'] == ['no_evidence']
+
+
+def test_optional_reranking_preserves_provenance_and_retrieval_scores(detector):
+    detector.retriever.search.return_value = [
+        {'text': 'irrelevant', 'page_id': 'A', 'score': 10},
+        {'text': 'relevant', 'page_id': 'B', 'score': 5}]
+    reranker = Mock()
+    reranker.score.return_value = np.array([-.5, 2])
+    detector._reranker = reranker
+    result = detector.retrieve('claim', top_k=1, rerank=True)
+    assert result[0]['page_id'] == 'B'
+    assert result[0]['score'] == 5 and result[0]['rerank_score'] == 2
+    detector.retriever.search.assert_called_once_with('claim', method='hybrid', k=50)
+
+
+def test_provided_source_ignores_search_reranking(client, detector):
+    result = client.post('/detect', json={'answer': 'claim', 'evidence': ['source'], 'rerank': True})
+    assert result.status_code == 200
+    assert result.json()['reranked'] is False
+    detector.retriever.search.assert_not_called()
+
+
+def test_fallback_needs_review_even_for_supported_claims(detector):
+    detector.extractor.extract_with_metadata.return_value = ExtractionResult(['claim'], True)
+    result = detector.detect(None, 'answer', evidence=['source'])
+    assert result['label'] == 'SUPPORTED'
+    assert result['decision']['status'] == 'abstain'
+    assert 'extraction_fallback' in result['decision']['reasons']
+
+
+def test_missing_optional_reranker_has_actionable_error(client, detector, monkeypatch):
+    from src.retrieval.rerank import RerankerUnavailable
+    monkeypatch.setattr('src.api.main.reranker_available', lambda: False)
+    assert client.get('/health').json()['reranker_available'] is False
+    detector._reranker = Mock()
+    detector._reranker.score.side_effect = RerankerUnavailable('Optional reranker weights are not installed.')
+    response = client.post('/retrieve', json={'claim': 'claim', 'rerank': True})
+    assert response.status_code == 503
+    assert response.json()['detail'] == 'Optional reranker weights are not installed.'
+
+
+def test_api_grounded_review_is_explicit_and_preserves_original_verdict(client, detector):
+    detector.nli.predict.return_value = np.array([[.001, .001, .998]])
+    secondary = Mock()
+    secondary.review.return_value = {'status': 'ok', 'verdict': 'INSUFFICIENT',
+                                    'reason': 'The passage does not establish the claim.',
+                                    'citations': [], 'addresses_claim': False}
+    detector._reviewer = secondary
+    response = client.post('/verify', json={'claim': 'claim', 'evidence': ['source'],
+                                           'grounded_review': True})
+    assert response.status_code == 200
+    assert response.json()['baseline_label'] == 'CONTRADICTED'
+    assert response.json()['label'] == 'INSUFFICIENT'
+    assert response.json()['decision']['status'] == 'abstain'
+    assert secondary.review.call_count == 1

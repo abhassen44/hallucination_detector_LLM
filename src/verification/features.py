@@ -9,6 +9,7 @@ Similarity features use the pretrained BGE encoder only (no fitting).
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -41,6 +42,20 @@ FEATURE_GROUPS = {
 
 FEATURE_NAMES = [name for group in FEATURE_GROUPS.values() for name in group]
 FEATURE_INDEX = {name: i for i, name in enumerate(FEATURE_NAMES)}
+LEGACY_SCHEMA = 'stage5-features-v1'
+RANK_CORRECTED_SCHEMA = 'stage5-features-v2-retrieval-rank'
+
+
+@dataclass(frozen=True)
+class VersionedFeatures:
+    values: np.ndarray
+    names: tuple[str, ...]
+    schema: str
+
+    def for_schema(self, expected: str) -> np.ndarray:
+        if expected != self.schema:
+            raise ValueError(f'Feature schema mismatch: {self.schema} vs {expected}; refit required')
+        return self.values
 
 _YEAR = re.compile(r'\b(1[89]\d{2}|20\d{2})\b')
 _NEGATION = re.compile(r"\b(not|no|never|none|isn't|wasn't|aren't|weren't|didn't|doesn't|don't)\b", re.I)
@@ -131,6 +146,26 @@ def build_matrix(rows: list[dict], method: str, similarities: np.ndarray,
     if not np.isfinite(matrix).all():
         raise ValueError('Non-finite feature values')
     return matrix
+
+
+def build_rank_corrected_matrix(rows: list[dict], method: str, similarities: np.ndarray,
+                                top: int = TOP_K) -> VersionedFeatures:
+    """Opt-in features for a FUTURE refit; legacy builders remain frozen.
+
+    Rank now means the retrieval position of the strongest NLI evidence. New
+    names and a schema guard prevent treating this as the historical definition.
+    """
+    matrix = build_matrix(rows, method, similarities, top)
+    names = list(FEATURE_NAMES)
+    for old, new, column in [('nli_e_rank', 'nli_e_retrieval_rank', 0),
+                              ('nli_c_rank', 'nli_c_retrieval_rank', 2)]:
+        index = FEATURE_INDEX[old]
+        names[index] = new
+        for i, row in enumerate(rows):
+            hits = row[method][:top]
+            matrix[i, index] = (int(np.argmax([h['nli'][column] for h in hits])) + 1
+                                if hits else 0)
+    return VersionedFeatures(matrix, tuple(names), RANK_CORRECTED_SCHEMA)
 
 
 def labels(rows: list[dict]) -> list[str]:

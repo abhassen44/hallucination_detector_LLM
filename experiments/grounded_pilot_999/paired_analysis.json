@@ -1,0 +1,110 @@
+{
+  "scope": "conditional bootstrap on reused validation; not a new held-out estimate",
+  "training_performed": false,
+  "test_evaluated": false,
+  "paired_macro_f1_delta": 0.027389042270578923,
+  "bootstrap_95": [
+    0.00986347184562857,
+    0.04481096476561894
+  ],
+  "n_resamples": 2000,
+  "invalid_responses": 9,
+  "invalid_response_gains": 0,
+  "invalid_response_losses": 9,
+  "excluding_invalid": {
+    "baseline": {
+      "n": 990,
+      "accuracy": 0.6878787878787879,
+      "macro_f1": 0.6894101477100291,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.8301282051282052,
+          "recall": 0.7824773413897281,
+          "f1": 0.8055987558320373,
+          "support": 331
+        },
+        "CONTRADICTED": {
+          "precision": 0.6842105263157895,
+          "recall": 0.7177914110429447,
+          "f1": 0.7005988023952096,
+          "support": 326
+        },
+        "INSUFFICIENT": {
+          "precision": 0.5595238095238095,
+          "recall": 0.5645645645645646,
+          "f1": 0.5620328849028401,
+          "support": 333
+        }
+      },
+      "labels": [
+        "SUPPORTED",
+        "CONTRADICTED",
+        "INSUFFICIENT"
+      ],
+      "confusion_matrix": [
+        [
+          259,
+          8,
+          64
+        ],
+        [
+          8,
+          234,
+          84
+        ],
+        [
+          45,
+          100,
+          188
+        ]
+      ]
+    },
+    "candidate": {
+      "n": 990,
+      "accuracy": 0.7202020202020202,
+      "macro_f1": 0.7254375534918495,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.8504983388704319,
+          "recall": 0.7734138972809668,
+          "f1": 0.810126582278481,
+          "support": 331
+        },
+        "CONTRADICTED": {
+          "precision": 0.8052434456928839,
+          "recall": 0.6595092024539877,
+          "f1": 0.7251264755480608,
+          "support": 326
+        },
+        "INSUFFICIENT": {
+          "precision": 0.5734597156398105,
+          "recall": 0.7267267267267268,
+          "f1": 0.6410596026490066,
+          "support": 333
+        }
+      },
+      "labels": [
+        "SUPPORTED",
+        "CONTRADICTED",
+        "INSUFFICIENT"
+      ],
+      "confusion_matrix": [
+        [
+          256,
+          3,
+          72
+        ],
+        [
+          3,
+          215,
+          108
+        ],
+        [
+          42,
+          49,
+          242
+        ]
+      ]
+    }
+  }
+}

@@ -23,6 +23,12 @@ def clopper_pearson_lower(successes: int, n: int, alpha: float = 0.05) -> float:
 
 def policy_metrics(y_true: np.ndarray, probabilities: np.ndarray,
                    thresholds: np.ndarray) -> dict:
+    """Legacy v2 metrics, preserved for frozen experiment reproduction.
+
+    ``per_class.precision`` and ``nei_precision`` are selected GOLD-subgroup
+    accuracy, not predicted-class precision. Use reliability_metrics from
+    src.evaluation.reliability for new reliability reports.
+    """
     y_true = np.asarray(y_true, dtype=np.int64)
     probabilities = np.asarray(probabilities, dtype=np.float64)
     predicted = probabilities.argmax(axis=1)

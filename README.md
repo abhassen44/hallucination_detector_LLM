@@ -121,6 +121,19 @@ proposals.
 
 For the new API and React application on macOS/Linux, follow [docs/RUNNING.md](docs/RUNNING.md). The original Windows/CUDA experiment setup is below.
 
+The [inference improvements report](experiments/improvements/REPORT.md) documents
+the experimental first-passage evidence option, explicit review decisions, optional
+pretrained reranking, and corrected reliability reporting. On cached FEVER
+validation, first-passage hybrid macro-F1 improves from 0.5849 to 0.6919 without
+training. This is a validation-only result; the original evidence policy remains
+the default. The corrected rank-feature schema is reserved for a future refit.
+
+An optional [second evidence verifier](experiments/grounded_pilot_999/REPORT.md)
+now checks contradictions with `gemma4:31b-cloud`, requiring cited source text.
+On the same 999 validation claims it improves focused hybrid macro-F1 from
+0.6919 to 0.7192 without training. Enable **Double-check contradictions** to try
+it; it remains experimental and adds inference time.
+
 ### 2. Environment Setup
 
 ```powershell

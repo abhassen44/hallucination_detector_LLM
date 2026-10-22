@@ -13,10 +13,12 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 from src.utils.config import PROJECT_ROOT
+from src.retrieval.rerank import RerankerUnavailable, reranker_available
 
 logger = logging.getLogger(__name__)
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=12000)]
 Method = Literal['bm25', 'dense', 'hybrid']
+EvidencePolicy = Literal['all', 'top1', 'top3', 'same_page']
 app = FastAPI(title='Claim-Level Hallucination Detector', version='0.2.0')
 _model_lock = threading.Lock()
 _inference_lock = threading.Lock()
@@ -35,17 +37,23 @@ class DetectRequest(ClaimsRequest):
     evidence: list[Text] | None = Field(default=None, max_length=20)
     method: Method = 'hybrid'
     top_k: int = Field(default=5, ge=1, le=20)
+    rerank: bool = False
+    evidence_policy: EvidencePolicy = 'all'
+    grounded_review: bool = False
 
 
 class RetrieveRequest(RequestModel):
     claim: Text
     method: Method = 'hybrid'
     top_k: int = Field(default=5, ge=1, le=20)
+    rerank: bool = False
 
 
 class VerifyRequest(RequestModel):
     claim: Text
     evidence: list[Text] = Field(max_length=20)
+    evidence_policy: Literal['all', 'top1', 'top3'] = 'all'
+    grounded_review: bool = False
 
 
 @lru_cache(maxsize=1)
@@ -84,6 +92,8 @@ def run_inference(call):
             return call()
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
+    except RerankerUnavailable as exc:
+        raise HTTPException(503, str(exc)) from exc
     except Exception as exc:
         logger.exception('Inference failed')
         raise HTTPException(503, 'Inference failed. Check server logs and model availability.') from exc
@@ -92,6 +102,7 @@ def run_inference(call):
 @app.get('/health')
 def health():
     return {'status': 'ok', 'models_loaded': bool(_detector.cache_info().currsize),
+            'reranker_available': reranker_available(),
             'mode': 'inference_only', 'detector': 'threshold_baseline'}
 
 
@@ -104,24 +115,30 @@ def claims(body: ClaimsRequest, extractor=Depends(get_extractor)):
 
 @app.post('/detect')
 def detect(body: DetectRequest, detector=Depends(get_detector)):
-    return run_inference(lambda: detector.detect(body.question, body.answer, body.method, body.top_k, evidence=body.evidence))
+    return run_inference(lambda: detector.detect(body.question, body.answer, body.method,
+                         body.top_k, evidence=body.evidence, rerank=body.rerank,
+                         evidence_policy=body.evidence_policy, grounded_review=body.grounded_review))
 
 
 @app.post('/retrieve')
 def retrieve(body: RetrieveRequest, detector=Depends(get_detector)):
-    return {'evidence': run_inference(lambda: detector.retrieve(body.claim, body.method, body.top_k))}
+    return {'evidence': run_inference(lambda: detector.retrieve(body.claim, body.method,
+                        body.top_k, rerank=body.rerank))}
 
 
 @app.post('/verify')
 def verify(body: VerifyRequest, detector=Depends(get_detector)):
-    return run_inference(lambda: detector.verify(body.claim, [{'text': e} for e in body.evidence]))
+    return run_inference(lambda: detector.verify(body.claim, [{'text': e} for e in body.evidence],
+                                                evidence_policy=body.evidence_policy,
+                                                grounded_review=body.grounded_review))
 
 
 @app.get('/metrics')
 def metrics():
     root = PROJECT_ROOT / 'experiments'
     paths = set()
-    for pattern in ('stage*/metrics*.json', 'baseline_review/*_metrics.json'):
+    for pattern in ('stage*/metrics*.json', 'baseline_review/*_metrics.json',
+                    'improvements/metrics*.json', 'grounded_pilot_*/metrics.json'):
         paths.update(root.glob(pattern))
     saved = {}
     for p in sorted(paths):
