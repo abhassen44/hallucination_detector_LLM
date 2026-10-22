@@ -7,14 +7,45 @@ unchanged: [Stage 2/3](PROGRESS.md), [frozen-rule HaluEval](../experiments/stage
 
 Last updated: 2026-10-22.
 
-## v5 status — no new model result
+## v5 — grounding features, one test pass (2026-10-22)
 
-The active `ver-5` branch retains the v4 research artifacts and integrates the
-updated application and reporting work from `main`. The v5 research plan is in
-[`PLAN_V5.md`](PLAN_V5.md). No v5 fitting, threshold selection, or test evaluation
-has been run. Therefore, the v4 validation candidate and v1/v2 test results below
-remain the latest model results; they must not be compared as though they share a
-split.
+v5 adds pretrained **MiniCheck-Flan-T5-Large** grounding scores to the 30 v4
+features and refits the verdict and answerability heads on 9,000 FEVER train
+claims. Model/threshold selection used validation only. The pipeline was frozen
+and completed one final test pass on the 1,998-claim test split. All eight
+predeclared research gates pass. The learned path remains offline; no serving
+promotion is claimed.
+
+**Validation (999 claims).** The robust policy at `tau=0.62` reaches raw macro-F1
+**0.70681**, INSUFFICIENT F1 **0.54941**, answerability AUROC **0.81957**, Brier
+**0.38753**, overall coverage **0.66366** at **0.79487** precision, verifiable
+coverage **0.81381** at **0.97048** precision, and NEI false-answer coverage
+**0.36336**. Against v4's 9k candidate, macro-F1 improves 1.39 points and NEI
+false answers fall 4.50 points, at a cost of 0.60 points of overall coverage.
+
+**Test (1,998 claims, one final pass).**
+
+| Metric | Test value | Reference |
+|---|---:|---:|
+| Final-policy macro-F1 (abstain -> INSUFFICIENT) | **0.73694** | >= 0.69296 |
+| INSUFFICIENT F1 | **0.64483** | >= 0.53559 |
+| Answerability AUROC | **0.83809** | > 0.79436 |
+| Brier | **0.37519** | <= 0.40870 |
+| Overall coverage / precision | 0.66266 / **0.78701** | >= 0.65 / >= 0.75 |
+| Verifiable coverage / precision | **0.81757 / 0.95500** | >= 0.80 / >= 0.94 |
+| NEI false-answer coverage | **0.35285** | <= 0.40 |
+
+The policy answered 1,324 of 1,998 claims. It abstained on 64.71% of NEI claims;
+the 35.29% it answered were wrong 99.15% of the time. v5 therefore reduces NEI
+false answers and improves the other gates, but **NEI answer precision remains
+unsolved** and overall precision is 78.7%, not 95.5%. The 95.5% number is
+verifiable precision on the answered subset; if abstentions are scored wrong, the
+effective binary accuracy on verifiable claims is `0.81757 * 0.95500 = 0.7808`.
+Full validation/test report:
+[`experiments/v5/VALIDATION.md`](../experiments/v5/VALIDATION.md). One test
+invocation failed during JSON serialization before writing any metric; the
+identical frozen pipeline was rerun after a serializer-only fix. The report records
+both attempts. No test-driven tuning was performed.
 
 ## Protocol discipline
 
@@ -24,6 +55,7 @@ split.
 | Stage 3 retrieval + fixed rule | No | thresholds on val | test |
 | Frozen-rule HaluEval | No | thresholds inherited | test |
 | Stage 5 learned combiner | **Yes** (logistic regression) | `C` and feature groups on val | test, once |
+| v5 grounding + answerability | **Yes** (logistic + HGB) | `C`, answerability config, `tau` on val | test, once |
 | Val-only improvement studies | No | none | val only |
 
 Test scores below come from a single evaluation under a protocol written before the
@@ -387,7 +419,11 @@ python -m scripts.reproduce --stage all --include-heavy
   leaves in-domain performance lower than a FEVER-trained model would give.
 - **NEI remains unsolved.** The v2 policy abstains on 51.8% of NEI test claims, but
   the 48.2% it still answers are wrong 98.8% of the time; overall answered precision
-  is 73.6%, not 90%.
+  is 73.6%, not 90%. v5 improves NEI false-answer coverage to 35.3%, but the NEI
+  claims it still answers have only 0.85% precision.
+- **v5 precision is selective.** Verifiable precision 95.5% is measured on the
+  81.8% of verifiable claims the policy answers; the effective forced-choice
+  accuracy is 78.1% when abstentions are counted wrong.
 - **Labels are mostly silver.** Only 37 of 274 taxonomy labels are human; the other
   237 are LLM proposals, and the 40-row blind audit is pending. Population-level
   failure-mode counts remain provisional.

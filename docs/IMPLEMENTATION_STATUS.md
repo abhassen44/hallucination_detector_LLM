@@ -1,18 +1,32 @@
 # Current implementation status
 
-## v5 — plan and application integration (2026-10-22)
+## v5 — grounding features, one test pass (2026-10-22)
 
-Active branch: `ver-5`, based on the v4.0 research history. The plan is in
-[`PLAN_V5.md`](PLAN_V5.md). The current work integrates the API, React UI, ablation
-report generator, and results dashboard from `main` while retaining v3/v4 artifacts.
+Active branch: `ver-5`, based on the v4.0 research history. Plan and outcome:
+[`PLAN_V5.md`](PLAN_V5.md); full report:
+[`experiments/v5/VALIDATION.md`](../experiments/v5/VALIDATION.md).
 
-- API version is 0.3.0 and includes `/metrics/summary` and `/charts` in addition to
-  the existing detection and saved-metrics endpoints.
-- `scripts/run_ablation_study.py` summarizes committed Stage 5 ablations;
-  `scripts/generate_charts.py` builds the static results dashboard.
-- The learned verifier is still offline and the fixed rule remains served.
-- No v5 fitting, threshold selection, test evaluation, or model promotion has been
-  performed. v5 research work remains planned.
+- Integrated the API, React UI, ablation report generator, and results dashboard
+  from `main` while retaining v3/v4 artifacts.
+- Added inference-only MiniCheck-Flan-T5-Large and HHEM-2.1-Open grounding features
+  (`src/verification/grounding.py`, `grounding_features.py`).
+- Selected the MiniCheck-only 9k candidate on validation: raw macro-F1 **0.70681**,
+  INSUFFICIENT F1 **0.54941**, answerability AUROC **0.81957**, Brier **0.38753**.
+- Froze `tau=0.62` with verifiable coverage **0.81381** at **0.97048** precision and
+  NEI false-answer coverage **0.36336**.
+- Spent the one FEVER test pass: final-policy macro-F1 **0.73694**, INSUFFICIENT F1
+  **0.64483**, AUROC **0.83809**, Brier **0.37519**, overall coverage **0.66266** at
+  **0.78701** precision, verifiable coverage **0.81757** at **0.95500** precision,
+  NEI false-answer coverage **0.35285**. All eight gates pass.
+- NEI answer precision is still 0.85% on the NEI claims the policy answers; v5
+  reduces NEI false answers but does not solve NEI.
+- The learned verifier remains offline and the fixed rule remains served. No v5
+  serving promotion is claimed.
+- The first test invocation failed during JSON serialization before writing any
+  metric or prediction; the identical frozen pipeline was rerun after a
+  serializer-only fix. The report records both attempts.
+
+Tests: 156 passing; frontend build passing.
 
 ## v4 (2026-10-21) — stopped before the test pass
 

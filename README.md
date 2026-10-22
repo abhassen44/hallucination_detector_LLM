@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection System
 
-**Current branch:** `ver-5`, based on the v4.0 research line. The v5 plan is in [docs/PLAN_V5.md](docs/PLAN_V5.md); it targets NEI/evidence-sufficiency and broader retrieval evaluation. The v4 learned model remains offline: its best results are validation-only and did not clear the NEI gate. The updated inference API, React UI, ablation report, and results dashboard are integrated; see [implementation status](docs/IMPLEMENTATION_STATUS.md), [application setup](docs/RUNNING.md), and canonical [results](docs/RESULTS.md). No v5 model result or serving promotion is claimed.
+**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See [v5 report](experiments/v5/VALIDATION.md), [plan/outcome](docs/PLAN_V5.md), [implementation status](docs/IMPLEMENTATION_STATUS.md), [application setup](docs/RUNNING.md), and canonical [results](docs/RESULTS.md). No serving promotion is claimed.
 
 A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 
@@ -57,6 +57,7 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **6. Error Analysis** | Taxonomy Analysis | v2 taxonomy; 37 human + 237 LLM-proposed (silver) labels; 40-row audit pending | 274 cases categorised, review tooling added |
 | **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested; learned detector not served | Wikipedia and supplied-source modes |
 | **v2. Calibration & Selective Policy** | Temperature scaling, selective policy, coverage flag | One test pass; Brier and flag gates failed, learned model stays offline | Test ECE 0.023; verifiable 84.6% coverage at 94.1% precision |
+| **v5. Grounding-aware NEI** | MiniCheck features + answerability head | One test pass; all eight research gates passed; learned model stays offline | Test final-policy macro-F1 **0.7369**, NEI F1 **0.6448**; verifiable **81.8%** coverage at **95.5%** precision |
 
 Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).
 
@@ -115,6 +116,26 @@ reached NEI coverage **0.408**, still above the 0.40 gate, and a joint threshold
 search found no feasible point. v4 stopped before spending its test pass; the learned
 detector remains offline. Details: [v4 report](experiments/v4/REPORT.md) and
 [v4 serving decision](docs/SERVING_DECISION_V4.md).
+
+## v5 — grounding features, one test pass
+
+v5 adds inference-only **MiniCheck-Flan-T5-Large** support scores for the top-5
+reranked evidence sentences. The MiniCheck-only 9k candidate was selected on
+validation: raw macro-F1 **0.70681**, INSUFFICIENT F1 **0.54941**, answerability
+AUROC **0.81957**, and the robust `tau=0.62` policy cut NEI false-answer coverage
+from v4's **0.408** to **0.363** while raising verifiable coverage to **0.814** at
+**0.970** precision.
+
+The single final FEVER test pass (after a serialization-only recovery) produced
+final-policy macro-F1 **0.73694**, INSUFFICIENT F1 **0.64483**, answerability AUROC
+**0.83809**, Brier **0.37519**, overall coverage **0.66266** at **0.78701**
+precision, and verifiable coverage **0.81757** at **0.95500** precision. All eight
+predeclared gates passed. The policy abstained on 64.7% of NEI claims; the 35.3% it
+answered were wrong 99.1% of the time, so NEI is reduced but not solved. The 95.5%
+figure is selective precision on the answered verifiable subset, not accuracy on
+all verifiable claims. The learned path remains offline. Details:
+[v5 report](experiments/v5/VALIDATION.md) and
+[v5 plan/outcome](docs/PLAN_V5.md).
 
 ## Frozen-rule evaluation (HaluEval)
 

@@ -1,0 +1,990 @@
+{
+  "version": "v5-p0.5-error-analysis",
+  "created_utc": "2026-10-22T12:02:38.221535+00:00",
+  "split": "val",
+  "n": 999,
+  "test_evaluated": false,
+  "policy_tau": 0.66,
+  "metrics": {
+    "current": {
+      "n": 999,
+      "accuracy": 0.6986986986986987,
+      "macro_f1": 0.6908957499718574,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.8054054054054054,
+          "recall": 0.8948948948948949,
+          "f1": 0.8477951635846372,
+          "support": 333
+        },
+        "CONTRADICTED": {
+          "precision": 0.6574585635359116,
+          "recall": 0.7147147147147147,
+          "f1": 0.6848920863309352,
+          "support": 333
+        },
+        "INSUFFICIENT": {
+          "precision": 0.6067415730337079,
+          "recall": 0.4864864864864865,
+          "f1": 0.54,
+          "support": 333
+        }
+      },
+      "confusion_matrix": [
+        [
+          298,
+          11,
+          24
+        ],
+        [
+          14,
+          238,
+          81
+        ],
+        [
+          58,
+          113,
+          162
+        ]
+      ]
+    },
+    "oracle_answerability": {
+      "n": 999,
+      "accuracy": 0.8698698698698699,
+      "macro_f1": 0.8685712177104943,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.9551282051282052,
+          "recall": 0.8948948948948949,
+          "f1": 0.924031007751938,
+          "support": 333
+        },
+        "CONTRADICTED": {
+          "precision": 0.9558232931726908,
+          "recall": 0.7147147147147147,
+          "f1": 0.8178694158075601,
+          "support": 333
+        },
+        "INSUFFICIENT": {
+          "precision": 0.7602739726027398,
+          "recall": 1.0,
+          "f1": 0.8638132295719845,
+          "support": 333
+        }
+      },
+      "confusion_matrix": [
+        [
+          298,
+          11,
+          24
+        ],
+        [
+          14,
+          238,
+          81
+        ],
+        [
+          0,
+          0,
+          333
+        ]
+      ]
+    },
+    "oracle_verdict": {
+      "n": 999,
+      "accuracy": 0.8288288288288288,
+      "macro_f1": 0.8097923969802494,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 0.8516624040920716,
+          "recall": 1.0,
+          "f1": 0.919889502762431,
+          "support": 333
+        },
+        "CONTRADICTED": {
+          "precision": 0.7466367713004485,
+          "recall": 1.0,
+          "f1": 0.8549422336328626,
+          "support": 333
+        },
+        "INSUFFICIENT": {
+          "precision": 1.0,
+          "recall": 0.4864864864864865,
+          "f1": 0.6545454545454545,
+          "support": 333
+        }
+      },
+      "confusion_matrix": [
+        [
+          333,
+          0,
+          0
+        ],
+        [
+          0,
+          333,
+          0
+        ],
+        [
+          58,
+          113,
+          162
+        ]
+      ]
+    },
+    "oracle_both": {
+      "n": 999,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 333
+        },
+        "CONTRADICTED": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 333
+        },
+        "INSUFFICIENT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 333
+        }
+      },
+      "confusion_matrix": [
+        [
+          333,
+          0,
+          0
+        ],
+        [
+          0,
+          333,
+          0
+        ],
+        [
+          0,
+          0,
+          333
+        ]
+      ]
+    }
+  },
+  "retrieval": {
+    "n_verifiable": 666,
+    "strict_recall": 0.9174174174174174,
+    "hit_recall": 0.9714714714714715,
+    "page_recall": 0.9894894894894894,
+    "complete_rank_mean": 1.3567921440261865,
+    "strict_misses": 55
+  },
+  "buckets": {
+    "correct": 698,
+    "answerability_abstention": 84,
+    "false_answer_nei": 171,
+    "retrieval_miss_abstention": 18,
+    "verifier_abstention": 3,
+    "verifier_error": 21,
+    "retrieval_miss_verifier": 4
+  },
+  "bucket_by_gold": {
+    "INSUFFICIENT": {
+      "correct": 162,
+      "false_answer_nei": 171
+    },
+    "SUPPORTED": {
+      "answerability_abstention": 19,
+      "correct": 298,
+      "retrieval_miss_verifier": 3,
+      "verifier_error": 8,
+      "retrieval_miss_abstention": 5
+    },
+    "CONTRADICTED": {
+      "correct": 238,
+      "retrieval_miss_abstention": 13,
+      "verifier_abstention": 3,
+      "verifier_error": 13,
+      "answerability_abstention": 65,
+      "retrieval_miss_verifier": 1
+    }
+  },
+  "examples": {
+    "answerability_abstention": [
+      {
+        "id": "fever-178330",
+        "claim": "Al Jardine is an American rhythm guitarist.",
+        "gold": "SUPPORTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.4051274127280512,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 2,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-159086",
+        "claim": "Guatemala civil right war was fought between the North and the South.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.34199929540960317,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 2,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-24078",
+        "claim": "A View to a Kill features songs from Slipknot.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.23855187526897456,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 4,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-76745",
+        "claim": "The Chrysler Building is taller than the Empire State Building.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.36109979959799443,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-14226",
+        "claim": "Connie Nielsen is exclusively a film actress.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.3878107201981193,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 5,
+          "first_gold_rank": 5
+        }
+      },
+      {
+        "id": "fever-68137",
+        "claim": "Murda Beatz's real middle names are Shane Lindstrom.",
+        "gold": "SUPPORTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.23208466329372962,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-117000",
+        "claim": "Michigan is the eighth most populous of the 50 United States.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.3481532858827831,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 6,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-119219",
+        "claim": "The Bahamas is known unofficially as the Commonwealth of The Bahamas.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.34732212681533775,
+        "bucket": "answerability_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      }
+    ],
+    "false_answer_nei": [
+      {
+        "id": "fever-202458",
+        "claim": "Tinker Tailor Soldier Spy stars Tom Hardy and Tom Cruise.",
+        "gold": "INSUFFICIENT",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.304304519570066,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-171088",
+        "claim": "Lalla Ward was exhumed in 1951.",
+        "gold": "INSUFFICIENT",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.7575925367390723,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-95450",
+        "claim": "Anushka Sharma is an Buddhist.",
+        "gold": "INSUFFICIENT",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.33657890329621504,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-137160",
+        "claim": "Taylor Lautner had voice roles in 13 video game titles in 2008.",
+        "gold": "INSUFFICIENT",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.38204363373066563,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-185409",
+        "claim": "Rick Rosner wrote the TV series that CHiPs is based on.",
+        "gold": "INSUFFICIENT",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.5812021079934149,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-50438",
+        "claim": "Neil Diamond is an architect.",
+        "gold": "INSUFFICIENT",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.3798063258192061,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-201063",
+        "claim": "Regina King has received a Critics' Choice Television Award.",
+        "gold": "INSUFFICIENT",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.6578998847785195,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-65053",
+        "claim": "Café Society appeared in a film in the twenty first century.",
+        "gold": "INSUFFICIENT",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": false,
+        "p_answerable": 0.3402027335319338,
+        "bucket": "false_answer_nei",
+        "retrieval": {
+          "status": "not_applicable",
+          "n_gold_sets": 0,
+          "strict_hit": null,
+          "hit_any": null,
+          "page_hit": null,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      }
+    ],
+    "retrieval_miss_abstention": [
+      {
+        "id": "fever-92154",
+        "claim": "Raees (film) has an all-male cast.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.305452348428409,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-192921",
+        "claim": "\"Love the Way You Lie\" failed to receive any Grammy nominations.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.8822604898209504,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": false,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-212197",
+        "claim": "Miracle at St. Anna is set primarily in Europe.",
+        "gold": "SUPPORTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.3254954643673527,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-114200",
+        "claim": "The human brain lacks a sleep regulating structure.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.13722228925297095,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 3
+        }
+      },
+      {
+        "id": "fever-123452",
+        "claim": "The Faroe Islands are no longer part of the Kingdom of Mercia.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.1299231918318138,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": false,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-197368",
+        "claim": "Simón Bolívar's date of birth was July 24th, 1783.",
+        "gold": "SUPPORTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.17051236056983607,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": false,
+          "page_hit": false,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-455",
+        "claim": "Sheryl Lee appeared in an American romantic comedy-drama film.",
+        "gold": "SUPPORTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.24664040745484547,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-174035",
+        "claim": "The Endless River is an album by a band formed in 1967.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.15514661410866873,
+        "bucket": "retrieval_miss_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 1
+        }
+      }
+    ],
+    "verifier_abstention": [
+      {
+        "id": "fever-139220",
+        "claim": "The Godfather Part II was snubbed at the BAFTA Awards.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.740660059702784,
+        "bucket": "verifier_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 2,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-37086",
+        "claim": "History of Earth ruled out stromatolite being part of it.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.7601250875881426,
+        "bucket": "verifier_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 3,
+          "first_gold_rank": 3
+        }
+      },
+      {
+        "id": "fever-215125",
+        "claim": "Private Lives is a tragedy of manners by Noel Coward.",
+        "gold": "CONTRADICTED",
+        "prediction": "INSUFFICIENT",
+        "argmax": "INSUFFICIENT",
+        "answered": false,
+        "p_answerable": 0.6704343732608091,
+        "bucket": "verifier_abstention",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 2,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      }
+    ],
+    "verifier_error": [
+      {
+        "id": "fever-69716",
+        "claim": "Rupert Murdoch is the Chairman of FOX News.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": false,
+        "p_answerable": 0.44479628661974385,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-33547",
+        "claim": "Mick Thomson was born in Ohio.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.31371695490272616,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 2,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-130871",
+        "claim": "Pharrell Williams is a drummer.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.8135198127601249,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-100429",
+        "claim": "Lost (TV series) is a series of plays.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": false,
+        "p_answerable": 0.648300520093708,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-97091",
+        "claim": "Colombiana was produced by a man.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.3639432260124729,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-135740",
+        "claim": "Gal Gadot was ranked behind Esti Ginzburg for highest earning actress/models in Israel.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.6443898223697374,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-113884",
+        "claim": "On the first day of 2010, Shane McMahon officially retired.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.9136006817267921,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 2,
+          "first_gold_rank": 2
+        }
+      },
+      {
+        "id": "fever-21875",
+        "claim": "Prescott, Arizona is a town.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.9013166772291489,
+        "bucket": "verifier_error",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 2,
+          "strict_hit": true,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": 1,
+          "first_gold_rank": 1
+        }
+      }
+    ],
+    "retrieval_miss_verifier": [
+      {
+        "id": "fever-202932",
+        "claim": "In 2007, on the day before Halloween, Avenged Sevenfold was released.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.5256489610323033,
+        "bucket": "retrieval_miss_verifier",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-185218",
+        "claim": "Home for the Holidays stars someone who died on Christmas Eve.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": false,
+        "p_answerable": 0.14139553373087063,
+        "bucket": "retrieval_miss_verifier",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": true,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": 1
+        }
+      },
+      {
+        "id": "fever-102875",
+        "claim": "Croatia has a king.",
+        "gold": "CONTRADICTED",
+        "prediction": "SUPPORTED",
+        "argmax": "SUPPORTED",
+        "answered": true,
+        "p_answerable": 0.7068880030788458,
+        "bucket": "retrieval_miss_verifier",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": false,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      },
+      {
+        "id": "fever-148632",
+        "claim": "The Bee Gees did not write their own songs.",
+        "gold": "SUPPORTED",
+        "prediction": "CONTRADICTED",
+        "argmax": "CONTRADICTED",
+        "answered": true,
+        "p_answerable": 0.6397690102756111,
+        "bucket": "retrieval_miss_verifier",
+        "retrieval": {
+          "status": "verifiable",
+          "n_gold_sets": 1,
+          "strict_hit": false,
+          "hit_any": false,
+          "page_hit": true,
+          "complete_rank": null,
+          "first_gold_rank": null
+        }
+      }
+    ]
+  },
+  "inputs": {
+    "val_split": "data\\splits\\fever_val.jsonl",
+    "val_rerank": "data\\processed\\rerank\\val_hybrid_top8.jsonl",
+    "val_policy": "experiments\\v4\\val_policy_9000.jsonl",
+    "v4_tuning": "experiments\\v4\\answerability_tuning_9000.json",
+    "sha256": {
+      "val_split": "96a92c0adf159aacc5a2ec4e39a4764b8671a6e972065a02891e0414c748af1d",
+      "val_rerank": "9462efca3cf0e4acf73538ff49990141176fb368b82442441df5c723ffcc33f4",
+      "val_policy": "7c62a498f23a551c67fba74f2cbdd31e688a4410f1a73f47e9e97cee722470da",
+      "v4_tuning": "81471e224ed06ed7a8067d7ba4e9a0f2ad6e453f703be7d91cc57d98d449c139"
+    }
+  },
+  "reading": "Of 301 val errors, 22 are attributable to a strict retrieval miss; 87 are abstentions with retrievable evidence; and 171 are false answers on true INSUFFICIENT claims. The oracle-answerability ceiling shows how much of the gap is selective policy versus verdict quality. Use these buckets to choose whether P1 should prioritize the cross-encoder/grounding signal or P3 retrieval.",
+  "notes": [
+    "Val only; no test data was read.",
+    "No model was fitted, no threshold was selected, and no retrieval was rerun.",
+    "Strict recall requires a complete gold evidence set in the top-5.",
+    "Oracle-answerability keeps the current verdict but uses gold abstention; oracle-verdict keeps the current abstention but uses gold verdicts."
+  ]
+}

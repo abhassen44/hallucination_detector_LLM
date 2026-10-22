@@ -240,8 +240,8 @@ function App() {
       <footer className="footnote">
         Results use a fixed-threshold DeBERTa-v3-base-mnli baseline. Evidence scores are NLI model signals,
         not calibrated probabilities. The Wikipedia corpus covers ~248k sentences from FEVER pages; coverage
-        is limited for topics outside that set. Learned detector (macro-F1 0.702) exists but is not served
-        in the demo. Human review remains useful. Read the{' '}
+        is limited for topics outside that set. Learned v5 research candidate (final-policy macro-F1 0.737;
+        NEI answer precision remains poor) exists but is not served in the demo. Human review remains useful. Read the{' '}
         <a href="https://github.com/abhassen44/hallucination_detector_LLM" style={{color: 'var(--accent)'}}>
           documentation
         </a>{' '}
