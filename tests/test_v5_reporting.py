@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pytest
 
+from scripts.v5.evaluate_results_v5 import evaluate
 from scripts.v5.evaluate_v5_test import _jsonable
 from src.utils.config import PROJECT_ROOT
 
@@ -44,3 +45,11 @@ def test_v5_freeze_and_test_report_are_consistent():
     assert report['hashes']['test_rerank']
     assert report['hashes']['test_grounding_mc']
     assert report['hashes']['test_grounding_hhem']
+
+
+def test_v5_results_report_recomputes_frozen_metrics():
+    result = evaluate()
+    assert result['test']['test_pass'] == 1
+    assert result['test']['attempts'] == 2
+    assert result['distribution']['nei']['total'] == 666
+    assert all(check['match'] for check in result['checks'].values())

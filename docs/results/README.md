@@ -21,5 +21,6 @@ is made.
   `INSUFFICIENT`. It is not directly comparable to v1/v2 raw macro-F1.
 - The fixed 0.7/0.95 rule remains the serving default in every version.
 - The best research result is v5. The best serving result is still the fixed rule.
+- The generated v5 image report lives in [`output version 5/`](../../output%20version%205/summary.md).
 
 Architecture for every version is in [`../README.md`](../README.md).

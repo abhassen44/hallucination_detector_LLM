@@ -27,6 +27,7 @@ python -m scripts.v2.calibrate_v2
 python -m scripts.v3.answerability_v3
 python -m scripts.v4.retrieval_stack_v4
 python -m scripts.v5.evaluate_v5_test --check-val
+python -m scripts.v5.evaluate_results_v5
 python -m scripts.shared.review.review --summary
 python -m scripts.shared.reporting.generate_charts
 python -m scripts.reproduce --stage checks

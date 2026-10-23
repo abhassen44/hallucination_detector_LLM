@@ -1,0 +1,318 @@
+{
+  "version": "v5",
+  "source": "experiments/v5/test_metrics.json",
+  "test_pass": 1,
+  "attempts": 2,
+  "recovered_after_error": true,
+  "split": "test",
+  "n": 1998,
+  "official_metrics": {
+    "n": 1998,
+    "accuracy": 0.7372372372372372,
+    "macro_f1": 0.7369421397250884,
+    "per_class": {
+      "SUPPORTED": {
+        "precision": 0.8525073746312685,
+        "recall": 0.8678678678678678,
+        "f1": 0.8601190476190477,
+        "support": 666
+      },
+      "CONTRADICTED": {
+        "precision": 0.71850699844479,
+        "recall": 0.6936936936936937,
+        "f1": 0.7058823529411765,
+        "support": 666
+      },
+      "INSUFFICIENT": {
+        "precision": 0.6395864106351551,
+        "recall": 0.6501501501501501,
+        "f1": 0.6448250186150409,
+        "support": 666
+      }
+    },
+    "labels": [
+      "SUPPORTED",
+      "CONTRADICTED",
+      "INSUFFICIENT"
+    ],
+    "confusion_matrix": [
+      [
+        578,
+        24,
+        64
+      ],
+      [
+        24,
+        462,
+        180
+      ],
+      [
+        76,
+        157,
+        433
+      ]
+    ],
+    "selective": {
+      "coverage": 0.6626626626626627,
+      "answered_precision": 0.7870090634441088,
+      "n_answered": 1324,
+      "verifiable_coverage": 0.8175675675675675,
+      "verifiable_precision": 0.9550045913682277,
+      "verifiable_precision_lower_95": 0.9409473206818214,
+      "nei_coverage": 0.35285285285285284,
+      "nei_precision": 0.00851063829787234,
+      "nei_abstention": 0.6471471471471472,
+      "per_class": {
+        "SUPPORTED": {
+          "n": 666,
+          "coverage": 0.9054054054054054,
+          "precision": 0.9585406301824212
+        },
+        "CONTRADICTED": {
+          "n": 666,
+          "coverage": 0.7297297297297297,
+          "precision": 0.9506172839506173
+        },
+        "INSUFFICIENT": {
+          "n": 666,
+          "coverage": 0.35285285285285284,
+          "precision": 0.00851063829787234
+        }
+      }
+    },
+    "policy_with_frozen_thresholds": {
+      "coverage": 0.7327327327327328,
+      "answered_precision": 0.76775956284153,
+      "n_answered": 1464,
+      "verifiable_coverage": 0.8430930930930931,
+      "verifiable_precision": 0.9394479073909172,
+      "verifiable_precision_lower_95": 0.9238639610870826,
+      "nei_coverage": 0.512012012012012,
+      "nei_precision": 0.20234604105571846,
+      "nei_abstention": 0.487987987987988,
+      "per_class": {
+        "SUPPORTED": {
+          "n": 666,
+          "coverage": 0.9174174174174174,
+          "precision": 0.9476268412438625
+        },
+        "CONTRADICTED": {
+          "n": 666,
+          "coverage": 0.7687687687687688,
+          "precision": 0.9296875
+        },
+        "INSUFFICIENT": {
+          "n": 666,
+          "coverage": 0.512012012012012,
+          "precision": 0.20234604105571846
+        }
+      }
+    },
+    "brier": 0.37518567105336453,
+    "ece": 0.02178680541404295,
+    "answerability_auroc": 0.8380875244613983
+  },
+  "recomputed_metrics": {
+    "n": 1998,
+    "accuracy": 0.7372372372372372,
+    "macro_f1": 0.7369421397250884,
+    "per_class": {
+      "SUPPORTED": {
+        "precision": 0.8525073746312685,
+        "recall": 0.8678678678678678,
+        "f1": 0.8601190476190477,
+        "support": 666
+      },
+      "CONTRADICTED": {
+        "precision": 0.71850699844479,
+        "recall": 0.6936936936936937,
+        "f1": 0.7058823529411765,
+        "support": 666
+      },
+      "INSUFFICIENT": {
+        "precision": 0.6395864106351551,
+        "recall": 0.6501501501501501,
+        "f1": 0.6448250186150409,
+        "support": 666
+      }
+    },
+    "labels": [
+      "SUPPORTED",
+      "CONTRADICTED",
+      "INSUFFICIENT"
+    ],
+    "confusion_matrix": [
+      [
+        578,
+        24,
+        64
+      ],
+      [
+        24,
+        462,
+        180
+      ],
+      [
+        76,
+        157,
+        433
+      ]
+    ]
+  },
+  "selective": {
+    "coverage": 0.6626626626626627,
+    "answered_precision": 0.7870090634441088,
+    "n_answered": 1324,
+    "verifiable_coverage": 0.8175675675675675,
+    "verifiable_precision": 0.9550045913682277,
+    "verifiable_precision_lower_95": 0.9409473206818214,
+    "nei_coverage": 0.35285285285285284,
+    "nei_precision": 0.00851063829787234,
+    "nei_abstention": 0.6471471471471472,
+    "per_class": {
+      "SUPPORTED": {
+        "n": 666,
+        "coverage": 0.9054054054054054,
+        "precision": 0.9585406301824212
+      },
+      "CONTRADICTED": {
+        "n": 666,
+        "coverage": 0.7297297297297297,
+        "precision": 0.9506172839506173
+      },
+      "INSUFFICIENT": {
+        "n": 666,
+        "coverage": 0.35285285285285284,
+        "precision": 0.00851063829787234
+      }
+    }
+  },
+  "gates": {
+    "answerability_auroc": true,
+    "verifiable_precision": true,
+    "verifiable_coverage": true,
+    "overall_precision": true,
+    "nei_coverage": true,
+    "macro_f1": true,
+    "insufficient_f1": true,
+    "brier": true
+  },
+  "validation": {
+    "macro_f1": 0.7396540041243762,
+    "insufficient_f1": 0.6348733233979136,
+    "answerability_auroc": 0.8195718240763286,
+    "brier": 0.38753251420390156,
+    "coverage": 0.6636636636636637,
+    "answered_precision": 0.7948717948717948,
+    "verifiable_coverage": 0.8138138138138138,
+    "verifiable_precision": 0.9704797047970479,
+    "nei_coverage": 0.3633633633633634
+  },
+  "distribution": {
+    "gold": {
+      "SUPPORTED": 666,
+      "CONTRADICTED": 666,
+      "INSUFFICIENT": 666
+    },
+    "predicted": {
+      "SUPPORTED": 678,
+      "CONTRADICTED": 643,
+      "INSUFFICIENT": 677
+    },
+    "answered": {
+      "SUPPORTED": 678,
+      "CONTRADICTED": 643,
+      "INSUFFICIENT": 3
+    },
+    "abstained": 674,
+    "answered_total": 1324,
+    "nei": {
+      "total": 666,
+      "answered": 235,
+      "abstained": 431,
+      "correct_answered": 2,
+      "wrong_answered": 233
+    }
+  },
+  "verification_checks": {
+    "macro_f1": {
+      "actual": 0.7369421397250884,
+      "expected": 0.7369421397250884,
+      "match": true
+    },
+    "accuracy": {
+      "actual": 0.7372372372372372,
+      "expected": 0.7372372372372372,
+      "match": true
+    },
+    "SUPPORTED_f1": {
+      "actual": 0.8601190476190477,
+      "expected": 0.8601190476190477,
+      "match": true
+    },
+    "CONTRADICTED_f1": {
+      "actual": 0.7058823529411765,
+      "expected": 0.7058823529411765,
+      "match": true
+    },
+    "INSUFFICIENT_f1": {
+      "actual": 0.6448250186150409,
+      "expected": 0.6448250186150409,
+      "match": true
+    },
+    "brier": {
+      "actual": 0.37518567105336453,
+      "expected": 0.37518567105336453,
+      "match": true
+    },
+    "ece": {
+      "actual": 0.02178680541404295,
+      "expected": 0.02178680541404295,
+      "match": true
+    },
+    "answerability_auroc": {
+      "actual": 0.8380875244613983,
+      "expected": 0.8380875244613983,
+      "match": true
+    },
+    "selective_coverage": {
+      "actual": 0.6626626626626627,
+      "expected": 0.6626626626626627,
+      "match": true
+    },
+    "selective_answered_precision": {
+      "actual": 0.7870090634441088,
+      "expected": 0.7870090634441088,
+      "match": true
+    },
+    "selective_verifiable_coverage": {
+      "actual": 0.8175675675675675,
+      "expected": 0.8175675675675675,
+      "match": true
+    },
+    "selective_verifiable_precision": {
+      "actual": 0.9550045913682277,
+      "expected": 0.9550045913682277,
+      "match": true
+    },
+    "selective_nei_coverage": {
+      "actual": 0.35285285285285284,
+      "expected": 0.35285285285285284,
+      "match": true
+    },
+    "selective_nei_precision": {
+      "actual": 0.00851063829787234,
+      "expected": 0.00851063829787234,
+      "match": true
+    }
+  },
+  "images": [
+    "01_per_class_metrics.png",
+    "02_confusion_matrix.png",
+    "03_risk_coverage.png",
+    "04_nei_outcomes.png",
+    "05_gate_status.png",
+    "06_validation_vs_test.png",
+    "07_prediction_distribution.png"
+  ]
+}
