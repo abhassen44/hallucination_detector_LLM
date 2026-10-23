@@ -108,7 +108,7 @@ def main() -> None:
                   'claims but introduces far fewer confident errors. Most residual error is',
                   'abstention on claims the oracle answers correctly, i.e. evidence coverage.',
                   'All methods are in `decomposition.json`; interpretation is in',
-                  '`docs/RESULTS.md`.', '']
+                  '`docs/architecture/v1.md`.', '']
 
     if ablations:
         lines += ['', '## Feature ablation (test macro-F1)', '',

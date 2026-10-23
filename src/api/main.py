@@ -114,7 +114,7 @@ def get_detector():
             return _detector()
     except Exception as exc:
         logger.exception('Unable to load inference dependencies')
-        raise HTTPException(503, 'Models or retrieval indexes are unavailable. See docs/RUNNING.md.') from exc
+        raise HTTPException(503, 'Models or retrieval indexes are unavailable. See README.md and docs/architecture/v5.md.') from exc
 
 
 def get_extractor():

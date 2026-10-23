@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection System
 
-**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See [v5 report](experiments/v5/VALIDATION.md), [plan/outcome](docs/PLAN_V5.md), [implementation status](docs/IMPLEMENTATION_STATUS.md), [application setup](docs/RUNNING.md), and canonical [results](docs/RESULTS.md). No serving promotion is claimed.
+**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See the [v5 architecture](docs/architecture/v5.md), [v5 validation report](experiments/v5/VALIDATION.md), and [architecture index](docs/README.md). No serving promotion is claimed.
 
 A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 
@@ -8,7 +8,7 @@ A research NLP system for detecting hallucinations in LLM-generated text at the 
 - **CONTRADICTED** by evidence
 - **INSUFFICIENT** evidence to verify
 
-Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.md](docs/PROGRESS.md).
+Architecture for every version is documented in [docs/README.md](docs/README.md).
 
 ---
 
@@ -59,7 +59,7 @@ Comprehensive experimental tracking and metrics are detailed in [docs/PROGRESS.m
 | **v2. Calibration & Selective Policy** | Temperature scaling, selective policy, coverage flag | One test pass; Brier and flag gates failed, learned model stays offline | Test ECE 0.023; verifiable 84.6% coverage at 94.1% precision |
 | **v5. Grounding-aware NEI** | MiniCheck features + answerability head | One test pass; all eight research gates passed; learned model stays offline | Test final-policy macro-F1 **0.7369**, NEI F1 **0.6448**; verifiable **81.8%** coverage at **95.5%** precision |
 
-Detailed tables, ablations, and limitations are in [docs/RESULTS.md](docs/RESULTS.md); historical records remain in [docs/PROGRESS.md](docs/PROGRESS.md).
+Detailed tables, ablations, and limitations are in the [v5 validation report](experiments/v5/VALIDATION.md); architecture is in [docs/README.md](docs/README.md).
 
 ---
 
@@ -75,9 +75,9 @@ p ≤ 2.4e-8 and every 95% bootstrap interval for Δ macro-F1 excludes zero. On 
 1,324 verifiable test claims, two thirds of hybrid errors are abstentions on claims
 the oracle answers correctly — the remaining loss is evidence coverage, not the
 decision rule. Two val-only studies (pretrained cross-encoder reranking,
-neighbour-sentence premises) are reported in [RESULTS.md](docs/RESULTS.md) and are
+neighbour-sentence premises) are reported in the [v5 validation report](experiments/v5/VALIDATION.md) and are
 **not** part of the shipped path. The serving scope is recorded in
-[SERVING_DECISION.md](docs/SERVING_DECISION.md): the learned model stays offline in
+[v1 architecture](docs/architecture/v1.md): the learned model stays offline in
 v1 and the demo continues to serve the fixed rule.
 
 ## v2 — calibrated, coverage-aware verification
@@ -93,7 +93,7 @@ not served.
 The pre-registered promotion gates failed: Brier rose by 0.00069, and the flag missed
 its AUROC bar. **The learned detector stays offline**; the fixed rule remains the
 default. Details: [v2 report](experiments/v2/REPORT.md) and
-[serving decision](docs/SERVING_DECISION_V2.md). The 237 non-pilot taxonomy labels
+[v2 architecture](docs/architecture/v2.md). The 237 non-pilot taxonomy labels
 are LLM proposals, not human annotations; a 40-row blind audit is pending.
 
 ## v3 — stopped before the test pass
@@ -105,7 +105,7 @@ expanded-feature diagnostic raised AUROC only to 0.769 and left the NEI floor at
 0.477, so v3 stopped before spending its test pass. The learned detector remains
 offline.
 Details: [v3 report](experiments/v3/REPORT.md) and
-[v3 serving decision](docs/SERVING_DECISION_V3.md).
+[v3 architecture](docs/architecture/v3.md).
 
 ## v4 — reranker + more data, still stopped
 
@@ -115,7 +115,7 @@ the larger train set improved answerability AUROC to **0.787**. Cost-sensitive t
 reached NEI coverage **0.408**, still above the 0.40 gate, and a joint threshold
 search found no feasible point. v4 stopped before spending its test pass; the learned
 detector remains offline. Details: [v4 report](experiments/v4/REPORT.md) and
-[v4 serving decision](docs/SERVING_DECISION_V4.md).
+[v4 architecture](docs/architecture/v4.md).
 
 ## v5 — grounding features, one test pass
 
@@ -135,7 +135,7 @@ answered were wrong 99.1% of the time, so NEI is reduced but not solved. The 95.
 figure is selective precision on the answered verifiable subset, not accuracy on
 all verifiable claims. The learned path remains offline. Details:
 [v5 report](experiments/v5/VALIDATION.md) and
-[v5 plan/outcome](docs/PLAN_V5.md).
+[v5 architecture](docs/architecture/v5.md).
 
 ## Frozen-rule evaluation (HaluEval)
 
@@ -150,7 +150,7 @@ FEVER, where claim-level gold labels exist. See the
 and the always-hallucinated reference.
 
 The UI now accepts optional source text; without it, the existing Wikipedia search
-runs. [Human review instructions](docs/REVIEW_GUIDE.md) cover the blind pilot, the
+runs. [Review tooling](scripts/README.md) covers the blind pilot, the
 extraction flags, the verification failure sample, and three unapplied JSON recovery
 proposals.
 
@@ -161,7 +161,7 @@ proposals.
 - CPU supported; an NVIDIA GPU with CUDA is optional for faster inference
 - [Ollama](https://ollama.ai) installed and running locally with access to `gemma4:31b-cloud` (or custom model in `config.yaml`)
 
-For the new API and React application on macOS/Linux, follow [docs/RUNNING.md](docs/RUNNING.md). The original Windows/CUDA experiment setup is below.
+For the new API and React application on macOS/Linux, follow the [v5 app architecture](docs/architecture/v5.md). The original Windows/CUDA experiment setup is below.
 
 ### 2. Environment Setup
 

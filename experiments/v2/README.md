@@ -26,7 +26,7 @@ and 72.5% of all claims at 73.6%; the coverage flag misses its test AUROC gate
 stays the default.
 
 Full write-up: [REPORT.md](REPORT.md). Serving decision:
-[../docs/SERVING_DECISION_V2.md](../docs/SERVING_DECISION_V2.md).
+[../docs/architecture/v2.md](../docs/architecture/v2.md).
 
 ### P6 feasibility (val only)
 
@@ -115,7 +115,7 @@ $env:PYTHONPATH="$PWD"
 .\.venv\Scripts\python.exe -m scripts.v2.score_v2_audit
 
 # Optional: replace silver labels with a full human pass
-# See docs/REVIEW_GUIDE.md for the extraction and verification commands.
+# See scripts/README.md for the extraction and verification commands.
 ```
 
 `review.py` does not overwrite completed fields, so seeded rows are skipped. If a
