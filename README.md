@@ -1,12 +1,16 @@
 # Claim-Level Hallucination Detection System
 
-**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See the [architecture index](docs/README.md), [results index](docs/results/README.md), and [v5 validation report](experiments/v5/VALIDATION.md). No serving promotion is claimed.
+**Current branch:** `main`, on the v5 research line (`ver-5` is retained as the research branch). v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See the [architecture index](docs/README.md), [results index](docs/results/README.md), and [v5 validation report](experiments/v5/VALIDATION.md). No serving promotion is claimed.
 
-A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
+A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + BGE/FAISS dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 
 - **SUPPORTED** by evidence
 - **CONTRADICTED** by evidence
 - **INSUFFICIENT** evidence to verify
+
+The latest **v5** research path adds MiniCheck grounding features and an
+answerability head with a selective policy; it remains offline. The served demo
+uses the fixed 0.70/0.95 decision rule.
 
 Architecture for every version is documented in [docs/README.md](docs/README.md).
 
@@ -15,32 +19,45 @@ Architecture for every version is documented in [docs/README.md](docs/README.md)
 ## 🏗️ Architecture
 
 ```text
-               ┌──────────────────────┐
-               │    User Question     │
-               └──────────┬───────────┘
-                          ↓
-               ┌──────────────────────┐
-               │  LLM Answer Gen      │ (Ollama: gemma4:31b-cloud)
-               └──────────┬───────────┘
-                          ↓
-               ┌──────────────────────┐
-               │   Claim Extraction   │ (Decompose into atomic claims)
-               └──────────┬───────────┘
-                          ↓
-        ┌────────────────────────────────────┐
-        │        Hybrid Retrieval            │
-        │   BM25 (Sparse) + FAISS (Dense)    │ (248k Wikipedia sentences, RRF)
-        └─────────────────┬──────────────────┘
-                          ↓
-        ┌────────────────────────────────────┐
-        │     Claim-Evidence Verification    │
-        │   DeBERTa-v3-base-mnli + BGE Sim   │ (NLI Premise=Evidence, Hyp=Claim)
-        └─────────────────┬──────────────────┘
-                          ↓
-           ┌──────────────┼──────────────┐
-           ↓              ↓              ↓
-       SUPPORTED    CONTRADICTED   INSUFFICIENT
+          ┌──────────────────────┐
+          │    User Question     │
+          └──────────────────────┘
+                      ↓
+          ┌──────────────────────┐
+          │    LLM Answer Gen    │  (Ollama: gemma4:31b-cloud)
+          └──────────────────────┘
+                      ↓
+          ┌──────────────────────┐
+          │   Claim Extraction   │  (atomic claims, JSON + fallback)
+          └──────────────────────┘
+                      ↓
+┌──────────────────────────────────────────┐
+│             Hybrid Retrieval             │
+│  BM25 + BGE/FAISS dense  →  RRF fusion   │
+│       247,848 Wikipedia sentences        │
+└──────────────────────────────────────────┘
+                      ↓
+┌──────────────────────────────────────────┐
+│       Claim-Evidence Verification        │
+│     DeBERTa-v3 NLI + BGE similarity      │
+│  premise = evidence, hypothesis = claim  │
+└──────────────────────────────────────────┘
+                      ↓
+           ┌──────────┴─────────────┐
+           ↓                        ↓
+┌────────────────────┐  ┌──────────────────────┐
+│  Served app path   │  │ Offline v5 research  │
+│  fixed 0.70/0.95   │  │ MiniCheck grounding  │
+│  FastAPI + React   │  │ + answerability head │
+│    3-way labels    │  │  + policy τ = 0.62   │
+└────────────────────┘  └──────────────────────┘
+           ↓                        ↓
+SUPPORTED / CONTRADICTED /   final-policy metrics
+INSUFFICIENT                 (not served)
 ```
+
+> **Serving boundary:** the FastAPI + React app serves the fixed 0.70/0.95 rule.
+> The v5 MiniCheck/answerability path is offline research and is not called by the API.
 
 ---
 
@@ -51,7 +68,7 @@ Architecture for every version is documented in [docs/README.md](docs/README.md)
 | **0. Setup** | Env & Ollama Cloud LLM | ✅ Done | RTX 4050 + CUDA 12.4 + Ollama SQLite cache |
 | **1. Datasets** | FEVER & HaluEval QA | ✅ Done | 5.9k FEVER claims, 4k HaluEval QA, 248k sentence corpus |
 | **2. Oracle NLI** | Gold-evidence Verification | ✅ Done | FEVER 2-way: **94.3% Acc / 0.943 F1**; HaluEval: 70.8% Acc |
-| **3. Retrieval** | BM25 + FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
+| **3. Retrieval** | BM25 + BGE/FAISS Dense + RRF | ✅ Done | Strict R@5: **90.2%** (Dense), End-to-end FEVER Score: **60.0%** |
 | **4. Claim Extraction**| LLM Claim Extractor | Extraction complete; human review pending | LLM-based atomic decomposition + quality validation + fallback |
 | **5. Detector** | Learned combiner (logistic regression) | Fitted: train → val → single test pass; paired gain significant | FEVER 3-way test macro-F1 **0.702** (hybrid) vs **0.633** fixed rule |
 | **6. Error Analysis** | Taxonomy Analysis | v2 taxonomy; 37 human + 237 LLM-proposed (silver) labels; 40-row audit pending | 274 cases categorised, review tooling added |
