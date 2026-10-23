@@ -57,6 +57,8 @@ Architecture for every version is documented in [docs/README.md](docs/README.md)
 | **6. Error Analysis** | Taxonomy Analysis | v2 taxonomy; 37 human + 237 LLM-proposed (silver) labels; 40-row audit pending | 274 cases categorised, review tooling added |
 | **7. Serving & UI** | FastAPI + React Web UI | Implemented and smoke-tested; learned detector not served | Wikipedia and supplied-source modes |
 | **v2. Calibration & Selective Policy** | Temperature scaling, selective policy, coverage flag | One test pass; Brier and flag gates failed, learned model stays offline | Test ECE 0.023; verifiable 84.6% coverage at 94.1% precision |
+| **v3. Brier & answerability** | Vector scaling, answerability HGB, expanded diagnostics | No test pass; stopped before evaluation | Val Brier **0.42161**; NEI floor **0.483** |
+| **v4. Reranker + 9k** | Cross-encoder, expanded train, NEI tuning | No test pass; stopped before evaluation | Val macro-F1 **0.69296**; NEI floor **0.408** |
 | **v5. Grounding-aware NEI** | MiniCheck features + answerability head | One test pass; all eight research gates passed; learned model stays offline | Test final-policy macro-F1 **0.7369**, NEI F1 **0.6448**; verifiable **81.8%** coverage at **95.5%** precision |
 
 Detailed tables, ablations, and limitations are in the [v5 validation report](experiments/v5/VALIDATION.md); architecture is in [docs/README.md](docs/README.md).
@@ -75,7 +77,8 @@ p ≤ 2.4e-8 and every 95% bootstrap interval for Δ macro-F1 excludes zero. On 
 1,324 verifiable test claims, two thirds of hybrid errors are abstentions on claims
 the oracle answers correctly — the remaining loss is evidence coverage, not the
 decision rule. Two val-only studies (pretrained cross-encoder reranking,
-neighbour-sentence premises) are reported in the [v5 validation report](experiments/v5/VALIDATION.md) and are
+neighbour-sentence premises) are reported in the
+[Stage 5 learned report](experiments/stage5_learned/REPORT.md) and are
 **not** part of the shipped path. The serving scope is recorded in
 [v1 architecture](docs/architecture/v1.md): the learned model stays offline in
 v1 and the demo continues to serve the fixed rule.
@@ -134,8 +137,9 @@ predeclared gates passed. The policy abstained on 64.7% of NEI claims; the 35.3%
 answered were wrong 99.1% of the time, so NEI is reduced but not solved. The 95.5%
 figure is selective precision on the answered verifiable subset, not accuracy on
 all verifiable claims. The learned path remains offline. Details:
-[v5 report](experiments/v5/VALIDATION.md) and
-[v5 architecture](docs/architecture/v5.md).
+[v5 report](experiments/v5/VALIDATION.md),
+[v5 architecture](docs/architecture/v5.md), and the generated
+[v5 image report](output%20version%205/summary.md).
 
 ## Frozen-rule evaluation (HaluEval)
 
@@ -158,28 +162,51 @@ proposals.
 
 ### 1. Prerequisites
 - Python 3.10+ (tested on Python 3.12, Windows 11)
+- Node.js 20.19+ or 22.12+ for the React frontend
 - CPU supported; an NVIDIA GPU with CUDA is optional for faster inference
-- [Ollama](https://ollama.ai) installed and running locally with access to `gemma4:31b-cloud` (or custom model in `config.yaml`)
+- [Ollama](https://ollama.ai) installed and running locally with access to `gemma4:31b-cloud` (or a custom model in `config.yaml`)
 
-For the new API and React application on macOS/Linux, follow the [v5 app architecture](docs/architecture/v5.md). The original Windows/CUDA experiment setup is below.
-
-### 2. Environment Setup
+### 2. Application setup (API + React)
 
 ```powershell
-# Create and activate virtual environment
+# Create and activate the Python environment
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# Install PyTorch with CUDA 12.4
-pip install torch --index-url https://download.pytorch.org/whl/cu124
+# Full inference dependencies: API, models, retrieval
+pip install -r requirements-inference.txt
 
-# Install project dependencies
-pip install -r requirements.txt
+# Optional: build/check retrieval indexes and pretrained NLI readiness
+python -m src.setup_inference
+
+# Build the React frontend once
+npm ci --prefix frontend
+npm run build --prefix frontend
+
+# Serve the API and built UI on one origin
+python -m uvicorn src.api.main:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000 for the interface and `/docs` for the API explorer.
+For frontend development, run `npm run dev --prefix frontend`; Vite proxies API
+routes to port 8000. The demo serves the fixed 0.7/0.95 rule; the v5 learned model
+is offline.
+
+```powershell
+# Python tests and frontend tests
+pip install -r requirements-dev.txt
+python -m pytest -q
+npm test --prefix frontend
 ```
 
 ### 3. Reproducing Experiments
 
+The full experiment environment uses `requirements.txt`. It includes the dataset
+and tracking dependencies in addition to the inference stack.
+
 ```powershell
+pip install -r requirements.txt
+
 # Stage 1: Download & prepare FEVER and HaluEval splits + Wikipedia corpus
 python -m src.datasets.prepare --dataset all
 
@@ -197,24 +224,47 @@ python -m src.evaluation.fever_retrieval
 ```text
 NLP_project/
 ├── config.yaml                    # Master project configuration
-├── requirements.txt               # Python package dependencies
-├── README.md                      # Project overview & quickstart
 ├── plan.md                        # Project specification & PRD
+├── README.md                      # Project overview, results, quickstart
+├── requirements*.txt              # App, dev, inference, tracking, lock files
 ├── docs/
-│   └── PROGRESS.md                # Detailed experimental records & milestone report
+│   ├── README.md                  # Architecture + results index
+│   ├── architecture/              # v1-v5 architecture guides
+│   └── results/                   # v1-v5 result pages
 ├── data/
-│   ├── raw/                       # Downloaded source files (FEVER zip, HaluEval JSON)
-│   ├── processed/                 # fever_corpus.jsonl, retrieval caches & indexes
+│   ├── raw/                       # Downloaded FEVER/HaluEval sources
+│   ├── processed/                 # Corpus, indexes, retrieval/feature caches
 │   ├── splits/                    # Train / val / test JSONL splits
-│   └── cache/                     # Persistent SQLite response cache for LLM
-├── experiments/                   # Experiment evaluation outputs and metrics JSONs
+│   └── cache/                     # SQLite response and model caches
+├── experiments/
 │   ├── stage2_oracle/
-│   └── stage3_retrieval/
-└── src/
-    ├── datasets/                  # Dataset loaders (schema, fever, halueval, splits)
-    ├── generation/                # LLM client & claim extraction
-    ├── retrieval/                 # BM25, FAISS Dense, Hybrid RRF retriever
-    ├── verification/              # DeBERTa NLI & BGE semantic similarity
-    ├── evaluation/                # Metrics calculation & evaluation scripts
-    └── utils/                     # Config and path helpers
+│   ├── stage3_retrieval/
+│   ├── stage5_learned/
+│   ├── stage5_inference/
+│   ├── v2/ v3/ v4/ v5/
+│   ├── ablation_study/            # Generated by reporting script
+│   └── charts/                    # Generated results dashboard
+├── frontend/
+│   ├── src/                       # React claim inspector
+│   └── dist/                      # Built UI served by FastAPI
+├── output version 5/
+│   ├── *.png                      # v5 evaluation charts
+│   └── summary.json / summary.md
+├── scripts/
+│   ├── reproduce.py               # One orchestration entry point
+│   ├── v2/ v3/ v4/ v5/            # Version-specific research scripts
+│   └── shared/
+│       ├── data/
+│       ├── inference/
+│       ├── reporting/
+│       └── review/
+├── src/
+│   ├── api/                       # FastAPI application and static UI mount
+│   ├── datasets/                  # Dataset loaders and splits
+│   ├── generation/                # Ollama client and claim extraction
+│   ├── retrieval/                 # BM25, dense, and hybrid retrieval
+│   ├── verification/              # NLI, similarity, grounding, detector
+│   ├── evaluation/                # Metrics, calibration, selective reports
+│   └── utils/                     # Configuration and path helpers
+└── tests/                         # Python tests and v5 reporting checks
 ```
