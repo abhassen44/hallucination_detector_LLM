@@ -1,16 +1,19 @@
-# Architecture index
+# Architecture and results index
 
-This directory contains architecture notes for each research version. It replaces
-the previous mixed documentation set; historical details remain in Git history and
-the committed experiment artifacts.
+This directory contains architecture notes for each research version plus a
+results folder with the corresponding evaluation record. It replaces the previous
+mixed documentation set; historical details remain in Git history and the committed
+experiment artifacts.
 
-| Version | Focus | Model status | Architecture |
-|---|---|---|---|
-| v1 | Claim extraction, hybrid retrieval, NLI, fixed rule, learned Stage 5 combiner | Learned model offline | [v1](architecture/v1.md) |
-| v2 | Calibration, selective policy, coverage flag | Learned model offline | [v2](architecture/v2.md) |
-| v3 | Brier-targeted calibration and answerability diagnostics | No test pass; offline | [v3](architecture/v3.md) |
-| v4 | Cross-encoder reranking, 9k training, NEI tuning | No test pass; offline | [v4](architecture/v4.md) |
-| v5 | MiniCheck/HHEM grounding, answerability policy, hardened app | One test pass; offline | [v5](architecture/v5.md) |
+Full results index: [`results/README.md`](results/README.md).
+
+| Version | Focus | Model status | Architecture | Results |
+|---|---|---|---|---|
+| v1 | Claim extraction, hybrid retrieval, NLI, fixed rule, learned Stage 5 combiner | Learned model offline | [v1](architecture/v1.md) | [v1](results/v1.md) |
+| v2 | Calibration, selective policy, coverage flag | Learned model offline | [v2](architecture/v2.md) | [v2](results/v2.md) |
+| v3 | Brier-targeted calibration and answerability diagnostics | No test pass; offline | [v3](architecture/v3.md) | [v3](results/v3.md) |
+| v4 | Cross-encoder reranking, 9k training, NEI tuning | No test pass; offline | [v4](architecture/v4.md) | [v4](results/v4.md) |
+| v5 | MiniCheck/HHEM grounding, answerability policy, hardened app | One test pass; offline | [v5](architecture/v5.md) | [v5](results/v5.md) |
 
 ## Version evolution
 

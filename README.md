@@ -1,6 +1,6 @@
 # Claim-Level Hallucination Detection System
 
-**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See the [v5 architecture](docs/architecture/v5.md), [v5 validation report](experiments/v5/VALIDATION.md), and [architecture index](docs/README.md). No serving promotion is claimed.
+**Current branch:** `ver-5`, based on the v4.0 research line. v5 adds pretrained MiniCheck grounding features, passed all eight predeclared research gates, and spent its one FEVER test pass. The learned model remains offline: its verifiable precision is high only at a selective operating point, and NEI answer precision is still poor. See the [architecture index](docs/README.md), [results index](docs/results/README.md), and [v5 validation report](experiments/v5/VALIDATION.md). No serving promotion is claimed.
 
 A research NLP system for detecting hallucinations in LLM-generated text at the **individual claim level**. Rather than classifying an entire response as binary true/false, the pipeline breaks text into atomic factual propositions, retrieves supporting/refuting evidence from Wikipedia using hybrid search (BM25 + FAISS Dense), verifies each claim with DeBERTa NLI and semantic similarity, and predicts a fine-grained 3-way label:
 
