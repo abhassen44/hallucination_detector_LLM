@@ -1,6 +1,6 @@
 import numpy as np
 
-from scripts.answerability_v3 import (CLASS_THRESHOLDS, answerability_policy,
+from scripts.v3.answerability_v3 import (CLASS_THRESHOLDS, answerability_policy,
                                       meets_constraints)
 
 

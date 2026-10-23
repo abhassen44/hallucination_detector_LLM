@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from scripts.review import (BOOL_FIELDS, CATEGORIES, apply_review, boolean_options, category_options,
+from scripts.shared.review.review import (BOOL_FIELDS, CATEGORIES, apply_review, boolean_options, category_options,
                             is_complete, load_queue, pending, queue_kind, review_interactively,
                             save_queue, summarise)
 from src.datasets.schema import write_jsonl
@@ -100,7 +100,7 @@ def test_extraction_under_taxonomy_asks_only_for_verdict(tmp_path, monkeypatch):
     write_jsonl(path, [row])
     answers = iter(['', 'p'])
     monkeypatch.setattr('builtins.input', lambda *args: next(answers))
-    monkeypatch.setattr('scripts.review._show', lambda *args: None)
+    monkeypatch.setattr('scripts.shared.review.review._show', lambda *args: None)
 
     rows = review_interactively(path, None, None, 'test', taxonomy=TAXONOMY)
 
@@ -117,7 +117,7 @@ def test_verification_under_taxonomy_asks_for_a_category(tmp_path, monkeypatch):
     write_jsonl(path, [row])
     answers = iter(['', 'f', '2'])
     monkeypatch.setattr('builtins.input', lambda *args: next(answers))
-    monkeypatch.setattr('scripts.review._show', lambda *args: None)
+    monkeypatch.setattr('scripts.shared.review.review._show', lambda *args: None)
 
     rows = review_interactively(path, None, None, 'test', taxonomy=TAXONOMY)
 

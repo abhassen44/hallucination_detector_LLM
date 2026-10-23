@@ -262,7 +262,7 @@ retrieval result.
 
 ## Error analysis — provisional
 
-`scripts/analyze_errors.py` asked Gemma to classify every prepared review case.
+`scripts/shared/review/analyze_errors.py` asked Gemma to classify every prepared review case.
 These are **proposals**, not human labels; all 274 are flagged
 `provisional_llm_assisted: true`.
 
@@ -282,7 +282,7 @@ The review samples are enriched for failures, so these counts describe the sampl
 not the population. Verification rows cover 103 cases but only 93 unique claims: 10
 claims appear under two evidence conditions, so counts are per row and proposals are
 keyed by `(id, condition)`, never by id alone. The 40 pilot rows are annotated; the
-full 274-row pass remains unassigned. `scripts/review.py` walks the queues,
+full 274-row pass remains unassigned. `scripts/shared/review/review.py` walks the queues,
 optionally showing the proposal, and refuses to re-offer completed rows.
 
 ### Blind pilot — passed with a completeness deviation
@@ -398,7 +398,7 @@ was spent** and the learned detector remains offline. Report:
 ```sh
 python -m scripts.reproduce --stage checks
 python -m src.evaluation.fit_detector --method all
-python -m scripts.summarize_stage5
+python -m scripts.shared.inference.summarize_stage5
 python -m src.evaluation.significance
 python -m src.evaluation.decomposition
 python -m scripts.reproduce --stage all --include-heavy

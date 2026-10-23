@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.seed_v2_queues import review_key, seed_queue
+from scripts.v2.seed_v2_queues import review_key, seed_queue
 
 
 def _row(identifier, condition=None, verdict=None, category=None, coding=''):

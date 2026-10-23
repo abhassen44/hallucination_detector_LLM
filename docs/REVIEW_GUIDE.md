@@ -10,9 +10,9 @@ verdicts are already present:
 
 The commands below describe the **optional full human pass**. The current label
 artifacts use the LLM proposals for the 237 non-pilot rows; rerun
-`scripts.materialize_v2_labels --force` after any human pass to promote the new
+`scripts.v2.materialize_v2_labels --force` after any human pass to promote the new
 verdicts. For the lighter-weight option, fill `experiments/v2/audit_sheet.csv`
-(40 blind rows, 10–15 minutes) and score it with `scripts.score_v2_audit`; that
+(40 blind rows, 10–15 minutes) and score it with `scripts.v2.score_v2_audit`; that
 supports a “human-audited sample” claim, not a full human-label claim.
 
 Taxonomy v2 is in `experiments/v2/taxonomy.json`. Verification drops the v1
@@ -23,12 +23,12 @@ are in the taxonomy file. Extraction is **Pass/Fail only** for this pass: the
 category and the four diagnostic Booleans are not collected.
 
 ```sh
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/v2/queues/extraction.jsonl \
   --suggestions experiments/v2/proposals/extraction.jsonl \
   --taxonomy experiments/v2/taxonomy.json --reviewer Abhas
 
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/v2/queues/verification.jsonl \
   --suggestions experiments/v2/proposals/verification.jsonl \
   --taxonomy experiments/v2/taxonomy.json --reviewer Abhas
@@ -61,7 +61,7 @@ the first pass; derive them from the observations rather than guessing root caus
 ## Use the review tool
 
 ```sh
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/stage4_claims/human_review.jsonl \
   --suggestions experiments/stage6_errors/provisional_extraction.jsonl
 ```
@@ -97,7 +97,7 @@ into fitting or tuning; the Stage 5 fitter reads only the FEVER train split.
 Regenerate this queue before annotation with:
 
 ```sh
-.venv/bin/python -m scripts.prepare_extraction_review
+.venv/bin/python -m scripts.shared.review.prepare_extraction_review
 ```
 
 The generator refuses to overwrite a queue containing completed human judgments.

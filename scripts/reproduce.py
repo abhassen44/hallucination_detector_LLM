@@ -31,18 +31,18 @@ STAGES = {
     ],
     'inference': [
         ('python', '-m', 'src.evaluation.halueval_claims'),
-        ('python', '-m', 'scripts.log_inference_mlflow'),
-        ('python', '-m', 'scripts.summarize_inference'),
+        ('python', '-m', 'scripts.shared.inference.log_inference_mlflow'),
+        ('python', '-m', 'scripts.shared.inference.summarize_inference'),
     ],
     'learned': [
         ('python', '-m', 'src.evaluation.fit_detector', '--method', 'all'),
-        ('python', '-m', 'scripts.summarize_stage5'),
+        ('python', '-m', 'scripts.shared.inference.summarize_stage5'),
     ],
     'studies': [
         ('python', '-m', 'src.evaluation.val_studies', '--study', 'all'),
     ],
     'errors': [
-        ('python', '-m', 'scripts.analyze_errors', '--queue', 'all'),
+        ('python', '-m', 'scripts.shared.review.analyze_errors', '--queue', 'all'),
     ],
     'checks': [
         ('python', '-m', 'pytest', '-q'),

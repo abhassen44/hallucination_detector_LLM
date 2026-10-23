@@ -30,7 +30,7 @@ Full write-up: [REPORT.md](REPORT.md). Serving decision:
 
 ### P6 feasibility (val only)
 
-`scripts/val_study_weighted_rrf.py` tunes the BM25/dense RRF weight on val. The
+`scripts/v2/val_study_weighted_rrf.py` tunes the BM25/dense RRF weight on val. The
 best point is BM25 weight 0.25: val macro-F1 **0.67798** vs the v1 hybrid
 **0.67636** (+0.0016, not material). Dense-only reaches 0.6761 with a higher strict
 R@5 (0.9129 vs 0.8964) but no macro-F1 gain. The retrieval-variant test pass was
@@ -108,11 +108,11 @@ experiments/v2/
 $env:PYTHONPATH="$PWD"
 
 # Rebuild the 274 labels from the queues + proposals
-.\.venv\Scripts\python.exe -m scripts.materialize_v2_labels --force
+.\.venv\Scripts\python.exe -m scripts.v2.materialize_v2_labels --force
 
 # Rebuild the 40-row sheet, then score the filled CSV (currently AI-estimated)
-.\.venv\Scripts\python.exe -m scripts.make_v2_audit --force
-.\.venv\Scripts\python.exe -m scripts.score_v2_audit
+.\.venv\Scripts\python.exe -m scripts.v2.make_v2_audit --force
+.\.venv\Scripts\python.exe -m scripts.v2.score_v2_audit
 
 # Optional: replace silver labels with a full human pass
 # See docs/REVIEW_GUIDE.md for the extraction and verification commands.

@@ -202,14 +202,14 @@ an explicit label-integrity caveat.
 
 ```powershell
 $env:PYTHONPATH="$PWD"
-.\.venv\Scripts\python.exe -m scripts.seed_v2_queues --force
-.\.venv\Scripts\python.exe -m scripts.propose_v2 --queue all --force
-.\.venv\Scripts\python.exe -m scripts.materialize_v2_labels --force
-.\.venv\Scripts\python.exe -m scripts.calibrate_v2 --force
-.\.venv\Scripts\python.exe -m scripts.selective_policy_v2 --force
-.\.venv\Scripts\python.exe -m scripts.coverage_flag_v2 --force
+.\.venv\Scripts\python.exe -m scripts.v2.seed_v2_queues --force
+.\.venv\Scripts\python.exe -m scripts.v2.propose_v2 --queue all --force
+.\.venv\Scripts\python.exe -m scripts.v2.materialize_v2_labels --force
+.\.venv\Scripts\python.exe -m scripts.v2.calibrate_v2 --force
+.\.venv\Scripts\python.exe -m scripts.v2.selective_policy_v2 --force
+.\.venv\Scripts\python.exe -m scripts.v2.coverage_flag_v2 --force
 # The test pass is intentionally guarded: this was the one allowed run.
-.\.venv\Scripts\python.exe -m scripts.test_pass_v2
+.\.venv\Scripts\python.exe -m scripts.v2.test_pass_v2
 ```
 
 Artifacts: `experiments/v2/{protocol,taxonomy,label_manifest,calibration,policy,coverage_flag,metrics_v2}.json`,

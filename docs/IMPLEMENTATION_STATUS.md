@@ -32,6 +32,9 @@ Active branch: `ver-5`, based on the v4.0 research history. Plan and outcome:
 - Added `rank-bm25` to the inference requirements so the documented setup can run
   retrieval; verified real `/verify`, `/retrieve`, `/detect` (supplied source and
   Wikipedia), `/`, `/charts`, and `/health` smoke checks on 2026-10-23.
+- Reorganized the 43 research scripts into `scripts/v2`–`scripts/v5` plus
+  `scripts/shared/{data,inference,reporting,review}`; module paths, tests, and docs
+  were updated together. See [`scripts/README.md`](../scripts/README.md).
 - The first test invocation failed during JSON serialization before writing any
   metric or prediction; the identical frozen pipeline was rerun after a
   serializer-only fix. The report records both attempts.
@@ -87,23 +90,23 @@ Implemented:
 
 - Taxonomy v2 (`experiments/v2/taxonomy.json`): `nli_failure` split into
   `verifier_error` and `ambiguous_evidence`; extraction collects Pass/Fail only.
-- Label materialization (`scripts/materialize_v2_labels.py`): 37 human pilot verdicts
+- Label materialization (`scripts/v2/materialize_v2_labels.py`): 37 human pilot verdicts
   kept; 237 LLM proposals recorded as `label_source: llm_proposal`,
   `human_reviewed: false`. These are silver labels, not human annotations.
-- Blind 40-row audit tooling (`scripts/make_v2_audit.py`, `scripts/score_v2_audit.py`).
+- Blind 40-row audit tooling (`scripts/v2/make_v2_audit.py`, `scripts/v2/score_v2_audit.py`).
   The sheet was filled by an **assistant estimate**, not a human: proposal agreement
   is extraction 60.0% (κ 0.20) and verification categories 57.9% (19 scored). It is a
   sensitivity check, not human validation.
 - Temperature-scaled calibration with 2-fold val cross-fitting
-  (`src/evaluation/calibration.py`, `scripts/calibrate_v2.py`): val ECE 0.0332 → 0.0230,
+  (`src/evaluation/calibration.py`, `scripts/v2/calibrate_v2.py`): val ECE 0.0332 → 0.0230,
   200 train bootstrap refits for training variance.
 - Frozen class-conditional selective policy (`src/evaluation/selective.py`,
-  `scripts/selective_policy_v2.py`). The 90% overall precision target was infeasible
+  `scripts/v2/selective_policy_v2.py`). The 90% overall precision target was infeasible
   at ≥50% coverage, so the pre-registered fallback applied.
 - Strict-retrieval-failure coverage flag (`src/evaluation/coverage.py`,
-  `scripts/coverage_flag_v2.py`): val AUROC 0.774; threshold chosen by bootstrap
+  `scripts/v2/coverage_flag_v2.py`): val AUROC 0.774; threshold chosen by bootstrap
   lower bound on error enrichment.
-- One registered test pass (`scripts/test_pass_v2.py`, guarded). Macro-F1 0.7020
+- One registered test pass (`scripts/v2/test_pass_v2.py`, guarded). Macro-F1 0.7020
   (unchanged); ECE 0.0228; Brier +0.00069 (gate fails); verifiable precision 94.1%
   at 84.6% coverage; coverage-flag test AUROC 0.734 (gate fails, flag omitted).
 - A post-pass bootstrap denominator bug in coverage CIs was corrected from saved
@@ -146,11 +149,11 @@ Implemented:
 - MLflow logging in a separate experiment (`hallucination-stage5-learned`).
 - Val-only improvement studies (`src/evaluation/val_studies.py`): pretrained
   cross-encoder reranking and neighbour-sentence premises. Test is untouched.
-- Review tooling (`scripts/review.py`) with atomic write-back, backup, completed-row
+- Review tooling (`scripts/shared/review/review.py`) with atomic write-back, backup, completed-row
   protection, and optional display of provisional LLM suggestions. Suggestions and
   reviews are keyed by `(id, condition)`: verification rows repeat claims across
   evidence conditions (103 rows, 93 unique claims).
-- Gemma-assisted provisional error analysis (`scripts/analyze_errors.py`) over all
+- Gemma-assisted provisional error analysis (`scripts/shared/review/analyze_errors.py`) over all
   274 prepared review cases; human fields are not modified.
 - Paired significance (`src/evaluation/significance.py`): McNemar on per-claim
   correctness plus a 10,000-draw paired bootstrap of the macro-F1 difference, with
@@ -158,7 +161,7 @@ Implemented:
 - Error decomposition (`src/evaluation/decomposition.py`): all systems restricted to
   the 1,324 verifiable claims, splitting errors into abstention and confident-error
   buckets against the frozen Stage 2 oracle (oracle verdicts cached per claim).
-- Blind pilot tooling (`scripts/make_pilot.py`, `scripts/pilot_agreement.py`):
+- Blind pilot tooling (`scripts/shared/review/make_pilot.py`, `scripts/shared/review/pilot_agreement.py`):
   balanced 20-case extraction and stratified 20-case verification queues, plus
   Cohen's κ / category-agreement scoring, a pre-declared gate, and a sensitivity
   bound over missing verdicts. The pilot passed: κ 0.881 (17 labeled verdicts),
@@ -167,7 +170,7 @@ Implemented:
 - Windows text-IO hardening: all `read_text`/`write_text`/text `open` calls now
   declare UTF-8, with a regression test.
 - `/metrics` now serves every saved metrics file, including `baseline_review`.
-- `scripts/resolve_recovery.py` recorded decisions on the three JSON syntax repairs;
+- `scripts/shared/review/resolve_recovery.py` recorded decisions on the three JSON syntax repairs;
   `scripts/reproduce.py` provides one entry point per stage.
 - The suite now has **84 passing tests** (was 37), including portability, feature,
   review, Stage 5 artifact, significance, decomposition, pilot-sampling,

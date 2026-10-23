@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.materialize_v2_labels import agreement, materialize
+from scripts.v2.materialize_v2_labels import agreement, materialize
 
 TAXONOMY = {
     'version': 'v2',

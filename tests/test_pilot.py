@@ -5,11 +5,11 @@ from pathlib import Path
 
 import pytest
 
-from scripts.make_pilot import (
+from scripts.shared.review.make_pilot import (
     EXTRACTION_REVIEW, _prepare, allocate, sample_extraction, sample_verification,
 )
-from scripts.pilot_agreement import gate, queue_kind, score, timing
-from scripts.review import load_suggestions, suggestion_key
+from scripts.shared.review.pilot_agreement import gate, queue_kind, score, timing
+from scripts.shared.review.review import load_suggestions, suggestion_key
 
 
 def test_allocate_respects_strata_and_total():

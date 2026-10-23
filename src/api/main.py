@@ -208,7 +208,7 @@ def charts():
     chart_path = PROJECT_ROOT / 'experiments' / 'charts' / 'results_dashboard.html'
     if chart_path.exists():
         return FileResponse(chart_path, media_type='text/html')
-    raise HTTPException(404, 'Charts not generated. Run: python -m scripts.generate_charts')
+    raise HTTPException(404, 'Charts not generated. Run: python -m scripts.shared.reporting.generate_charts')
 
 
 # Serve the built React UI from the same origin. API routes remain available without it.

@@ -133,7 +133,7 @@ comparison to binary grounding models; the 95.5% figure is selective precision a
 
 ## Reproducibility checks
 
-`python -m scripts.evaluate_v5_test --check-val` replayed the frozen artifacts and
+`python -m scripts.v5.evaluate_v5_test --check-val` replayed the frozen artifacts and
 matched:
 
 - raw macro-F1 0.7068115

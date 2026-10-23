@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.propose_v2 import build_prompt, copy_extraction, load_taxonomy, validate
+from scripts.v2.propose_v2 import build_prompt, copy_extraction, load_taxonomy, validate
 
 
 @pytest.fixture(scope='module')

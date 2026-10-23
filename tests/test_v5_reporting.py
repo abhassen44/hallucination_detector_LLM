@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pytest
 
-from scripts.evaluate_v5_test import _jsonable
+from scripts.v5.evaluate_v5_test import _jsonable
 from src.utils.config import PROJECT_ROOT
 
 

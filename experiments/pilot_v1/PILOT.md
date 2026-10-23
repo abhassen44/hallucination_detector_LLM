@@ -25,8 +25,8 @@ From the project root, one queue at a time:
 
 ```powershell
 $env:PYTHONPATH="$PWD"
-python -m scripts.review --queue experiments/pilot_v1/extraction_queue.jsonl --reviewer <your-name>
-python -m scripts.review --queue experiments/pilot_v1/verification_queue.jsonl --reviewer <your-name>
+python -m scripts.shared.review.review --queue experiments/pilot_v1/extraction_queue.jsonl --reviewer <your-name>
+python -m scripts.shared.review.review --queue experiments/pilot_v1/verification_queue.jsonl --reviewer <your-name>
 ```
 
 Do **not** pass `--suggestions`. Ctrl+C saves and exits; rerun to resume — completed
@@ -41,7 +41,7 @@ category.
 ## Scoring
 
 ```powershell
-python -m scripts.pilot_agreement `
+python -m scripts.shared.review.pilot_agreement `
   --queue experiments/pilot_v1/extraction_queue.jsonl `
   --queue experiments/pilot_v1/verification_queue.jsonl
 ```

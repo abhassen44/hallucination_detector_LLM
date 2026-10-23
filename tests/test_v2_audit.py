@@ -1,5 +1,5 @@
-from scripts.make_v2_audit import allocate, sample_rows
-from scripts.score_v2_audit import _category, _verdict
+from scripts.v2.make_v2_audit import allocate, sample_rows
+from scripts.v2.score_v2_audit import _category, _verdict
 
 
 def _queue(identifier, condition=None):

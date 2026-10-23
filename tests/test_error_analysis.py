@@ -1,5 +1,5 @@
 """Schema guards for the Gemma-assisted error analysis."""
-from scripts.analyze_errors import _validate_extraction, _validate_verification
+from scripts.shared.review.analyze_errors import _validate_extraction, _validate_verification
 
 
 def test_pass_forces_the_none_category():

@@ -101,10 +101,10 @@ Endpoints:
 - `GET /metrics/summary`: compact Stage 5 metrics, ablations, decomposition, and
   significance data for the dashboard.
 - `GET /charts`: serves `experiments/charts/results_dashboard.html` after it is
-  generated with `python -m scripts.generate_charts`.
+  generated with `python -m scripts.shared.reporting.generate_charts`.
 
 Generate the static component-ablation report with
-`python -m scripts.run_ablation_study`; it reads the committed Stage 5 ablation
+`python -m scripts.shared.reporting.run_ablation_study`; it reads the committed Stage 5 ablation
 metrics and writes `experiments/ablation_study/ablation_report.json`.
 
 Input is limited to 12,000 characters per text, 20 evidence passages, and 50
@@ -140,7 +140,7 @@ Stage 5 is fitted offline; the API does **not** load it.
 
 ```sh
 .venv/bin/python -m src.evaluation.fit_detector --method all
-.venv/bin/python -m scripts.summarize_stage5
+.venv/bin/python -m scripts.shared.inference.summarize_stage5
 ```
 
 This writes features from the committed retrieval caches, selects `C` and feature
@@ -184,12 +184,12 @@ artifacts.
 ## Blind taxonomy pilot
 
 ```sh
-.venv/bin/python -m scripts.make_pilot          # only if the queues need rebuilding
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.make_pilot          # only if the queues need rebuilding
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/pilot_v1/extraction_queue.jsonl --reviewer <name>
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/pilot_v1/verification_queue.jsonl --reviewer <name>
-.venv/bin/python -m scripts.pilot_agreement \
+.venv/bin/python -m scripts.shared.review.pilot_agreement \
   --queue experiments/pilot_v1/extraction_queue.jsonl \
   --queue experiments/pilot_v1/verification_queue.jsonl
 ```
@@ -206,15 +206,15 @@ recorded.
 
 ```sh
 # Gemma first pass (proposals only; human fields untouched)
-.venv/bin/python -m scripts.analyze_errors --queue all
+.venv/bin/python -m scripts.shared.review.analyze_errors --queue all
 
 # Interactive human review, optionally showing the proposals
-.venv/bin/python -m scripts.review \
+.venv/bin/python -m scripts.shared.review.review \
   --queue experiments/stage4_claims/human_review.jsonl \
   --suggestions experiments/stage6_errors/provisional_extraction.jsonl
 
 # Progress without prompting
-.venv/bin/python -m scripts.review --summary
+.venv/bin/python -m scripts.shared.review.review --summary
 ```
 
 The queue is backed up before the first write, completed rows are never offered
@@ -228,6 +228,10 @@ Every stage is also available from one entry point:
 .venv/bin/python -m scripts.reproduce --stage checks
 .venv/bin/python -m scripts.reproduce --stage all --include-heavy
 ```
+
+Research scripts are grouped by version under `scripts/v2`–`scripts/v5`; shared
+review, inference, reporting, and data tools live under `scripts/shared`. See
+[`scripts/README.md`](../scripts/README.md) for the full map and command paths.
 
 If a content-generation/parsing error occurs, extraction falls back to sentence
 splitting. Authentication failures and persistent rate limits instead stop the
@@ -253,11 +257,11 @@ model; regenerate it when those change.
 ```sh
 # After downloading models/indexes with src.setup_inference:
 HF_HUB_OFFLINE=1 .venv/bin/python -m src.evaluation.halueval_claims --evidence all
-.venv/bin/python -m scripts.finalize_inference_provenance
-.venv/bin/python -m scripts.summarize_inference
+.venv/bin/python -m scripts.shared.inference.finalize_inference_provenance
+.venv/bin/python -m scripts.shared.inference.summarize_inference
 # Optional local MLflow logging, no external tracking account:
 pip install -r requirements-tracking.txt
-.venv/bin/python -m scripts.log_inference_mlflow
+.venv/bin/python -m scripts.shared.inference.log_inference_mlflow
 ```
 
 Results are in `experiments/stage5_inference/REPORT.md`. Ten frozen-rule
@@ -290,7 +294,7 @@ lightweight app/test and inference requirements.
 
 1. Human review: 171 extraction cases (121 flagged plus 50 comparisons) and 103
    verification error samples are prepared and pre-annotated by Gemma as
-   *proposals*. Use `scripts/review.py`; the fields stay null until a human decides.
+   *proposals*. Use `scripts/shared/review/review.py`; the fields stay null until a human decides.
 2. Three syntax-only recovery proposals were reviewed and accepted but **not applied**.
    Applying them changes three HaluEval examples, so it belongs in a separate version
    with regenerated frozen-rule predictions.
