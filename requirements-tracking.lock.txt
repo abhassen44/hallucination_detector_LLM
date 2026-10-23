@@ -52,6 +52,7 @@ Pygments==2.21.0
 pytest==9.1.1
 python-dotenv==1.2.4
 PyYAML==6.0.3
+rank-bm25==0.2.2
 regex==2026.9.29
 requests==2.34.2
 rich==15.0.0

@@ -29,6 +29,9 @@ Active branch: `ver-5`, based on the v4.0 research history. Plan and outcome:
 - Hardened the React client: 240-second timeout and cancel, unmount abort, safe
   error/JSON handling, response normalization, character counts, and Vite proxies
   for every app API route. Added seven Node API tests.
+- Added `rank-bm25` to the inference requirements so the documented setup can run
+  retrieval; verified real `/verify`, `/retrieve`, `/detect` (supplied source and
+  Wikipedia), `/`, `/charts`, and `/health` smoke checks on 2026-10-23.
 - The first test invocation failed during JSON serialization before writing any
   metric or prediction; the identical frozen pipeline was rerun after a
   serializer-only fix. The report records both attempts.
