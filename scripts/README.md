@@ -30,6 +30,7 @@ python -m scripts.v5.evaluate_v5_test --check-val
 python -m scripts.v5.evaluate_results_v5
 python -m scripts.shared.review.review --summary
 python -m scripts.shared.reporting.generate_charts
+python -m scripts.shared.reporting.build_presentation
 python -m scripts.reproduce --stage checks
 ```
 
@@ -46,7 +47,7 @@ FEVER test pass has already been spent and must not be rerun.
 | `v5` | MiniCheck/HHEM grounding features, ablation, freeze, one test pass |
 | `shared/data` | Dataset cache and extraction provenance audits |
 | `shared/inference` | Stage 5/HaluEval inference summaries and optional MLflow export |
-| `shared/reporting` | Results dashboard and component-ablation report |
+| `shared/reporting` | Results dashboard, component-ablation report, presentation deck |
 | `shared/review` | Pilot, human-review queues, recovery proposals |
 
 Cross-version imports are explicit, for example:

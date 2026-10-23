@@ -138,8 +138,9 @@ answered were wrong 99.1% of the time, so NEI is reduced but not solved. The 95.
 figure is selective precision on the answered verifiable subset, not accuracy on
 all verifiable claims. The learned path remains offline. Details:
 [v5 report](experiments/v5/VALIDATION.md),
-[v5 architecture](docs/architecture/v5.md), and the generated
-[v5 image report](output%20version%205/summary.md).
+[v5 architecture](docs/architecture/v5.md), the generated
+[v5 image report](output%20version%205/summary.md), and the
+[slide deck](presentation/claim_level_hallucination_detection.pptx).
 
 ## Frozen-rule evaluation (HaluEval)
 
